@@ -2,7 +2,7 @@ package com.cloudcode.lottery.model;
 
 import java.util.Date;
 
-public class lottery {
+public class Lottery {
 	private int a;
 	private int b;
 	private int c;
