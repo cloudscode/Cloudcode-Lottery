@@ -124,7 +124,7 @@ public class Lottery {
 	private int ninearea7near;
 	private int ninearea8near;
 	private int ninearea9near;
-	private String consecutivenumber;
+	private int consecutivenumber;
 	private String intervaland;
 	private int intervalandtotal;
 	private int intervalandmin;
@@ -1205,11 +1205,11 @@ public class Lottery {
 		this.ninearea9near = ninearea9near;
 	}
 
-	public String getConsecutivenumber() {
+	public int getConsecutivenumber() {
 		return consecutivenumber;
 	}
 
-	public void setConsecutivenumber(String consecutivenumber) {
+	public void setConsecutivenumber(int consecutivenumber) {
 		this.consecutivenumber = consecutivenumber;
 	}
 

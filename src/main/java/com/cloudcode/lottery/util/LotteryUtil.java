@@ -268,8 +268,10 @@ public class LotteryUtil {
 			lottery.setNinearea9(lottery.getNinearea9() + 1);
 		}
 	}
+
 	/**
 	 * 连号个数
+	 * 
 	 * @param lottery
 	 * @return
 	 */
@@ -296,11 +298,34 @@ public class LotteryUtil {
 		lottery.setConsecutivenumber(count);
 		return count;
 	}
+	/**
+	 * 期号
+	 * @param interval
+	 * @param lottery
+	 * @return
+	 */
+	public static String getNumber(String interval, Lottery lottery) {
+		StringBuffer sb = new StringBuffer();
+		sb.append(lottery.getA());
+		sb.append(interval);
+		sb.append(lottery.getB());
+		sb.append(interval);
+		sb.append(lottery.getC());
+		sb.append(interval);
+		sb.append(lottery.getD());
+		sb.append(interval);
+		sb.append(lottery.getE());
+		sb.append(interval);
+		sb.append(lottery.getF());
+		sb.append(interval);
+		sb.append(lottery.getG());
+		return sb.toString();
+	}
 
 	public static void main(String[] args) {
 		System.out.println(LotteryUtil.getOddEven(17));
 		System.out.println(8 % 3);
-		Lottery lottery =new Lottery();
+		Lottery lottery = new Lottery();
 		lottery.setA(3);
 		lottery.setB(6);
 		lottery.setC(7);
@@ -309,6 +334,6 @@ public class LotteryUtil {
 		lottery.setF(17);
 		lottery.setG(35);
 		LotteryUtil.getConsecutivenumber(lottery);
-		System.out.println("连号个数："+lottery.getConsecutivenumber());
+		System.out.println("连号个数：" + lottery.getConsecutivenumber());
 	}
 }
