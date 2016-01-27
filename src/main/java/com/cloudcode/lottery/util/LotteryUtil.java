@@ -231,6 +231,11 @@ public class LotteryUtil {
 		}
 	}
 
+	/**
+	 * 9区
+	 * 
+	 * @param lottery
+	 */
 	public static void getninearea(Lottery lottery) {
 		ninearea(lottery.getA(), lottery);
 		ninearea(lottery.getB(), lottery);
@@ -263,9 +268,47 @@ public class LotteryUtil {
 			lottery.setNinearea9(lottery.getNinearea9() + 1);
 		}
 	}
+	/**
+	 * 连号个数
+	 * @param lottery
+	 * @return
+	 */
+	public static int getConsecutivenumber(Lottery lottery) {
+		int count = 0;
+		if (lottery.getA() + 1 == lottery.getB()) {
+			count++;
+		}
+		if (lottery.getB() + 1 == lottery.getC()) {
+			count++;
+		}
+		if (lottery.getC() + 1 == lottery.getD()) {
+			count++;
+		}
+		if (lottery.getD() + 1 == lottery.getE()) {
+			count++;
+		}
+		if (lottery.getE() + 1 == lottery.getF()) {
+			count++;
+		}
+		if (lottery.getF() + 1 == lottery.getG()) {
+			count++;
+		}
+		lottery.setConsecutivenumber(count);
+		return count;
+	}
 
 	public static void main(String[] args) {
 		System.out.println(LotteryUtil.getOddEven(17));
 		System.out.println(8 % 3);
+		Lottery lottery =new Lottery();
+		lottery.setA(3);
+		lottery.setB(6);
+		lottery.setC(7);
+		lottery.setD(15);
+		lottery.setE(16);
+		lottery.setF(17);
+		lottery.setG(35);
+		LotteryUtil.getConsecutivenumber(lottery);
+		System.out.println("连号个数："+lottery.getConsecutivenumber());
 	}
 }
