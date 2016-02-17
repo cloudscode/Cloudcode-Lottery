@@ -298,8 +298,10 @@ public class LotteryUtil {
 		lottery.setConsecutivenumber(count);
 		return count;
 	}
+
 	/**
 	 * 期号
+	 * 
 	 * @param interval
 	 * @param lottery
 	 * @return
@@ -322,6 +324,39 @@ public class LotteryUtil {
 		return sb.toString();
 	}
 
+	public void arrSort(int[] list) {
+		int i, j, temp;
+		for (i = 0; i < list.length - 1; i++) {
+			for (j = 0; j < list.length - 1 - i; j++) {
+				if (list[j] > list[j + 1]) {
+					temp = list[j];
+					list[j] = list[j + 1];
+					list[j + 1] = temp;
+				}
+			}
+		}
+	}
+	public void arrSort(int[] list, Lottery lottery) {
+		arrSort(list);
+		lottery.setA(list[0]);
+		lottery.setB(list[1]);
+		lottery.setC(list[2]);
+		lottery.setD(list[3]);
+		lottery.setE(list[4]);
+		lottery.setF(list[5]);
+		lottery.setG(list[6]);
+	}
+	public void arrSort(Lottery lottery) {
+		int[] list = new int[7];
+		list[0]=lottery.getA();
+		list[1]=lottery.getB();
+		list[2]=lottery.getC();
+		list[3]=lottery.getD();
+		list[4]=lottery.getE();
+		list[5]=lottery.getF();
+		list[6]=lottery.getG();
+		arrSort(list,lottery);		
+	}
 	public static void main(String[] args) {
 		System.out.println(LotteryUtil.getOddEven(17));
 		System.out.println(8 % 3);
