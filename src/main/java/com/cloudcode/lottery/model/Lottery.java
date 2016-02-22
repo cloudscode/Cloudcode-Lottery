@@ -2,7 +2,16 @@ package com.cloudcode.lottery.model;
 
 import java.util.Date;
 
-public class Lottery {
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import com.cloudcode.framework.model.BaseModelObject;
+import com.cloudcode.lottery.ProjectConfig;
+
+@Entity(name = ProjectConfig.NAME + "lottery")
+@Table(name = ProjectConfig.NAME + "_lottery")
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+public class Lottery extends BaseModelObject{
 	private int a;
 	private int b;
 	private int c;
