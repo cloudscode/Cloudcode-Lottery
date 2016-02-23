@@ -19,7 +19,7 @@ public class ProjectConfig {
 	public static final String PREFIX=NAME+".";
 
 	@Bean(name=PREFIX+"lotteryDao")
-	public ModelObjectDao<Lottery> generateFuturesTypeDao(){
+	public ModelObjectDao<Lottery> generateLotteryDao(){
 		return new BaseDaoImpl<Lottery>();
 	}
 }
