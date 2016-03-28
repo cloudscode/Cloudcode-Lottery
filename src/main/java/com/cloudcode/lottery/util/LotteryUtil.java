@@ -1,7 +1,9 @@
 package com.cloudcode.lottery.util;
 
-import com.cloudcode.lottery.model.Lottery;
+import org.springframework.stereotype.Repository;
 
+import com.cloudcode.lottery.model.Lottery;
+@Repository
 public class LotteryUtil {
 	/**
 	 * 奇偶数判断
@@ -15,7 +17,22 @@ public class LotteryUtil {
 		}
 		return false;
 	}
-
+	public static void calcOddEvens(int num,Lottery lottery) {
+		if(getOddEven(num)){
+			lottery.setOdd(lottery.getOdd()+1);
+		}else{
+			lottery.setEven(lottery.getEven()+1);
+		}
+	}
+	public static void getOddEvens(Lottery lottery) {
+		calcOddEvens(lottery.getA() , lottery);
+		calcOddEvens(lottery.getB(), lottery);
+		calcOddEvens(lottery.getC() , lottery);
+		calcOddEvens(lottery.getD() , lottery);
+		calcOddEvens(lottery.getE() , lottery);
+		calcOddEvens(lottery.getF(), lottery);
+		calcOddEvens(lottery.getG() , lottery);
+	}
 	/**
 	 * 总和
 	 * 
@@ -324,7 +341,7 @@ public class LotteryUtil {
 		return sb.toString();
 	}
 
-	public void arrSort(int[] list) {
+	public static void arrSort(int[] list) {
 		int i, j, temp;
 		for (i = 0; i < list.length - 1; i++) {
 			for (j = 0; j < list.length - 1 - i; j++) {
@@ -336,7 +353,7 @@ public class LotteryUtil {
 			}
 		}
 	}
-	public void arrSort(int[] list, Lottery lottery) {
+	public static void arrSort(int[] list, Lottery lottery) {
 		arrSort(list);
 		lottery.setA(list[0]);
 		lottery.setB(list[1]);
@@ -346,7 +363,7 @@ public class LotteryUtil {
 		lottery.setF(list[5]);
 		lottery.setG(list[6]);
 	}
-	public void arrSort(Lottery lottery) {
+	public static void arrSort(Lottery lottery) {
 		int[] list = new int[7];
 		list[0]=lottery.getA();
 		list[1]=lottery.getB();
@@ -356,6 +373,15 @@ public class LotteryUtil {
 		list[5]=lottery.getF();
 		list[6]=lottery.getG();
 		arrSort(list,lottery);		
+	}
+	public static void calcLottery(Lottery lottery) {
+		getOddEvens(lottery);//奇偶
+		getTotal(lottery);//总和
+		getTotalAvg(lottery);
+		getLength(lottery);
+		getThanthree(lottery);
+		getThanfive(lottery);
+		getThanseven(lottery);
 	}
 	public static void main(String[] args) {
 		System.out.println(LotteryUtil.getOddEven(17));
