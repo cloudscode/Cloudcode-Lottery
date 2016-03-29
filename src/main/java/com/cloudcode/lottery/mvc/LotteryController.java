@@ -54,9 +54,5 @@ public class LotteryController extends CrudController<Lottery> {
 		lotteryUtil.calcLottery(lottery);
 		return new ServiceResult(ReturnResult.SUCCESS,"",lottery);
 	}
-	@Override
-	protected Validator getValidator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

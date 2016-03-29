@@ -54,9 +54,5 @@ public class HistoryLotteryController extends CrudController<History> {
 		historyUtil.calcHistory(history);*/
 		return new ServiceResult(ReturnResult.SUCCESS,"",history);
 	}
-	@Override
-	protected Validator getValidator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
