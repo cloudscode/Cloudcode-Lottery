@@ -378,10 +378,16 @@ public class LotteryUtil {
 		getOddEvens(lottery);//奇偶
 		getTotal(lottery);//总和
 		getTotalAvg(lottery);
-		getLength(lottery);
+		getLength(lottery);//长度
 		getThanthree(lottery);
 		getThanfive(lottery);
 		getThanseven(lottery);
+		getUpperLowerareas(lottery);
+		getfourtharea(lottery);
+		getsixarea(lottery);
+		getninearea(lottery);
+		getConsecutivenumber(lottery);
+		getNumber(",", lottery);
 	}
 	public static void main(String[] args) {
 		System.out.println(LotteryUtil.getOddEven(17));
