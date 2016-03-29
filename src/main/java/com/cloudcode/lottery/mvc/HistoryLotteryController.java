@@ -18,28 +18,28 @@ import com.cloudcode.framework.controller.CrudController;
 import com.cloudcode.framework.rest.ReturnResult;
 import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.UUID;
-import com.cloudcode.lottery.dao.LotteryDao;
-import com.cloudcode.lottery.model.Lottery;
+import com.cloudcode.lottery.dao.HistoryDao;
+import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.util.LotteryUtil;
 
 @Controller
-@RequestMapping({ "/lottery" })
-public class LotteryController extends CrudController<Lottery> {
+@RequestMapping({ "/historyLottery" })
+public class HistoryLotteryController extends CrudController<History> {
 
 	@Autowired
-	private  LotteryDao lotteryDao;
+	private  HistoryDao historyDao;
 	@Autowired
 	private LotteryUtil lotteryUtil;
-	@RequestMapping(value = "/addLottery", method = RequestMethod.POST)
+	@RequestMapping(value = "/addHistory", method = RequestMethod.POST)
 	public @ResponseBody
-	void addLottery(@RequestBody  Lottery lottery) {
-		lottery.setId(UUID.generateUUID());
-		lotteryDao.create(lottery);
+	void addHistory(@RequestBody  History history) {
+		history.setId(UUID.generateUUID());
+		historyDao.create(history);
 	}
-	@RequestMapping(value = "/calcLottery",  method = {
+	@RequestMapping(value = "/calcHistory",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
 	public @ResponseBody
-	Object calcLottery(@ModelAttribute("num")  String num,HttpServletRequest request) {
+	Object calcHistory(@ModelAttribute("num")  String num,HttpServletRequest request) {
 		String result=request.getParameter("num");
 		System.out.println(result+"***"+num);
 		String[] nums=num.split(",");
@@ -49,10 +49,10 @@ public class LotteryController extends CrudController<Lottery> {
 			number[i]=Integer.parseInt(nums[i]);
 		}
 		
-		Lottery lottery = new Lottery();
-		lotteryUtil.arrSort(number,lottery);
-		lotteryUtil.calcLottery(lottery);
-		return new ServiceResult(ReturnResult.SUCCESS,"",lottery);
+		History history = new History();
+		/*historyUtil.arrSort(number,history);
+		historyUtil.calcHistory(history);*/
+		return new ServiceResult(ReturnResult.SUCCESS,"",history);
 	}
 	@Override
 	protected Validator getValidator() {

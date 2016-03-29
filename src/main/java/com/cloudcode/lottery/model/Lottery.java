@@ -12,6 +12,10 @@ import com.cloudcode.lottery.ProjectConfig;
 @Table(name = ProjectConfig.NAME + "_lottery")
 @org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
 public class Lottery extends BaseModelObject{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -741903476235031192L;
 	private int a;
 	private int b;
 	private int c;
@@ -149,7 +153,7 @@ public class Lottery extends BaseModelObject{
 	private String thanthehorizontalspacing;
 	private int t;
 	private int newno;
-	private int repeat;
+	private int repeatno;
 	private int noside;
 	private String ratioonthethreenumbers;
 	private String ratioonthefivenumbers;
@@ -1342,12 +1346,12 @@ public class Lottery extends BaseModelObject{
 		this.newno = newno;
 	}
 
-	public int getRepeat() {
-		return repeat;
+	public int getRepeatno() {
+		return repeatno;
 	}
 
-	public void setRepeat(int repeat) {
-		this.repeat = repeat;
+	public void setRepeatno(int repeatno) {
+		this.repeatno = repeatno;
 	}
 
 	public int getNoside() {
