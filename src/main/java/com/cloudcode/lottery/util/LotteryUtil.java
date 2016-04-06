@@ -53,8 +53,8 @@ public class LotteryUtil {
 	 * @param lottery
 	 * @return
 	 */
-	public static int getTotalAvg(Lottery lottery) {
-		int totalavg = getTotal(lottery) / 6;
+	public static Double getTotalAvg(Lottery lottery) {
+		Double totalavg = getTotal(lottery) / (6*1.00);
 		lottery.setTotalavg(totalavg);
 		return totalavg;
 	}
@@ -338,6 +338,7 @@ public class LotteryUtil {
 		sb.append(lottery.getF());
 		sb.append(interval);
 		sb.append(lottery.getG());
+		lottery.setStrnum(sb.toString());
 		return sb.toString();
 	}
 
@@ -362,6 +363,7 @@ public class LotteryUtil {
 		lottery.setE(list[4]);
 		lottery.setF(list[5]);
 		lottery.setG(list[6]);
+		lottery.setFirstnum(list[0]);
 	}
 	public static void arrSort(Lottery lottery) {
 		int[] list = new int[7];

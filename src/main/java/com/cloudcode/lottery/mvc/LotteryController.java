@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cloudcode.framework.controller.CrudController;
 import com.cloudcode.framework.rest.ReturnResult;
@@ -42,6 +43,9 @@ public class LotteryController extends CrudController<Lottery> {
 	Object calcLottery(@ModelAttribute("num")  String num,HttpServletRequest request) {
 		String result=request.getParameter("num");
 		System.out.println(result+"***"+num);
+		if(num.endsWith(",")){
+			num = num.substring(0, num.length()-1);
+		}
 		String[] nums=num.split(",");
 		List<Integer> list = new ArrayList<Integer>();
 		int[] number = new int[7];
@@ -54,5 +58,33 @@ public class LotteryController extends CrudController<Lottery> {
 		lotteryUtil.calcLottery(lottery);
 		return new ServiceResult(ReturnResult.SUCCESS,"",lottery);
 	}
-	
+	@RequestMapping(value = "calculation")
+	public ModelAndView calculation() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/detail.ftl");
+		
+		return modelAndView;
+	}
+	@RequestMapping(value = "view")
+	public ModelAndView view(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/view.ftl");
+		String num=request.getParameter("num");
+		System.out.println("***"+num);
+		if(num.endsWith(",")){
+			num = num.substring(0, num.length()-1);
+		}
+		String[] nums=num.split(",");
+		List<Integer> list = new ArrayList<Integer>();
+		int[] number = new int[7];
+		for(int i=0;i<nums.length;i++){
+			number[i]=Integer.parseInt(nums[i]);
+		}
+		
+		Lottery lottery = new Lottery();
+		lotteryUtil.arrSort(number,lottery);
+		lotteryUtil.calcLottery(lottery);
+		modelAndView.addObject("lottery", lottery);
+		return modelAndView;
+	}
 }

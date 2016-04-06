@@ -14,19 +14,20 @@ public class History extends Model{
 	 * 
 	 */
 	private static final long serialVersionUID = -676274772235252137L;
-	private int issue;
-	private int serialnum;
-	public int getIssue() {
+	private String issue;
+	private String serialnum;
+	public String getIssue() {
 		return issue;
 	}
-	public void setIssue(int issue) {
+	public void setIssue(String issue) {
 		this.issue = issue;
 	}
-	public int getSerialnum() {
+	public String getSerialnum() {
 		return serialnum;
 	}
-	public void setSerialnum(int serialnum) {
+	public void setSerialnum(String serialnum) {
 		this.serialnum = serialnum;
 	}
+	
 	
 }
