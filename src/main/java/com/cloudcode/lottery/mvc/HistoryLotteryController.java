@@ -20,6 +20,7 @@ import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.HistoryDao;
 import com.cloudcode.lottery.model.History;
+import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.util.LotteryUtil;
 
 @Controller
@@ -54,5 +55,16 @@ public class HistoryLotteryController extends CrudController<History> {
 		historyUtil.calcHistory(history);*/
 		return new ServiceResult(ReturnResult.SUCCESS,"",history);
 	}
-	
+	@RequestMapping(value = "/init",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody
+	Object init() {
+		List<History> lists=historyDao.loadAll();
+		for(History history:lists){
+			lotteryUtil.arrSort(history);
+			lotteryUtil.calcLottery(history);
+			historyDao.updateObject(history);
+		}
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
 }
