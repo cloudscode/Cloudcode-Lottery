@@ -1,5 +1,10 @@
 package com.cloudcode.lottery.util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.utils.Check;
@@ -399,6 +404,128 @@ public class LotteryUtil {
 		getninearea(lottery);
 		getConsecutivenumber(lottery);
 		getNumber(",", lottery);
+		getT(lottery);
+		getThanTheHorizontalSpacing(lottery);
+		getLastValueAppears(lottery);
+		//getNewSideRepeatNo(lottery, parent);
+	}
+	public static void lastValueAppears(Integer temp,List<Integer> list,Model lottery){
+		Integer count=0;
+		for(Integer num:list){
+			if(num==temp){
+				count++;
+			}
+		}
+		if(count >=2){
+			lottery.setLastvalueappears(Check.toString(lottery.getLastvalueappears())+""+temp+"+");
+		}
+	}
+	public static void getLastValueAppears(Model lottery){
+		List<Integer> list =new ArrayList<Integer>();
+		list.add(lottery.getA() % 10);
+		list.add(lottery.getB() % 10);
+		list.add(lottery.getC() % 10);
+		list.add(lottery.getD() % 10);
+		list.add(lottery.getE() % 10);
+		list.add(lottery.getF() % 10);
+		list.add(lottery.getG() % 10);
+		
+		lastValueAppears(0,list, lottery);
+		lastValueAppears(1,list, lottery);
+		lastValueAppears(2,list, lottery);
+		lastValueAppears(3,list, lottery);
+		lastValueAppears(4,list, lottery);
+		lastValueAppears(5,list, lottery);
+		lastValueAppears(6,list, lottery);
+		lastValueAppears(7,list, lottery);
+		lastValueAppears(8,list, lottery);
+		lastValueAppears(9,list, lottery);
+		lottery.setLastvalueappears(lottery.getLastvalueappears().substring(0,lottery.getLastvalueappears().length()));
+	}
+	public static void getThanTheHorizontalSpacing(Model lottery){
+		lottery.setThanthehorizontalspacing((lottery.getB()-lottery.getA())+":"+(lottery.getC()-lottery.getB())
+				+":"+(lottery.getD()-lottery.getC())
+				+":"+(lottery.getE()-lottery.getD())
+				+":"+(lottery.getF()-lottery.getE())
+				+":"+(lottery.getG()-lottery.getF()));
+		Integer thanthehorizontalspacingadd=(lottery.getB()-lottery.getA())+(lottery.getC()-lottery.getB())
+				+(lottery.getD()-lottery.getC())
+				+(lottery.getE()-lottery.getD())
+				+(lottery.getF()-lottery.getE())
+				+(lottery.getG()-lottery.getF());
+		lottery.setThanthehorizontalspacingadd(thanthehorizontalspacingadd);
+	}
+	public static void getT(Model lottery) {
+		int[] list = new int[7];
+		list[0]=lottery.getA();
+		list[1]=lottery.getB();
+		list[2]=lottery.getC();
+		list[3]=lottery.getD();
+		list[4]=lottery.getE();
+		list[5]=lottery.getF();
+		list[6]=lottery.getG();
+		Map<Integer,Integer> map=new HashMap<Integer, Integer>();
+		int temp=0,num=0;
+		for (int i = 0; i < list.length - 1; i++) {
+			num=list[i];
+			for (int j = i+1; j < list.length; j++) {
+				temp=list[j];
+				if(temp > num && temp != num){
+					//System.out.println(temp-num);
+					map.put(temp-num, temp-num);
+				}
+			}
+		}
+		lottery.setT(map.size()-7);
+		System.out.println(map.size()-7);
+	}
+	public static void getNewSideRepeatNo(Model lottery,Model parent){
+		List<Integer> list =list(lottery);
+		Map<Integer,Integer> parentList =maps(parent);
+		getNewSideRepeatNo( lottery.getA(), parentList,lottery);
+		getNewSideRepeatNo( lottery.getB(), parentList,lottery);
+		getNewSideRepeatNo( lottery.getC(), parentList,lottery);
+		getNewSideRepeatNo( lottery.getD(), parentList,lottery);
+		getNewSideRepeatNo( lottery.getE(), parentList,lottery);
+		getNewSideRepeatNo( lottery.getF(), parentList,lottery);
+		getNewSideRepeatNo( lottery.getG(), parentList,lottery);
+	}
+	public static void getNewSideRepeatNo(int temp,Map<Integer,Integer> parentList,Model lottery){
+		int newno=0;
+		int side=0;
+		int repeat=0;	
+		if(parentList.containsKey(temp+1) || parentList.containsKey(temp-1)){
+				side++;
+			}else if(parentList.containsKey(temp)){
+				repeat++;
+			}else if(!parentList.containsKey(temp+1) && !parentList.containsKey(temp-1) && !parentList.containsKey(temp)){
+				newno++;
+			}
+		lottery.setNewno(Check.toString(lottery.getNewno())+newno);
+		lottery.setRepeatno(Check.toString(lottery.getRepeatno())+repeat);
+		lottery.setNoside(Check.toString(lottery.getNoside())+side);
+	}
+	public static List<Integer> list(Model lottery) {
+		List<Integer> list =new ArrayList<Integer>();
+		list.add(lottery.getA());
+		list.add(lottery.getB());
+		list.add(lottery.getC());
+		list.add(lottery.getD());
+		list.add(lottery.getE());
+		list.add(lottery.getF());
+		list.add(lottery.getG());
+		return list;
+	}
+	public static Map<Integer,Integer> maps(Model lottery) {
+		Map<Integer,Integer> list =new HashMap<Integer,Integer>();
+		list.put(lottery.getA(),lottery.getA());
+		list.put(lottery.getB(),lottery.getB());
+		list.put(lottery.getC(),lottery.getC());
+		list.put(lottery.getD(),lottery.getD());
+		list.put(lottery.getE(),lottery.getE());
+		list.put(lottery.getF(),lottery.getF());
+		list.put(lottery.getG(),lottery.getG());
+		return list;
 	}
 	public static void main(String[] args) {
 		System.out.println(LotteryUtil.getOddEven(17));
@@ -411,7 +538,18 @@ public class LotteryUtil {
 		lottery.setE(16);
 		lottery.setF(17);
 		lottery.setG(35);
+		Model plottery = new Model();
+		plottery.setA(1);
+		plottery.setB(8);
+		plottery.setC(7);
+		plottery.setD(13);
+		plottery.setE(17);
+		plottery.setF(19);
+		plottery.setG(36);
 		LotteryUtil.getConsecutivenumber(lottery);
+		LotteryUtil.getNewSideRepeatNo(lottery, plottery);
+		System.out.println(lottery.getNewno()+":"+lottery.getNoside()+":"+lottery.getRepeatno());
 		System.out.println("连号个数：" + lottery.getConsecutivenumber());
 	}
+	
 }
