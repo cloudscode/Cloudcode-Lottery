@@ -440,6 +440,7 @@ public class LotteryUtil {
 		lastValueAppears(7,list, lottery);
 		lastValueAppears(8,list, lottery);
 		lastValueAppears(9,list, lottery);
+		if(null != lottery.getLastvalueappears())
 		lottery.setLastvalueappears(lottery.getLastvalueappears().substring(0,lottery.getLastvalueappears().length()));
 	}
 	public static void getThanTheHorizontalSpacing(Model lottery){

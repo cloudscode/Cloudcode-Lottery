@@ -5,6 +5,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.criterion.CriteriaQuery;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.engine.spi.TypedValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Validator;
@@ -59,7 +66,9 @@ public class HistoryLotteryController extends CrudController<History> {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
 	public @ResponseBody
 	Object init() {
-		List<History> lists=historyDao.loadAll();
+		Criteria criterion = historyDao.getSession().createCriteria(History.class);
+		criterion.addOrder(Order.desc("issue"));
+		List<History> lists=historyDao.loadAll(criterion);
 		for(History history:lists){
 			lotteryUtil.arrSort(history);
 			lotteryUtil.calcLottery(history);
