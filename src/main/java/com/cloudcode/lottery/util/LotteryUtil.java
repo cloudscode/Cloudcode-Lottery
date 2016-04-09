@@ -511,6 +511,12 @@ public class LotteryUtil {
 		list.add(lottery.getG());
 		return list;
 	}
+	public static void getRatioNoNumbers(Model lottery,List<Model> lists,int i){
+		getRatioNoNumbers(lottery,lists, i,3);
+		getRatioNoNumbers(lottery,lists, i,5);
+		getRatioNoNumbers(lottery,lists, i,7);
+		getRatioNoNumbers(lottery,lists, i,10);
+	}
 	public static void getRatioNoNumbers(Model lottery,List<Model> lists,int i,int t){
 		 if(lists.size()<(i+t)){
 			 Map<Integer,Integer> maps =new HashMap<Integer, Integer>();

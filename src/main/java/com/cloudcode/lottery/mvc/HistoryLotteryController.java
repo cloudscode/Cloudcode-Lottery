@@ -21,6 +21,7 @@ import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.HistoryDao;
 import com.cloudcode.lottery.model.History;
+import com.cloudcode.lottery.model.base.Model;
 import com.cloudcode.lottery.util.LotteryUtil;
 
 @Controller
@@ -71,6 +72,21 @@ public class HistoryLotteryController extends CrudController<History> {
 			}
 			lotteryUtil.arrSort(history);
 			lotteryUtil.calcLottery(history);
+			historyDao.updateObject(history);
+		}
+		Criteria criterion2 = historyDao.getSession().createCriteria(History.class);
+		criterion2.addOrder(Order.asc("issue"));
+		List<History> lists2=historyDao.loadAll(criterion2);
+		List<Model> lists3= new ArrayList<Model>();
+		lists3.addAll(lists2);
+		for(int i=0;i<lists2.size();i++){
+			History history=lists2.get(i);
+			if((i+1)<lists.size()){
+				  History phistory=lists.get(i+1);
+				  lotteryUtil.getHeat(history, phistory, i);
+				  lotteryUtil.getIntervaland(history, phistory, i);
+			}
+			lotteryUtil.getRatioNoNumbers(history,lists3, i);
 			historyDao.updateObject(history);
 		}
 		return new ServiceResult(ReturnResult.SUCCESS,"");
