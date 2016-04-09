@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.utils.Check;
+import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.base.Model;
 @Repository
 public class LotteryUtil {
@@ -25,17 +26,9 @@ public class LotteryUtil {
 	}
 	public static void calcOddEvens(int num,Model lottery) {
 		if(getOddEven(num)){
-			if(null != lottery.getOdd()){
-				lottery.setOdd(lottery.getOdd()+1);
-			}else{
-				lottery.setOdd(1);
-			}
+			lottery.setOdd(Check.toString(lottery.getOdd())+1);
 		}else{
-			if(null !=lottery.getEven()){
-				lottery.setEven(lottery.getEven()+1);
-			}else{
-				lottery.setEven(1);
-			}
+			lottery.setEven(Check.toString(lottery.getEven())+1);
 		}
 	}
 	public static void getOddEvens(Model lottery) {
@@ -481,8 +474,8 @@ public class LotteryUtil {
 		System.out.println(map.size()-7);
 	}
 	public static void getNewSideRepeatNo(Model lottery,Model parent){
-		List<Integer> list =list(lottery);
-		Map<Integer,Integer> parentList =maps(parent);
+		List<Integer> list =tolist(lottery);
+		Map<Integer,Integer> parentList =getMaps(parent);
 		getNewSideRepeatNo( lottery.getA(), parentList,lottery);
 		getNewSideRepeatNo( lottery.getB(), parentList,lottery);
 		getNewSideRepeatNo( lottery.getC(), parentList,lottery);
@@ -506,7 +499,8 @@ public class LotteryUtil {
 		lottery.setRepeatno(Check.toString(lottery.getRepeatno())+repeat);
 		lottery.setNoside(Check.toString(lottery.getNoside())+side);
 	}
-	public static List<Integer> list(Model lottery) {
+	
+	public static List<Integer> tolist(Model lottery) {
 		List<Integer> list =new ArrayList<Integer>();
 		list.add(lottery.getA());
 		list.add(lottery.getB());
@@ -517,7 +511,46 @@ public class LotteryUtil {
 		list.add(lottery.getG());
 		return list;
 	}
-	public static Map<Integer,Integer> maps(Model lottery) {
+	public static void getRatioNoNumbers(Model lottery,List<Model> lists,int i,int t){
+		 if(lists.size()<(i+t)){
+			 Map<Integer,Integer> maps =new HashMap<Integer, Integer>();
+			 for(int j=1;j<=t;j++){
+				 maps.putAll(getMaps(lists.get(i+j)));
+			 }
+			 int count=0;
+			 List<Integer> list = tolist(lottery);
+			 for(Integer num:list){
+				 count += ratioNoMaps(num,maps);
+			 }
+			String value=(7-count)+":"+count;
+			if(t==3){
+				lottery.setRatioonthethreenumbers(value);
+			 }else if(t==5){
+				 lottery.setRatioonthefivenumbers(value);
+			 }else if(t==7){
+				 lottery.setRatioonthesevennumbers(value);
+			 }else if(t==10){
+				 lottery.setRatioonthetennumbers(value);
+			 }
+		 }else{
+			 if(t==3){
+				 lottery.setRatioonthethreenumbers("与上三期号码数比：期数未达到条件");
+			 }else if(t==5){
+				 lottery.setRatioonthefivenumbers("与上五期号码数比：期数未达到条件");
+			 }else if(t==7){
+				 lottery.setRatioonthesevennumbers("与上七期号码数比：期数未达到条件");
+			 }else if(t==10){
+				 lottery.setRatioonthetennumbers("与上十期号码数比：期数未达到条件");
+			 }
+		 }
+	}
+	public static int ratioNoMaps(int num, Map<Integer,Integer> maps) {
+		if(maps.containsKey(num)){
+			return 1;
+		}
+		return 0;
+	}
+	public static Map<Integer,Integer> getMaps(Model lottery) {
 		Map<Integer,Integer> list =new HashMap<Integer,Integer>();
 		list.put(lottery.getA(),lottery.getA());
 		list.put(lottery.getB(),lottery.getB());
@@ -552,5 +585,26 @@ public class LotteryUtil {
 		System.out.println(lottery.getNewno()+":"+lottery.getNoside()+":"+lottery.getRepeatno());
 		System.out.println("连号个数：" + lottery.getConsecutivenumber());
 	}
-	
+	public static void getHeat(Model lottery,Model plottery,int i) {
+		if(i==0){
+			lottery.initHeat0(lottery);
+		}else{
+			 List<Integer> list = tolist(lottery);
+			 for(Integer num:list){
+				 lottery.copyHeat0(lottery, plottery);
+				 lottery.calcHeat0(lottery, plottery, num);
+			 }
+		}
+	}
+	public static void getIntervaland(Model lottery,Model plottery,int i) {
+		if(i==0){
+			lottery.initIntervaland0(lottery);
+		}else{
+			 List<Integer> list = tolist(lottery);
+			 for(Integer num:list){
+				 lottery.copyIntervaland0(lottery, plottery);
+				 lottery.calcIntervaland0(lottery, plottery, num);
+			 }
+		}
+	}
 }

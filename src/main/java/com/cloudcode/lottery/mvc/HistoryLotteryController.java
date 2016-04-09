@@ -6,15 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.criterion.CriteriaQuery;
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.engine.spi.TypedValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +21,6 @@ import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.HistoryDao;
 import com.cloudcode.lottery.model.History;
-import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.util.LotteryUtil;
 
 @Controller
@@ -69,7 +62,13 @@ public class HistoryLotteryController extends CrudController<History> {
 		Criteria criterion = historyDao.getSession().createCriteria(History.class);
 		criterion.addOrder(Order.desc("issue"));
 		List<History> lists=historyDao.loadAll(criterion);
-		for(History history:lists){
+		//for(History history:lists){
+		for(int i=0;i<lists.size();i++){
+			History history=lists.get(i);
+			if((i+1)<lists.size()){
+			  History phistory=lists.get(i+1);
+			  lotteryUtil.getNewSideRepeatNo(history, phistory);
+			}
 			lotteryUtil.arrSort(history);
 			lotteryUtil.calcLottery(history);
 			historyDao.updateObject(history);

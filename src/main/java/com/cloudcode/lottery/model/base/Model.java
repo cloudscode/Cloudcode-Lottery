@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.MappedSuperclass;
 
 import com.cloudcode.framework.model.BaseModelObject;
+import com.cloudcode.framework.utils.Check;
+import com.cloudcode.framework.utils.checkUUid;
 
 @MappedSuperclass
 public class Model extends BaseModelObject {
@@ -2117,5 +2119,595 @@ public class Model extends BaseModelObject {
 	public void setStrnum(String strnum) {
 		this.strnum = strnum;
 	}
-	
+	public void initHeat0(Model lottery){
+		lottery.setHeat1(0);
+		lottery.setHeat2(0);
+		lottery.setHeat3(0);
+		lottery.setHeat4(0);
+		lottery.setHeat5(0);
+		lottery.setHeat6(0);
+		lottery.setHeat7(0);
+		lottery.setHeat8(0);
+		lottery.setHeat9(0);
+		lottery.setHeat10(0);
+		lottery.setHeat11(0);
+		lottery.setHeat12(0);
+		lottery.setHeat13(0);
+		lottery.setHeat14(0);
+		lottery.setHeat15(0);
+		lottery.setHeat16(0);
+		lottery.setHeat17(0);
+		lottery.setHeat18(0);
+		lottery.setHeat19(0);
+		lottery.setHeat20(0);
+		lottery.setHeat21(0);
+		lottery.setHeat22(0);
+		lottery.setHeat23(0);
+		lottery.setHeat24(0);
+		lottery.setHeat25(0);
+		lottery.setHeat26(0);
+		lottery.setHeat27(0);
+		lottery.setHeat28(0);
+		lottery.setHeat29(0);
+		lottery.setHeat30(0);
+		lottery.setHeat31(0);
+		lottery.setHeat32(0);
+		lottery.setHeat33(0);
+		lottery.setHeat34(0);
+		lottery.setHeat35(0);
+		lottery.setHeat36(0);
+	}
+	public void copyHeat0(Model lottery,Model plottery){
+			lottery.setHeat1(plottery.getHeat1());
+			lottery.setHeat2(plottery.getHeat2());
+			lottery.setHeat3(plottery.getHeat3());
+			lottery.setHeat4(plottery.getHeat4());
+			lottery.setHeat5(plottery.getHeat5());
+			lottery.setHeat6(plottery.getHeat6());
+			lottery.setHeat7(plottery.getHeat7());
+			lottery.setHeat8(plottery.getHeat8());
+			lottery.setHeat9(plottery.getHeat9());
+			lottery.setHeat10(plottery.getHeat10());
+			lottery.setHeat11(plottery.getHeat11());
+			lottery.setHeat12(plottery.getHeat12());
+			lottery.setHeat13(plottery.getHeat13());
+			lottery.setHeat14(plottery.getHeat14());
+			lottery.setHeat15(plottery.getHeat15());
+			lottery.setHeat16(plottery.getHeat16());
+			lottery.setHeat17(plottery.getHeat17());
+			lottery.setHeat18(plottery.getHeat18());
+			lottery.setHeat19(plottery.getHeat19());
+			lottery.setHeat20(plottery.getHeat20());
+			lottery.setHeat21(plottery.getHeat21());
+			lottery.setHeat22(plottery.getHeat22());
+			lottery.setHeat23(plottery.getHeat23());
+			lottery.setHeat24(plottery.getHeat24());
+			lottery.setHeat25(plottery.getHeat25());
+			lottery.setHeat26(plottery.getHeat26());
+			lottery.setHeat27(plottery.getHeat27());
+			lottery.setHeat28(plottery.getHeat28());
+			lottery.setHeat29(plottery.getHeat29());
+			lottery.setHeat30(plottery.getHeat30());
+			lottery.setHeat31(plottery.getHeat31());
+			lottery.setHeat32(plottery.getHeat32());
+			lottery.setHeat33(plottery.getHeat33());
+			lottery.setHeat34(plottery.getHeat34());
+			lottery.setHeat35(plottery.getHeat35());
+			lottery.setHeat36(plottery.getHeat36());
+	}
+	public void calcHeat0(Model lottery,Model plottery,int num){
+		if(num==1){
+			lottery.setHeat1(plottery.getHeat1()+1);
+		}else if(num==2){
+			lottery.setHeat2(plottery.getHeat2()+1);
+		}else if(num==3){
+			lottery.setHeat3(plottery.getHeat3()+1);
+		}else if(num==4){
+			lottery.setHeat4(plottery.getHeat4()+1);
+		}else if(num==5){
+			lottery.setHeat5(plottery.getHeat5()+1);
+		}else if(num==6){
+			lottery.setHeat6(plottery.getHeat6()+1);
+		}else if(num==7){
+			lottery.setHeat7(plottery.getHeat7()+1);
+		}else if(num==8){
+			lottery.setHeat8(plottery.getHeat8()+1);
+		}else if(num==9){
+			lottery.setHeat9(plottery.getHeat9()+1);
+		}else if(num==10){
+			lottery.setHeat10(plottery.getHeat10()+1);
+		}else if(num==11){
+			lottery.setHeat11(plottery.getHeat11()+1);
+		}else if(num==12){
+			lottery.setHeat12(plottery.getHeat12()+1);
+		}else if(num==13){
+			lottery.setHeat13(plottery.getHeat13()+1);
+		}else if(num==14){
+			lottery.setHeat14(plottery.getHeat14()+1);
+		}else if(num==15){
+			lottery.setHeat15(plottery.getHeat15()+1);
+		}else if(num==16){
+			lottery.setHeat16(plottery.getHeat16()+1);
+		}else if(num==17){
+			lottery.setHeat17(plottery.getHeat17()+1);
+		}else if(num==18){
+			lottery.setHeat18(plottery.getHeat18()+1);
+		}else if(num==19){
+			lottery.setHeat19(plottery.getHeat19()+1);
+		}else if(num==20){
+			lottery.setHeat20(plottery.getHeat20()+1);
+		}else if(num==21){
+			lottery.setHeat21(plottery.getHeat21()+1);
+		}else if(num==22){
+			lottery.setHeat22(plottery.getHeat22()+1);
+		}else if(num==23){
+			lottery.setHeat23(plottery.getHeat23()+1);
+		}else if(num==24){
+			lottery.setHeat24(plottery.getHeat24()+1);
+		}else if(num==25){
+			lottery.setHeat25(plottery.getHeat25()+1);
+		}else if(num==26){
+			lottery.setHeat26(plottery.getHeat26()+1);
+		}else if(num==27){
+			lottery.setHeat27(plottery.getHeat27()+1);
+		}else if(num==28){
+			lottery.setHeat28(plottery.getHeat28()+1);
+		}else if(num==29){
+			lottery.setHeat29(plottery.getHeat29()+1);
+		}else if(num==30){
+			lottery.setHeat30(plottery.getHeat30()+1);
+		}else if(num==31){
+			lottery.setHeat31(plottery.getHeat31()+1);
+		}else if(num==32){
+			lottery.setHeat32(plottery.getHeat32()+1);
+		}else if(num==33){
+			lottery.setHeat33(plottery.getHeat33()+1);
+		}else if(num==34){
+			lottery.setHeat34(plottery.getHeat34()+1);
+		}else if(num==35){
+			lottery.setHeat35(plottery.getHeat35()+1);
+		}else if(num==36){
+			lottery.setHeat36(plottery.getHeat36()+1);
+		}		
+	}
+	public void initIntervaland0(Model lottery){
+		lottery.setIntervaland1(0);
+		lottery.setIntervaland2(0);
+		lottery.setIntervaland3(0);
+		lottery.setIntervaland4(0);
+		lottery.setIntervaland5(0);
+		lottery.setIntervaland6(0);
+		lottery.setIntervaland7(0);
+		lottery.setIntervaland8(0);
+		lottery.setIntervaland9(0);
+		lottery.setIntervaland10(0);
+		lottery.setIntervaland11(0);
+		lottery.setIntervaland12(0);
+		lottery.setIntervaland13(0);
+		lottery.setIntervaland14(0);
+		lottery.setIntervaland15(0);
+		lottery.setIntervaland16(0);
+		lottery.setIntervaland17(0);
+		lottery.setIntervaland18(0);
+		lottery.setIntervaland19(0);
+		lottery.setIntervaland20(0);
+		lottery.setIntervaland21(0);
+		lottery.setIntervaland22(0);
+		lottery.setIntervaland23(0);
+		lottery.setIntervaland24(0);
+		lottery.setIntervaland25(0);
+		lottery.setIntervaland26(0);
+		lottery.setIntervaland27(0);
+		lottery.setIntervaland28(0);
+		lottery.setIntervaland29(0);
+		lottery.setIntervaland30(0);
+		lottery.setIntervaland31(0);
+		lottery.setIntervaland32(0);
+		lottery.setIntervaland33(0);
+		lottery.setIntervaland34(0);
+		lottery.setIntervaland35(0);
+		lottery.setIntervaland36(0);
+	}
+	public void calcIntervaland0(Model lottery,Model plottery,int num){
+		if(num==1){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland1());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland1()){
+				lottery.setIntervalandmin(plottery.getIntervaland1());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland1()){
+				lottery.setIntervalandmax(plottery.getIntervaland1());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland1()+"+");
+			lottery.setIntervaland1(0);
+		}else if(num==2){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland2());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland2()){
+				lottery.setIntervalandmin(plottery.getIntervaland2());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland2()){
+				lottery.setIntervalandmax(plottery.getIntervaland2());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland2()+"+");
+			lottery.setIntervaland2(0); 
+		}else if(num==3){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland3());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland3()){
+				lottery.setIntervalandmin(plottery.getIntervaland3());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland3()){
+				lottery.setIntervalandmax(plottery.getIntervaland3());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland3()+"+");
+			lottery.setIntervaland3(0);
+		}else if(num==4){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland4());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland4()){
+				lottery.setIntervalandmin(plottery.getIntervaland4());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland4()){
+				lottery.setIntervalandmax(plottery.getIntervaland4());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland4()+"+");
+			lottery.setIntervaland4(0);
+		}else if(num==5){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland5());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland5()){
+				lottery.setIntervalandmin(plottery.getIntervaland5());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland5()){
+				lottery.setIntervalandmax(plottery.getIntervaland5());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland5()+"+");
+			lottery.setIntervaland5(0);
+		}else if(num==6){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland6());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland6()){
+				lottery.setIntervalandmin(plottery.getIntervaland6());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland6()){
+				lottery.setIntervalandmax(plottery.getIntervaland6());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland6()+"+");
+			lottery.setIntervaland6(0);
+		}else if(num==7){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland7());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland7()){
+				lottery.setIntervalandmin(plottery.getIntervaland7());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland7()){
+				lottery.setIntervalandmax(plottery.getIntervaland7());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland7()+"+");
+			lottery.setIntervaland7(0);
+		}else if(num==8){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland8());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland8()){
+				lottery.setIntervalandmin(plottery.getIntervaland8());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland8()){
+				lottery.setIntervalandmax(plottery.getIntervaland8());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland8()+"+");
+			lottery.setIntervaland8(0);
+		}else if(num==9){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland9());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland9()){
+				lottery.setIntervalandmin(plottery.getIntervaland9());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland9()){
+				lottery.setIntervalandmax(plottery.getIntervaland9());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland9()+"+");
+			lottery.setIntervaland9(0);
+		}else if(num==10){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland10());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland10()){
+				lottery.setIntervalandmin(plottery.getIntervaland10());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland10()){
+				lottery.setIntervalandmax(plottery.getIntervaland10());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland10()+"+");
+			lottery.setIntervaland10(0);
+		}else if(num==11){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland11());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland11()){
+				lottery.setIntervalandmin(plottery.getIntervaland11());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland11()){
+				lottery.setIntervalandmax(plottery.getIntervaland11());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland11()+"+");
+			lottery.setIntervaland11(0);
+		}else if(num==12){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland12());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland12()){
+				lottery.setIntervalandmin(plottery.getIntervaland12());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland12()){
+				lottery.setIntervalandmax(plottery.getIntervaland12());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland12()+"+");
+			lottery.setIntervaland12(0);
+		}else if(num==13){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland13());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland13()){
+				lottery.setIntervalandmin(plottery.getIntervaland13());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland13()){
+				lottery.setIntervalandmax(plottery.getIntervaland13());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland13()+"+");
+			lottery.setIntervaland13(0);
+		}else if(num==14){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland14());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland14()){
+				lottery.setIntervalandmin(plottery.getIntervaland14());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland14()){
+				lottery.setIntervalandmax(plottery.getIntervaland14());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland14()+"+");
+			lottery.setIntervaland14(0);
+		}else if(num==15){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland15());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland15()){
+				lottery.setIntervalandmin(plottery.getIntervaland15());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland15()){
+				lottery.setIntervalandmax(plottery.getIntervaland15());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland15()+"+");
+			lottery.setIntervaland15(0);
+		}else if(num==16){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland16());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland16()){
+				lottery.setIntervalandmin(plottery.getIntervaland16());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland16()){
+				lottery.setIntervalandmax(plottery.getIntervaland16());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland16()+"+");
+			lottery.setIntervaland16(0);
+		}else if(num==17){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland17());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland17()){
+				lottery.setIntervalandmin(plottery.getIntervaland17());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland17()){
+				lottery.setIntervalandmax(plottery.getIntervaland17());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland17()+"+");
+			lottery.setIntervaland17(0);
+		}else if(num==18){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland18());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland18()){
+				lottery.setIntervalandmin(plottery.getIntervaland18());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland18()){
+				lottery.setIntervalandmax(plottery.getIntervaland18());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland18()+"+");
+			lottery.setIntervaland18(0);
+		}else if(num==19){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland19());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland19()){
+				lottery.setIntervalandmin(plottery.getIntervaland19());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland19()){
+				lottery.setIntervalandmax(plottery.getIntervaland19());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland19()+"+");
+			lottery.setIntervaland19(0);
+		}else if(num==20){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland20());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland20()){
+				lottery.setIntervalandmin(plottery.getIntervaland20());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland20()){
+				lottery.setIntervalandmax(plottery.getIntervaland20());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland20()+"+");
+			lottery.setIntervaland20(0); 
+		}else if(num==21){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland21());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland21()){
+				lottery.setIntervalandmin(plottery.getIntervaland21());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland21()){
+				lottery.setIntervalandmax(plottery.getIntervaland21());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland21()+"+");
+			lottery.setIntervaland21(0); 
+		}else if(num==22){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland22());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland22()){
+				lottery.setIntervalandmin(plottery.getIntervaland22());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland22()){
+				lottery.setIntervalandmax(plottery.getIntervaland22());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland22()+"+");
+			lottery.setIntervaland22(0); 
+		}else if(num==23){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland23());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland23()){
+				lottery.setIntervalandmin(plottery.getIntervaland23());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland23()){
+				lottery.setIntervalandmax(plottery.getIntervaland23());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland23()+"+");
+			lottery.setIntervaland23(0); 
+		}else if(num==24){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland24());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland24()){
+				lottery.setIntervalandmin(plottery.getIntervaland24());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland24()){
+				lottery.setIntervalandmax(plottery.getIntervaland24());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland24()+"+");
+			lottery.setIntervaland24(0); 
+		}else if(num==25){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland25());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland25()){
+				lottery.setIntervalandmin(plottery.getIntervaland25());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland25()){
+				lottery.setIntervalandmax(plottery.getIntervaland25());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland25()+"+");
+			lottery.setIntervaland25(0); 
+		}else if(num==26){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland26());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland26()){
+				lottery.setIntervalandmin(plottery.getIntervaland26());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland26()){
+				lottery.setIntervalandmax(plottery.getIntervaland26());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland26()+"+");
+			lottery.setIntervaland26(0); 
+		}else if(num==27){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland27());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland27()){
+				lottery.setIntervalandmin(plottery.getIntervaland27());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland27()){
+				lottery.setIntervalandmax(plottery.getIntervaland27());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland27()+"+");
+			lottery.setIntervaland27(0); 
+		}else if(num==28){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland28());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland28()){
+				lottery.setIntervalandmin(plottery.getIntervaland28());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland28()){
+				lottery.setIntervalandmax(plottery.getIntervaland28());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland28()+"+");
+			lottery.setIntervaland28(0); 
+		}else if(num==29){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland29());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland29()){
+				lottery.setIntervalandmin(plottery.getIntervaland29());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland29()){
+				lottery.setIntervalandmax(plottery.getIntervaland29());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland29()+"+");
+			lottery.setIntervaland29(0); 
+		}else if(num==30){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland30());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland30()){
+				lottery.setIntervalandmin(plottery.getIntervaland30());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland30()){
+				lottery.setIntervalandmax(plottery.getIntervaland30());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland30()+"+");
+			lottery.setIntervaland30(0);
+		}else if(num==31){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland31());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland31()){
+				lottery.setIntervalandmin(plottery.getIntervaland31());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland31()){
+				lottery.setIntervalandmax(plottery.getIntervaland31());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland31()+"+");
+			lottery.setIntervaland31(0);
+		}else if(num==32){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland32());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland32()){
+				lottery.setIntervalandmin(plottery.getIntervaland32());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland32()){
+				lottery.setIntervalandmax(plottery.getIntervaland32());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland32()+"+");
+			lottery.setIntervaland32(0);
+		}else if(num==33){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland33());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland33()){
+				lottery.setIntervalandmin(plottery.getIntervaland33());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland33()){
+				lottery.setIntervalandmax(plottery.getIntervaland33());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland33()+"+");
+			lottery.setIntervaland33(0);
+		}else if(num==34){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland34());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland34()){
+				lottery.setIntervalandmin(plottery.getIntervaland34());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland34()){
+				lottery.setIntervalandmax(plottery.getIntervaland34());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland34()+"+");
+			lottery.setIntervaland34(0);
+		}else if(num==35){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland35());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland35()){
+				lottery.setIntervalandmin(plottery.getIntervaland35());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland35()){
+				lottery.setIntervalandmax(plottery.getIntervaland35());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland35()+"+");
+			lottery.setIntervaland35(0);
+		}else if(num==36){
+			lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+plottery.getIntervaland36());
+			if(Check.toString(lottery.getIntervalandmin())>=plottery.getIntervaland36()){
+				lottery.setIntervalandmin(plottery.getIntervaland36());
+			}
+			if(Check.toString(lottery.getIntervalandmax())<=plottery.getIntervaland36()){
+				lottery.setIntervalandmax(plottery.getIntervaland36());
+			}
+			lottery.setIntervaland(Check.toString(lottery.getIntervaland())+plottery.getIntervaland36()+"+");
+			lottery.setIntervaland36(0);
+		}
+		
+	}
+	public void copyIntervaland0(Model lottery,Model plottery){
+			lottery.setIntervaland1(plottery.getIntervaland1()+1);
+			lottery.setIntervaland2(plottery.getIntervaland2()+1);
+			lottery.setIntervaland3(plottery.getIntervaland3()+1);
+			lottery.setIntervaland4(plottery.getIntervaland4()+1);
+			lottery.setIntervaland5(plottery.getIntervaland5()+1);
+			lottery.setIntervaland6(plottery.getIntervaland6()+1);
+			lottery.setIntervaland7(plottery.getIntervaland7()+1);
+			lottery.setIntervaland8(plottery.getIntervaland8()+1);
+			lottery.setIntervaland9(plottery.getIntervaland9()+1);
+			lottery.setIntervaland10(plottery.getIntervaland10()+1);
+			lottery.setIntervaland11(plottery.getIntervaland11()+1);
+			lottery.setIntervaland12(plottery.getIntervaland12()+1);
+			lottery.setIntervaland13(plottery.getIntervaland13()+1);
+			lottery.setIntervaland14(plottery.getIntervaland14()+1);
+			lottery.setIntervaland15(plottery.getIntervaland15()+1);
+			lottery.setIntervaland16(plottery.getIntervaland16()+1);
+			lottery.setIntervaland17(plottery.getIntervaland17()+1);
+			lottery.setIntervaland18(plottery.getIntervaland18()+1);
+			lottery.setIntervaland19(plottery.getIntervaland19()+1);
+			lottery.setIntervaland20(plottery.getIntervaland20()+1);
+			lottery.setIntervaland21(plottery.getIntervaland21()+1);
+			lottery.setIntervaland22(plottery.getIntervaland22()+1);
+			lottery.setIntervaland23(plottery.getIntervaland23()+1);
+			lottery.setIntervaland24(plottery.getIntervaland24()+1);
+			lottery.setIntervaland25(plottery.getIntervaland25()+1);
+			lottery.setIntervaland26(plottery.getIntervaland26()+1);
+			lottery.setIntervaland27(plottery.getIntervaland27()+1);
+			lottery.setIntervaland28(plottery.getIntervaland28()+1);
+			lottery.setIntervaland29(plottery.getIntervaland29()+1);
+			lottery.setIntervaland30(plottery.getIntervaland30()+1);
+			lottery.setIntervaland31(plottery.getIntervaland31()+1);
+			lottery.setIntervaland32(plottery.getIntervaland32()+1);
+			lottery.setIntervaland33(plottery.getIntervaland33()+1);
+			lottery.setIntervaland34(plottery.getIntervaland34()+1);
+			lottery.setIntervaland35(plottery.getIntervaland35()+1);
+			lottery.setIntervaland36(plottery.getIntervaland36()+1);
+	}
 }
