@@ -36,9 +36,10 @@ $(function(){
             height: 250,
             rowNum: 10,
             rowList: [10,20,30],
-            colNames:['Id', 'a','b','c','d','e','f','g'],
+            colNames:['Id', 'issue', 'a','b','c','d','e','f','g'],
             colModel:[
                 {name:'id',index:'id', width:60, hidden:true},
+                {name:'issue',  width:90},
                 {name:'a',index:'exchange', width:100,render:function(){
                 	return "123";
                 }},

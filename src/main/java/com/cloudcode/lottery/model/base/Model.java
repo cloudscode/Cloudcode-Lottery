@@ -2466,6 +2466,7 @@ public class Model extends BaseModelObject {
 		}
 		lottery.setIntervaland(Check.toString(lottery.getIntervaland())+intervaland+"+");
 	}
+	
 	public void copyIntervaland0(Model lottery,Model plottery){
 			lottery.setIntervaland1(Check.toString(plottery.getIntervaland1())+1);
 			lottery.setIntervaland2(Check.toString(plottery.getIntervaland2())+1);
@@ -2503,5 +2504,46 @@ public class Model extends BaseModelObject {
 			lottery.setIntervaland34(Check.toString(plottery.getIntervaland34())+1);
 			lottery.setIntervaland35(Check.toString(plottery.getIntervaland35())+1);
 			lottery.setIntervaland36(Check.toString(plottery.getIntervaland36())+1);
+	}
+	public void init(Model lottery){
+		lottery.setOdd(0);
+		lottery.setEven(0);
+		lottery.setUpperareas(0);
+		lottery.setLowerareas(0);
+		lottery.setThanthreeratio0(0);
+		lottery.setThanthreeratio1(0);
+		lottery.setThanthreeratio2(0);
+		lottery.setThanfiveratio0(0);
+		lottery.setThanfiveratio1(0);
+		lottery.setThanfiveratio2(0);
+		lottery.setThanfiveratio3(0);
+		lottery.setThanfiveratio4(0);
+		lottery.setThansevenratio0(0);
+		lottery.setThansevenratio1(0);
+		lottery.setThansevenratio2(0);
+		lottery.setThansevenratio3(0);
+		lottery.setThansevenratio4(0);
+		lottery.setThansevenratio5(0);
+		lottery.setThansevenratio6(0);
+		lottery.setFourtharea1(0);
+		lottery.setFourtharea2(0);
+		lottery.setFourtharea3(0);
+		lottery.setFourtharea4(0);
+		lottery.setSixarea1(0);
+		lottery.setSixarea2(0);
+		lottery.setSixarea3(0);
+		lottery.setSixarea4(0);
+		lottery.setSixarea5(0);
+		lottery.setSixarea6(0);
+		lottery.setNinearea1(0);
+		lottery.setNinearea2(0);
+		lottery.setNinearea3(0);
+		lottery.setNinearea4(0);
+		lottery.setNinearea5(0);
+		lottery.setNinearea6(0);
+		lottery.setNinearea7(0);
+		lottery.setNinearea8(0);
+		lottery.setNinearea9(0);
+		lottery.setLastvalueappears("");
 	}
 }

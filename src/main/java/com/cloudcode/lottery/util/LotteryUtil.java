@@ -384,6 +384,7 @@ public class LotteryUtil {
 		arrSort(list,lottery);		
 	}
 	public static void calcLottery(Model lottery) {
+		lottery.init(lottery);
 		getOddEvens(lottery);//奇偶
 		getTotal(lottery);//总和
 		getTotalAvg(lottery);
@@ -449,6 +450,10 @@ public class LotteryUtil {
 				+(lottery.getG()-lottery.getF());
 		lottery.setThanthehorizontalspacingadd(thanthehorizontalspacingadd);
 	}
+	/**
+	 * T值
+	 * @param lottery
+	 */
 	public static void getT(Model lottery) {
 		int[] list = new int[7];
 		list[0]=lottery.getA();
@@ -473,6 +478,11 @@ public class LotteryUtil {
 		lottery.setT(map.size()-7);
 		System.out.println(map.size()-7);
 	}
+	/**
+	 * 新边重号
+	 * @param lottery
+	 * @param parent
+	 */
 	public static void getNewSideRepeatNo(Model lottery,Model parent){
 		List<Integer> list =tolist(lottery);
 		Map<Integer,Integer> parentList =getMaps(parent);
@@ -511,6 +521,12 @@ public class LotteryUtil {
 		list.add(lottery.getG());
 		return list;
 	}
+	/**
+	 * 与上期号码数比
+	 * @param lottery
+	 * @param lists
+	 * @param i
+	 */
 	public static void getRatioNoNumbers(Model lottery,List<Model> lists,int i){
 		getRatioNoNumbers(lottery,lists, i,3);
 		getRatioNoNumbers(lottery,lists, i,5);
@@ -586,11 +602,19 @@ public class LotteryUtil {
 		plottery.setE(17);
 		plottery.setF(19);
 		plottery.setG(36);
+		LotteryUtil.getLastValueAppears(lottery);
+		System.out.println("LastValueAppears:"+lottery.getLastvalueappears());
 		LotteryUtil.getConsecutivenumber(lottery);
 		LotteryUtil.getNewSideRepeatNo(lottery, plottery);
 		System.out.println(lottery.getNewno()+":"+lottery.getNoside()+":"+lottery.getRepeatno());
 		System.out.println("连号个数：" + lottery.getConsecutivenumber());
 	}
+	/**
+	 * 热度
+	 * @param lottery
+	 * @param plottery
+	 * @param i
+	 */
 	public static void getHeat(Model lottery,Model plottery,int i) {
 		if(i==0){
 			lottery.initHeat0(lottery);
@@ -602,6 +626,12 @@ public class LotteryUtil {
 			 }
 		}
 	}
+	/**
+	 * 间隔和
+	 * @param lottery
+	 * @param plottery
+	 * @param i
+	 */
 	public static void getIntervaland(Model lottery,Model plottery,int i) {
 		if(i==0){
 			lottery.initIntervaland0(lottery);
