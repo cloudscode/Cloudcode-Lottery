@@ -67,8 +67,7 @@ public class HistoryLotteryController extends CrudController<History> {
 		Criteria criterion = historyDao.getSession().createCriteria(History.class);
 		criterion.addOrder(Order.desc("issue"));
 		List<History> lists=historyDao.loadAll(criterion);
-		//for(History history:lists){
-		for(int i=0;i<lists.size();i++){
+		/*for(int i=0;i<lists.size();i++){
 			History history=lists.get(i);
 			if((i+1)<lists.size()){
 			  History phistory=lists.get(i+1);
@@ -77,7 +76,7 @@ public class HistoryLotteryController extends CrudController<History> {
 			lotteryUtil.arrSort(history);
 			lotteryUtil.calcLottery(history);
 			historyDao.updateObject(history);
-		}
+		}*/
 		Criteria criterion2 = historyDao.getSession().createCriteria(History.class);
 		criterion2.addOrder(Order.asc("issue"));
 		List<History> lists2=historyDao.loadAll(criterion2);

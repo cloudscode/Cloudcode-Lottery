@@ -2306,6 +2306,13 @@ public class Model extends BaseModelObject {
 		lottery.setIntervaland34(0);
 		lottery.setIntervaland35(0);
 		lottery.setIntervaland36(0);
+		lottery.setIntervaland("");
+		lottery.setIntervalandmax(0);
+		lottery.setIntervalandmin(0);
+		lottery.setIntervalandone(0);
+		lottery.setIntervalandpostmax(0);
+		lottery.setIntervalandpostmin(0);
+		lottery.setIntervalandtotal(0);
 	}
 	public void calcIntervaland0(Model lottery,Model plottery,int num){
 		if(num==1){
