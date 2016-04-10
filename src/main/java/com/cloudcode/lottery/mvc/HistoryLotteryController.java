@@ -10,14 +10,18 @@ import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cloudcode.framework.controller.CrudController;
 import com.cloudcode.framework.rest.ReturnResult;
 import com.cloudcode.framework.service.ServiceResult;
+import com.cloudcode.framework.utils.PageRange;
+import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.HistoryDao;
 import com.cloudcode.lottery.model.History;
@@ -68,11 +72,11 @@ public class HistoryLotteryController extends CrudController<History> {
 			History history=lists.get(i);
 			if((i+1)<lists.size()){
 			  History phistory=lists.get(i+1);
-			  lotteryUtil.getNewSideRepeatNo(history, phistory);
+			//  lotteryUtil.getNewSideRepeatNo(history, phistory);
 			}
-			lotteryUtil.arrSort(history);
-			lotteryUtil.calcLottery(history);
-			historyDao.updateObject(history);
+			//lotteryUtil.arrSort(history);
+			//lotteryUtil.calcLottery(history);
+			//historyDao.updateObject(history);
 		}
 		Criteria criterion2 = historyDao.getSession().createCriteria(History.class);
 		criterion2.addOrder(Order.asc("issue"));
@@ -90,5 +94,31 @@ public class HistoryLotteryController extends CrudController<History> {
 			historyDao.updateObject(history);
 		}
 		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
+	@RequestMapping(value = "query", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	PaginationSupport<History> query(History history, PageRange pageRange) {
+		PaginationSupport<History> result = historyDao.queryPagingData(history, pageRange);
+		return result;
+	}
+	@RequestMapping(value = "toList")
+	public ModelAndView toList() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/list.ftl");
+		return modelAndView;
+	}
+	/*@RequestMapping(value = "toView")
+	public ModelAndView toView() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/view.ftl");
+		return modelAndView;
+	}*/
+	@RequestMapping(value = "/{id}/toView")
+	public ModelAndView toView(@PathVariable("id") String id) {
+		History history =historyDao.loadObject(id);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/view.ftl");
+		modelAndView.addObject("history",history);
+		return modelAndView;
 	}
 }
