@@ -434,8 +434,8 @@ public class LotteryUtil {
 		lastValueAppears(7,list, lottery);
 		lastValueAppears(8,list, lottery);
 		lastValueAppears(9,list, lottery);
-		if(null != lottery.getLastvalueappears())
-		lottery.setLastvalueappears(lottery.getLastvalueappears().substring(0,lottery.getLastvalueappears().length()));
+		if(null != lottery.getLastvalueappears() && lottery.getLastvalueappears().endsWith("+"))
+		lottery.setLastvalueappears(lottery.getLastvalueappears().substring(0,lottery.getLastvalueappears().length()-1));
 	}
 	public static void getThanTheHorizontalSpacing(Model lottery){
 		lottery.setThanthehorizontalspacing((lottery.getB()-lottery.getA())+":"+(lottery.getC()-lottery.getB())
@@ -640,6 +640,9 @@ public class LotteryUtil {
 			 lottery.copyIntervaland0(lottery, plottery);
 			 for(Integer num:list){
 				 lottery.calcIntervaland0(lottery, plottery, num);
+			 }
+			 if(!Check.isEmpty(lottery.getIntegerervaland()) && lottery.getIntegerervaland().endsWith("+")){
+				 lottery.setIntegerervaland(lottery.getIntegerervaland().substring(0, lottery.getIntegerervaland().length()-1));
 			 }
 //		}
 	}

@@ -124,7 +124,6 @@ var id;
        grid.trigger("reloadGrid");
     }  
 	});
-		toView
 	});
 	$( "#refresh" ).click(function(){
 		grid.trigger('reloadGrid');
