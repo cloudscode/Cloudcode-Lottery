@@ -117,6 +117,12 @@ public class HistoryLotteryController extends CrudController<History> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/list.ftl");
 		return modelAndView;
 	}
+	@RequestMapping(value = "toList1")
+	public ModelAndView toList1() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/list1.ftl");
+		return modelAndView;
+	}
 	/*@RequestMapping(value = "toView")
 	public ModelAndView toView() {
 		ModelAndView modelAndView = new ModelAndView();
