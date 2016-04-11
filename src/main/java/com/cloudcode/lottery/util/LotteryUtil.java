@@ -633,14 +633,14 @@ public class LotteryUtil {
 	 * @param i
 	 */
 	public static void getIntervaland(Model lottery,Model plottery,int i) {
-		if(i==0){
-			lottery.initIntervaland0(lottery);
-		}else{
+//		if(i==0){
+//			lottery.initIntervaland0(lottery);
+//		}else{
 			 List<Integer> list = tolist(lottery);
+			 lottery.copyIntervaland0(lottery, plottery);
 			 for(Integer num:list){
-				 lottery.copyIntervaland0(lottery, plottery);
 				 lottery.calcIntervaland0(lottery, plottery, num);
 			 }
-		}
+//		}
 	}
 }

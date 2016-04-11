@@ -2314,6 +2314,51 @@ public class Model extends BaseModelObject {
 		lottery.setIntervalandpostmin(0);
 		lottery.setIntervalandtotal(0);
 	}
+	public void initIntervaland1(Model lottery){
+		lottery.setIntervaland1(1);
+		lottery.setIntervaland2(1);
+		lottery.setIntervaland3(1);
+		lottery.setIntervaland4(1);
+		lottery.setIntervaland5(1);
+		lottery.setIntervaland6(1);
+		lottery.setIntervaland7(1);
+		lottery.setIntervaland8(1);
+		lottery.setIntervaland9(1);
+		lottery.setIntervaland10(1);
+		lottery.setIntervaland11(1);
+		lottery.setIntervaland12(1);
+		lottery.setIntervaland13(1);
+		lottery.setIntervaland14(1);
+		lottery.setIntervaland15(1);
+		lottery.setIntervaland16(1);
+		lottery.setIntervaland17(1);
+		lottery.setIntervaland18(1);
+		lottery.setIntervaland19(1);
+		lottery.setIntervaland20(1);
+		lottery.setIntervaland21(1);
+		lottery.setIntervaland22(1);
+		lottery.setIntervaland23(1);
+		lottery.setIntervaland24(1);
+		lottery.setIntervaland25(1);
+		lottery.setIntervaland26(1);
+		lottery.setIntervaland27(1);
+		lottery.setIntervaland28(1);
+		lottery.setIntervaland29(1);
+		lottery.setIntervaland30(1);
+		lottery.setIntervaland31(1);
+		lottery.setIntervaland32(1);
+		lottery.setIntervaland33(1);
+		lottery.setIntervaland34(1);
+		lottery.setIntervaland35(1);
+		lottery.setIntervaland36(1);
+		lottery.setIntervaland("");
+		lottery.setIntervalandmax(0);
+		lottery.setIntervalandmin(0);
+		lottery.setIntervalandone(0);
+		lottery.setIntervalandpostmax(0);
+		lottery.setIntervalandpostmin(0);
+		lottery.setIntervalandtotal(0);
+	}
 	public void calcIntervaland0(Model lottery,Model plottery,int num){
 		if(num==1){
 			int intervaland =Check.toString(plottery.getIntervaland1());
@@ -2511,6 +2556,7 @@ public class Model extends BaseModelObject {
 			lottery.setIntervaland34(Check.toString(plottery.getIntervaland34())+1);
 			lottery.setIntervaland35(Check.toString(plottery.getIntervaland35())+1);
 			lottery.setIntervaland36(Check.toString(plottery.getIntervaland36())+1);
+			lottery.setIntervaland("");
 	}
 	public void init(Model lottery){
 		lottery.setOdd(0);
