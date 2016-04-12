@@ -77,6 +77,11 @@ public class HistoryLotteryController extends CrudController<History> {
 			lotteryUtil.calcLottery(history);
 			historyDao.updateObject(history);
 		}*/
+		/*for(int i=0;i<lists.size();i++){
+			History history=lists.get(i);
+			history.initIntervaland0(history);
+			historyDao.updateObject(history);
+		}*/
 		Criteria criterion2 = historyDao.getSession().createCriteria(History.class);
 		criterion2.addOrder(Order.asc("issue"));
 		List<History> lists2=historyDao.loadAll(criterion2);
@@ -84,10 +89,16 @@ public class HistoryLotteryController extends CrudController<History> {
 		lists3.addAll(lists2);
 		for(int i=0;i<lists2.size();i++){
 			History history=lists2.get(i);
-			if((i+1)<lists.size()){
-				  History phistory=lists.get(i+1);
-				  lotteryUtil.getHeat(history, phistory, i);
+			if((i-1)<lists.size()){
+				if(i-1 ==-1){
+					history.initIntervaland1(history);
+				}else if(i-1 >=0){
+				  History phistory=lists2.get(i-1);
+				  System.out.println(phistory.getIssue());
+				  System.out.println(history.getIssue());
 				  lotteryUtil.getIntervaland(history, phistory, i);
+				  lotteryUtil.getHeat(history, phistory, i);
+				}
 			}
 			lotteryUtil.getRatioNoNumbers(history,lists3, i);
 			historyDao.updateObject(history);
@@ -104,6 +115,12 @@ public class HistoryLotteryController extends CrudController<History> {
 	public ModelAndView toList() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/list.ftl");
+		return modelAndView;
+	}
+	@RequestMapping(value = "toList1")
+	public ModelAndView toList1() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/list1.ftl");
 		return modelAndView;
 	}
 	/*@RequestMapping(value = "toView")

@@ -135,12 +135,12 @@ public class Model extends BaseModelObject {
 	private Integer ninearea8near;
 	private Integer ninearea9near;
 	private Integer consecutivenumber;
-	private String Integerervaland;
-	private Integer Integerervalandtotal;
-	private Integer Integerervalandmin;
-	private Integer Integerervalandmax;
-	private Integer Integerervalandpostmin;
-	private Integer Integerervalandpostmax;
+	private String integerervaland;
+	private Integer integerervalandtotal;
+	private Integer integerervalandmin;
+	private Integer integerervalandmax;
+	private Integer integerervalandpostmin;
+	private Integer integerervalandpostmax;
 	private Integer length;
 	private Integer total;
 	private Integer totalmin;
@@ -193,42 +193,42 @@ public class Model extends BaseModelObject {
 	private Integer heat34;
 	private Integer heat35;
 	private Integer heat36;
-	private Integer Integerervaland1;
-	private Integer Integerervaland2;
-	private Integer Integerervaland3;
-	private Integer Integerervaland4;
-	private Integer Integerervaland5;
-	private Integer Integerervaland6;
-	private Integer Integerervaland7;
-	private Integer Integerervaland8;
-	private Integer Integerervaland9;
-	private Integer Integerervaland10;
-	private Integer Integerervaland11;
-	private Integer Integerervaland12;
-	private Integer Integerervaland13;
-	private Integer Integerervaland14;
-	private Integer Integerervaland15;
-	private Integer Integerervaland16;
-	private Integer Integerervaland17;
-	private Integer Integerervaland18;
-	private Integer Integerervaland19;
-	private Integer Integerervaland20;
-	private Integer Integerervaland21;
-	private Integer Integerervaland22;
-	private Integer Integerervaland23;
-	private Integer Integerervaland24;
-	private Integer Integerervaland25;
-	private Integer Integerervaland26;
-	private Integer Integerervaland27;
-	private Integer Integerervaland28;
-	private Integer Integerervaland29;
-	private Integer Integerervaland30;
-	private Integer Integerervaland31;
-	private Integer Integerervaland32;
-	private Integer Integerervaland33;
-	private Integer Integerervaland34;
-	private Integer Integerervaland35;
-	private Integer Integerervaland36;
+	private Integer integerervaland1;
+	private Integer integerervaland2;
+	private Integer integerervaland3;
+	private Integer integerervaland4;
+	private Integer integerervaland5;
+	private Integer integerervaland6;
+	private Integer integerervaland7;
+	private Integer integerervaland8;
+	private Integer integerervaland9;
+	private Integer integerervaland10;
+	private Integer integerervaland11;
+	private Integer integerervaland12;
+	private Integer integerervaland13;
+	private Integer integerervaland14;
+	private Integer integerervaland15;
+	private Integer integerervaland16;
+	private Integer integerervaland17;
+	private Integer integerervaland18;
+	private Integer integerervaland19;
+	private Integer integerervaland20;
+	private Integer integerervaland21;
+	private Integer integerervaland22;
+	private Integer integerervaland23;
+	private Integer integerervaland24;
+	private Integer integerervaland25;
+	private Integer integerervaland26;
+	private Integer integerervaland27;
+	private Integer integerervaland28;
+	private Integer integerervaland29;
+	private Integer integerervaland30;
+	private Integer integerervaland31;
+	private Integer integerervaland32;
+	private Integer integerervaland33;
+	private Integer integerervaland34;
+	private Integer integerervaland35;
+	private Integer integerervaland36;
 	private Date drawtime;
 	private String whether;
 	private String remark;
@@ -236,7 +236,7 @@ public class Model extends BaseModelObject {
 	private Integer threeareas1;
 	private Integer threeareas2;
 	private Integer threeareas3;
-	private Integer Integerervalandone;
+	private Integer integerervalandone;
 	private Integer firstnum;
 	private Integer upperlowerareas;
 	private Integer threeareas;
@@ -1223,54 +1223,7 @@ public class Model extends BaseModelObject {
 		this.consecutivenumber = consecutivenumber;
 	}
 
-	public String getIntervaland() {
-		return Integerervaland;
-	}
-
-	public void setIntervaland(String Integerervaland) {
-		this.Integerervaland = Integerervaland;
-	}
-
-	public Integer getIntervalandtotal() {
-		return Integerervalandtotal;
-	}
-
-	public void setIntervalandtotal(Integer Integerervalandtotal) {
-		this.Integerervalandtotal = Integerervalandtotal;
-	}
-
-	public Integer getIntervalandmin() {
-		return Integerervalandmin;
-	}
-
-	public void setIntervalandmin(Integer Integerervalandmin) {
-		this.Integerervalandmin = Integerervalandmin;
-	}
-
-	public Integer getIntervalandmax() {
-		return Integerervalandmax;
-	}
-
-	public void setIntervalandmax(Integer Integerervalandmax) {
-		this.Integerervalandmax = Integerervalandmax;
-	}
-
-	public Integer getIntervalandpostmin() {
-		return Integerervalandpostmin;
-	}
-
-	public void setIntervalandpostmin(Integer Integerervalandpostmin) {
-		this.Integerervalandpostmin = Integerervalandpostmin;
-	}
-
-	public Integer getIntervalandpostmax() {
-		return Integerervalandpostmax;
-	}
-
-	public void setIntervalandpostmax(Integer Integerervalandpostmax) {
-		this.Integerervalandpostmax = Integerervalandpostmax;
-	}
-
+	
 	public Integer getLength() {
 		return length;
 	}
@@ -1687,292 +1640,341 @@ public class Model extends BaseModelObject {
 		this.heat36 = heat36;
 	}
 
-	public Integer getIntervaland1() {
-		return Integerervaland1;
+
+	public Integer getIntegerervalandtotal() {
+		return integerervalandtotal;
+	}
+
+	public void setIntegerervalandtotal(Integer integerervalandtotal) {
+		this.integerervalandtotal = integerervalandtotal;
+	}
+
+	public Integer getIntegerervalandmin() {
+		return integerervalandmin;
+	}
+
+	public void setIntegerervalandmin(Integer integerervalandmin) {
+		this.integerervalandmin = integerervalandmin;
+	}
+
+	public Integer getIntegerervalandmax() {
+		return integerervalandmax;
+	}
+
+	public void setIntegerervalandmax(Integer integerervalandmax) {
+		this.integerervalandmax = integerervalandmax;
+	}
+
+	public Integer getIntegerervalandpostmin() {
+		return integerervalandpostmin;
+	}
+
+	public void setIntegerervalandpostmin(Integer integerervalandpostmin) {
+		this.integerervalandpostmin = integerervalandpostmin;
+	}
+
+	public Integer getIntegerervalandpostmax() {
+		return integerervalandpostmax;
+	}
+
+	public void setIntegerervalandpostmax(Integer integerervalandpostmax) {
+		this.integerervalandpostmax = integerervalandpostmax;
+	}
+
+	public Integer getIntegerervaland1() {
+		return integerervaland1;
+	}
+
+	public void setIntegerervaland1(Integer integerervaland1) {
+		this.integerervaland1 = integerervaland1;
+	}
+
+	public Integer getIntegerervaland2() {
+		return integerervaland2;
 	}
 
-	public void setIntervaland1(Integer Integerervaland1) {
-		this.Integerervaland1 = Integerervaland1;
+	public void setIntegerervaland2(Integer integerervaland2) {
+		this.integerervaland2 = integerervaland2;
 	}
 
-	public Integer getIntervaland2() {
-		return Integerervaland2;
+	public Integer getIntegerervaland3() {
+		return integerervaland3;
 	}
 
-	public void setIntervaland2(Integer Integerervaland2) {
-		this.Integerervaland2 = Integerervaland2;
+	public void setIntegerervaland3(Integer integerervaland3) {
+		this.integerervaland3 = integerervaland3;
 	}
 
-	public Integer getIntervaland3() {
-		return Integerervaland3;
+	public Integer getIntegerervaland4() {
+		return integerervaland4;
 	}
 
-	public void setIntervaland3(Integer Integerervaland3) {
-		this.Integerervaland3 = Integerervaland3;
+	public void setIntegerervaland4(Integer integerervaland4) {
+		this.integerervaland4 = integerervaland4;
 	}
 
-	public Integer getIntervaland4() {
-		return Integerervaland4;
+	public Integer getIntegerervaland5() {
+		return integerervaland5;
 	}
 
-	public void setIntervaland4(Integer Integerervaland4) {
-		this.Integerervaland4 = Integerervaland4;
+	public void setIntegerervaland5(Integer integerervaland5) {
+		this.integerervaland5 = integerervaland5;
 	}
 
-	public Integer getIntervaland5() {
-		return Integerervaland5;
+	public Integer getIntegerervaland6() {
+		return integerervaland6;
 	}
 
-	public void setIntervaland5(Integer Integerervaland5) {
-		this.Integerervaland5 = Integerervaland5;
+	public void setIntegerervaland6(Integer integerervaland6) {
+		this.integerervaland6 = integerervaland6;
 	}
 
-	public Integer getIntervaland6() {
-		return Integerervaland6;
+	public Integer getIntegerervaland7() {
+		return integerervaland7;
 	}
 
-	public void setIntervaland6(Integer Integerervaland6) {
-		this.Integerervaland6 = Integerervaland6;
+	public void setIntegerervaland7(Integer integerervaland7) {
+		this.integerervaland7 = integerervaland7;
 	}
 
-	public Integer getIntervaland7() {
-		return Integerervaland7;
+	public Integer getIntegerervaland8() {
+		return integerervaland8;
 	}
 
-	public void setIntervaland7(Integer Integerervaland7) {
-		this.Integerervaland7 = Integerervaland7;
+	public void setIntegerervaland8(Integer integerervaland8) {
+		this.integerervaland8 = integerervaland8;
 	}
 
-	public Integer getIntervaland8() {
-		return Integerervaland8;
+	public Integer getIntegerervaland9() {
+		return integerervaland9;
 	}
 
-	public void setIntervaland8(Integer Integerervaland8) {
-		this.Integerervaland8 = Integerervaland8;
+	public void setIntegerervaland9(Integer integerervaland9) {
+		this.integerervaland9 = integerervaland9;
 	}
 
-	public Integer getIntervaland9() {
-		return Integerervaland9;
+	public Integer getIntegerervaland10() {
+		return integerervaland10;
 	}
 
-	public void setIntervaland9(Integer Integerervaland9) {
-		this.Integerervaland9 = Integerervaland9;
+	public void setIntegerervaland10(Integer integerervaland10) {
+		this.integerervaland10 = integerervaland10;
 	}
 
-	public Integer getIntervaland10() {
-		return Integerervaland10;
+	public Integer getIntegerervaland11() {
+		return integerervaland11;
 	}
 
-	public void setIntervaland10(Integer Integerervaland10) {
-		this.Integerervaland10 = Integerervaland10;
+	public void setIntegerervaland11(Integer integerervaland11) {
+		this.integerervaland11 = integerervaland11;
 	}
 
-	public Integer getIntervaland11() {
-		return Integerervaland11;
+	public Integer getIntegerervaland12() {
+		return integerervaland12;
 	}
 
-	public void setIntervaland11(Integer Integerervaland11) {
-		this.Integerervaland11 = Integerervaland11;
+	public void setIntegerervaland12(Integer integerervaland12) {
+		this.integerervaland12 = integerervaland12;
 	}
 
-	public Integer getIntervaland12() {
-		return Integerervaland12;
+	public Integer getIntegerervaland13() {
+		return integerervaland13;
 	}
 
-	public void setIntervaland12(Integer Integerervaland12) {
-		this.Integerervaland12 = Integerervaland12;
+	public void setIntegerervaland13(Integer integerervaland13) {
+		this.integerervaland13 = integerervaland13;
 	}
 
-	public Integer getIntervaland13() {
-		return Integerervaland13;
+	public Integer getIntegerervaland14() {
+		return integerervaland14;
 	}
 
-	public void setIntervaland13(Integer Integerervaland13) {
-		this.Integerervaland13 = Integerervaland13;
+	public void setIntegerervaland14(Integer integerervaland14) {
+		this.integerervaland14 = integerervaland14;
 	}
 
-	public Integer getIntervaland14() {
-		return Integerervaland14;
+	public Integer getIntegerervaland15() {
+		return integerervaland15;
 	}
 
-	public void setIntervaland14(Integer Integerervaland14) {
-		this.Integerervaland14 = Integerervaland14;
+	public void setIntegerervaland15(Integer integerervaland15) {
+		this.integerervaland15 = integerervaland15;
 	}
 
-	public Integer getIntervaland15() {
-		return Integerervaland15;
+	public Integer getIntegerervaland16() {
+		return integerervaland16;
 	}
 
-	public void setIntervaland15(Integer Integerervaland15) {
-		this.Integerervaland15 = Integerervaland15;
+	public void setIntegerervaland16(Integer integerervaland16) {
+		this.integerervaland16 = integerervaland16;
 	}
 
-	public Integer getIntervaland16() {
-		return Integerervaland16;
+	public Integer getIntegerervaland17() {
+		return integerervaland17;
 	}
 
-	public void setIntervaland16(Integer Integerervaland16) {
-		this.Integerervaland16 = Integerervaland16;
+	public void setIntegerervaland17(Integer integerervaland17) {
+		this.integerervaland17 = integerervaland17;
 	}
 
-	public Integer getIntervaland17() {
-		return Integerervaland17;
+	public Integer getIntegerervaland18() {
+		return integerervaland18;
 	}
 
-	public void setIntervaland17(Integer Integerervaland17) {
-		this.Integerervaland17 = Integerervaland17;
+	public void setIntegerervaland18(Integer integerervaland18) {
+		this.integerervaland18 = integerervaland18;
 	}
 
-	public Integer getIntervaland18() {
-		return Integerervaland18;
+	public Integer getIntegerervaland19() {
+		return integerervaland19;
 	}
 
-	public void setIntervaland18(Integer Integerervaland18) {
-		this.Integerervaland18 = Integerervaland18;
+	public void setIntegerervaland19(Integer integerervaland19) {
+		this.integerervaland19 = integerervaland19;
 	}
 
-	public Integer getIntervaland19() {
-		return Integerervaland19;
+	public Integer getIntegerervaland20() {
+		return integerervaland20;
 	}
 
-	public void setIntervaland19(Integer Integerervaland19) {
-		this.Integerervaland19 = Integerervaland19;
+	public void setIntegerervaland20(Integer integerervaland20) {
+		this.integerervaland20 = integerervaland20;
 	}
 
-	public Integer getIntervaland20() {
-		return Integerervaland20;
+	public Integer getIntegerervaland21() {
+		return integerervaland21;
 	}
 
-	public void setIntervaland20(Integer Integerervaland20) {
-		this.Integerervaland20 = Integerervaland20;
+	public void setIntegerervaland21(Integer integerervaland21) {
+		this.integerervaland21 = integerervaland21;
 	}
 
-	public Integer getIntervaland21() {
-		return Integerervaland21;
+	public Integer getIntegerervaland22() {
+		return integerervaland22;
 	}
 
-	public void setIntervaland21(Integer Integerervaland21) {
-		this.Integerervaland21 = Integerervaland21;
+	public void setIntegerervaland22(Integer integerervaland22) {
+		this.integerervaland22 = integerervaland22;
 	}
 
-	public Integer getIntervaland22() {
-		return Integerervaland22;
+	public Integer getIntegerervaland23() {
+		return integerervaland23;
 	}
 
-	public void setIntervaland22(Integer Integerervaland22) {
-		this.Integerervaland22 = Integerervaland22;
+	public void setIntegerervaland23(Integer integerervaland23) {
+		this.integerervaland23 = integerervaland23;
 	}
 
-	public Integer getIntervaland23() {
-		return Integerervaland23;
+	public Integer getIntegerervaland24() {
+		return integerervaland24;
 	}
 
-	public void setIntervaland23(Integer Integerervaland23) {
-		this.Integerervaland23 = Integerervaland23;
+	public void setIntegerervaland24(Integer integerervaland24) {
+		this.integerervaland24 = integerervaland24;
 	}
 
-	public Integer getIntervaland24() {
-		return Integerervaland24;
+	public Integer getIntegerervaland25() {
+		return integerervaland25;
 	}
 
-	public void setIntervaland24(Integer Integerervaland24) {
-		this.Integerervaland24 = Integerervaland24;
+	public void setIntegerervaland25(Integer integerervaland25) {
+		this.integerervaland25 = integerervaland25;
 	}
 
-	public Integer getIntervaland25() {
-		return Integerervaland25;
+	public Integer getIntegerervaland26() {
+		return integerervaland26;
 	}
 
-	public void setIntervaland25(Integer Integerervaland25) {
-		this.Integerervaland25 = Integerervaland25;
+	public void setIntegerervaland26(Integer integerervaland26) {
+		this.integerervaland26 = integerervaland26;
 	}
 
-	public Integer getIntervaland26() {
-		return Integerervaland26;
+	public Integer getIntegerervaland27() {
+		return integerervaland27;
 	}
 
-	public void setIntervaland26(Integer Integerervaland26) {
-		this.Integerervaland26 = Integerervaland26;
+	public void setIntegerervaland27(Integer integerervaland27) {
+		this.integerervaland27 = integerervaland27;
 	}
 
-	public Integer getIntervaland27() {
-		return Integerervaland27;
+	public Integer getIntegerervaland28() {
+		return integerervaland28;
 	}
 
-	public void setIntervaland27(Integer Integerervaland27) {
-		this.Integerervaland27 = Integerervaland27;
+	public void setIntegerervaland28(Integer integerervaland28) {
+		this.integerervaland28 = integerervaland28;
 	}
 
-	public Integer getIntervaland28() {
-		return Integerervaland28;
+	public Integer getIntegerervaland29() {
+		return integerervaland29;
 	}
 
-	public void setIntervaland28(Integer Integerervaland28) {
-		this.Integerervaland28 = Integerervaland28;
+	public void setIntegerervaland29(Integer integerervaland29) {
+		this.integerervaland29 = integerervaland29;
 	}
 
-	public Integer getIntervaland29() {
-		return Integerervaland29;
+	public Integer getIntegerervaland30() {
+		return integerervaland30;
 	}
 
-	public void setIntervaland29(Integer Integerervaland29) {
-		this.Integerervaland29 = Integerervaland29;
+	public void setIntegerervaland30(Integer integerervaland30) {
+		this.integerervaland30 = integerervaland30;
 	}
 
-	public Integer getIntervaland30() {
-		return Integerervaland30;
+	public Integer getIntegerervaland31() {
+		return integerervaland31;
 	}
 
-	public void setIntervaland30(Integer Integerervaland30) {
-		this.Integerervaland30 = Integerervaland30;
+	public void setIntegerervaland31(Integer integerervaland31) {
+		this.integerervaland31 = integerervaland31;
 	}
 
-	public Integer getIntervaland31() {
-		return Integerervaland31;
+	public Integer getIntegerervaland32() {
+		return integerervaland32;
 	}
 
-	public void setIntervaland31(Integer Integerervaland31) {
-		this.Integerervaland31 = Integerervaland31;
+	public void setIntegerervaland32(Integer integerervaland32) {
+		this.integerervaland32 = integerervaland32;
 	}
 
-	public Integer getIntervaland32() {
-		return Integerervaland32;
+	public Integer getIntegerervaland33() {
+		return integerervaland33;
 	}
 
-	public void setIntervaland32(Integer Integerervaland32) {
-		this.Integerervaland32 = Integerervaland32;
+	public void setIntegerervaland33(Integer integerervaland33) {
+		this.integerervaland33 = integerervaland33;
 	}
 
-	public Integer getIntervaland33() {
-		return Integerervaland33;
+	public Integer getIntegerervaland34() {
+		return integerervaland34;
 	}
 
-	public void setIntervaland33(Integer Integerervaland33) {
-		this.Integerervaland33 = Integerervaland33;
+	public void setIntegerervaland34(Integer integerervaland34) {
+		this.integerervaland34 = integerervaland34;
 	}
 
-	public Integer getIntervaland34() {
-		return Integerervaland34;
+	public Integer getIntegerervaland35() {
+		return integerervaland35;
 	}
 
-	public void setIntervaland34(Integer Integerervaland34) {
-		this.Integerervaland34 = Integerervaland34;
+	public void setIntegerervaland35(Integer integerervaland35) {
+		this.integerervaland35 = integerervaland35;
 	}
 
-	public Integer getIntervaland35() {
-		return Integerervaland35;
+	public Integer getIntegerervaland36() {
+		return integerervaland36;
 	}
 
-	public void setIntervaland35(Integer Integerervaland35) {
-		this.Integerervaland35 = Integerervaland35;
+	public void setIntegerervaland36(Integer integerervaland36) {
+		this.integerervaland36 = integerervaland36;
 	}
 
-	public Integer getIntervaland36() {
-		return Integerervaland36;
+	public Integer getIntegerervalandone() {
+		return integerervalandone;
 	}
 
-	public void setIntervaland36(Integer Integerervaland36) {
-		this.Integerervaland36 = Integerervaland36;
+	public void setIntegerervalandone(Integer integerervalandone) {
+		this.integerervalandone = integerervalandone;
 	}
 
 	public Date getDrawtime() {
@@ -2031,13 +2033,8 @@ public class Model extends BaseModelObject {
 		this.threeareas3 = threeareas3;
 	}
 
-	public Integer getIntervalandone() {
-		return Integerervalandone;
-	}
+	
 
-	public void setIntervalandone(Integer Integerervalandone) {
-		this.Integerervalandone = Integerervalandone;
-	}
 
 	public Integer getFirstnum() {
 		return firstnum;
@@ -2118,6 +2115,14 @@ public class Model extends BaseModelObject {
 	public void setStrnum(String strnum) {
 		this.strnum = strnum;
 	}
+	public String getIntegerervaland() {
+		return integerervaland;
+	}
+
+	public void setIntegerervaland(String integerervaland) {
+		this.integerervaland = integerervaland;
+	}
+
 	public void initHeat0(Model lottery){
 		lottery.setHeat1(0);
 		lottery.setHeat2(0);
@@ -2270,247 +2275,294 @@ public class Model extends BaseModelObject {
 		}		
 	}
 	public void initIntervaland0(Model lottery){
-		lottery.setIntervaland1(0);
-		lottery.setIntervaland2(0);
-		lottery.setIntervaland3(0);
-		lottery.setIntervaland4(0);
-		lottery.setIntervaland5(0);
-		lottery.setIntervaland6(0);
-		lottery.setIntervaland7(0);
-		lottery.setIntervaland8(0);
-		lottery.setIntervaland9(0);
-		lottery.setIntervaland10(0);
-		lottery.setIntervaland11(0);
-		lottery.setIntervaland12(0);
-		lottery.setIntervaland13(0);
-		lottery.setIntervaland14(0);
-		lottery.setIntervaland15(0);
-		lottery.setIntervaland16(0);
-		lottery.setIntervaland17(0);
-		lottery.setIntervaland18(0);
-		lottery.setIntervaland19(0);
-		lottery.setIntervaland20(0);
-		lottery.setIntervaland21(0);
-		lottery.setIntervaland22(0);
-		lottery.setIntervaland23(0);
-		lottery.setIntervaland24(0);
-		lottery.setIntervaland25(0);
-		lottery.setIntervaland26(0);
-		lottery.setIntervaland27(0);
-		lottery.setIntervaland28(0);
-		lottery.setIntervaland29(0);
-		lottery.setIntervaland30(0);
-		lottery.setIntervaland31(0);
-		lottery.setIntervaland32(0);
-		lottery.setIntervaland33(0);
-		lottery.setIntervaland34(0);
-		lottery.setIntervaland35(0);
-		lottery.setIntervaland36(0);
-		lottery.setIntervaland("");
-		lottery.setIntervalandmax(0);
-		lottery.setIntervalandmin(0);
-		lottery.setIntervalandone(0);
-		lottery.setIntervalandpostmax(0);
-		lottery.setIntervalandpostmin(0);
-		lottery.setIntervalandtotal(0);
+		lottery.setIntegerervaland1(0);
+		lottery.setIntegerervaland2(0);
+		lottery.setIntegerervaland3(0);
+		lottery.setIntegerervaland4(0);
+		lottery.setIntegerervaland5(0);
+		lottery.setIntegerervaland6(0);
+		lottery.setIntegerervaland7(0);
+		lottery.setIntegerervaland8(0);
+		lottery.setIntegerervaland9(0);
+		lottery.setIntegerervaland10(0);
+		lottery.setIntegerervaland11(0);
+		lottery.setIntegerervaland12(0);
+		lottery.setIntegerervaland13(0);
+		lottery.setIntegerervaland14(0);
+		lottery.setIntegerervaland15(0);
+		lottery.setIntegerervaland16(0);
+		lottery.setIntegerervaland17(0);
+		lottery.setIntegerervaland18(0);
+		lottery.setIntegerervaland19(0);
+		lottery.setIntegerervaland20(0);
+		lottery.setIntegerervaland21(0);
+		lottery.setIntegerervaland22(0);
+		lottery.setIntegerervaland23(0);
+		lottery.setIntegerervaland24(0);
+		lottery.setIntegerervaland25(0);
+		lottery.setIntegerervaland26(0);
+		lottery.setIntegerervaland27(0);
+		lottery.setIntegerervaland28(0);
+		lottery.setIntegerervaland29(0);
+		lottery.setIntegerervaland30(0);
+		lottery.setIntegerervaland31(0);
+		lottery.setIntegerervaland32(0);
+		lottery.setIntegerervaland33(0);
+		lottery.setIntegerervaland34(0);
+		lottery.setIntegerervaland35(0);
+		lottery.setIntegerervaland36(0);
+		lottery.setIntegerervaland("");
+		lottery.setIntegerervalandmax(0);
+		lottery.setIntegerervalandmin(0);
+		lottery.setIntegerervalandone(0);
+		lottery.setIntegerervalandpostmax(0);
+		lottery.setIntegerervalandpostmin(0);
+		lottery.setIntegerervalandtotal(0);
+	}
+
+	public void initIntervaland1(Model lottery){
+		lottery.setIntegerervaland1(1);
+		lottery.setIntegerervaland2(1);
+		lottery.setIntegerervaland3(1);
+		lottery.setIntegerervaland4(1);
+		lottery.setIntegerervaland5(1);
+		lottery.setIntegerervaland6(1);
+		lottery.setIntegerervaland7(1);
+		lottery.setIntegerervaland8(1);
+		lottery.setIntegerervaland9(1);
+		lottery.setIntegerervaland10(1);
+		lottery.setIntegerervaland11(1);
+		lottery.setIntegerervaland12(1);
+		lottery.setIntegerervaland13(1);
+		lottery.setIntegerervaland14(1);
+		lottery.setIntegerervaland15(1);
+		lottery.setIntegerervaland16(1);
+		lottery.setIntegerervaland17(1);
+		lottery.setIntegerervaland18(1);
+		lottery.setIntegerervaland19(1);
+		lottery.setIntegerervaland20(1);
+		lottery.setIntegerervaland21(1);
+		lottery.setIntegerervaland22(1);
+		lottery.setIntegerervaland23(1);
+		lottery.setIntegerervaland24(1);
+		lottery.setIntegerervaland25(1);
+		lottery.setIntegerervaland26(1);
+		lottery.setIntegerervaland27(1);
+		lottery.setIntegerervaland28(1);
+		lottery.setIntegerervaland29(1);
+		lottery.setIntegerervaland30(1);
+		lottery.setIntegerervaland31(1);
+		lottery.setIntegerervaland32(1);
+		lottery.setIntegerervaland33(1);
+		lottery.setIntegerervaland34(1);
+		lottery.setIntegerervaland35(1);
+		lottery.setIntegerervaland36(1);
+		lottery.setIntegerervaland("");
+		lottery.setIntegerervalandmax(0);
+		lottery.setIntegerervalandmin(0);
+		lottery.setIntegerervalandone(0);
+		lottery.setIntegerervalandpostmax(0);
+		lottery.setIntegerervalandpostmin(0);
+		lottery.setIntegerervalandtotal(0);
 	}
 	public void calcIntervaland0(Model lottery,Model plottery,int num){
 		if(num==1){
-			int intervaland =Check.toString(plottery.getIntervaland1());
+			int intervaland =Check.toString(plottery.getIntegerervaland1());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland1(0);
+			lottery.setIntegerervaland1(0);
 		}else if(num==2){
-			int intervaland =Check.toString(plottery.getIntervaland2());
+			int intervaland =Check.toString(plottery.getIntegerervaland2());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland2(0); 
+			lottery.setIntegerervaland2(0); 
 		}else if(num==3){
-			int intervaland =Check.toString(plottery.getIntervaland3());
+			int intervaland =Check.toString(plottery.getIntegerervaland3());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland3(0);
+			lottery.setIntegerervaland3(0);
 		}else if(num==4){
-			int intervaland =Check.toString(plottery.getIntervaland4());
+			int intervaland =Check.toString(plottery.getIntegerervaland4());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland4(0);
+			lottery.setIntegerervaland4(0);
 		}else if(num==5){
-			int intervaland =Check.toString(plottery.getIntervaland5());
+			int intervaland =Check.toString(plottery.getIntegerervaland5());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland5(0);
+			lottery.setIntegerervaland5(0);
 		}else if(num==6){
-			int intervaland =Check.toString(plottery.getIntervaland6());
+			int intervaland =Check.toString(plottery.getIntegerervaland6());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland6(0);
+			lottery.setIntegerervaland6(0);
 		}else if(num==7){
-			int intervaland =Check.toString(plottery.getIntervaland7());
+			int intervaland =Check.toString(plottery.getIntegerervaland7());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland7(0);
+			lottery.setIntegerervaland7(0);
 		}else if(num==8){
-			int intervaland =Check.toString(plottery.getIntervaland8());
+			int intervaland =Check.toString(plottery.getIntegerervaland8());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland8(0);
+			lottery.setIntegerervaland8(0);
 		}else if(num==9){
-			int intervaland =Check.toString(plottery.getIntervaland9());
+			int intervaland =Check.toString(plottery.getIntegerervaland9());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland9(0);
+			lottery.setIntegerervaland9(0);
 		}else if(num==10){
-			int intervaland =Check.toString(plottery.getIntervaland10());
+			int intervaland =Check.toString(plottery.getIntegerervaland10());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland10(0);
+			lottery.setIntegerervaland10(0);
 		}else if(num==11){
-			int intervaland =Check.toString(plottery.getIntervaland11());
+			int intervaland =Check.toString(plottery.getIntegerervaland11());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland11(0);
+			lottery.setIntegerervaland11(0);
 		}else if(num==12){
-			int intervaland =Check.toString(plottery.getIntervaland12());
+			int intervaland =Check.toString(plottery.getIntegerervaland12());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland12(0);
+			lottery.setIntegerervaland12(0);
 		}else if(num==13){
-			int intervaland =Check.toString(plottery.getIntervaland13());
+			int intervaland =Check.toString(plottery.getIntegerervaland13());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland13(0);
+			lottery.setIntegerervaland13(0);
 		}else if(num==14){
-			int intervaland =Check.toString(plottery.getIntervaland14());
+			int intervaland =Check.toString(plottery.getIntegerervaland14());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland14(0);
+			lottery.setIntegerervaland14(0);
 		}else if(num==15){
-			int intervaland =Check.toString(plottery.getIntervaland15());
+			int intervaland =Check.toString(plottery.getIntegerervaland15());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland15(0);
+			lottery.setIntegerervaland15(0);
 		}else if(num==16){
-			int intervaland =Check.toString(plottery.getIntervaland16());
+			int intervaland =Check.toString(plottery.getIntegerervaland16());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland16(0);
+			lottery.setIntegerervaland16(0);
 		}else if(num==17){
-			int intervaland =Check.toString(plottery.getIntervaland17());
+			int intervaland =Check.toString(plottery.getIntegerervaland17());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland17(0);
+			lottery.setIntegerervaland17(0);
 		}else if(num==18){
-			int intervaland =Check.toString(plottery.getIntervaland18());
+			int intervaland =Check.toString(plottery.getIntegerervaland18());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland18(0);
+			lottery.setIntegerervaland18(0);
 		}else if(num==19){
-			int intervaland =Check.toString(plottery.getIntervaland19());
+			int intervaland =Check.toString(plottery.getIntegerervaland19());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland19(0);
+			lottery.setIntegerervaland19(0);
 		}else if(num==20){
-			int intervaland =Check.toString(plottery.getIntervaland20());
+			int intervaland =Check.toString(plottery.getIntegerervaland20());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland20(0); 
+			lottery.setIntegerervaland20(0); 
 		}else if(num==21){
-			int intervaland =Check.toString(plottery.getIntervaland21());
+			int intervaland =Check.toString(plottery.getIntegerervaland21());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland21(0); 
+			lottery.setIntegerervaland21(0); 
 		}else if(num==22){
-			int intervaland =Check.toString(plottery.getIntervaland22());
+			int intervaland =Check.toString(plottery.getIntegerervaland22());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland22(0); 
+			lottery.setIntegerervaland22(0); 
 		}else if(num==23){
-			int intervaland =Check.toString(plottery.getIntervaland23());
+			int intervaland =Check.toString(plottery.getIntegerervaland23());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland23(0); 
+			lottery.setIntegerervaland23(0); 
 		}else if(num==24){
-			int intervaland =Check.toString(plottery.getIntervaland24());
+			int intervaland =Check.toString(plottery.getIntegerervaland24());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland24(0); 
+			lottery.setIntegerervaland24(0); 
 		}else if(num==25){
-			int intervaland =Check.toString(plottery.getIntervaland25());
+			int intervaland =Check.toString(plottery.getIntegerervaland25());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland25(0); 
+			lottery.setIntegerervaland25(0); 
 		}else if(num==26){
-			int intervaland =Check.toString(plottery.getIntervaland26());
+			int intervaland =Check.toString(plottery.getIntegerervaland26());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland26(0); 
+			lottery.setIntegerervaland26(0); 
 		}else if(num==27){
-			int intervaland =Check.toString(plottery.getIntervaland27());
+			int intervaland =Check.toString(plottery.getIntegerervaland27());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland27(0); 
+			lottery.setIntegerervaland27(0); 
 		}else if(num==28){
-			int intervaland =Check.toString(plottery.getIntervaland28());
+			int intervaland =Check.toString(plottery.getIntegerervaland28());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland28(0); 
+			lottery.setIntegerervaland28(0); 
 		}else if(num==29){
-			int intervaland =Check.toString(plottery.getIntervaland29());
+			int intervaland =Check.toString(plottery.getIntegerervaland29());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland29(0); 
+			lottery.setIntegerervaland29(0); 
 		}else if(num==30){
-			int intervaland =Check.toString(plottery.getIntervaland30());
+			int intervaland =Check.toString(plottery.getIntegerervaland30());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland30(0);
+			lottery.setIntegerervaland30(0);
 		}else if(num==31){
-			int intervaland =Check.toString(plottery.getIntervaland31());
+			int intervaland =Check.toString(plottery.getIntegerervaland31());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland31(0);
+			lottery.setIntegerervaland31(0);
 		}else if(num==32){
-			int intervaland =Check.toString(plottery.getIntervaland32());
+			int intervaland =Check.toString(plottery.getIntegerervaland32());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland32(0);
+			lottery.setIntegerervaland32(0);
 		}else if(num==33){
-			int intervaland =Check.toString(plottery.getIntervaland33());
+			int intervaland =Check.toString(plottery.getIntegerervaland33());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland33(0);
+			lottery.setIntegerervaland33(0);
 		}else if(num==34){
-			int intervaland =Check.toString(plottery.getIntervaland34());
+			int intervaland =Check.toString(plottery.getIntegerervaland34());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland34(0);
+			lottery.setIntegerervaland34(0);
 		}else if(num==35){
-			int intervaland =Check.toString(plottery.getIntervaland35());
+			int intervaland =Check.toString(plottery.getIntegerervaland35());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland35(0);
+			lottery.setIntegerervaland35(0);
 		}else if(num==36){
-			int intervaland =Check.toString(plottery.getIntervaland36());
+			int intervaland =Check.toString(plottery.getIntegerervaland36());
 			intervaland(lottery, intervaland);
-			lottery.setIntervaland36(0);
+			lottery.setIntegerervaland36(0);
 		}
 		
 	}
 
 	private void intervaland(Model lottery, int intervaland) {
-		lottery.setIntervalandtotal(Check.toString(lottery.getIntervalandtotal())+intervaland);
-		if(Check.toString(lottery.getIntervalandmin())>=intervaland){
-			lottery.setIntervalandmin(intervaland);
+		lottery.setIntegerervalandtotal(Check.toString(lottery.getIntegerervalandtotal())+intervaland);
+		if(Check.toString(lottery.getIntegerervalandmin())>=intervaland){
+			lottery.setIntegerervalandmin(intervaland);
 		}
-		if(Check.toString(lottery.getIntervalandmax())<=intervaland){
-			lottery.setIntervalandmax(intervaland);
+		if(Check.toString(lottery.getIntegerervalandmax())<=intervaland){
+			lottery.setIntegerervalandmax(intervaland);
 		}
-		lottery.setIntervaland(Check.toString(lottery.getIntervaland())+intervaland+"+");
+		lottery.setIntegerervaland(Check.toString(lottery.getIntegerervaland())+intervaland+"+");
 	}
 	
 	public void copyIntervaland0(Model lottery,Model plottery){
-			lottery.setIntervaland1(Check.toString(plottery.getIntervaland1())+1);
-			lottery.setIntervaland2(Check.toString(plottery.getIntervaland2())+1);
-			lottery.setIntervaland3(Check.toString(plottery.getIntervaland3())+1);
-			lottery.setIntervaland4(Check.toString(plottery.getIntervaland4())+1);
-			lottery.setIntervaland5(Check.toString(plottery.getIntervaland5())+1);
-			lottery.setIntervaland6(Check.toString(plottery.getIntervaland6())+1);
-			lottery.setIntervaland7(Check.toString(plottery.getIntervaland7())+1);
-			lottery.setIntervaland8(Check.toString(plottery.getIntervaland8())+1);
-			lottery.setIntervaland9(Check.toString(plottery.getIntervaland9())+1);
-			lottery.setIntervaland10(Check.toString(plottery.getIntervaland10())+1);
-			lottery.setIntervaland11(Check.toString(plottery.getIntervaland11())+1);
-			lottery.setIntervaland12(Check.toString(plottery.getIntervaland12())+1);
-			lottery.setIntervaland13(Check.toString(plottery.getIntervaland13())+1);
-			lottery.setIntervaland14(Check.toString(plottery.getIntervaland14())+1);
-			lottery.setIntervaland15(Check.toString(plottery.getIntervaland15())+1);
-			lottery.setIntervaland16(Check.toString(plottery.getIntervaland16())+1);
-			lottery.setIntervaland17(Check.toString(plottery.getIntervaland17())+1);
-			lottery.setIntervaland18(Check.toString(plottery.getIntervaland18())+1);
-			lottery.setIntervaland19(Check.toString(plottery.getIntervaland19())+1);
-			lottery.setIntervaland20(Check.toString(plottery.getIntervaland20())+1);
-			lottery.setIntervaland21(Check.toString(plottery.getIntervaland21())+1);
-			lottery.setIntervaland22(Check.toString(plottery.getIntervaland22())+1);
-			lottery.setIntervaland23(Check.toString(plottery.getIntervaland23())+1);
-			lottery.setIntervaland24(Check.toString(plottery.getIntervaland24())+1);
-			lottery.setIntervaland25(Check.toString(plottery.getIntervaland25())+1);
-			lottery.setIntervaland26(Check.toString(plottery.getIntervaland26())+1);
-			lottery.setIntervaland27(Check.toString(plottery.getIntervaland27())+1);
-			lottery.setIntervaland28(Check.toString(plottery.getIntervaland28())+1);
-			lottery.setIntervaland29(Check.toString(plottery.getIntervaland29())+1);
-			lottery.setIntervaland30(Check.toString(plottery.getIntervaland30())+1);
-			lottery.setIntervaland31(Check.toString(plottery.getIntervaland31())+1);
-			lottery.setIntervaland32(Check.toString(plottery.getIntervaland32())+1);
-			lottery.setIntervaland33(Check.toString(plottery.getIntervaland33())+1);
-			lottery.setIntervaland34(Check.toString(plottery.getIntervaland34())+1);
-			lottery.setIntervaland35(Check.toString(plottery.getIntervaland35())+1);
-			lottery.setIntervaland36(Check.toString(plottery.getIntervaland36())+1);
+			lottery.setIntegerervaland1(Check.toString(plottery.getIntegerervaland1())+1);
+			lottery.setIntegerervaland2(Check.toString(plottery.getIntegerervaland2())+1);
+			lottery.setIntegerervaland3(Check.toString(plottery.getIntegerervaland3())+1);
+			lottery.setIntegerervaland4(Check.toString(plottery.getIntegerervaland4())+1);
+			lottery.setIntegerervaland5(Check.toString(plottery.getIntegerervaland5())+1);
+			lottery.setIntegerervaland6(Check.toString(plottery.getIntegerervaland6())+1);
+			lottery.setIntegerervaland7(Check.toString(plottery.getIntegerervaland7())+1);
+			lottery.setIntegerervaland8(Check.toString(plottery.getIntegerervaland8())+1);
+			lottery.setIntegerervaland9(Check.toString(plottery.getIntegerervaland9())+1);
+			lottery.setIntegerervaland10(Check.toString(plottery.getIntegerervaland10())+1);
+			lottery.setIntegerervaland11(Check.toString(plottery.getIntegerervaland11())+1);
+			lottery.setIntegerervaland12(Check.toString(plottery.getIntegerervaland12())+1);
+			lottery.setIntegerervaland13(Check.toString(plottery.getIntegerervaland13())+1);
+			lottery.setIntegerervaland14(Check.toString(plottery.getIntegerervaland14())+1);
+			lottery.setIntegerervaland15(Check.toString(plottery.getIntegerervaland15())+1);
+			lottery.setIntegerervaland16(Check.toString(plottery.getIntegerervaland16())+1);
+			lottery.setIntegerervaland17(Check.toString(plottery.getIntegerervaland17())+1);
+			lottery.setIntegerervaland18(Check.toString(plottery.getIntegerervaland18())+1);
+			lottery.setIntegerervaland19(Check.toString(plottery.getIntegerervaland19())+1);
+			lottery.setIntegerervaland20(Check.toString(plottery.getIntegerervaland20())+1);
+			lottery.setIntegerervaland21(Check.toString(plottery.getIntegerervaland21())+1);
+			lottery.setIntegerervaland22(Check.toString(plottery.getIntegerervaland22())+1);
+			lottery.setIntegerervaland23(Check.toString(plottery.getIntegerervaland23())+1);
+			lottery.setIntegerervaland24(Check.toString(plottery.getIntegerervaland24())+1);
+			lottery.setIntegerervaland25(Check.toString(plottery.getIntegerervaland25())+1);
+			lottery.setIntegerervaland26(Check.toString(plottery.getIntegerervaland26())+1);
+			lottery.setIntegerervaland27(Check.toString(plottery.getIntegerervaland27())+1);
+			lottery.setIntegerervaland28(Check.toString(plottery.getIntegerervaland28())+1);
+			lottery.setIntegerervaland29(Check.toString(plottery.getIntegerervaland29())+1);
+			lottery.setIntegerervaland30(Check.toString(plottery.getIntegerervaland30())+1);
+			lottery.setIntegerervaland31(Check.toString(plottery.getIntegerervaland31())+1);
+			lottery.setIntegerervaland32(Check.toString(plottery.getIntegerervaland32())+1);
+			lottery.setIntegerervaland33(Check.toString(plottery.getIntegerervaland33())+1);
+			lottery.setIntegerervaland34(Check.toString(plottery.getIntegerervaland34())+1);
+			lottery.setIntegerervaland35(Check.toString(plottery.getIntegerervaland35())+1);
+			lottery.setIntegerervaland36(Check.toString(plottery.getIntegerervaland36())+1);
+			lottery.setIntegerervaland("");
 	}
 	public void init(Model lottery){
 		lottery.setOdd(0);

@@ -40,8 +40,8 @@ $(function(){
             colModel:[
                 {name:'id',index:'id', width:60, hidden:true},
                 {name:'issue',  width:90},
-                {name:'a',index:'exchange', width:100,render:function(){
-                	return "123";
+                {name:'a',index:'exchange', width:100,formatter:function(cellvalue, options, rowObject){
+                	return cellvalue;
                 }},
                 {name:'b',index:'groupType', width:90},
                 {name:'c',index:'code', width:90},
@@ -61,6 +61,13 @@ $(function(){
             altRows: true
         });
         jQuery("#jqGrid01").jqGrid('navGrid','#pager2',{edit:true,add:false,del:false});
+        jQuery("#jqGrid01").jqGrid('setGroupHeaders', {
+  useColSpanStyle: false, 
+  groupHeaders:[
+	{startColumnName: 'a', numberOfColumns: 3, titleText: '<em>Price</em>'},
+	{startColumnName: 'f', numberOfColumns: 2, titleText: 'Shiping'}
+  ]	
+});
     }
 
 $( "#openwindow" ).click(function(){
@@ -124,7 +131,6 @@ var id;
        grid.trigger("reloadGrid");
     }  
 	});
-		toView
 	});
 	$( "#refresh" ).click(function(){
 		grid.trigger('reloadGrid');
