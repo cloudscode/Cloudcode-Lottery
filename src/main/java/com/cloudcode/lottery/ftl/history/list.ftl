@@ -187,7 +187,7 @@ $(function(){
                  {name:'length',  width:20 },
                  {name:'oddeven',  width:20 },
                 {name:'repeat',  width:20 },
-                {name:'horVer',  width:20 },
+                {name:'horver',  width:20 },
                 {name:'a',index:'exchange', width:0, hidden:true,formatter:function(cellvalue, options, rowObject){
                 	return cellvalue;
                 }},
