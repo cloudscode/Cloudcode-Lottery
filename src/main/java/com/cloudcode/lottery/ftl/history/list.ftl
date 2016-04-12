@@ -70,7 +70,7 @@ $(function(){
             colNames:['Id', '期号', '1','2','3','4','5','6','7','8','9','10','11','12','13','14'
             , '15', '16', '17', '18', '19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36'
            ,'总和','距离','奇偶','重号','横纵'
-            ,'a','b','c','d','e','f','g'],
+            ,'a','b','c','d','e','f','g','odd','even'],
             colModel:[
                 {name:'id',index:'id', width:30, hidden:true},
                 {name:'issue',  width:30},
@@ -185,8 +185,10 @@ $(function(){
                 }},
                  {name:'total',  width:20 },
                  {name:'length',  width:20 },
-                 {name:'oddeven',  width:20 },
-                {name:'repeat',  width:20 },
+                 {name:'oddeven',  width:20,formatter:function(cellvalue, options, rowObject){
+                	return rowObject.odd+":"+rowObject.even;
+                } },
+                {name:'repeatno',  width:20 },
                 {name:'horver',  width:20 },
                 {name:'a',index:'exchange', width:0, hidden:true,formatter:function(cellvalue, options, rowObject){
                 	return cellvalue;
@@ -196,7 +198,9 @@ $(function(){
                 {name:'d',index:'code', width:0, hidden:true},
                 {name:'e',index:'code', width:0, hidden:true},
                 {name:'f',index:'code', width:0, hidden:true},
-                {name:'g',index:'code', width:0, hidden:true}
+                {name:'g',index:'code', width:0, hidden:true},
+                {name:'odd',index:'code', width:0, hidden:true},
+                {name:'even',index:'code', width:0, hidden:true}
                 
             ],
             autowidth: true,
