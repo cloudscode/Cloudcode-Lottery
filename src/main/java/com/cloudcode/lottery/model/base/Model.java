@@ -4,60 +4,15 @@ import java.util.Date;
 
 import javax.persistence.MappedSuperclass;
 
-import com.cloudcode.framework.model.BaseModelObject;
 import com.cloudcode.framework.utils.Check;
 
 @MappedSuperclass
-public class Model extends BaseModelObject {
+public class Model extends Base {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5581913243900041888L;
-	private Integer a;
-	private Integer b;
-	private Integer c;
-	private Integer d;
-	private Integer e;
-	private Integer f;
-	private Integer g;
-	private Integer odd;
-	private Integer even;
-	private Integer thanthreeratio0;
-	private Integer thanthreeratio1;
-	private Integer thanthreeratio2;
-	private Integer thanfiveratio0;
-	private Integer thanfiveratio1;
-	private Integer thanfiveratio2;
-	private Integer thanfiveratio3;
-	private Integer thanfiveratio4;
-	private Integer thansevenratio0;
-	private Integer thansevenratio1;
-	private Integer thansevenratio2;
-	private Integer thansevenratio3;
-	private Integer thansevenratio4;
-	private Integer thansevenratio5;
-	private Integer thansevenratio6;
-	private Integer upperareas;
-	private Integer lowerareas;
-	private Integer fourtharea1;
-	private Integer fourtharea2;
-	private Integer fourtharea3;
-	private Integer fourtharea4;
-	private Integer sixarea1;
-	private Integer sixarea2;
-	private Integer sixarea3;
-	private Integer sixarea4;
-	private Integer sixarea5;
-	private Integer sixarea6;
-	private Integer ninearea1;
-	private Integer ninearea2;
-	private Integer ninearea3;
-	private Integer ninearea4;
-	private Integer ninearea5;
-	private Integer ninearea6;
-	private Integer ninearea7;
-	private Integer ninearea8;
-	private Integer ninearea9;
+
 	private Integer oddtotal;
 	private Integer eventotal;
 	private Integer oddnear;
@@ -134,21 +89,17 @@ public class Model extends BaseModelObject {
 	private Integer ninearea7near;
 	private Integer ninearea8near;
 	private Integer ninearea9near;
-	private Integer consecutivenumber;
+
 	private String integerervaland;
 	private Integer integerervalandtotal;
 	private Integer integerervalandmin;
 	private Integer integerervalandmax;
 	private Integer integerervalandpostmin;
 	private Integer integerervalandpostmax;
-	private Integer length;
-	private Integer total;
+
 	private Integer totalmin;
 	private Integer totalmax;
 	private Double totalavg;
-	private Integer thanthehorizontalspacingadd;
-	private String thanthehorizontalspacing;
-	private Integer t;
 	private Integer newno;
 	private Integer repeatno;
 	private Integer noside;
@@ -156,7 +107,7 @@ public class Model extends BaseModelObject {
 	private String ratioonthefivenumbers;
 	private String ratioonthesevennumbers;
 	private String ratioonthetennumbers;
-	private String lastvalueappears;
+
 	private Integer heat1;
 	private Integer heat2;
 	private Integer heat3;
@@ -232,12 +183,12 @@ public class Model extends BaseModelObject {
 	private Date drawtime;
 	private String whether;
 	private String remark;
-	private String horver;
+
 	private Integer threeareas1;
 	private Integer threeareas2;
 	private Integer threeareas3;
 	private Integer integerervalandone;
-	private Integer firstnum;
+
 	private Integer upperlowerareas;
 	private Integer threeareas;
 	private Integer fourthareas;
@@ -246,366 +197,6 @@ public class Model extends BaseModelObject {
 	private Integer thanthreeratios;
 	private Integer thanfiveratios;
 	private Integer thansevenratios;
-	private String strnum;
-	public Integer getA() {
-		return a;
-	}
-
-	public void setA(Integer a) {
-		this.a = a;
-	}
-
-	public Integer getB() {
-		return b;
-	}
-
-	public void setB(Integer b) {
-		this.b = b;
-	}
-
-	public Integer getC() {
-		return c;
-	}
-
-	public void setC(Integer c) {
-		this.c = c;
-	}
-
-	public Integer getD() {
-		return d;
-	}
-
-	public void setD(Integer d) {
-		this.d = d;
-	}
-
-	public Integer getE() {
-		return e;
-	}
-
-	public void setE(Integer e) {
-		this.e = e;
-	}
-
-	public Integer getF() {
-		return f;
-	}
-
-	public void setF(Integer f) {
-		this.f = f;
-	}
-
-	public Integer getG() {
-		return g;
-	}
-
-	public void setG(Integer g) {
-		this.g = g;
-	}
-
-	public Integer getOdd() {
-		return odd;
-	}
-
-	public void setOdd(Integer odd) {
-		this.odd = odd;
-	}
-
-	public Integer getEven() {
-		return even;
-	}
-
-	public void setEven(Integer even) {
-		this.even = even;
-	}
-
-	public Integer getThanthreeratio0() {
-		return thanthreeratio0;
-	}
-
-	public void setThanthreeratio0(Integer thanthreeratio0) {
-		this.thanthreeratio0 = thanthreeratio0;
-	}
-
-	public Integer getThanthreeratio1() {
-		return thanthreeratio1;
-	}
-
-	public void setThanthreeratio1(Integer thanthreeratio1) {
-		this.thanthreeratio1 = thanthreeratio1;
-	}
-
-	public Integer getThanthreeratio2() {
-		return thanthreeratio2;
-	}
-
-	public void setThanthreeratio2(Integer thanthreeratio2) {
-		this.thanthreeratio2 = thanthreeratio2;
-	}
-
-	public Integer getThanfiveratio0() {
-		return thanfiveratio0;
-	}
-
-	public void setThanfiveratio0(Integer thanfiveratio0) {
-		this.thanfiveratio0 = thanfiveratio0;
-	}
-
-	public Integer getThanfiveratio1() {
-		return thanfiveratio1;
-	}
-
-	public void setThanfiveratio1(Integer thanfiveratio1) {
-		this.thanfiveratio1 = thanfiveratio1;
-	}
-
-	public Integer getThanfiveratio2() {
-		return thanfiveratio2;
-	}
-
-	public void setThanfiveratio2(Integer thanfiveratio2) {
-		this.thanfiveratio2 = thanfiveratio2;
-	}
-
-	public Integer getThanfiveratio3() {
-		return thanfiveratio3;
-	}
-
-	public void setThanfiveratio3(Integer thanfiveratio3) {
-		this.thanfiveratio3 = thanfiveratio3;
-	}
-
-	public Integer getThanfiveratio4() {
-		return thanfiveratio4;
-	}
-
-	public void setThanfiveratio4(Integer thanfiveratio4) {
-		this.thanfiveratio4 = thanfiveratio4;
-	}
-
-	public Integer getThansevenratio0() {
-		return thansevenratio0;
-	}
-
-	public void setThansevenratio0(Integer thansevenratio0) {
-		this.thansevenratio0 = thansevenratio0;
-	}
-
-	public Integer getThansevenratio1() {
-		return thansevenratio1;
-	}
-
-	public void setThansevenratio1(Integer thansevenratio1) {
-		this.thansevenratio1 = thansevenratio1;
-	}
-
-	public Integer getThansevenratio2() {
-		return thansevenratio2;
-	}
-
-	public void setThansevenratio2(Integer thansevenratio2) {
-		this.thansevenratio2 = thansevenratio2;
-	}
-
-	public Integer getThansevenratio3() {
-		return thansevenratio3;
-	}
-
-	public void setThansevenratio3(Integer thansevenratio3) {
-		this.thansevenratio3 = thansevenratio3;
-	}
-
-	public Integer getThansevenratio4() {
-		return thansevenratio4;
-	}
-
-	public void setThansevenratio4(Integer thansevenratio4) {
-		this.thansevenratio4 = thansevenratio4;
-	}
-
-	public Integer getThansevenratio5() {
-		return thansevenratio5;
-	}
-
-	public void setThansevenratio5(Integer thansevenratio5) {
-		this.thansevenratio5 = thansevenratio5;
-	}
-
-	public Integer getThansevenratio6() {
-		return thansevenratio6;
-	}
-
-	public void setThansevenratio6(Integer thansevenratio6) {
-		this.thansevenratio6 = thansevenratio6;
-	}
-
-	public Integer getUpperareas() {
-		return upperareas;
-	}
-
-	public void setUpperareas(Integer upperareas) {
-		this.upperareas = upperareas;
-	}
-
-	public Integer getLowerareas() {
-		return lowerareas;
-	}
-
-	public void setLowerareas(Integer lowerareas) {
-		this.lowerareas = lowerareas;
-	}
-
-	public Integer getFourtharea1() {
-		return fourtharea1;
-	}
-
-	public void setFourtharea1(Integer fourtharea1) {
-		this.fourtharea1 = fourtharea1;
-	}
-
-	public Integer getFourtharea2() {
-		return fourtharea2;
-	}
-
-	public void setFourtharea2(Integer fourtharea2) {
-		this.fourtharea2 = fourtharea2;
-	}
-
-	public Integer getFourtharea3() {
-		return fourtharea3;
-	}
-
-	public void setFourtharea3(Integer fourtharea3) {
-		this.fourtharea3 = fourtharea3;
-	}
-
-	public Integer getFourtharea4() {
-		return fourtharea4;
-	}
-
-	public void setFourtharea4(Integer fourtharea4) {
-		this.fourtharea4 = fourtharea4;
-	}
-
-	public Integer getSixarea1() {
-		return sixarea1;
-	}
-
-	public void setSixarea1(Integer sixarea1) {
-		this.sixarea1 = sixarea1;
-	}
-
-	public Integer getSixarea2() {
-		return sixarea2;
-	}
-
-	public void setSixarea2(Integer sixarea2) {
-		this.sixarea2 = sixarea2;
-	}
-
-	public Integer getSixarea3() {
-		return sixarea3;
-	}
-
-	public void setSixarea3(Integer sixarea3) {
-		this.sixarea3 = sixarea3;
-	}
-
-	public Integer getSixarea4() {
-		return sixarea4;
-	}
-
-	public void setSixarea4(Integer sixarea4) {
-		this.sixarea4 = sixarea4;
-	}
-
-	public Integer getSixarea5() {
-		return sixarea5;
-	}
-
-	public void setSixarea5(Integer sixarea5) {
-		this.sixarea5 = sixarea5;
-	}
-
-	public Integer getSixarea6() {
-		return sixarea6;
-	}
-
-	public void setSixarea6(Integer sixarea6) {
-		this.sixarea6 = sixarea6;
-	}
-
-	public Integer getNinearea1() {
-		return ninearea1;
-	}
-
-	public void setNinearea1(Integer ninearea1) {
-		this.ninearea1 = ninearea1;
-	}
-
-	public Integer getNinearea2() {
-		return ninearea2;
-	}
-
-	public void setNinearea2(Integer ninearea2) {
-		this.ninearea2 = ninearea2;
-	}
-
-	public Integer getNinearea3() {
-		return ninearea3;
-	}
-
-	public void setNinearea3(Integer ninearea3) {
-		this.ninearea3 = ninearea3;
-	}
-
-	public Integer getNinearea4() {
-		return ninearea4;
-	}
-
-	public void setNinearea4(Integer ninearea4) {
-		this.ninearea4 = ninearea4;
-	}
-
-	public Integer getNinearea5() {
-		return ninearea5;
-	}
-
-	public void setNinearea5(Integer ninearea5) {
-		this.ninearea5 = ninearea5;
-	}
-
-	public Integer getNinearea6() {
-		return ninearea6;
-	}
-
-	public void setNinearea6(Integer ninearea6) {
-		this.ninearea6 = ninearea6;
-	}
-
-	public Integer getNinearea7() {
-		return ninearea7;
-	}
-
-	public void setNinearea7(Integer ninearea7) {
-		this.ninearea7 = ninearea7;
-	}
-
-	public Integer getNinearea8() {
-		return ninearea8;
-	}
-
-	public void setNinearea8(Integer ninearea8) {
-		this.ninearea8 = ninearea8;
-	}
-
-	public Integer getNinearea9() {
-		return ninearea9;
-	}
-
-	public void setNinearea9(Integer ninearea9) {
-		this.ninearea9 = ninearea9;
-	}
 
 	public Integer getOddtotal() {
 		return oddtotal;
@@ -1215,31 +806,6 @@ public class Model extends BaseModelObject {
 		this.ninearea9near = ninearea9near;
 	}
 
-	public Integer getConsecutivenumber() {
-		return consecutivenumber;
-	}
-
-	public void setConsecutivenumber(Integer consecutivenumber) {
-		this.consecutivenumber = consecutivenumber;
-	}
-
-	
-	public Integer getLength() {
-		return length;
-	}
-
-	public void setLength(Integer length) {
-		this.length = length;
-	}
-
-	public Integer getTotal() {
-		return total;
-	}
-
-	public void setTotal(Integer total) {
-		this.total = total;
-	}
-
 	public Integer getTotalmin() {
 		return totalmin;
 	}
@@ -1262,30 +828,6 @@ public class Model extends BaseModelObject {
 
 	public void setTotalavg(Double totalavg) {
 		this.totalavg = totalavg;
-	}
-
-	public Integer getThanthehorizontalspacingadd() {
-		return thanthehorizontalspacingadd;
-	}
-
-	public void setThanthehorizontalspacingadd(Integer thanthehorizontalspacingadd) {
-		this.thanthehorizontalspacingadd = thanthehorizontalspacingadd;
-	}
-
-	public String getThanthehorizontalspacing() {
-		return thanthehorizontalspacing;
-	}
-
-	public void setThanthehorizontalspacing(String thanthehorizontalspacing) {
-		this.thanthehorizontalspacing = thanthehorizontalspacing;
-	}
-
-	public Integer getT() {
-		return t;
-	}
-
-	public void setT(Integer t) {
-		this.t = t;
 	}
 
 	public Integer getNewno() {
@@ -1342,14 +884,6 @@ public class Model extends BaseModelObject {
 
 	public void setRatioonthetennumbers(String ratioonthetennumbers) {
 		this.ratioonthetennumbers = ratioonthetennumbers;
-	}
-
-	public String getLastvalueappears() {
-		return lastvalueappears;
-	}
-
-	public void setLastvalueappears(String lastvalueappears) {
-		this.lastvalueappears = lastvalueappears;
 	}
 
 	public Integer getHeat1() {
@@ -1639,7 +1173,6 @@ public class Model extends BaseModelObject {
 	public void setHeat36(Integer heat36) {
 		this.heat36 = heat36;
 	}
-
 
 	public Integer getIntegerervalandtotal() {
 		return integerervalandtotal;
@@ -2001,14 +1534,6 @@ public class Model extends BaseModelObject {
 		this.remark = remark;
 	}
 
-	public String getHorver() {
-		return horver;
-	}
-
-	public void setHorver(String horver) {
-		this.horver = horver;
-	}
-
 	public Integer getThreeareas1() {
 		return threeareas1;
 	}
@@ -2031,17 +1556,6 @@ public class Model extends BaseModelObject {
 
 	public void setThreeareas3(Integer threeareas3) {
 		this.threeareas3 = threeareas3;
-	}
-
-	
-
-
-	public Integer getFirstnum() {
-		return firstnum;
-	}
-
-	public void setFirstnum(Integer firstnum) {
-		this.firstnum = firstnum;
 	}
 
 	public Integer getUpperlowerareas() {
@@ -2108,13 +1622,6 @@ public class Model extends BaseModelObject {
 		this.thansevenratios = thansevenratios;
 	}
 
-	public String getStrnum() {
-		return strnum;
-	}
-
-	public void setStrnum(String strnum) {
-		this.strnum = strnum;
-	}
 	public String getIntegerervaland() {
 		return integerervaland;
 	}
@@ -2123,7 +1630,7 @@ public class Model extends BaseModelObject {
 		this.integerervaland = integerervaland;
 	}
 
-	public void initHeat0(Model lottery){
+	public void initHeat0(Model lottery) {
 		lottery.setHeat1(0);
 		lottery.setHeat2(0);
 		lottery.setHeat3(0);
@@ -2161,120 +1668,123 @@ public class Model extends BaseModelObject {
 		lottery.setHeat35(0);
 		lottery.setHeat36(0);
 	}
-	public void copyHeat0(Model lottery,Model plottery){
-			lottery.setHeat1(plottery.getHeat1());
-			lottery.setHeat2(plottery.getHeat2());
-			lottery.setHeat3(plottery.getHeat3());
-			lottery.setHeat4(plottery.getHeat4());
-			lottery.setHeat5(plottery.getHeat5());
-			lottery.setHeat6(plottery.getHeat6());
-			lottery.setHeat7(plottery.getHeat7());
-			lottery.setHeat8(plottery.getHeat8());
-			lottery.setHeat9(plottery.getHeat9());
-			lottery.setHeat10(plottery.getHeat10());
-			lottery.setHeat11(plottery.getHeat11());
-			lottery.setHeat12(plottery.getHeat12());
-			lottery.setHeat13(plottery.getHeat13());
-			lottery.setHeat14(plottery.getHeat14());
-			lottery.setHeat15(plottery.getHeat15());
-			lottery.setHeat16(plottery.getHeat16());
-			lottery.setHeat17(plottery.getHeat17());
-			lottery.setHeat18(plottery.getHeat18());
-			lottery.setHeat19(plottery.getHeat19());
-			lottery.setHeat20(plottery.getHeat20());
-			lottery.setHeat21(plottery.getHeat21());
-			lottery.setHeat22(plottery.getHeat22());
-			lottery.setHeat23(plottery.getHeat23());
-			lottery.setHeat24(plottery.getHeat24());
-			lottery.setHeat25(plottery.getHeat25());
-			lottery.setHeat26(plottery.getHeat26());
-			lottery.setHeat27(plottery.getHeat27());
-			lottery.setHeat28(plottery.getHeat28());
-			lottery.setHeat29(plottery.getHeat29());
-			lottery.setHeat30(plottery.getHeat30());
-			lottery.setHeat31(plottery.getHeat31());
-			lottery.setHeat32(plottery.getHeat32());
-			lottery.setHeat33(plottery.getHeat33());
-			lottery.setHeat34(plottery.getHeat34());
-			lottery.setHeat35(plottery.getHeat35());
-			lottery.setHeat36(plottery.getHeat36());
+
+	public void copyHeat0(Model lottery, Model plottery) {
+		lottery.setHeat1(plottery.getHeat1());
+		lottery.setHeat2(plottery.getHeat2());
+		lottery.setHeat3(plottery.getHeat3());
+		lottery.setHeat4(plottery.getHeat4());
+		lottery.setHeat5(plottery.getHeat5());
+		lottery.setHeat6(plottery.getHeat6());
+		lottery.setHeat7(plottery.getHeat7());
+		lottery.setHeat8(plottery.getHeat8());
+		lottery.setHeat9(plottery.getHeat9());
+		lottery.setHeat10(plottery.getHeat10());
+		lottery.setHeat11(plottery.getHeat11());
+		lottery.setHeat12(plottery.getHeat12());
+		lottery.setHeat13(plottery.getHeat13());
+		lottery.setHeat14(plottery.getHeat14());
+		lottery.setHeat15(plottery.getHeat15());
+		lottery.setHeat16(plottery.getHeat16());
+		lottery.setHeat17(plottery.getHeat17());
+		lottery.setHeat18(plottery.getHeat18());
+		lottery.setHeat19(plottery.getHeat19());
+		lottery.setHeat20(plottery.getHeat20());
+		lottery.setHeat21(plottery.getHeat21());
+		lottery.setHeat22(plottery.getHeat22());
+		lottery.setHeat23(plottery.getHeat23());
+		lottery.setHeat24(plottery.getHeat24());
+		lottery.setHeat25(plottery.getHeat25());
+		lottery.setHeat26(plottery.getHeat26());
+		lottery.setHeat27(plottery.getHeat27());
+		lottery.setHeat28(plottery.getHeat28());
+		lottery.setHeat29(plottery.getHeat29());
+		lottery.setHeat30(plottery.getHeat30());
+		lottery.setHeat31(plottery.getHeat31());
+		lottery.setHeat32(plottery.getHeat32());
+		lottery.setHeat33(plottery.getHeat33());
+		lottery.setHeat34(plottery.getHeat34());
+		lottery.setHeat35(plottery.getHeat35());
+		lottery.setHeat36(plottery.getHeat36());
 	}
-	public void calcHeat0(Model lottery,Model plottery,int num){
-		if(num==1){
-			lottery.setHeat1(Check.toString(plottery.getHeat1())+1);
-		}else if(num==2){
-			lottery.setHeat2(Check.toString(plottery.getHeat2())+1);
-		}else if(num==3){
-			lottery.setHeat3(Check.toString(plottery.getHeat3())+1);
-		}else if(num==4){
-			lottery.setHeat4(Check.toString(plottery.getHeat4())+1);
-		}else if(num==5){
-			lottery.setHeat5(Check.toString(plottery.getHeat5())+1);
-		}else if(num==6){
-			lottery.setHeat6(Check.toString(plottery.getHeat6())+1);
-		}else if(num==7){
-			lottery.setHeat7(Check.toString(plottery.getHeat7())+1);
-		}else if(num==8){
-			lottery.setHeat8(Check.toString(plottery.getHeat8())+1);
-		}else if(num==9){
-			lottery.setHeat9(Check.toString(plottery.getHeat9())+1);
-		}else if(num==10){
-			lottery.setHeat10(Check.toString(plottery.getHeat10())+1);
-		}else if(num==11){
-			lottery.setHeat11(Check.toString(plottery.getHeat11())+1);
-		}else if(num==12){
-			lottery.setHeat12(Check.toString(plottery.getHeat12())+1);
-		}else if(num==13){
-			lottery.setHeat13(Check.toString(plottery.getHeat13())+1);
-		}else if(num==14){
-			lottery.setHeat14(Check.toString(plottery.getHeat14())+1);
-		}else if(num==15){
-			lottery.setHeat15(Check.toString(plottery.getHeat15())+1);
-		}else if(num==16){
-			lottery.setHeat16(Check.toString(plottery.getHeat16())+1);
-		}else if(num==17){
-			lottery.setHeat17(Check.toString(plottery.getHeat17())+1);
-		}else if(num==18){
-			lottery.setHeat18(Check.toString(plottery.getHeat18())+1);
-		}else if(num==19){
-			lottery.setHeat19(Check.toString(plottery.getHeat19())+1);
-		}else if(num==20){
-			lottery.setHeat20(Check.toString(plottery.getHeat20())+1);
-		}else if(num==21){
-			lottery.setHeat21(Check.toString(plottery.getHeat21())+1);
-		}else if(num==22){
-			lottery.setHeat22(Check.toString(plottery.getHeat22())+1);
-		}else if(num==23){
-			lottery.setHeat23(Check.toString(plottery.getHeat23())+1);
-		}else if(num==24){
-			lottery.setHeat24(Check.toString(plottery.getHeat24())+1);
-		}else if(num==25){
-			lottery.setHeat25(Check.toString(plottery.getHeat25())+1);
-		}else if(num==26){
-			lottery.setHeat26(Check.toString(plottery.getHeat26())+1);
-		}else if(num==27){
-			lottery.setHeat27(Check.toString(plottery.getHeat27())+1);
-		}else if(num==28){
-			lottery.setHeat28(Check.toString(plottery.getHeat28())+1);
-		}else if(num==29){
-			lottery.setHeat29(Check.toString(plottery.getHeat29())+1);
-		}else if(num==30){
-			lottery.setHeat30(Check.toString(plottery.getHeat30())+1);
-		}else if(num==31){
-			lottery.setHeat31(Check.toString(plottery.getHeat31())+1);
-		}else if(num==32){
-			lottery.setHeat32(Check.toString(plottery.getHeat32())+1);
-		}else if(num==33){
-			lottery.setHeat33(Check.toString(plottery.getHeat33())+1);
-		}else if(num==34){
-			lottery.setHeat34(Check.toString(plottery.getHeat34())+1);
-		}else if(num==35){
-			lottery.setHeat35(Check.toString(plottery.getHeat35())+1);
-		}else if(num==36){
-			lottery.setHeat36(Check.toString(plottery.getHeat36())+1);
-		}		
+
+	public void calcHeat0(Model lottery, Model plottery, int num) {
+		if (num == 1) {
+			lottery.setHeat1(Check.toString(plottery.getHeat1()) + 1);
+		} else if (num == 2) {
+			lottery.setHeat2(Check.toString(plottery.getHeat2()) + 1);
+		} else if (num == 3) {
+			lottery.setHeat3(Check.toString(plottery.getHeat3()) + 1);
+		} else if (num == 4) {
+			lottery.setHeat4(Check.toString(plottery.getHeat4()) + 1);
+		} else if (num == 5) {
+			lottery.setHeat5(Check.toString(plottery.getHeat5()) + 1);
+		} else if (num == 6) {
+			lottery.setHeat6(Check.toString(plottery.getHeat6()) + 1);
+		} else if (num == 7) {
+			lottery.setHeat7(Check.toString(plottery.getHeat7()) + 1);
+		} else if (num == 8) {
+			lottery.setHeat8(Check.toString(plottery.getHeat8()) + 1);
+		} else if (num == 9) {
+			lottery.setHeat9(Check.toString(plottery.getHeat9()) + 1);
+		} else if (num == 10) {
+			lottery.setHeat10(Check.toString(plottery.getHeat10()) + 1);
+		} else if (num == 11) {
+			lottery.setHeat11(Check.toString(plottery.getHeat11()) + 1);
+		} else if (num == 12) {
+			lottery.setHeat12(Check.toString(plottery.getHeat12()) + 1);
+		} else if (num == 13) {
+			lottery.setHeat13(Check.toString(plottery.getHeat13()) + 1);
+		} else if (num == 14) {
+			lottery.setHeat14(Check.toString(plottery.getHeat14()) + 1);
+		} else if (num == 15) {
+			lottery.setHeat15(Check.toString(plottery.getHeat15()) + 1);
+		} else if (num == 16) {
+			lottery.setHeat16(Check.toString(plottery.getHeat16()) + 1);
+		} else if (num == 17) {
+			lottery.setHeat17(Check.toString(plottery.getHeat17()) + 1);
+		} else if (num == 18) {
+			lottery.setHeat18(Check.toString(plottery.getHeat18()) + 1);
+		} else if (num == 19) {
+			lottery.setHeat19(Check.toString(plottery.getHeat19()) + 1);
+		} else if (num == 20) {
+			lottery.setHeat20(Check.toString(plottery.getHeat20()) + 1);
+		} else if (num == 21) {
+			lottery.setHeat21(Check.toString(plottery.getHeat21()) + 1);
+		} else if (num == 22) {
+			lottery.setHeat22(Check.toString(plottery.getHeat22()) + 1);
+		} else if (num == 23) {
+			lottery.setHeat23(Check.toString(plottery.getHeat23()) + 1);
+		} else if (num == 24) {
+			lottery.setHeat24(Check.toString(plottery.getHeat24()) + 1);
+		} else if (num == 25) {
+			lottery.setHeat25(Check.toString(plottery.getHeat25()) + 1);
+		} else if (num == 26) {
+			lottery.setHeat26(Check.toString(plottery.getHeat26()) + 1);
+		} else if (num == 27) {
+			lottery.setHeat27(Check.toString(plottery.getHeat27()) + 1);
+		} else if (num == 28) {
+			lottery.setHeat28(Check.toString(plottery.getHeat28()) + 1);
+		} else if (num == 29) {
+			lottery.setHeat29(Check.toString(plottery.getHeat29()) + 1);
+		} else if (num == 30) {
+			lottery.setHeat30(Check.toString(plottery.getHeat30()) + 1);
+		} else if (num == 31) {
+			lottery.setHeat31(Check.toString(plottery.getHeat31()) + 1);
+		} else if (num == 32) {
+			lottery.setHeat32(Check.toString(plottery.getHeat32()) + 1);
+		} else if (num == 33) {
+			lottery.setHeat33(Check.toString(plottery.getHeat33()) + 1);
+		} else if (num == 34) {
+			lottery.setHeat34(Check.toString(plottery.getHeat34()) + 1);
+		} else if (num == 35) {
+			lottery.setHeat35(Check.toString(plottery.getHeat35()) + 1);
+		} else if (num == 36) {
+			lottery.setHeat36(Check.toString(plottery.getHeat36()) + 1);
+		}
 	}
-	public void initIntervaland0(Model lottery){
+
+	public void initIntervaland0(Model lottery) {
 		lottery.setIntegerervaland1(0);
 		lottery.setIntegerervaland2(0);
 		lottery.setIntegerervaland3(0);
@@ -2320,7 +1830,7 @@ public class Model extends BaseModelObject {
 		lottery.setIntegerervalandtotal(0);
 	}
 
-	public void initIntervaland1(Model lottery){
+	public void initIntervaland1(Model lottery) {
 		lottery.setIntegerervaland1(1);
 		lottery.setIntegerervaland2(1);
 		lottery.setIntegerervaland3(1);
@@ -2365,206 +1875,246 @@ public class Model extends BaseModelObject {
 		lottery.setIntegerervalandpostmin(0);
 		lottery.setIntegerervalandtotal(0);
 	}
-	public void calcIntervaland0(Model lottery,Model plottery,int num){
-		if(num==1){
-			int intervaland =Check.toString(plottery.getIntegerervaland1());
+
+	public void calcIntervaland0(Model lottery, Model plottery, int num) {
+		if (num == 1) {
+			int intervaland = Check.toString(plottery.getIntegerervaland1());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland1(0);
-		}else if(num==2){
-			int intervaland =Check.toString(plottery.getIntegerervaland2());
+		} else if (num == 2) {
+			int intervaland = Check.toString(plottery.getIntegerervaland2());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland2(0); 
-		}else if(num==3){
-			int intervaland =Check.toString(plottery.getIntegerervaland3());
+			lottery.setIntegerervaland2(0);
+		} else if (num == 3) {
+			int intervaland = Check.toString(plottery.getIntegerervaland3());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland3(0);
-		}else if(num==4){
-			int intervaland =Check.toString(plottery.getIntegerervaland4());
+		} else if (num == 4) {
+			int intervaland = Check.toString(plottery.getIntegerervaland4());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland4(0);
-		}else if(num==5){
-			int intervaland =Check.toString(plottery.getIntegerervaland5());
+		} else if (num == 5) {
+			int intervaland = Check.toString(plottery.getIntegerervaland5());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland5(0);
-		}else if(num==6){
-			int intervaland =Check.toString(plottery.getIntegerervaland6());
+		} else if (num == 6) {
+			int intervaland = Check.toString(plottery.getIntegerervaland6());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland6(0);
-		}else if(num==7){
-			int intervaland =Check.toString(plottery.getIntegerervaland7());
+		} else if (num == 7) {
+			int intervaland = Check.toString(plottery.getIntegerervaland7());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland7(0);
-		}else if(num==8){
-			int intervaland =Check.toString(plottery.getIntegerervaland8());
+		} else if (num == 8) {
+			int intervaland = Check.toString(plottery.getIntegerervaland8());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland8(0);
-		}else if(num==9){
-			int intervaland =Check.toString(plottery.getIntegerervaland9());
+		} else if (num == 9) {
+			int intervaland = Check.toString(plottery.getIntegerervaland9());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland9(0);
-		}else if(num==10){
-			int intervaland =Check.toString(plottery.getIntegerervaland10());
+		} else if (num == 10) {
+			int intervaland = Check.toString(plottery.getIntegerervaland10());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland10(0);
-		}else if(num==11){
-			int intervaland =Check.toString(plottery.getIntegerervaland11());
+		} else if (num == 11) {
+			int intervaland = Check.toString(plottery.getIntegerervaland11());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland11(0);
-		}else if(num==12){
-			int intervaland =Check.toString(plottery.getIntegerervaland12());
+		} else if (num == 12) {
+			int intervaland = Check.toString(plottery.getIntegerervaland12());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland12(0);
-		}else if(num==13){
-			int intervaland =Check.toString(plottery.getIntegerervaland13());
+		} else if (num == 13) {
+			int intervaland = Check.toString(plottery.getIntegerervaland13());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland13(0);
-		}else if(num==14){
-			int intervaland =Check.toString(plottery.getIntegerervaland14());
+		} else if (num == 14) {
+			int intervaland = Check.toString(plottery.getIntegerervaland14());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland14(0);
-		}else if(num==15){
-			int intervaland =Check.toString(plottery.getIntegerervaland15());
+		} else if (num == 15) {
+			int intervaland = Check.toString(plottery.getIntegerervaland15());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland15(0);
-		}else if(num==16){
-			int intervaland =Check.toString(plottery.getIntegerervaland16());
+		} else if (num == 16) {
+			int intervaland = Check.toString(plottery.getIntegerervaland16());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland16(0);
-		}else if(num==17){
-			int intervaland =Check.toString(plottery.getIntegerervaland17());
+		} else if (num == 17) {
+			int intervaland = Check.toString(plottery.getIntegerervaland17());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland17(0);
-		}else if(num==18){
-			int intervaland =Check.toString(plottery.getIntegerervaland18());
+		} else if (num == 18) {
+			int intervaland = Check.toString(plottery.getIntegerervaland18());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland18(0);
-		}else if(num==19){
-			int intervaland =Check.toString(plottery.getIntegerervaland19());
+		} else if (num == 19) {
+			int intervaland = Check.toString(plottery.getIntegerervaland19());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland19(0);
-		}else if(num==20){
-			int intervaland =Check.toString(plottery.getIntegerervaland20());
+		} else if (num == 20) {
+			int intervaland = Check.toString(plottery.getIntegerervaland20());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland20(0); 
-		}else if(num==21){
-			int intervaland =Check.toString(plottery.getIntegerervaland21());
+			lottery.setIntegerervaland20(0);
+		} else if (num == 21) {
+			int intervaland = Check.toString(plottery.getIntegerervaland21());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland21(0); 
-		}else if(num==22){
-			int intervaland =Check.toString(plottery.getIntegerervaland22());
+			lottery.setIntegerervaland21(0);
+		} else if (num == 22) {
+			int intervaland = Check.toString(plottery.getIntegerervaland22());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland22(0); 
-		}else if(num==23){
-			int intervaland =Check.toString(plottery.getIntegerervaland23());
+			lottery.setIntegerervaland22(0);
+		} else if (num == 23) {
+			int intervaland = Check.toString(plottery.getIntegerervaland23());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland23(0); 
-		}else if(num==24){
-			int intervaland =Check.toString(plottery.getIntegerervaland24());
+			lottery.setIntegerervaland23(0);
+		} else if (num == 24) {
+			int intervaland = Check.toString(plottery.getIntegerervaland24());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland24(0); 
-		}else if(num==25){
-			int intervaland =Check.toString(plottery.getIntegerervaland25());
+			lottery.setIntegerervaland24(0);
+		} else if (num == 25) {
+			int intervaland = Check.toString(plottery.getIntegerervaland25());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland25(0); 
-		}else if(num==26){
-			int intervaland =Check.toString(plottery.getIntegerervaland26());
+			lottery.setIntegerervaland25(0);
+		} else if (num == 26) {
+			int intervaland = Check.toString(plottery.getIntegerervaland26());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland26(0); 
-		}else if(num==27){
-			int intervaland =Check.toString(plottery.getIntegerervaland27());
+			lottery.setIntegerervaland26(0);
+		} else if (num == 27) {
+			int intervaland = Check.toString(plottery.getIntegerervaland27());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland27(0); 
-		}else if(num==28){
-			int intervaland =Check.toString(plottery.getIntegerervaland28());
+			lottery.setIntegerervaland27(0);
+		} else if (num == 28) {
+			int intervaland = Check.toString(plottery.getIntegerervaland28());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland28(0); 
-		}else if(num==29){
-			int intervaland =Check.toString(plottery.getIntegerervaland29());
+			lottery.setIntegerervaland28(0);
+		} else if (num == 29) {
+			int intervaland = Check.toString(plottery.getIntegerervaland29());
 			intervaland(lottery, intervaland);
-			lottery.setIntegerervaland29(0); 
-		}else if(num==30){
-			int intervaland =Check.toString(plottery.getIntegerervaland30());
+			lottery.setIntegerervaland29(0);
+		} else if (num == 30) {
+			int intervaland = Check.toString(plottery.getIntegerervaland30());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland30(0);
-		}else if(num==31){
-			int intervaland =Check.toString(plottery.getIntegerervaland31());
+		} else if (num == 31) {
+			int intervaland = Check.toString(plottery.getIntegerervaland31());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland31(0);
-		}else if(num==32){
-			int intervaland =Check.toString(plottery.getIntegerervaland32());
+		} else if (num == 32) {
+			int intervaland = Check.toString(plottery.getIntegerervaland32());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland32(0);
-		}else if(num==33){
-			int intervaland =Check.toString(plottery.getIntegerervaland33());
+		} else if (num == 33) {
+			int intervaland = Check.toString(plottery.getIntegerervaland33());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland33(0);
-		}else if(num==34){
-			int intervaland =Check.toString(plottery.getIntegerervaland34());
+		} else if (num == 34) {
+			int intervaland = Check.toString(plottery.getIntegerervaland34());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland34(0);
-		}else if(num==35){
-			int intervaland =Check.toString(plottery.getIntegerervaland35());
+		} else if (num == 35) {
+			int intervaland = Check.toString(plottery.getIntegerervaland35());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland35(0);
-		}else if(num==36){
-			int intervaland =Check.toString(plottery.getIntegerervaland36());
+		} else if (num == 36) {
+			int intervaland = Check.toString(plottery.getIntegerervaland36());
 			intervaland(lottery, intervaland);
 			lottery.setIntegerervaland36(0);
 		}
-		
+
 	}
 
 	private void intervaland(Model lottery, int intervaland) {
-		lottery.setIntegerervalandtotal(Check.toString(lottery.getIntegerervalandtotal())+intervaland);
-		if(Check.toString(lottery.getIntegerervalandmin())>=intervaland){
+		lottery.setIntegerervalandtotal(Check.toString(lottery
+				.getIntegerervalandtotal()) + intervaland);
+		if (Check.toString(lottery.getIntegerervalandmin()) >= intervaland) {
 			lottery.setIntegerervalandmin(intervaland);
 		}
-		if(Check.toString(lottery.getIntegerervalandmax())<=intervaland){
+		if (Check.toString(lottery.getIntegerervalandmax()) <= intervaland) {
 			lottery.setIntegerervalandmax(intervaland);
 		}
-		lottery.setIntegerervaland(Check.toString(lottery.getIntegerervaland())+intervaland+"+");
+		lottery.setIntegerervaland(Check.toString(lottery.getIntegerervaland())
+				+ intervaland + "+");
 	}
-	
-	public void copyIntervaland0(Model lottery,Model plottery){
-			lottery.setIntegerervaland1(Check.toString(plottery.getIntegerervaland1())+1);
-			lottery.setIntegerervaland2(Check.toString(plottery.getIntegerervaland2())+1);
-			lottery.setIntegerervaland3(Check.toString(plottery.getIntegerervaland3())+1);
-			lottery.setIntegerervaland4(Check.toString(plottery.getIntegerervaland4())+1);
-			lottery.setIntegerervaland5(Check.toString(plottery.getIntegerervaland5())+1);
-			lottery.setIntegerervaland6(Check.toString(plottery.getIntegerervaland6())+1);
-			lottery.setIntegerervaland7(Check.toString(plottery.getIntegerervaland7())+1);
-			lottery.setIntegerervaland8(Check.toString(plottery.getIntegerervaland8())+1);
-			lottery.setIntegerervaland9(Check.toString(plottery.getIntegerervaland9())+1);
-			lottery.setIntegerervaland10(Check.toString(plottery.getIntegerervaland10())+1);
-			lottery.setIntegerervaland11(Check.toString(plottery.getIntegerervaland11())+1);
-			lottery.setIntegerervaland12(Check.toString(plottery.getIntegerervaland12())+1);
-			lottery.setIntegerervaland13(Check.toString(plottery.getIntegerervaland13())+1);
-			lottery.setIntegerervaland14(Check.toString(plottery.getIntegerervaland14())+1);
-			lottery.setIntegerervaland15(Check.toString(plottery.getIntegerervaland15())+1);
-			lottery.setIntegerervaland16(Check.toString(plottery.getIntegerervaland16())+1);
-			lottery.setIntegerervaland17(Check.toString(plottery.getIntegerervaland17())+1);
-			lottery.setIntegerervaland18(Check.toString(plottery.getIntegerervaland18())+1);
-			lottery.setIntegerervaland19(Check.toString(plottery.getIntegerervaland19())+1);
-			lottery.setIntegerervaland20(Check.toString(plottery.getIntegerervaland20())+1);
-			lottery.setIntegerervaland21(Check.toString(plottery.getIntegerervaland21())+1);
-			lottery.setIntegerervaland22(Check.toString(plottery.getIntegerervaland22())+1);
-			lottery.setIntegerervaland23(Check.toString(plottery.getIntegerervaland23())+1);
-			lottery.setIntegerervaland24(Check.toString(plottery.getIntegerervaland24())+1);
-			lottery.setIntegerervaland25(Check.toString(plottery.getIntegerervaland25())+1);
-			lottery.setIntegerervaland26(Check.toString(plottery.getIntegerervaland26())+1);
-			lottery.setIntegerervaland27(Check.toString(plottery.getIntegerervaland27())+1);
-			lottery.setIntegerervaland28(Check.toString(plottery.getIntegerervaland28())+1);
-			lottery.setIntegerervaland29(Check.toString(plottery.getIntegerervaland29())+1);
-			lottery.setIntegerervaland30(Check.toString(plottery.getIntegerervaland30())+1);
-			lottery.setIntegerervaland31(Check.toString(plottery.getIntegerervaland31())+1);
-			lottery.setIntegerervaland32(Check.toString(plottery.getIntegerervaland32())+1);
-			lottery.setIntegerervaland33(Check.toString(plottery.getIntegerervaland33())+1);
-			lottery.setIntegerervaland34(Check.toString(plottery.getIntegerervaland34())+1);
-			lottery.setIntegerervaland35(Check.toString(plottery.getIntegerervaland35())+1);
-			lottery.setIntegerervaland36(Check.toString(plottery.getIntegerervaland36())+1);
-			lottery.setIntegerervaland("");
+
+	public void copyIntervaland0(Model lottery, Model plottery) {
+		lottery.setIntegerervaland1(Check.toString(plottery
+				.getIntegerervaland1()) + 1);
+		lottery.setIntegerervaland2(Check.toString(plottery
+				.getIntegerervaland2()) + 1);
+		lottery.setIntegerervaland3(Check.toString(plottery
+				.getIntegerervaland3()) + 1);
+		lottery.setIntegerervaland4(Check.toString(plottery
+				.getIntegerervaland4()) + 1);
+		lottery.setIntegerervaland5(Check.toString(plottery
+				.getIntegerervaland5()) + 1);
+		lottery.setIntegerervaland6(Check.toString(plottery
+				.getIntegerervaland6()) + 1);
+		lottery.setIntegerervaland7(Check.toString(plottery
+				.getIntegerervaland7()) + 1);
+		lottery.setIntegerervaland8(Check.toString(plottery
+				.getIntegerervaland8()) + 1);
+		lottery.setIntegerervaland9(Check.toString(plottery
+				.getIntegerervaland9()) + 1);
+		lottery.setIntegerervaland10(Check.toString(plottery
+				.getIntegerervaland10()) + 1);
+		lottery.setIntegerervaland11(Check.toString(plottery
+				.getIntegerervaland11()) + 1);
+		lottery.setIntegerervaland12(Check.toString(plottery
+				.getIntegerervaland12()) + 1);
+		lottery.setIntegerervaland13(Check.toString(plottery
+				.getIntegerervaland13()) + 1);
+		lottery.setIntegerervaland14(Check.toString(plottery
+				.getIntegerervaland14()) + 1);
+		lottery.setIntegerervaland15(Check.toString(plottery
+				.getIntegerervaland15()) + 1);
+		lottery.setIntegerervaland16(Check.toString(plottery
+				.getIntegerervaland16()) + 1);
+		lottery.setIntegerervaland17(Check.toString(plottery
+				.getIntegerervaland17()) + 1);
+		lottery.setIntegerervaland18(Check.toString(plottery
+				.getIntegerervaland18()) + 1);
+		lottery.setIntegerervaland19(Check.toString(plottery
+				.getIntegerervaland19()) + 1);
+		lottery.setIntegerervaland20(Check.toString(plottery
+				.getIntegerervaland20()) + 1);
+		lottery.setIntegerervaland21(Check.toString(plottery
+				.getIntegerervaland21()) + 1);
+		lottery.setIntegerervaland22(Check.toString(plottery
+				.getIntegerervaland22()) + 1);
+		lottery.setIntegerervaland23(Check.toString(plottery
+				.getIntegerervaland23()) + 1);
+		lottery.setIntegerervaland24(Check.toString(plottery
+				.getIntegerervaland24()) + 1);
+		lottery.setIntegerervaland25(Check.toString(plottery
+				.getIntegerervaland25()) + 1);
+		lottery.setIntegerervaland26(Check.toString(plottery
+				.getIntegerervaland26()) + 1);
+		lottery.setIntegerervaland27(Check.toString(plottery
+				.getIntegerervaland27()) + 1);
+		lottery.setIntegerervaland28(Check.toString(plottery
+				.getIntegerervaland28()) + 1);
+		lottery.setIntegerervaland29(Check.toString(plottery
+				.getIntegerervaland29()) + 1);
+		lottery.setIntegerervaland30(Check.toString(plottery
+				.getIntegerervaland30()) + 1);
+		lottery.setIntegerervaland31(Check.toString(plottery
+				.getIntegerervaland31()) + 1);
+		lottery.setIntegerervaland32(Check.toString(plottery
+				.getIntegerervaland32()) + 1);
+		lottery.setIntegerervaland33(Check.toString(plottery
+				.getIntegerervaland33()) + 1);
+		lottery.setIntegerervaland34(Check.toString(plottery
+				.getIntegerervaland34()) + 1);
+		lottery.setIntegerervaland35(Check.toString(plottery
+				.getIntegerervaland35()) + 1);
+		lottery.setIntegerervaland36(Check.toString(plottery
+				.getIntegerervaland36()) + 1);
+		lottery.setIntegerervaland("");
 	}
-	public void init(Model lottery){
+
+	public void init(Model lottery) {
 		lottery.setOdd(0);
 		lottery.setEven(0);
 		lottery.setUpperareas(0);

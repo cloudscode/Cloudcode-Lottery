@@ -8,7 +8,10 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.utils.Check;
-import com.cloudcode.lottery.model.History;
+import com.cloudcode.framework.utils.UUID;
+import com.cloudcode.lottery.dao.LotteryDao;
+import com.cloudcode.lottery.model.Lottery;
+import com.cloudcode.lottery.model.base.Base;
 import com.cloudcode.lottery.model.base.Model;
 @Repository
 public class LotteryUtil {
@@ -24,14 +27,14 @@ public class LotteryUtil {
 		}
 		return false;
 	}
-	public static void calcOddEvens(int num,Model lottery) {
+	public static void calcOddEvens(int num,Base lottery) {
 		if(getOddEven(num)){
 			lottery.setOdd(Check.toString(lottery.getOdd())+1);
 		}else{
 			lottery.setEven(Check.toString(lottery.getEven())+1);
 		}
 	}
-	public static void getOddEvens(Model lottery) {
+	public static void getOddEvens(Base lottery) {
 		calcOddEvens(lottery.getA() , lottery);
 		calcOddEvens(lottery.getB(), lottery);
 		calcOddEvens(lottery.getC() , lottery);
@@ -46,7 +49,7 @@ public class LotteryUtil {
 	 * @param lottery
 	 * @return
 	 */
-	public static int getTotal(Model lottery) {
+	public static int getTotal(Base lottery) {
 		int total = lottery.getA() + lottery.getB() + lottery.getC()
 				+ lottery.getD() + lottery.getE() + lottery.getF()
 				+ lottery.getG();
@@ -72,7 +75,7 @@ public class LotteryUtil {
 	 * @param lottery
 	 * @return
 	 */
-	public static int getLength(Model lottery) {
+	public static int getLength(Base lottery) {
 		int length = lottery.getG() - lottery.getA();
 		lottery.setLength(length);
 		return length;
@@ -83,7 +86,7 @@ public class LotteryUtil {
 	 * 
 	 * @param lottery
 	 */
-	public static void getThanthree(Model lottery) {
+	public static void getThanthree(Base lottery) {
 		thanthree(lottery.getA() % 3, lottery);
 		thanthree(lottery.getB() % 3, lottery);
 		thanthree(lottery.getC() % 3, lottery);
@@ -94,7 +97,7 @@ public class LotteryUtil {
 
 	}
 
-	public static void thanthree(int three, Model lottery) {
+	public static void thanthree(int three, Base lottery) {
 		if (three == 0) {
 			lottery.setThanthreeratio0(Check.toString(lottery.getThanthreeratio0()) + 1);
 		} else if (three == 1) {
@@ -110,7 +113,7 @@ public class LotteryUtil {
 	 * 
 	 * @param lottery
 	 */
-	public static void getThanfive(Model lottery) {
+	public static void getThanfive(Base lottery) {
 		thanfive(lottery.getA() % 5, lottery);
 		thanfive(lottery.getB() % 5, lottery);
 		thanfive(lottery.getC() % 5, lottery);
@@ -121,7 +124,7 @@ public class LotteryUtil {
 
 	}
 
-	public static void thanfive(int three, Model lottery) {
+	public static void thanfive(int three, Base lottery) {
 		if (three == 0) {
 			lottery.setThanfiveratio0(Check.toString(lottery.getThanfiveratio0()) + 1);
 		} else if (three == 1) {
@@ -141,7 +144,7 @@ public class LotteryUtil {
 	 * 
 	 * @param lottery
 	 */
-	public static void getThanseven(Model lottery) {
+	public static void getThanseven(Base lottery) {
 		thanseven(lottery.getA() % 7, lottery);
 		thanseven(lottery.getB() % 7, lottery);
 		thanseven(lottery.getC() % 7, lottery);
@@ -152,7 +155,7 @@ public class LotteryUtil {
 
 	}
 
-	public static void thanseven(int three, Model lottery) {
+	public static void thanseven(int three, Base lottery) {
 		if (three == 0) {
 			lottery.setThansevenratio0(Check.toString(lottery.getThansevenratio0()) + 1);
 		} else if (three == 1) {
@@ -175,7 +178,7 @@ public class LotteryUtil {
 	 * 
 	 * @param lottery
 	 */
-	public static void getUpperLowerareas(Model lottery) {
+	public static void getUpperLowerareas(Base lottery) {
 		upperLowerareas(lottery.getA(), lottery);
 		upperLowerareas(lottery.getB(), lottery);
 		upperLowerareas(lottery.getC(), lottery);
@@ -186,7 +189,7 @@ public class LotteryUtil {
 
 	}
 
-	public static void upperLowerareas(int lo, Model lottery) {
+	public static void upperLowerareas(int lo, Base lottery) {
 		if (lo <= 18) {
 			lottery.setUpperareas(Check.toString(lottery.getUpperareas()) + 1);
 		} else {
@@ -200,7 +203,7 @@ public class LotteryUtil {
 	 * 
 	 * @param lottery
 	 */
-	public static void getfourtharea(Model lottery) {
+	public static void getfourtharea(Base lottery) {
 		fourtharea(lottery.getA(), lottery);
 		fourtharea(lottery.getB(), lottery);
 		fourtharea(lottery.getC(), lottery);
@@ -211,7 +214,7 @@ public class LotteryUtil {
 
 	}
 
-	public static void fourtharea(int lo, Model lottery) {
+	public static void fourtharea(int lo, Base lottery) {
 		if (lo <= 9) {
 			lottery.setFourtharea1(Check.toString(lottery.getFourtharea1()) + 1);
 		} else if (lo > 9 && lo <= 18) {
@@ -228,7 +231,7 @@ public class LotteryUtil {
 	 * 
 	 * @param lottery
 	 */
-	public static void getsixarea(Model lottery) {
+	public static void getsixarea(Base lottery) {
 		sixarea(lottery.getA(), lottery);
 		sixarea(lottery.getB(), lottery);
 		sixarea(lottery.getC(), lottery);
@@ -239,7 +242,7 @@ public class LotteryUtil {
 
 	}
 
-	public static void sixarea(int lo, Model lottery) {
+	public static void sixarea(int lo, Base lottery) {
 		if (lo <= 6) {
 			lottery.setSixarea1(Check.toString(lottery.getSixarea1()) + 1);
 		} else if (lo > 7 && lo <= 12) {
@@ -260,7 +263,7 @@ public class LotteryUtil {
 	 * 
 	 * @param lottery
 	 */
-	public static void getninearea(Model lottery) {
+	public static void getninearea(Base lottery) {
 		ninearea(lottery.getA(), lottery);
 		ninearea(lottery.getB(), lottery);
 		ninearea(lottery.getC(), lottery);
@@ -271,7 +274,7 @@ public class LotteryUtil {
 
 	}
 
-	public static void ninearea(int lo, Model lottery) {
+	public static void ninearea(int lo, Base lottery) {
 		if (lo <= 4) {
 			lottery.setNinearea1(Check.toString(lottery.getNinearea1()) + 1);
 		} else if (lo > 4 && lo <= 8) {
@@ -299,7 +302,7 @@ public class LotteryUtil {
 	 * @param lottery
 	 * @return
 	 */
-	public static int getConsecutivenumber(Model lottery) {
+	public static int getConsecutivenumber(Base lottery) {
 		int count = 0;
 		if (lottery.getA() + 1 == lottery.getB()) {
 			count++;
@@ -330,7 +333,7 @@ public class LotteryUtil {
 	 * @param lottery
 	 * @return
 	 */
-	public static String getNumber(String interval, Model lottery) {
+	public static String getNumber(String interval, Base lottery) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(lottery.getA());
 		sb.append(interval);
@@ -361,7 +364,7 @@ public class LotteryUtil {
 			}
 		}
 	}
-	public static void arrSort(int[] list, Model lottery) {
+	public static void arrSort(int[] list, Base lottery) {
 		arrSort(list);
 		lottery.setA(list[0]);
 		lottery.setB(list[1]);
@@ -372,7 +375,7 @@ public class LotteryUtil {
 		lottery.setG(list[6]);
 		lottery.setFirstnum(list[0]);
 	}
-	public static void arrSort(Model lottery) {
+	public static void arrSort(Base lottery) {
 		int[] list = new int[7];
 		list[0]=lottery.getA();
 		list[1]=lottery.getB();
@@ -403,7 +406,7 @@ public class LotteryUtil {
 		getLastValueAppears(lottery);
 		//getNewSideRepeatNo(lottery, parent);
 	}
-	public static void lastValueAppears(Integer temp,List<Integer> list,Model lottery){
+	public static void lastValueAppears(Integer temp,List<Integer> list,Base lottery){
 		Integer count=0;
 		for(Integer num:list){
 			if(num==temp){
@@ -414,7 +417,7 @@ public class LotteryUtil {
 			lottery.setLastvalueappears(Check.toString(lottery.getLastvalueappears())+""+temp+"+");
 		}
 	}
-	public static void getLastValueAppears(Model lottery){
+	public static void getLastValueAppears(Base lottery){
 		List<Integer> list =new ArrayList<Integer>();
 		list.add(lottery.getA() % 10);
 		list.add(lottery.getB() % 10);
@@ -437,7 +440,7 @@ public class LotteryUtil {
 		if(null != lottery.getLastvalueappears() && lottery.getLastvalueappears().endsWith("+"))
 		lottery.setLastvalueappears(lottery.getLastvalueappears().substring(0,lottery.getLastvalueappears().length()-1));
 	}
-	public static void getThanTheHorizontalSpacing(Model lottery){
+	public static void getThanTheHorizontalSpacing(Base lottery){
 		lottery.setThanthehorizontalspacing((lottery.getB()-lottery.getA())+":"+(lottery.getC()-lottery.getB())
 				+":"+(lottery.getD()-lottery.getC())
 				+":"+(lottery.getE()-lottery.getD())
@@ -454,7 +457,7 @@ public class LotteryUtil {
 	 * T值
 	 * @param lottery
 	 */
-	public static void getT(Model lottery) {
+	public static void getT(Base lottery) {
 		int[] list = new int[7];
 		list[0]=lottery.getA();
 		list[1]=lottery.getB();
@@ -476,7 +479,7 @@ public class LotteryUtil {
 			}
 		}
 		lottery.setT(map.size()-7);
-		System.out.println(map.size()-7);
+		//System.out.println(map.size()-7);
 	}
 	/**
 	 * 新边重号
@@ -584,7 +587,7 @@ public class LotteryUtil {
 		return list;
 	}
 	public static void main(String[] args) {
-		System.out.println(LotteryUtil.getOddEven(17));
+		/*System.out.println(LotteryUtil.getOddEven(17));
 		System.out.println(8 % 3);
 		Model lottery = new Model();
 		lottery.setA(3);
@@ -607,7 +610,8 @@ public class LotteryUtil {
 		LotteryUtil.getConsecutivenumber(lottery);
 		LotteryUtil.getNewSideRepeatNo(lottery, plottery);
 		System.out.println(lottery.getNewno()+":"+lottery.getNoside()+":"+lottery.getRepeatno());
-		System.out.println("连号个数：" + lottery.getConsecutivenumber());
+		System.out.println("连号个数：" + lottery.getConsecutivenumber());*/
+		//Lottery( );
 	}
 	/**
 	 * 热度
@@ -645,5 +649,54 @@ public class LotteryUtil {
 				 lottery.setIntegerervaland(lottery.getIntegerervaland().substring(0, lottery.getIntegerervaland().length()-1));
 			 }
 //		}
+	}
+	public static void calcBaseLottery(Base lottery) {
+		lottery.init(lottery);
+		getOddEvens(lottery);//奇偶
+		getTotal(lottery);//总和
+		getLength(lottery);//长度
+		getThanthree(lottery);
+		getThanfive(lottery);
+		getThanseven(lottery);
+		getUpperLowerareas(lottery);
+		getfourtharea(lottery);
+		getsixarea(lottery);
+		getninearea(lottery);
+		getConsecutivenumber(lottery);
+		getNumber(",", lottery);
+		getT(lottery);
+		getThanTheHorizontalSpacing(lottery);
+		getLastValueAppears(lottery);
+		
+	}
+	public static void initBaseLottery(LotteryDao lotteryDao) {
+		for(int a=1;a<37;a++){
+			for(int b=a+1;b<37;b++){
+				for(int c=b+1;c<37;c++){
+					for(int d=c+1;d<37;d++){
+						for(int e=d+1;e<37;e++){
+							for(int f=e+1;f<37;f++){
+								for(int g=f+1;g<37;g++){
+									Lottery lottery=new Lottery();
+									lottery.setId(UUID.generateUUID());
+									lottery.setA(a);
+									lottery.setB(b);
+									lottery.setC(c);
+									lottery.setD(d);
+									lottery.setE(e);
+									lottery.setF(f);
+									lottery.setG(g);
+									arrSort(lottery);
+									calcBaseLottery(lottery);
+									lotteryDao.addLottery(lottery);
+									System.out.println(a+":"+b+":"+c+":"+d+":"+e+":"+f+":"+g );
+								}
+							}
+						}
+					}
+				}
+			 
+			}
+		}
 	}
 }

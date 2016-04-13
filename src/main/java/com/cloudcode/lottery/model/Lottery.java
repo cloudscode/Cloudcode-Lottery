@@ -4,12 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.cloudcode.lottery.ProjectConfig;
-import com.cloudcode.lottery.model.base.Model;
+import com.cloudcode.lottery.model.base.Base;
 
 @Entity(name = ProjectConfig.NAME + "lottery")
 @Table(name = ProjectConfig.NAME + "_lottery")
 @org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
-public class Lottery extends Model{
+public class Lottery extends Base{
 	/**
 	 * 
 	 */

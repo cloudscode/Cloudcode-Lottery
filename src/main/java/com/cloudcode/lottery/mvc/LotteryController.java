@@ -55,7 +55,7 @@ public class LotteryController extends CrudController<Lottery> {
 		
 		Lottery lottery = new Lottery();
 		lotteryUtil.arrSort(number,lottery);
-		lotteryUtil.calcLottery(lottery);
+		lotteryUtil.calcBaseLottery(lottery);
 		return new ServiceResult(ReturnResult.SUCCESS,"",lottery);
 	}
 	@RequestMapping(value = "calculation")
@@ -83,8 +83,17 @@ public class LotteryController extends CrudController<Lottery> {
 		
 		Lottery lottery = new Lottery();
 		lotteryUtil.arrSort(number,lottery);
-		lotteryUtil.calcLottery(lottery);
+		lotteryUtil.calcBaseLottery(lottery);
 		modelAndView.addObject("lottery", lottery);
 		return modelAndView;
+	}
+	@RequestMapping(value = "/init",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody
+	Object init( HttpServletRequest request) {
+		 
+		 
+		lotteryUtil.initBaseLottery( lotteryDao);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }

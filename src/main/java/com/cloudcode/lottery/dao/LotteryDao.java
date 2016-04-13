@@ -13,5 +13,8 @@ import com.cloudcode.lottery.model.Lottery;
 public class LotteryDao extends BaseModelObjectDao<Lottery> {
 	@Resource(name = ProjectConfig.PREFIX + "lotteryDao")
 	private ModelObjectDao<Lottery> lotteryDao;
-	
+
+	public void addLottery(Lottery entity) {
+		lotteryDao.createObject(entity);
+	}
 }
