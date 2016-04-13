@@ -8,6 +8,7 @@ import com.cloudcode.framework.annotation.ModuleConfig;
 import com.cloudcode.framework.bean.ProjectBeanNameGenerator;
 import com.cloudcode.framework.dao.ModelObjectDao;
 import com.cloudcode.framework.dao.impl.BaseDaoImpl;
+import com.cloudcode.lottery.model.Forecast;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 
@@ -26,5 +27,9 @@ public class ProjectConfig {
 	@Bean(name=PREFIX+"historyDao")
 	public ModelObjectDao<History> generateHistoryDao(){
 		return new BaseDaoImpl<History>();
+	}
+	@Bean(name=PREFIX+"forecastDao")
+	public ModelObjectDao<Forecast> generateForecastDao(){
+		return new BaseDaoImpl<Forecast>();
 	}
 }
