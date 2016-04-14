@@ -702,7 +702,7 @@ public class LotteryUtil {
 		GenerateNum(lotteryDao,30);
 	}
 	private static void GenerateNum(LotteryDao lotteryDao,int num) {
-		for(int a=num;a<37;a++){
+		for(int a=num;a<=num;a++){
 			for(int b=a+1;b<37;b++){
 				for(int c=b+1;c<37;c++){
 					for(int d=c+1;d<37;d++){

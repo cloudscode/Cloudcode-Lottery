@@ -9,6 +9,7 @@ import com.cloudcode.framework.bean.ProjectBeanNameGenerator;
 import com.cloudcode.framework.dao.ModelObjectDao;
 import com.cloudcode.framework.dao.impl.BaseDaoImpl;
 import com.cloudcode.lottery.model.Forecast;
+import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 
@@ -31,5 +32,9 @@ public class ProjectConfig {
 	@Bean(name=PREFIX+"forecastDao")
 	public ModelObjectDao<Forecast> generateForecastDao(){
 		return new BaseDaoImpl<Forecast>();
+	}
+	@Bean(name=PREFIX+"forecastIssueDao")
+	public ModelObjectDao<ForecastIssue> generateForecastIssueDao(){
+		return new BaseDaoImpl<ForecastIssue>();
 	}
 }
