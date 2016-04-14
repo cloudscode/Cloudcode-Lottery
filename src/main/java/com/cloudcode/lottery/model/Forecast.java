@@ -18,6 +18,7 @@ public class Forecast extends Model{
 	private String issue;
 	private String serialnum;
 	private String lid;
+	private String issueid;
 	public String getIssue() {
 		return issue;
 	}
@@ -35,6 +36,12 @@ public class Forecast extends Model{
 	}
 	public void setLid(String lid) {
 		this.lid = lid;
+	}
+	public String getIssueid() {
+		return issueid;
+	}
+	public void setIssueid(String issueid) {
+		this.issueid = issueid;
 	}
 	
 }

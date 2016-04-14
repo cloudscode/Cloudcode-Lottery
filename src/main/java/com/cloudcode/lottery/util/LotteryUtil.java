@@ -670,7 +670,39 @@ public class LotteryUtil {
 		
 	}
 	public static void initBaseLottery(LotteryDao lotteryDao) {
-		for(int a=1;a<37;a++){
+		GenerateNum(lotteryDao,1);
+		GenerateNum(lotteryDao,2);
+		GenerateNum(lotteryDao,3);
+		GenerateNum(lotteryDao,4);
+		GenerateNum(lotteryDao,5);
+		GenerateNum(lotteryDao,6);
+		GenerateNum(lotteryDao,7);
+		GenerateNum(lotteryDao,8);
+		GenerateNum(lotteryDao,9);
+		GenerateNum(lotteryDao,10);
+		GenerateNum(lotteryDao,11);
+		GenerateNum(lotteryDao,12);
+		GenerateNum(lotteryDao,13);
+		GenerateNum(lotteryDao,14);
+		GenerateNum(lotteryDao,15);
+		GenerateNum(lotteryDao,16);
+		GenerateNum(lotteryDao,17);
+		GenerateNum(lotteryDao,18);
+		GenerateNum(lotteryDao,19);
+		GenerateNum(lotteryDao,20);
+		GenerateNum(lotteryDao,21);
+		GenerateNum(lotteryDao,22);
+		GenerateNum(lotteryDao,23);
+		GenerateNum(lotteryDao,24);
+		GenerateNum(lotteryDao,25);
+		GenerateNum(lotteryDao,26);
+		GenerateNum(lotteryDao,27);
+		GenerateNum(lotteryDao,28);
+		GenerateNum(lotteryDao,29);
+		GenerateNum(lotteryDao,30);
+	}
+	private static void GenerateNum(LotteryDao lotteryDao,int num) {
+		for(int a=num;a<37;a++){
 			for(int b=a+1;b<37;b++){
 				for(int c=b+1;c<37;c++){
 					for(int d=c+1;d<37;d++){
