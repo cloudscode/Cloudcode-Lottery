@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,11 +21,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cloudcode.framework.controller.CrudController;
 import com.cloudcode.framework.rest.ReturnResult;
 import com.cloudcode.framework.service.ServiceResult;
+import com.cloudcode.framework.utils.Check;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.ForecastDao;
+import com.cloudcode.lottery.dao.LotteryDao;
 import com.cloudcode.lottery.model.Forecast;
+import com.cloudcode.lottery.model.Lottery;
 
 @Controller
 @RequestMapping({ "/forecast" })
@@ -32,7 +36,9 @@ public class ForecastController extends CrudController<Forecast> {
 
 	@Autowired
 	private  ForecastDao forecastDao;
-	 
+	@Autowired
+	private LotteryDao lotteryDao;
+	
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody
 	void addForecast(@RequestBody  Forecast forecast) {
@@ -98,7 +104,17 @@ public class ForecastController extends CrudController<Forecast> {
 	public @ResponseBody
 	Object search(HttpServletRequest request) {
 		String OddEven=request.getParameter("oddeven");
-		 
-		return new ServiceResult(ReturnResult.SUCCESS,"");
+		
+		Criteria criterion = lotteryDao.getSession().createCriteria(Lottery.class);
+		if(!Check.isEmpty(OddEven)){
+			String odd=OddEven.split(":")[0];
+			String even=OddEven.split(":")[1];
+			criterion.add(Restrictions.eq("odd", Integer.parseInt(odd)) );
+			criterion.add(Restrictions.eq("even", Integer.parseInt(even)) );
+		}
+		//criterion.addOrder(Order.desc("issue"));
+		List<Lottery> lists=lotteryDao.loadAll(criterion);
+		
+		return new ServiceResult(ReturnResult.SUCCESS,lists);
 	}
 }
