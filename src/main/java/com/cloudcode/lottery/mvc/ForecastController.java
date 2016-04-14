@@ -87,4 +87,18 @@ public class ForecastController extends CrudController<Forecast> {
 		modelAndView.addObject("forecast",forecast);
 		return modelAndView;
 	}
+	@RequestMapping(value = "toSearch")
+	public ModelAndView toSearch() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/search.ftl");
+		return modelAndView;
+	}
+	@RequestMapping(value = "/search",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody
+	Object search(HttpServletRequest request) {
+		String OddEven=request.getParameter("oddeven");
+		 
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
 }
