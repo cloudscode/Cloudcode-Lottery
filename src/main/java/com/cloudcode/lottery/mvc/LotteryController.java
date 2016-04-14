@@ -95,7 +95,7 @@ public class LotteryController extends CrudController<Lottery> {
 	Object init( HttpServletRequest request) {
 		 
 		 
-		lotteryUtil.initBaseLottery( lotteryDao);
+		lotteryUtil.initBaseLotteryThread( lotteryDao);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 	@RequestMapping(value = "query", method = RequestMethod.GET, produces = "application/json")

@@ -701,6 +701,129 @@ public class LotteryUtil {
 		GenerateNum(lotteryDao,29);
 		GenerateNum(lotteryDao,30);
 	}
+	public static void initBaseLotteryThread(LotteryDao lotteryDao) {
+		GenerateNumber generateNumber1=new GenerateNumber(lotteryDao, 1);
+		Thread t1 = new Thread(generateNumber1);
+	    t1.start();
+	    GenerateNumber generateNumber2=new GenerateNumber(lotteryDao, 2);
+		Thread t2 = new Thread(generateNumber2);
+	    t2.start();
+	    GenerateNumber generateNumber3=new GenerateNumber(lotteryDao, 3);
+		Thread t3 = new Thread(generateNumber3);
+	    t3.start();
+	    GenerateNumber generateNumber4=new GenerateNumber(lotteryDao,4 );
+		Thread t4 = new Thread(generateNumber4);
+	    t4.start();
+	    GenerateNumber generateNumber5=new GenerateNumber(lotteryDao, 5);
+		Thread t5 = new Thread(generateNumber5);
+	    t5.start();
+	    GenerateNumber generateNumber6=new GenerateNumber(lotteryDao, 6);
+		Thread t6 = new Thread(generateNumber6);
+	    t6.start();
+	    GenerateNumber generateNumber7=new GenerateNumber(lotteryDao, 7);
+		Thread t7 = new Thread(generateNumber7);
+	    t7.start();
+	    GenerateNumber generateNumber8=new GenerateNumber(lotteryDao, 8);
+		Thread t8 = new Thread(generateNumber8);
+	    t8.start();
+	    GenerateNumber generateNumber9=new GenerateNumber(lotteryDao,9 );
+		Thread t9 = new Thread(generateNumber9);
+	    t9.start();
+	    GenerateNumber generateNumber10=new GenerateNumber(lotteryDao,10 );
+		Thread t10 = new Thread(generateNumber10);
+	    t10.start();
+	    GenerateNumber generateNumber11=new GenerateNumber(lotteryDao, 11);
+		Thread t11 = new Thread(generateNumber11);
+	    t11.start();
+	    GenerateNumber generateNumber12=new GenerateNumber(lotteryDao, 12);
+		Thread t12 = new Thread(generateNumber12);
+	    t12.start();
+	    GenerateNumber generateNumber13=new GenerateNumber(lotteryDao, 13);
+		Thread t13 = new Thread(generateNumber13);
+	    t13.start();
+	    GenerateNumber generateNumber14=new GenerateNumber(lotteryDao, 14);
+		Thread t14 = new Thread(generateNumber14);
+	    t14.start();
+	    GenerateNumber generateNumber15=new GenerateNumber(lotteryDao,15 );
+		Thread t15 = new Thread(generateNumber15);
+	    t15.start();
+	    GenerateNumber generateNumber16=new GenerateNumber(lotteryDao,16 );
+		Thread t16 = new Thread(generateNumber16);
+	    t16.start();
+	    GenerateNumber generateNumber17=new GenerateNumber(lotteryDao,17 );
+		Thread t17 = new Thread(generateNumber17);
+	    t17.start();
+	    GenerateNumber generateNumber18=new GenerateNumber(lotteryDao, 18);
+		Thread t18 = new Thread(generateNumber18);
+	    t18.start();
+	    GenerateNumber generateNumber19=new GenerateNumber(lotteryDao,19 );
+		Thread t19 = new Thread(generateNumber19);
+	    t19.start();
+	    GenerateNumber generateNumber20=new GenerateNumber(lotteryDao, 20);
+		Thread t20 = new Thread(generateNumber20);
+	    t20.start();
+	    GenerateNumber generateNumber21=new GenerateNumber(lotteryDao, 21);
+		Thread t21 = new Thread(generateNumber21);
+	    t21.start();
+	    GenerateNumber generateNumber22=new GenerateNumber(lotteryDao, 22);
+		Thread t22 = new Thread(generateNumber22);
+	    t22.start();
+	    GenerateNumber generateNumber23=new GenerateNumber(lotteryDao, 23);
+		Thread t23 = new Thread(generateNumber23);
+	    t23.start();
+	    GenerateNumber generateNumber24=new GenerateNumber(lotteryDao, 24);
+		Thread t24 = new Thread(generateNumber24);
+	    t24.start();
+	    GenerateNumber generateNumber25=new GenerateNumber(lotteryDao, 25);
+		Thread t25 = new Thread(generateNumber25);
+	    t25.start();
+	    GenerateNumber generateNumber26=new GenerateNumber(lotteryDao, 26);
+		Thread t26 = new Thread(generateNumber26);
+	    t26.start();
+	    GenerateNumber generateNumber27=new GenerateNumber(lotteryDao, 27);
+		Thread t27 = new Thread(generateNumber27);
+	    t27.start();
+	    GenerateNumber generateNumber28=new GenerateNumber(lotteryDao, 28);
+		Thread t28 = new Thread(generateNumber28);
+	    t28.start();
+	    GenerateNumber generateNumber29=new GenerateNumber(lotteryDao, 29);
+		Thread t29 = new Thread(generateNumber29);
+	    t29.start();
+	    GenerateNumber generateNumber30=new GenerateNumber(lotteryDao, 30);
+	  	Thread t30 = new Thread(generateNumber30);
+	  	t30.start();
+	}
+	static class GenerateNumber extends Thread{
+		 public GenerateNumber(){
+			 
+		 }
+		 public GenerateNumber(LotteryDao lotteryDao,int num){
+			 this.lotteryDao = lotteryDao;
+			 this.num =num;
+		 }
+		 private LotteryDao lotteryDao;
+		 private int num;
+		 
+	     public LotteryDao getLotteryDao() {
+			return lotteryDao;
+		}
+
+		public void setLotteryDao(LotteryDao lotteryDao) {
+			this.lotteryDao = lotteryDao;
+		}
+
+		public int getNum() {
+			return num;
+		}
+
+		public void setNum(int num) {
+			this.num = num;
+		}
+
+		public void run(){
+			GenerateNum(getLotteryDao(),getNum());
+	     }
+	 }
 	private static void GenerateNum(LotteryDao lotteryDao,int num) {
 		for(int a=num;a<=num;a++){
 			for(int b=a+1;b<37;b++){
