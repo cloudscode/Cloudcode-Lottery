@@ -96,7 +96,7 @@ public class HistoryLotteryController extends CrudController<History> {
 				  History phistory=lists2.get(i-1);
 				  System.out.println(phistory.getIssue());
 				  System.out.println(history.getIssue());
-				  lotteryUtil.getIntervaland(history, phistory, i);
+				  lotteryUtil.getIntervaland(history, phistory);
 				  lotteryUtil.getHeat(history, phistory, i);
 				}
 			}

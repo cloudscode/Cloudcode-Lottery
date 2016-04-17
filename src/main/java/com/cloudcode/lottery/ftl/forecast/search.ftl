@@ -16,7 +16,7 @@ select{
 <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true"> 
 <div id="dialogDiv">
 <div class="container" id="layout">
-<form role="form" class="form-horizontal" id="myFormId" action="${request.getContextPath()}/menus/createMenu" method="post">
+<form role="form" class="form-horizontal" id="myFormId" >
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">奇偶比</label>
     <div class="col-sm-2 content">
@@ -33,6 +33,8 @@ select{
     </div>
     
    </div>
+
+</form>
  <div class="container" id="layout" style="text-align: center;">
    <div class="col-lg-12 col-sm-12">
 
@@ -42,16 +44,25 @@ select{
          
 </div>
 </div>
-</form>
 
 </div>
 <#include "classpath:com/cloudcode/framework/common/ftl/vendor.ftl"/>
 <script type="text/javascript">
  $( "#search" ).click(function(){
  		
-	  $.post('${request.getContextPath()}/forecast/search',$('form#myFormId').serialize(),function(result){
-       
-     });
+	  /*$.post('${request.getContextPath()}/forecast/search',$('form#myFormId').serialize(),function(result){
+      		 window.location.href='${request.getContextPath()}/forecast/toList';
+     });*/
+     
+       $.ajax({
+			        url: '${request.getContextPath()}/forecast/search',
+			        type: 'post',
+			        dataType: 'json',
+			        data: $('form#myFormId').serialize(),
+			        success: function(data) {
+ 						 window.location.href='${request.getContextPath()}/historyLottery/toList';
+			        }
+			    });
 });
 $( "#cancel" ).click(function(){
 	 

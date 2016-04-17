@@ -569,6 +569,12 @@ public class LotteryUtil {
 			 }
 		 }
 	}
+	/*public static void getRatioNoNumbers(Model lottery,List<Model> lists){
+		getRatioNoNumbers(lottery,lists,3);
+		getRatioNoNumbers(lottery,lists,5);
+		getRatioNoNumbers(lottery,lists,7);
+		getRatioNoNumbers(lottery,lists,10);
+	}*/
 	public static int ratioNoMaps(int num, Map<Integer,Integer> maps) {
 		if(maps.containsKey(num)){
 			return 1;
@@ -630,13 +636,20 @@ public class LotteryUtil {
 			 }
 		}
 	}
+	public static void getHeat(Model lottery,Model plottery) {
+		 List<Integer> list = tolist(lottery);
+		 for(Integer num:list){
+			 lottery.copyHeat0(lottery, plottery);
+			 lottery.calcHeat0(lottery, plottery, num);
+		 }
+	}
 	/**
 	 * 间隔和
 	 * @param lottery
 	 * @param plottery
 	 * @param i
 	 */
-	public static void getIntervaland(Model lottery,Model plottery,int i) {
+	public static void getIntervaland(Model lottery,Model plottery) {
 //		if(i==0){
 //			lottery.initIntervaland0(lottery);
 //		}else{
