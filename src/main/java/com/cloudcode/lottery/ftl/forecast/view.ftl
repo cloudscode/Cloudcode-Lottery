@@ -19,7 +19,7 @@ padding-top: 9px;
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">号码</label>
     <div class="col-sm-2 content">
-      ${history.strnum}
+      ${forecast.strnum}
     </div>
     
    </div>
@@ -27,65 +27,65 @@ padding-top: 9px;
    <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">长度</label>
     <div class="col-sm-2 content">
-      ${history.length}
+      ${forecast.length}
     </div>
     <label for="inputEmail3" class="col-sm-2 control-label">间隔和</label>
     <div class="col-sm-2 content">
-      ${history.integerervaland!''}
+      ${forecast.integerervaland!''}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">总和</label>
     <div class="col-sm-2 content">
-      ${history.total}
+      ${forecast.total}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">新 边重</label>
     <div class="col-sm-2 content">
-      ${history.newno!'0'}:${history.noside!'0'}:${history.repeatno!'0'}
+      ${forecast.newno!'0'}:${forecast.noside!'0'}:${forecast.repeatno!'0'}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">尾数值</label>
     <div class="col-sm-2 content">
-      ${history.lastvalueappears}
+      ${forecast.lastvalueappears}
     </div>
    </div>
    
    <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">奇偶比</label>
     <div class="col-sm-2 content">
-      ${history.odd}:${history.even}
+      ${forecast.odd}:${forecast.even}
     </div>
     <label for="inputEmail3" class="col-sm-2 control-label">上下区比</label>
     <div class="col-sm-2 content">
-      ${history.upperareas}:${history.lowerareas}
+      ${forecast.upperareas}:${forecast.lowerareas}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">4区</label>
     <div class="col-sm-2 content">
-      ${history.fourtharea1!'0'}:${history.fourtharea2!'0'}:${history.fourtharea3!'0'}:${history.fourtharea4!'0'}
+      ${forecast.fourtharea1!'0'}:${forecast.fourtharea2!'0'}:${forecast.fourtharea3!'0'}:${forecast.fourtharea4!'0'}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">6区</label>
     <div class="col-sm-2 content">
-      ${history.sixarea1!'0'}:${history.sixarea2!'0'}:${history.sixarea3!'0'}:${history.sixarea4!'0'}:${history.sixarea5!'0'}:${history.sixarea6!'0'}
+      ${forecast.sixarea1!'0'}:${forecast.sixarea2!'0'}:${forecast.sixarea3!'0'}:${forecast.sixarea4!'0'}:${forecast.sixarea5!'0'}:${forecast.sixarea6!'0'}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">9区</label>
     <div class="col-sm-2 content">
-      ${history.ninearea1!'0'}:${history.ninearea2!'0'}:${history.ninearea3!'0'}:${history.ninearea4!'0'}:${history.ninearea5!'0'}:${history.ninearea6!'0'}:${history.ninearea7!'0'}:${history.ninearea8!'0'}:${history.ninearea9!'0'}
+      ${forecast.ninearea1!'0'}:${forecast.ninearea2!'0'}:${forecast.ninearea3!'0'}:${forecast.ninearea4!'0'}:${forecast.ninearea5!'0'}:${forecast.ninearea6!'0'}:${forecast.ninearea7!'0'}:${forecast.ninearea8!'0'}:${forecast.ninearea9!'0'}
     </div>
    </div>
    
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">余3</label>
     <div class="col-sm-2 content">
-      ${history.thanthreeratio0!'0'}:${history.thanthreeratio1!'0'}:${history.thanthreeratio2!'0'}
+      ${forecast.thanthreeratio0!'0'}:${forecast.thanthreeratio1!'0'}:${forecast.thanthreeratio2!'0'}
     </div>
     <label for="inputEmail3" class="col-sm-2 control-label">余5</label>
     <div class="col-sm-2 content">
-      ${history.thanfiveratio0!'0'}:${history.thanfiveratio1!'0'}:${history.thanfiveratio2!'0'}:${history.thanfiveratio3!'0'}:${history.thanfiveratio4!'0'}
+      ${forecast.thanfiveratio0!'0'}:${forecast.thanfiveratio1!'0'}:${forecast.thanfiveratio2!'0'}:${forecast.thanfiveratio3!'0'}:${forecast.thanfiveratio4!'0'}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">余7</label>
     <div class="col-sm-2 content">
-      ${history.thansevenratio0!'0'}:${history.thansevenratio1!'0'}:${history.thansevenratio2!'0'}:${history.thansevenratio3!'0'}:${history.thansevenratio4!'0'}:${history.thansevenratio5!'0'}:${history.thansevenratio6!'0'}
+      ${forecast.thansevenratio0!'0'}:${forecast.thansevenratio1!'0'}:${forecast.thansevenratio2!'0'}:${forecast.thansevenratio3!'0'}:${forecast.thansevenratio4!'0'}:${forecast.thansevenratio5!'0'}:${forecast.thansevenratio6!'0'}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">连号</label>
     <div class="col-sm-2 content">
-      ${history.consecutivenumber}
+      ${forecast.consecutivenumber}
     </div>
    </div>
    
@@ -93,19 +93,19 @@ padding-top: 9px;
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">横向间隔比</label>
     <div class="col-sm-2 content">
-      ${history.thanthehorizontalspacing}
+      ${forecast.thanthehorizontalspacing}
     </div>
     <label for="inputEmail3" class="col-sm-2 control-label">与上三期号码数比</label>
     <div class="col-sm-2 content">
-      ${history.ratioonthethreenumbers}
+      ${forecast.ratioonthethreenumbers}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">与上五期号码数比</label>
     <div class="col-sm-2 content">
-      ${history.upperareas}:${history.lowerareas}
+      ${forecast.upperareas}:${forecast.lowerareas}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">与上七期号码数比</label>
     <div class="col-sm-2 content">
-      ${history.upperareas}:${history.lowerareas}
+      ${forecast.upperareas}:${forecast.lowerareas}
     </div>
    </div>
    
@@ -113,19 +113,19 @@ padding-top: 9px;
    
     <label for="inputEmail3" class="col-sm-2 control-label">与上三期号码数比</label>
     <div class="col-sm-2 content">
-      ${history.ratioonthethreenumbers}
+      ${forecast.ratioonthethreenumbers}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">与上五期号码数比</label>
     <div class="col-sm-2 content">
-      ${history.ratioonthefivenumbers}
+      ${forecast.ratioonthefivenumbers}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">与上七期号码数比</label>
     <div class="col-sm-2 content">
-      ${history.ratioonthesevennumbers}
+      ${forecast.ratioonthesevennumbers}
     </div>
      <label for="inputEmail3" class="col-sm-2 control-label">与上十期号码数比</label>
     <div class="col-sm-2 content">
-      ${history.ratioonthetennumbers}
+      ${forecast.ratioonthetennumbers}
     </div>
    </div>
    

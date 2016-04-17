@@ -62,7 +62,7 @@ function addCellAttr3(rowId, val, rawObject, cm, rdata) {
 $(function(){
     if ($.fn.jqGrid){
        grid =  $("#jqGrid01").jqGrid({
-           url:"${request.getContextPath()}/lottery/query",
+           url:"${request.getContextPath()}/forecast/query",
             datatype: "json",
             height: 250,
             rowNum: 10,
@@ -277,7 +277,7 @@ var id;
 	 	 modal: true,
 	 	 width:800,
 		open: function(event, ui) {
-  			$('#divInDialog').load('${request.getContextPath()}/lottery/'+id+'/toView', function() {
+  			$('#divInDialog').load('${request.getContextPath()}/forecast/'+id+'/toView', function() {
  		 	 });
 	  },	   
     close: function (event, ui) {  

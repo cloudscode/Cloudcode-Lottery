@@ -60,7 +60,7 @@ select{
 			        dataType: 'json',
 			        data: $('form#myFormId').serialize(),
 			        success: function(data) {
- 						 window.location.href='${request.getContextPath()}/historyLottery/toList';
+ 						 window.location.href='${request.getContextPath()}/forecast/toList';
 			        }
 			    });
 });
