@@ -65,7 +65,7 @@ select{
 			    });
 });
 $( "#cancel" ).click(function(){
-	 
+	 window.location.href='${request.getContextPath()}/forecast/toList';
 });
 </script>
 </div>

@@ -224,18 +224,7 @@ $(function(){
     }
 
 $( "#openwindow" ).click(function(){
-	$( "#divInDialog" ).dialog({
-	 	 modal: true,
-	 	 width:800,
-		open: function(event, ui) {
-  			 $('#divInDialog').load('${request.getContextPath()}/futurestypes/create', function() {
-   				
- 		 	 });
-	 	 },	   
-	    close: function (event, ui) {  
-	       grid.trigger("reloadGrid");
-	    }  
-	});
+	 window.location.href='${request.getContextPath()}/forecast/toSearch';
 });
 $( "#edit" ).click(function(){
 	var id; 
