@@ -111,6 +111,12 @@ public class ForecastController extends CrudController<Forecast> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/search.ftl");
 		return modelAndView;
 	}
+	@RequestMapping(value = "toCalcSearch")
+	public ModelAndView toCalcSearch() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/searchcalc.ftl");
+		return modelAndView;
+	}
 	@RequestMapping(value = "/search",  method = {
 			RequestMethod.POST,RequestMethod.GET})
 	public @ResponseBody

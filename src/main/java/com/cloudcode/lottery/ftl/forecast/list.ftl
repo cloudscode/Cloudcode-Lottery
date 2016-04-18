@@ -9,8 +9,8 @@
 <div class="container" id="layout">
 <div class="col-lg-9 col-sm-9" id="article">
 <section id="button">
-        <button id="openwindow" class="ui-button-success">添加</button>
-        <button id="edit" class="ui-button-primary">编辑</button>
+        <button id="openwindow" class="ui-button-success">预测</button>
+        <button id="edit" class="ui-button-primary">查询</button>
         <button id="view" class="ui-button-warning">查看</button>
         <button id="delete" class="ui-button-danger">删除</button>
         <button id="refresh" class="ui-button-info">刷新</button>
@@ -227,19 +227,7 @@ $( "#openwindow" ).click(function(){
 	 window.location.href='${request.getContextPath()}/forecast/toSearch';
 });
 $( "#edit" ).click(function(){
-	var id; 
-	id = grid.jqGrid('getGridParam','selarrrow');
-	$( "#divInDialog" ).dialog({
-	 	 modal: true,
-	 	 width:800,
-		open: function(event, ui) {
-  			$('#divInDialog').load('${request.getContextPath()}/futurestypes/'+id+'/update', function() {
- 		 	 });
-	  },	   
-    close: function (event, ui) {  
-       grid.trigger("reloadGrid");
-    }  
-	});
+	window.location.href='${request.getContextPath()}/forecast/toCalcSearch';
 }); 
 $( "#delete" ).click(function(){
 var id;
