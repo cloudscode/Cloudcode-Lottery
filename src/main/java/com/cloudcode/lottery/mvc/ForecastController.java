@@ -118,12 +118,24 @@ public class ForecastController extends CrudController<Forecast> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/searchcalc.ftl");
 		return modelAndView;
 	}
+	private void setCriterion(Integer strart,Integer end,Criteria criterion,String propertyName){
+		if(!Check.isEmpty(strart) && !Check.isEmpty(end)){
+			criterion.add(Restrictions.ge(propertyName, strart));
+			criterion.add(Restrictions.le(propertyName, end));
+		}else if(!Check.isEmpty(strart)){
+			criterion.add(Restrictions.ge(propertyName, strart));
+		}else if(!Check.isEmpty(end)){
+			criterion.add(Restrictions.le(propertyName, end));
+		}
+	}
 	@RequestMapping(value = "/search",  method = {
 			RequestMethod.POST,RequestMethod.GET})
 	public @ResponseBody
 	Object search(HttpServletRequest request) {
 		String OddEven=request.getParameter("oddeven");
 		String consecutiveNumber = request.getParameter("consecutiveNumber");
+		String totalStrart=request.getParameter("totalStrart");
+		String totalEnd=request.getParameter("totalEnd");
 		Criteria criterion = lotteryDao.getSession().createCriteria(Lottery.class);
 		if(!Check.isEmpty(OddEven)){
 			String odd=OddEven.split(":")[0];
@@ -134,6 +146,7 @@ public class ForecastController extends CrudController<Forecast> {
 		if(!Check.isEmpty(consecutiveNumber)){
 			criterion.add(Restrictions.eq("consecutivenumber", consecutiveNumber));
 		}
+		setCriterion(Integer.parseInt(totalStrart), Integer.parseInt(totalEnd), criterion, "total");
 		List<Lottery> lists=lotteryDao.loadAll(criterion);
 		/*List<Forecast> lists2=new ArrayList<Forecast>();
 		for(Lottery lottery:lists){
