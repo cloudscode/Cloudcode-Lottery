@@ -302,28 +302,60 @@ public class LotteryUtil {
 	 * @param lottery
 	 * @return
 	 */
-	public static int getConsecutivenumber(Base lottery) {
+	public static String getConsecutivenumber(Base lottery) {
 		int count = 0;
+		String val="";
 		if (lottery.getA() + 1 == lottery.getB()) {
 			count++;
 		}
 		if (lottery.getB() + 1 == lottery.getC()) {
 			count++;
+		}else{
+			if(count !=0){count++;
+				val+=count+"+";
+				count=0;
+			}
 		}
 		if (lottery.getC() + 1 == lottery.getD()) {
 			count++;
+		}else{
+			if(count !=0){count++;
+				val+=count+"+";
+				count=0;
+			}
 		}
 		if (lottery.getD() + 1 == lottery.getE()) {
 			count++;
+		}else{
+			if(count !=0){count++;
+				val+=count+"+";
+				count=0;
+			}
 		}
 		if (lottery.getE() + 1 == lottery.getF()) {
 			count++;
+		}else{
+			if(count !=0){count++;
+				val+=count+"+";
+				count=0;
+			}
 		}
 		if (lottery.getF() + 1 == lottery.getG()) {
 			count++;
+		}else{
+			if(count !=0){count++;
+				val+=count+"+";
+				count=0;
+			}
 		}
-		lottery.setConsecutivenumber(count);
-		return count;
+		if(val.endsWith("+")){
+			val = val.substring(0,val.length()-1);
+		}
+		if("".equals(val)){
+			val="0";
+		}
+		lottery.setConsecutivenumber(val);
+		return val;
 	}
 
 	/**
@@ -595,14 +627,7 @@ public class LotteryUtil {
 	public static void main(String[] args) {
 		/*System.out.println(LotteryUtil.getOddEven(17));
 		System.out.println(8 % 3);
-		Model lottery = new Model();
-		lottery.setA(3);
-		lottery.setB(6);
-		lottery.setC(7);
-		lottery.setD(15);
-		lottery.setE(16);
-		lottery.setF(17);
-		lottery.setG(35);
+		
 		Model plottery = new Model();
 		plottery.setA(1);
 		plottery.setB(8);
@@ -613,11 +638,21 @@ public class LotteryUtil {
 		plottery.setG(36);
 		LotteryUtil.getLastValueAppears(lottery);
 		System.out.println("LastValueAppears:"+lottery.getLastvalueappears());
-		LotteryUtil.getConsecutivenumber(lottery);
+		
 		LotteryUtil.getNewSideRepeatNo(lottery, plottery);
 		System.out.println(lottery.getNewno()+":"+lottery.getNoside()+":"+lottery.getRepeatno());
 		System.out.println("连号个数：" + lottery.getConsecutivenumber());*/
 		//Lottery( );
+		Model lottery = new Model();
+		lottery.setA(1);
+		lottery.setB(3);
+		lottery.setC(6);
+		lottery.setD(8);
+		lottery.setE(10);
+		lottery.setF(16);
+		lottery.setG(35);
+		LotteryUtil.getConsecutivenumber(lottery);
+		System.out.println("连号个数：" + lottery.getConsecutivenumber());
 	}
 	/**
 	 * 热度

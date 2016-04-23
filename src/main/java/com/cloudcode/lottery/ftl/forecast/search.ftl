@@ -18,6 +18,9 @@ select{
 <div class="container" id="layout">
 <form role="form" class="form-horizontal" id="myFormId" >
   <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2">预测期号：${issue!''}</label>
+  </div>
+  <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">奇偶比</label>
     <div class="col-sm-4 content">
 	     <select id="oddeven" name="oddeven" class="form-control">
@@ -33,9 +36,9 @@ select{
     </div>
     <label for="inputEmail3" class="col-sm-2 control-label">连号个数</label>
     <div class="col-sm-4 content">
-	     <select id="consecutiveNumber" name="consecutiveNumber" class="form-control">
-		  <option value ="无连号">无连号</option>
-		  <option value ="2">2</option>
+	    <select id="consecutiveNumber" name="consecutiveNumber" class="form-control">
+		<option value ="0">无连号</option>
+		<option value ="2">2</option>
 	    <option value ="2+2">2+2</option>
 	    <option value ="2+3">2+3</option>
 	    <option value ="2+4">2+4</option>
@@ -983,7 +986,7 @@ select{
       		 window.location.href='${request.getContextPath()}/forecast/toList';
      });*/
      console.log($('form#myFormId').serialize());
-     return;
+    // return;
        $.ajax({
 			        url: '${request.getContextPath()}/forecast/search',
 			        type: 'post',

@@ -82,7 +82,7 @@ public class Base extends BaseModelObject {
 	/**
 	 * 连号个数
 	 */
-	private Integer consecutivenumber;
+	private String consecutivenumber;
 	/**
 	 * 长度
 	 */
@@ -480,11 +480,11 @@ public class Base extends BaseModelObject {
 		this.ninearea9 = ninearea9;
 	}
 
-	public Integer getConsecutivenumber() {
+	public String getConsecutivenumber() {
 		return consecutivenumber;
 	}
 
-	public void setConsecutivenumber(Integer consecutivenumber) {
+	public void setConsecutivenumber(String consecutivenumber) {
 		this.consecutivenumber = consecutivenumber;
 	}
 

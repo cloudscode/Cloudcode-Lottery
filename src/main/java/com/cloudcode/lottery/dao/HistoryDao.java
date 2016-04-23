@@ -39,4 +39,13 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 		List<History> phistory = query.list();
 		return phistory;
 	}
+	public String getCurrentIssue(){
+		History phistory = getNewHistory();
+		return phistory.getIssue();
+	}
+	public String getNewIssue(){
+		History phistory = getNewHistory();
+		Integer issue =Integer.parseInt(phistory.getIssue())+1;
+		return issue.toString();
+	}
 }

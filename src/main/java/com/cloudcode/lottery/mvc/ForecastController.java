@@ -109,6 +109,7 @@ public class ForecastController extends CrudController<Forecast> {
 	public ModelAndView toSearch() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/search.ftl");
+		modelAndView.addObject("issue", historyDao.getNewIssue());
 		return modelAndView;
 	}
 	@RequestMapping(value = "toCalcSearch")
@@ -122,7 +123,7 @@ public class ForecastController extends CrudController<Forecast> {
 	public @ResponseBody
 	Object search(HttpServletRequest request) {
 		String OddEven=request.getParameter("oddeven");
-		
+		String consecutiveNumber = request.getParameter("consecutiveNumber");
 		Criteria criterion = lotteryDao.getSession().createCriteria(Lottery.class);
 		if(!Check.isEmpty(OddEven)){
 			String odd=OddEven.split(":")[0];
@@ -130,8 +131,11 @@ public class ForecastController extends CrudController<Forecast> {
 			criterion.add(Restrictions.eq("odd", Integer.parseInt(odd)) );
 			criterion.add(Restrictions.eq("even", Integer.parseInt(even)) );
 		}
+		if(!Check.isEmpty(consecutiveNumber)){
+			criterion.add(Restrictions.eq("consecutivenumber", consecutiveNumber));
+		}
 		List<Lottery> lists=lotteryDao.loadAll(criterion);
-		List<Forecast> lists2=new ArrayList<Forecast>();
+		/*List<Forecast> lists2=new ArrayList<Forecast>();
 		for(Lottery lottery:lists){
 			Forecast forecast=new Forecast();
 			BeanUtils.copyProperties(lottery, forecast);
@@ -150,7 +154,7 @@ public class ForecastController extends CrudController<Forecast> {
 		    lotteryUtil.getHeat(forecast, phistory);
 		    lotteryUtil.getRatioNoNumbers(forecast,lists3, 0);
 			forecastDao.addForecast(forecast);
-		}
+		}*/
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }
