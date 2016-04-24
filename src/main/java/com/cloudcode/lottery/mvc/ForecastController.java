@@ -29,9 +29,9 @@ import com.cloudcode.framework.controller.CrudController;
 import com.cloudcode.framework.rest.ReturnResult;
 import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.Check;
+import com.cloudcode.framework.utils.CriterionUtil;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
-import com.cloudcode.framework.utils.StringUtils;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.lottery.dao.ForecastIssueDao;
@@ -102,8 +102,9 @@ public class ForecastController extends CrudController<Forecast> {
 	}
 	@RequestMapping(value = "forecastquery", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody
-	PaginationSupport<Forecast> forecastquery(Forecast forecast, PageRange pageRange) {
-		PaginationSupport<Forecast> result = forecastDao.queryForecastPagingData(forecast, pageRange);
+	PaginationSupport<Forecast> forecastquery(Forecast forecast, PageRange pageRange,HttpServletRequest request) {
+		String repeatStart=request.getParameter("repeatStart");
+		PaginationSupport<Forecast> result = forecastDao.queryForecastPagingData(forecast, pageRange,request);
 		return result;
 	}
 	@RequestMapping(value = "toList")
@@ -160,16 +161,7 @@ public class ForecastController extends CrudController<Forecast> {
 		modelAndView.addObject("issueid", issueid);
 		return modelAndView;
 	}
-	private void setCriterion(String strart,String end,Criteria criterion,String propertyName){
-		if(!Check.isEmpty(strart) && !Check.isEmpty(end)){
-			criterion.add(Restrictions.ge(propertyName, Integer.parseInt(strart)));
-			criterion.add(Restrictions.le(propertyName, Integer.parseInt(end)));
-		}else if(!Check.isEmpty(strart)){
-			criterion.add(Restrictions.ge(propertyName, Integer.parseInt(strart)));
-		}else if(!Check.isEmpty(end)){
-			criterion.add(Restrictions.le(propertyName, Integer.parseInt(end)));
-		}
-	}
+	
 	@RequestMapping(value = "/search",  method = {
 			RequestMethod.POST,RequestMethod.GET})
 	public @ResponseBody
@@ -269,56 +261,56 @@ public class ForecastController extends CrudController<Forecast> {
 			criterion.add(Restrictions.eq("consecutivenumber", consecutiveNumber));
 		}
 		//总和
-		setCriterion(totalStrart, totalEnd, criterion, "total");
+		CriterionUtil.setCriterion(totalStrart, totalEnd, criterion, "total");
 		//T值
-		setCriterion(tStrart, tEnd, criterion, "t");
+		CriterionUtil.setCriterion(tStrart, tEnd, criterion, "t");
 		//长度
-		setCriterion(lengthStart, lengthEnd, criterion, "length");
+		CriterionUtil.setCriterion(lengthStart, lengthEnd, criterion, "length");
 		//横向间隔和
-		setCriterion(thanTheHorizontalSpacingAddStart, thanTheHorizontalSpacingAddEnd, criterion, "thanthehorizontalspacingadd");
+		CriterionUtil.setCriterion(thanTheHorizontalSpacingAddStart, thanTheHorizontalSpacingAddEnd, criterion, "thanthehorizontalspacingadd");
 		//上下区个数比 上区
-		setCriterion(upperAreasStart, upperAreasEnd, criterion, "upperareas");
-		setCriterion(lowerAreasStart, lowerAreasEnd, criterion, "lowerareas");//下区
+		CriterionUtil.setCriterion(upperAreasStart, upperAreasEnd, criterion, "upperareas");
+		CriterionUtil.setCriterion(lowerAreasStart, lowerAreasEnd, criterion, "lowerareas");//下区
 		//4区之比
-		setCriterion(fourthArea1Start, fourthArea1End, criterion, "fourtharea1");
-		setCriterion(fourthArea2Start, fourthArea2End, criterion, "fourtharea2");
-		setCriterion(fourthArea3Start, fourthArea3End, criterion, "fourtharea3");
-		setCriterion(fourthArea4Start, fourthArea4End, criterion, "fourtharea4");
+		CriterionUtil.setCriterion(fourthArea1Start, fourthArea1End, criterion, "fourtharea1");
+		CriterionUtil.setCriterion(fourthArea2Start, fourthArea2End, criterion, "fourtharea2");
+		CriterionUtil.setCriterion(fourthArea3Start, fourthArea3End, criterion, "fourtharea3");
+		CriterionUtil.setCriterion(fourthArea4Start, fourthArea4End, criterion, "fourtharea4");
 		//6区之比
-		setCriterion(sixArea1Start, sixArea1End, criterion, "sixarea1");
-		setCriterion(sixArea2Start, sixArea2End, criterion, "sixarea2");
-		setCriterion(sixArea3Start, sixArea3End, criterion, "sixarea3");
-		setCriterion(sixArea4Start, sixArea4End, criterion, "sixarea4");
-		setCriterion(sixArea5Start, sixArea5End, criterion, "sixarea5");
-		setCriterion(sixArea6Start, sixArea6End, criterion, "sixarea6");
+		CriterionUtil.setCriterion(sixArea1Start, sixArea1End, criterion, "sixarea1");
+		CriterionUtil.setCriterion(sixArea2Start, sixArea2End, criterion, "sixarea2");
+		CriterionUtil.setCriterion(sixArea3Start, sixArea3End, criterion, "sixarea3");
+		CriterionUtil.setCriterion(sixArea4Start, sixArea4End, criterion, "sixarea4");
+		CriterionUtil.setCriterion(sixArea5Start, sixArea5End, criterion, "sixarea5");
+		CriterionUtil.setCriterion(sixArea6Start, sixArea6End, criterion, "sixarea6");
 		//9区之比
-		setCriterion(nineArea1Start, nineArea1End, criterion, "ninearea1");
-		setCriterion(nineArea2Start, nineArea2End, criterion, "ninearea2");
-		setCriterion(nineArea3Start, nineArea3End, criterion, "ninearea3");
-		setCriterion(nineArea4Start, nineArea4End, criterion, "ninearea4");
-		setCriterion(nineArea5Start, nineArea5End, criterion, "ninearea5");
-		setCriterion(nineArea6Start, nineArea6End, criterion, "ninearea6");
-		setCriterion(nineArea7Start, nineArea7End, criterion, "ninearea7");
-		setCriterion(nineArea8Start, nineArea8End, criterion, "ninearea8");
-		setCriterion(nineArea9Start, nineArea9End, criterion, "ninearea9");
+		CriterionUtil.setCriterion(nineArea1Start, nineArea1End, criterion, "ninearea1");
+		CriterionUtil.setCriterion(nineArea2Start, nineArea2End, criterion, "ninearea2");
+		CriterionUtil.setCriterion(nineArea3Start, nineArea3End, criterion, "ninearea3");
+		CriterionUtil.setCriterion(nineArea4Start, nineArea4End, criterion, "ninearea4");
+		CriterionUtil.setCriterion(nineArea5Start, nineArea5End, criterion, "ninearea5");
+		CriterionUtil.setCriterion(nineArea6Start, nineArea6End, criterion, "ninearea6");
+		CriterionUtil.setCriterion(nineArea7Start, nineArea7End, criterion, "ninearea7");
+		CriterionUtil.setCriterion(nineArea8Start, nineArea8End, criterion, "ninearea8");
+		CriterionUtil.setCriterion(nineArea9Start, nineArea9End, criterion, "ninearea9");
 		//余3个数比
-		setCriterion(thanThreeRatio0Start, thanThreeRatio0End, criterion, "thanthreeratio0");
-		setCriterion(thanThreeRatio1Start, thanThreeRatio1End, criterion, "thanthreeratio1");
-		setCriterion(thanThreeRatio2Start, thanThreeRatio2End, criterion, "thanthreeratio2");
+		CriterionUtil.setCriterion(thanThreeRatio0Start, thanThreeRatio0End, criterion, "thanthreeratio0");
+		CriterionUtil.setCriterion(thanThreeRatio1Start, thanThreeRatio1End, criterion, "thanthreeratio1");
+		CriterionUtil.setCriterion(thanThreeRatio2Start, thanThreeRatio2End, criterion, "thanthreeratio2");
 		//余5个数比
-		setCriterion(thanFiveRatio0Start, thanFiveRatio0End, criterion, "thanfiveratio0");
-		setCriterion(thanFiveRatio1Start, thanFiveRatio1End, criterion, "thanfiveratio1");
-		setCriterion(thanFiveRatio2Start, thanFiveRatio2End, criterion, "thanfiveratio2");
-		setCriterion(thanFiveRatio3Start, thanFiveRatio3End, criterion, "thanfiveratio3");
-		setCriterion(thanFiveRatio4Start, thanFiveRatio4End, criterion, "thanfiveratio4");
+		CriterionUtil.setCriterion(thanFiveRatio0Start, thanFiveRatio0End, criterion, "thanfiveratio0");
+		CriterionUtil.setCriterion(thanFiveRatio1Start, thanFiveRatio1End, criterion, "thanfiveratio1");
+		CriterionUtil.setCriterion(thanFiveRatio2Start, thanFiveRatio2End, criterion, "thanfiveratio2");
+		CriterionUtil.setCriterion(thanFiveRatio3Start, thanFiveRatio3End, criterion, "thanfiveratio3");
+		CriterionUtil.setCriterion(thanFiveRatio4Start, thanFiveRatio4End, criterion, "thanfiveratio4");
 		//余7个数比
-		setCriterion(thanSevenRatio0Start, thanSevenRatio0End, criterion, "thansevenratio0");
-		setCriterion(thanSevenRatio1Start, thanSevenRatio1End, criterion, "thansevenratio1");
-		setCriterion(thanSevenRatio2Start, thanSevenRatio2End, criterion, "thansevenratio2");
-		setCriterion(thanSevenRatio3Start, thanSevenRatio3End, criterion, "thansevenratio3");
-		setCriterion(thanSevenRatio4Start, thanSevenRatio4End, criterion, "thansevenratio4");
-		setCriterion(thanSevenRatio5Start, thanSevenRatio5End, criterion, "thansevenratio5");
-		setCriterion(thanSevenRatio6Start, thanSevenRatio6End, criterion, "thansevenratio6");
+		CriterionUtil.setCriterion(thanSevenRatio0Start, thanSevenRatio0End, criterion, "thansevenratio0");
+		CriterionUtil.setCriterion(thanSevenRatio1Start, thanSevenRatio1End, criterion, "thansevenratio1");
+		CriterionUtil.setCriterion(thanSevenRatio2Start, thanSevenRatio2End, criterion, "thansevenratio2");
+		CriterionUtil.setCriterion(thanSevenRatio3Start, thanSevenRatio3End, criterion, "thansevenratio3");
+		CriterionUtil.setCriterion(thanSevenRatio4Start, thanSevenRatio4End, criterion, "thansevenratio4");
+		CriterionUtil.setCriterion(thanSevenRatio5Start, thanSevenRatio5End, criterion, "thansevenratio5");
+		CriterionUtil.setCriterion(thanSevenRatio6Start, thanSevenRatio6End, criterion, "thansevenratio6");
 		String issueid = UUID.generateUUID();
 		List<Lottery> lists=lotteryDao.loadAll(criterion);
 		List<Forecast> lists2=new ArrayList<Forecast>();
@@ -339,6 +331,7 @@ public class ForecastController extends CrudController<Forecast> {
 		    lotteryUtil.getIntervaland(forecast, phistory);
 		    lotteryUtil.getHeat(forecast, phistory);
 		    lotteryUtil.getRatioNoNumbers(forecast,lists3, 0);
+		    lotteryUtil.getNewSideRepeatNo(forecast, phistory);
 			//forecastDao.addForecast(forecast);
 		}
 		forecastDao.addForecast(lists2);
