@@ -39,4 +39,12 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 		}
 		return this.queryPaginationSupport(Forecast.class, hqlParamList, pageRange);
 	}
+	public PaginationSupport<Forecast> queryForecastPagingData(Forecast hhXtCd, PageRange pageRange) {
+		HQLParamList hqlParamList = new HQLParamList();
+		List<Object> list=new ArrayList<Object>();
+		if(!StringUtils.isEmpty(hhXtCd.getIssueid())){
+			hqlParamList.addCondition(Restrictions.eq("issueid", hhXtCd.getIssueid()));
+		}
+		return this.queryPaginationSupport(Forecast.class, hqlParamList, pageRange);
+	}
 }

@@ -2,7 +2,11 @@ package com.cloudcode.lottery.mvc;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,6 +31,7 @@ import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.Check;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
+import com.cloudcode.framework.utils.StringUtils;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.lottery.dao.ForecastIssueDao;
@@ -95,12 +100,41 @@ public class ForecastController extends CrudController<Forecast> {
 		PaginationSupport<Forecast> result = forecastDao.queryPagingData(forecast, pageRange);
 		return result;
 	}
+	@RequestMapping(value = "forecastquery", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	PaginationSupport<Forecast> forecastquery(Forecast forecast, PageRange pageRange) {
+		PaginationSupport<Forecast> result = forecastDao.queryForecastPagingData(forecast, pageRange);
+		return result;
+	}
 	@RequestMapping(value = "toList")
 	public ModelAndView toList(HttpServletRequest request) {
 		String issueid=request.getParameter("issueid");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/list.ftl");
 		modelAndView.addObject("issueid", issueid);
+		return modelAndView;
+	}
+	@RequestMapping(value = "toForecastList")
+	public ModelAndView toForecastList(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		String issueid=request.getParameter("issueid");
+		String intervalAndTotalStrart = request.getParameter("intervalAndTotalStrart");
+		String intervalAndTotalEnd = request.getParameter("intervalAndTotalEnd");
+		String horVer = request.getParameter("horVer");
+		Map<String, String[]> map = request.getParameterMap();  
+        Set<Entry<String, String[]>> set = map.entrySet();  
+        Iterator<Entry<String, String[]>> it = set.iterator();  
+        while (it.hasNext()) {  
+            Entry<String, String[]> entry = it.next(); 
+            if(null != entry.getValue()){
+            	for (String i : entry.getValue()) {  
+            		modelAndView.addObject(entry.getKey(), i);
+            	}
+            }else{
+            	modelAndView.addObject(entry.getKey(), "");
+            }
+        }  
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/forecastlist.ftl");
 		return modelAndView;
 	}
 	@RequestMapping(value = "/{id}/toView")
@@ -119,9 +153,11 @@ public class ForecastController extends CrudController<Forecast> {
 		return modelAndView;
 	}
 	@RequestMapping(value = "toCalcSearch")
-	public ModelAndView toCalcSearch() {
+	public ModelAndView toCalcSearch(HttpServletRequest request) {
+		String issueid=request.getParameter("issueid");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/searchcalc.ftl");
+		modelAndView.addObject("issueid", issueid);
 		return modelAndView;
 	}
 	private void setCriterion(String strart,String end,Criteria criterion,String propertyName){

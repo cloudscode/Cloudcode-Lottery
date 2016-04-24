@@ -9,10 +9,7 @@
 <div class="container" id="layout">
 <div class="col-lg-9 col-sm-9" id="article">
 <section id="button">
-        <button id="openwindow" class="ui-button-success">预测</button>
-        <button id="edit" class="ui-button-primary">查询</button>
-        <button id="view" class="ui-button-warning">查看</button>
-        <button id="delete" class="ui-button-danger">删除</button>
+        <button id="openwindow" class="ui-button-success">保存</button>
         <button id="refresh" class="ui-button-info">刷新</button>
 </section></div></div>
 <div class="row">
@@ -61,12 +58,20 @@ function addCellAttr3(rowId, val, rawObject, cm, rdata) {
 }
 $(function(){
     if ($.fn.jqGrid){
+    var postData={"issueid":"${issueid!''}","intervalAndTotalStrart":"${intervalAndTotalStrart!''}","intervalAndTotalEnd":"${intervalAndTotalEnd!''}"
+    	,"horVer":"${horVer!''}","repeatStart":"${repeatStart!''}"
+    	,"repeatEnd":"${repeatEnd!''}","noSideStart":"${noSideStart!''}"
+    	,"noSideEnd":"${noSideEnd!''}","newNoStart":"${newNoStart!''}"
+    	,"newNoEnd":"${newNoEnd!''}","lastValueAppears":"${lastValueAppears!''}"
+    	,"ratioOnTheThreeNumbers":"${ratioOnTheThreeNumbers!''}","ratioOnTheFiveNumbers":"${ratioOnTheFiveNumbers!''}"
+    	,"ratioOnTheSevenNumbers":"${ratioOnTheSevenNumbers!''}","ratioOnTheTenNumbers":"${ratioOnTheTenNumbers!''}"
+    };
        grid =  $("#jqGrid01").jqGrid({
-           url:"${request.getContextPath()}/forecast/query",
+           url:"${request.getContextPath()}/forecast/forecastquery",
             datatype: "json",
             height: 250,
             rowNum: 10,
-            postData:{"issueid":"${issueid!''}"},
+            postData:postData,
             rowList: [10,20,30],
             colNames:['Id', '期号', '1','2','3','4','5','6','7','8','9','10','11','12','13','14'
             , '15', '16', '17', '18', '19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36'

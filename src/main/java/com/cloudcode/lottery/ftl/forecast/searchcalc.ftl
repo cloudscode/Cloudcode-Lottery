@@ -29,7 +29,8 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">横纵比</label>
     <div class="col-sm-2 content">
 	     <select id="horVer" name="horVer" class="form-control">
-		   <option >0:0</option>
+		    <option value =""></option>
+		    <option >0:0</option>
             <option >0:1</option>
             <option >0:2</option>
             <option >0:3</option>
@@ -62,6 +63,7 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">重号</label>
     <div class="col-sm-2 content">
 	     <select id="repeatStart" name="repeatStart" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -76,6 +78,7 @@ select{
 	    <div class="input-group">
 	    <span class="input-group-addon">到</span>
 	    <select  name="repeatEnd" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -90,6 +93,7 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">边号</label>
     <div class="col-sm-2 content">
 	     <select id="noSideStart" name="noSideStart" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -104,6 +108,7 @@ select{
 	    <div class="input-group">
 	    <span class="input-group-addon">到</span>
 	    <select  name="noSideEnd" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -120,6 +125,7 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">新号</label>
     <div class="col-sm-2 content">
 	     <select id="newNoStart" name="newNoStart" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -134,6 +140,7 @@ select{
 	    <div class="input-group">
 	    <span class="input-group-addon">到</span>
 	    <select  name="newNoEnd" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -148,6 +155,7 @@ select{
 	  <label for="inputEmail3" class="col-sm-2 control-label">出现尾数值</label>
     <div class="col-sm-2 content">
 	     <select id="lastValueAppears" name="lastValueAppears" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -166,6 +174,7 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">与上三期号码数比</label>
     <div class="col-sm-4 content">
 	     <select name="ratioOnTheThreeNumbers" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -179,6 +188,7 @@ select{
      <label for="inputEmail3" class="col-sm-2 control-label">与上五期号码数比</label>
     <div class="col-sm-4 content">
 	     <select name="ratioOnTheFiveNumbers" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -194,6 +204,7 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">与上七期号码数比</label>
     <div class="col-sm-4 content">
 	     <select name="ratioOnTheSevenNumbers" class="form-control">
+		   <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -207,6 +218,7 @@ select{
      <label for="inputEmail3" class="col-sm-2 control-label">与上十期号码数比</label>
     <div class="col-sm-4 content">
 	     <select name="ratioOnTheTenNumbers" class="form-control">
+		  <option value =""></option>
 		  <option value ="0">0</option>
 		  <option value ="1">1</option>
 		  <option value="2">2</option>
@@ -343,18 +355,129 @@ select{
 			    </label>
 			    </div>
 	    </div>
-     <label for="inputEmail3" class="col-sm-2 control-label">一定不出</label>
+    <label for="inputEmail3" class="col-sm-2 control-label">一定不出</label>
     <div class="col-sm-4 content">
-	     <select name="ratioOnTheTenNumbers" class="form-control">
-		  <option value ="0">0</option>
-		  <option value ="1">1</option>
-		  <option value="2">2</option>
-		  <option value="3">3</option>
-		  <option value="4">4</option>
-		  <option value="5">5</option>
-		  <option value="6">6</option>
-		  <option value="7">7</option>
-		</select>
+	     <div class="row">
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="1">1&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="2">2&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="3">3&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="4">4&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="5">5&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="6">6&nbsp;
+			    </label>
+			   </div>
+			    <div class="row">
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="7">7&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="8">8&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="9">9&nbsp;&nbsp;
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="10">10
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="11">11
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="12">12
+			    </label>
+			   </div>
+			    <div class="row">
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="13">13
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="14">14
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="15">15
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="16">16
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="17">17
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="18">18
+			    </label>
+			    </div>
+			    <div class="row">
+			   
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="19">19
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="20">20
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="21">21
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="22">22
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="23">23
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="24">24
+			    </label>
+			    </div>
+			    <div class="row">
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="25">25
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="26">26
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="27">27
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="28">28
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="29">29
+			    </label>
+			    <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="30">30
+			    </label>
+			    </div>
+			    <div class="row">
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="31">31
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="32">32
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="33">33
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="34">34
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="35">35
+			    </label>
+			     <label class="checkbox-inline">
+			      <input type="checkbox" name="no" value="36">36
+			    </label>
+			    </div>
     </div>
 </div>
 </form>
@@ -372,20 +495,18 @@ select{
 <#include "classpath:com/cloudcode/framework/common/ftl/vendor.ftl"/>
 <script type="text/javascript">
  $( "#search" ).click(function(){
- 		
-	  /*$.post('${request.getContextPath()}/forecast/search',$('form#myFormId').serialize(),function(result){
-      		 window.location.href='${request.getContextPath()}/forecast/toList';
-     });*/
-    console.log($('form#myFormId').serialize());return;
-       $.ajax({
+
+     /*  $.ajax({
 			        url: '${request.getContextPath()}/forecast/search',
 			        type: 'post',
 			        dataType: 'json',
 			        data: $('form#myFormId').serialize(),
 			        success: function(data) {
- 						 window.location.href='${request.getContextPath()}/forecast/toList';
+ 						 
 			        }
-			    });
+			    });*/
+			    
+ window.location.href='${request.getContextPath()}/forecast/toForecastList?issueid=${issueid!''}&'+$('form#myFormId').serialize();
 });
 $( "#cancel" ).click(function(){
 	 window.location.href='${request.getContextPath()}/forecast/toList';
