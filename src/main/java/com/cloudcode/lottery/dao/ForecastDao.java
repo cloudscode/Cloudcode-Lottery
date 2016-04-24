@@ -1,9 +1,11 @@
 package com.cloudcode.lottery.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.dao.BaseModelObjectDao;
@@ -30,7 +32,9 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 	}
 	public PaginationSupport<Forecast> queryPagingData(Forecast hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
-		List<Object> list=null;
+		List<Object> list=new ArrayList<Object>();
+		hqlParamList.addCondition(
+				Restrictions.eq("issueid", hhXtCd.getIssueid()));
 		return this.queryPaginationSupport(Forecast.class, hqlParamList, pageRange);
 	}
 }

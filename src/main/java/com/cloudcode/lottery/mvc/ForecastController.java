@@ -96,9 +96,11 @@ public class ForecastController extends CrudController<Forecast> {
 		return result;
 	}
 	@RequestMapping(value = "toList")
-	public ModelAndView toList() {
+	public ModelAndView toList(HttpServletRequest request) {
+		String issueid=request.getParameter("issueid");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/list.ftl");
+		modelAndView.addObject("issueid", issueid);
 		return modelAndView;
 	}
 	@RequestMapping(value = "/{id}/toView")

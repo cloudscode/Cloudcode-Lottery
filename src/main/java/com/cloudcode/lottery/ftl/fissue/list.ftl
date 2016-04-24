@@ -45,7 +45,10 @@ $(function(){
                 {name:'drawtime',index:'exchange', width:100,formatter:function(cellvalue, options, rowObject){
                 	return new Date(cellvalue).Format("yyyy-MM-dd");
                 }},
-                {name:'forecastcount',index:'groupType', width:0}
+                {name:'forecastcount',index:'groupType', width:0,formatter:function(cellvalue, options, rowObject){
+                	var html='<a href="javascript:void(0);" onclick="showCount(\''+rowObject.id+'\')">'+cellvalue+'</a>';
+                	return html;
+                }}
             ],
             autowidth: true,
             height: "auto",            
@@ -104,6 +107,9 @@ var id;
 	});
 	 $("#layout button,.button,#sampleButton").button();
 });
+function showCount(id){
+	window.location.href='${request.getContextPath()}/forecast/toList?issueid='+id;
+}
 Date.prototype.Format = function(fmt) 
 { //author: meizz 
 var o = { 
