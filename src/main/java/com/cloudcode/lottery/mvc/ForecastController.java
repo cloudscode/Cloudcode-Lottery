@@ -118,14 +118,14 @@ public class ForecastController extends CrudController<Forecast> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecast/searchcalc.ftl");
 		return modelAndView;
 	}
-	private void setCriterion(Integer strart,Integer end,Criteria criterion,String propertyName){
+	private void setCriterion(String strart,String end,Criteria criterion,String propertyName){
 		if(!Check.isEmpty(strart) && !Check.isEmpty(end)){
-			criterion.add(Restrictions.ge(propertyName, strart));
-			criterion.add(Restrictions.le(propertyName, end));
+			criterion.add(Restrictions.ge(propertyName, Integer.parseInt(strart)));
+			criterion.add(Restrictions.le(propertyName, Integer.parseInt(end)));
 		}else if(!Check.isEmpty(strart)){
-			criterion.add(Restrictions.ge(propertyName, strart));
+			criterion.add(Restrictions.ge(propertyName, Integer.parseInt(strart)));
 		}else if(!Check.isEmpty(end)){
-			criterion.add(Restrictions.le(propertyName, end));
+			criterion.add(Restrictions.le(propertyName, Integer.parseInt(end)));
 		}
 	}
 	@RequestMapping(value = "/search",  method = {
@@ -136,6 +136,85 @@ public class ForecastController extends CrudController<Forecast> {
 		String consecutiveNumber = request.getParameter("consecutiveNumber");
 		String totalStrart=request.getParameter("totalStrart");
 		String totalEnd=request.getParameter("totalEnd");
+		String tStrart=request.getParameter("tStrart");
+		String tEnd=request.getParameter("tEnd");
+		String lengthStart=request.getParameter("lengthStart");
+		String lengthEnd=request.getParameter("lengthEnd");
+		String thanTheHorizontalSpacingAddStart=request.getParameter("thanTheHorizontalSpacingAddStart");
+		String thanTheHorizontalSpacingAddEnd=request.getParameter("thanTheHorizontalSpacingAddEnd");
+		String upperAreasStart=request.getParameter("upperAreasStart");
+		String upperAreasEnd=request.getParameter("upperAreasEnd");
+		String lowerAreasStart=request.getParameter("lowerAreasStart");
+		String lowerAreasEnd=request.getParameter("lowerAreasEnd");
+		String fourthArea1Start=request.getParameter("fourthArea1Start");
+		String fourthArea1End=request.getParameter("fourthArea1End");
+		String fourthArea2Start=request.getParameter("fourthArea2Start");
+		String fourthArea2End=request.getParameter("fourthArea2End");
+		String fourthArea3Start=request.getParameter("fourthArea3Start");
+		String fourthArea3End=request.getParameter("fourthArea3End");
+		String fourthArea4Start=request.getParameter("fourthArea4Start");
+		String fourthArea4End=request.getParameter("fourthArea4End");
+		String sixArea1Start=request.getParameter("sixArea1Start");
+		String sixArea1End=request.getParameter("sixArea1End");
+		String sixArea2Start=request.getParameter("sixArea2Start");
+		String sixArea2End=request.getParameter("sixArea2End");
+		String sixArea3Start=request.getParameter("sixArea3Start");
+		String sixArea3End=request.getParameter("sixArea3End");
+		String sixArea4Start=request.getParameter("sixArea4Start");
+		String sixArea4End=request.getParameter("sixArea4End");
+		String sixArea5Start=request.getParameter("sixArea5Start");
+		String sixArea5End=request.getParameter("sixArea5End");
+		String sixArea6Start=request.getParameter("sixArea6Start");
+		String sixArea6End=request.getParameter("sixArea6End");
+		String nineArea1Start=request.getParameter("nineArea1Start");
+		String nineArea1End=request.getParameter("nineArea1End");
+		String nineArea2Start=request.getParameter("nineArea2Start");
+		String nineArea2End=request.getParameter("nineArea2End");
+		String nineArea3Start=request.getParameter("nineArea3Start");
+		String nineArea3End=request.getParameter("nineArea3End");
+		String nineArea4Start=request.getParameter("nineArea4Start");
+		String nineArea4End=request.getParameter("nineArea4End");
+		String nineArea5Start=request.getParameter("nineArea5Start");
+		String nineArea5End=request.getParameter("nineArea5End");
+		String nineArea6Start=request.getParameter("nineArea6Start");
+		String nineArea6End=request.getParameter("nineArea6End");
+		String nineArea7Start=request.getParameter("nineArea7Start");
+		String nineArea7End=request.getParameter("nineArea7End");
+		String nineArea8Start=request.getParameter("nineArea8Start");
+		String nineArea8End=request.getParameter("nineArea8End");
+		String nineArea9Start=request.getParameter("nineArea9Start");
+		String nineArea9End=request.getParameter("nineArea9End");
+		String thanThreeRatio0Start=request.getParameter("thanThreeRatio0Start");
+		String thanThreeRatio0End=request.getParameter("thanThreeRatio0End");
+		String thanThreeRatio1Start=request.getParameter("thanThreeRatio1Start");
+		String thanThreeRatio1End=request.getParameter("thanThreeRatio1End");
+		String thanThreeRatio2Start=request.getParameter("thanThreeRatio2Start");
+		String thanThreeRatio2End=request.getParameter("thanThreeRatio2End");
+		String thanFiveRatio0Start=request.getParameter("thanFiveRatio0Start");
+		String thanFiveRatio0End=request.getParameter("thanFiveRatio0End");
+		String thanFiveRatio1Start=request.getParameter("thanFiveRatio1Start");
+		String thanFiveRatio1End=request.getParameter("thanFiveRatio1End");
+		String thanFiveRatio2Start=request.getParameter("thanFiveRatio2Start");
+		String thanFiveRatio2End=request.getParameter("thanFiveRatio2End");
+		String thanFiveRatio3Start=request.getParameter("thanFiveRatio3Start");
+		String thanFiveRatio3End=request.getParameter("thanFiveRatio3End");
+		String thanFiveRatio4Start=request.getParameter("thanFiveRatio4Start");
+		String thanFiveRatio4End=request.getParameter("thanFiveRatio4End");
+		String thanSevenRatio0Start=request.getParameter("thanSevenRatio0Start");
+		String thanSevenRatio0End=request.getParameter("thanSevenRatio0End");
+		String thanSevenRatio1Start=request.getParameter("thanSevenRatio1Start");
+		String thanSevenRatio1End=request.getParameter("thanSevenRatio1End");
+		String thanSevenRatio2Start=request.getParameter("thanSevenRatio2Start");
+		String thanSevenRatio2End=request.getParameter("thanSevenRatio2End");
+		String thanSevenRatio3Start=request.getParameter("thanSevenRatio3Start");
+		String thanSevenRatio3End=request.getParameter("thanSevenRatio3End");
+		String thanSevenRatio4Start=request.getParameter("thanSevenRatio4Start");
+		String thanSevenRatio4End=request.getParameter("thanSevenRatio4End");
+		String thanSevenRatio5Start=request.getParameter("thanSevenRatio5Start");
+		String thanSevenRatio5End=request.getParameter("thanSevenRatio5End");
+		String thanSevenRatio6Start=request.getParameter("thanSevenRatio6Start");
+		String thanSevenRatio6End=request.getParameter("thanSevenRatio6End");
+		
 		Criteria criterion = lotteryDao.getSession().createCriteria(Lottery.class);
 		if(!Check.isEmpty(OddEven)){
 			String odd=OddEven.split(":")[0];
@@ -146,7 +225,57 @@ public class ForecastController extends CrudController<Forecast> {
 		if(!Check.isEmpty(consecutiveNumber)){
 			criterion.add(Restrictions.eq("consecutivenumber", consecutiveNumber));
 		}
-		setCriterion(Integer.parseInt(totalStrart), Integer.parseInt(totalEnd), criterion, "total");
+		//总和
+		setCriterion(totalStrart, totalEnd, criterion, "total");
+		//T值
+		setCriterion(tStrart, tEnd, criterion, "t");
+		//长度
+		setCriterion(lengthStart, lengthEnd, criterion, "length");
+		//横向间隔和
+		setCriterion(thanTheHorizontalSpacingAddStart, thanTheHorizontalSpacingAddEnd, criterion, "thanthehorizontalspacingadd");
+		//上下区个数比 上区
+		setCriterion(upperAreasStart, upperAreasEnd, criterion, "upperareas");
+		setCriterion(lowerAreasStart, lowerAreasEnd, criterion, "lowerareas");//下区
+		//4区之比
+		setCriterion(fourthArea1Start, fourthArea1End, criterion, "fourtharea1");
+		setCriterion(fourthArea2Start, fourthArea2End, criterion, "fourtharea2");
+		setCriterion(fourthArea3Start, fourthArea3End, criterion, "fourtharea3");
+		setCriterion(fourthArea4Start, fourthArea4End, criterion, "fourtharea4");
+		//6区之比
+		setCriterion(sixArea1Start, sixArea1End, criterion, "sixarea1");
+		setCriterion(sixArea2Start, sixArea2End, criterion, "sixarea2");
+		setCriterion(sixArea3Start, sixArea3End, criterion, "sixarea3");
+		setCriterion(sixArea4Start, sixArea4End, criterion, "sixarea4");
+		setCriterion(sixArea5Start, sixArea5End, criterion, "sixarea5");
+		setCriterion(sixArea6Start, sixArea6End, criterion, "sixarea6");
+		//9区之比
+		setCriterion(nineArea1Start, nineArea1End, criterion, "ninearea1");
+		setCriterion(nineArea2Start, nineArea2End, criterion, "ninearea2");
+		setCriterion(nineArea3Start, nineArea3End, criterion, "ninearea3");
+		setCriterion(nineArea4Start, nineArea4End, criterion, "ninearea4");
+		setCriterion(nineArea5Start, nineArea5End, criterion, "ninearea5");
+		setCriterion(nineArea6Start, nineArea6End, criterion, "ninearea6");
+		setCriterion(nineArea7Start, nineArea7End, criterion, "ninearea7");
+		setCriterion(nineArea8Start, nineArea8End, criterion, "ninearea8");
+		setCriterion(nineArea9Start, nineArea9End, criterion, "ninearea9");
+		//余3个数比
+		setCriterion(thanThreeRatio0Start, thanThreeRatio0End, criterion, "thanthreeratio0");
+		setCriterion(thanThreeRatio1Start, thanThreeRatio1End, criterion, "thanthreeratio1");
+		setCriterion(thanThreeRatio2Start, thanThreeRatio2End, criterion, "thanthreeratio2");
+		//余5个数比
+		setCriterion(thanFiveRatio0Start, thanFiveRatio0End, criterion, "thanfiveratio0");
+		setCriterion(thanFiveRatio1Start, thanFiveRatio1End, criterion, "thanfiveratio1");
+		setCriterion(thanFiveRatio2Start, thanFiveRatio2End, criterion, "thanfiveratio2");
+		setCriterion(thanFiveRatio3Start, thanFiveRatio3End, criterion, "thanfiveratio3");
+		setCriterion(thanFiveRatio4Start, thanFiveRatio4End, criterion, "thanfiveratio4");
+		//余7个数比
+		setCriterion(thanSevenRatio0Start, thanSevenRatio0End, criterion, "thansevenratio0");
+		setCriterion(thanSevenRatio1Start, thanSevenRatio1End, criterion, "thansevenratio1");
+		setCriterion(thanSevenRatio2Start, thanSevenRatio2End, criterion, "thansevenratio2");
+		setCriterion(thanSevenRatio3Start, thanSevenRatio3End, criterion, "thansevenratio3");
+		setCriterion(thanSevenRatio4Start, thanSevenRatio4End, criterion, "thansevenratio4");
+		setCriterion(thanSevenRatio5Start, thanSevenRatio5End, criterion, "thansevenratio5");
+		setCriterion(thanSevenRatio6Start, thanSevenRatio6End, criterion, "thansevenratio6");
 		List<Lottery> lists=lotteryDao.loadAll(criterion);
 		/*List<Forecast> lists2=new ArrayList<Forecast>();
 		for(Lottery lottery:lists){

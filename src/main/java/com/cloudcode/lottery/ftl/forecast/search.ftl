@@ -24,6 +24,7 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">奇偶比</label>
     <div class="col-sm-4 content">
 	     <select id="oddeven" name="oddeven" class="form-control">
+		  <option value =""></option>
 		  <option value ="0:7">0:7</option>
 		  <option value ="1:6">1:6</option>
 		  <option value="2:5">2:5</option>
@@ -37,6 +38,7 @@ select{
     <label for="inputEmail3" class="col-sm-2 control-label">连号个数</label>
     <div class="col-sm-4 content">
 	    <select id="consecutiveNumber" name="consecutiveNumber" class="form-control">
+		<option value =""></option>
 		<option value ="0">无连号</option>
 		<option value ="2">2</option>
 	    <option value ="2+2">2+2</option>
