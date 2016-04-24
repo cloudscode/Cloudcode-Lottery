@@ -13,6 +13,7 @@ import com.cloudcode.framework.dao.ModelObjectDao;
 import com.cloudcode.framework.utils.HQLParamList;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
+import com.cloudcode.framework.utils.StringUtils;
 import com.cloudcode.lottery.ProjectConfig;
 import com.cloudcode.lottery.model.Forecast;
 
@@ -33,8 +34,9 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 	public PaginationSupport<Forecast> queryPagingData(Forecast hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
 		List<Object> list=new ArrayList<Object>();
-		hqlParamList.addCondition(
-				Restrictions.eq("issueid", hhXtCd.getIssueid()));
+		if(!StringUtils.isEmpty(hhXtCd.getIssueid())){
+			hqlParamList.addCondition(Restrictions.eq("issueid", hhXtCd.getIssueid()));
+		}
 		return this.queryPaginationSupport(Forecast.class, hqlParamList, pageRange);
 	}
 }
