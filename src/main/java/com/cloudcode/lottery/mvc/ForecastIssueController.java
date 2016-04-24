@@ -76,14 +76,14 @@ public class ForecastIssueController extends CrudController<ForecastIssue> {
 	@RequestMapping(value = "toList")
 	public ModelAndView toList() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecastIssue/list.ftl");
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/fissue/list.ftl");
 		return modelAndView;
 	}
 	@RequestMapping(value = "/{id}/toView")
 	public ModelAndView toView(@PathVariable("id") String id) {
 		ForecastIssue forecastIssue =forecastIssueDao.loadObject(id);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/forecastIssue/view.ftl");
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/fissue/view.ftl");
 		modelAndView.addObject("forecastIssue",forecastIssue);
 		return modelAndView;
 	}

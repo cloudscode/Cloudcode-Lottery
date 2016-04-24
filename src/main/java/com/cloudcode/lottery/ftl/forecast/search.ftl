@@ -18,7 +18,7 @@ select{
 <div class="container" id="layout">
 <form role="form" class="form-horizontal" id="myFormId" >
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2">预测期号：${issue!''}</label>
+    <label for="inputEmail3" class="col-sm-2">预测期号：${issue!''}</label><input type="hidden"  name="issue" value="${issue!''}">
   </div>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">奇偶比</label>
@@ -982,13 +982,9 @@ select{
 </div>
 <#include "classpath:com/cloudcode/framework/common/ftl/vendor.ftl"/>
 <script type="text/javascript">
- $( "#search" ).click(function(){
+ $( "#search").click(function(){
  		
-	  /*$.post('${request.getContextPath()}/forecast/search',$('form#myFormId').serialize(),function(result){
-      		 window.location.href='${request.getContextPath()}/forecast/toList';
-     });*/
-     console.log($('form#myFormId').serialize());
-    // return;
+	 $( "#search").attr("disabled","disabled");
        $.ajax({
 			        url: '${request.getContextPath()}/forecast/search',
 			        type: 'post',

@@ -1,12 +1,12 @@
 package com.cloudcode.lottery.mvc;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.BeanUtils;
@@ -29,9 +29,11 @@ import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.ForecastDao;
+import com.cloudcode.lottery.dao.ForecastIssueDao;
 import com.cloudcode.lottery.dao.HistoryDao;
 import com.cloudcode.lottery.dao.LotteryDao;
 import com.cloudcode.lottery.model.Forecast;
+import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.model.base.Model;
@@ -51,6 +53,8 @@ public class ForecastController extends CrudController<Forecast> {
 	private LotteryUtil lotteryUtil;
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	@Autowired
+	private  ForecastIssueDao forecastIssueDao;
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody
 	void addForecast(@RequestBody  Forecast forecast) {
@@ -132,6 +136,7 @@ public class ForecastController extends CrudController<Forecast> {
 			RequestMethod.POST,RequestMethod.GET})
 	public @ResponseBody
 	Object search(HttpServletRequest request) {
+		String issue=request.getParameter("issue");
 		String OddEven=request.getParameter("oddeven");
 		String consecutiveNumber = request.getParameter("consecutiveNumber");
 		String totalStrart=request.getParameter("totalStrart");
@@ -276,18 +281,19 @@ public class ForecastController extends CrudController<Forecast> {
 		setCriterion(thanSevenRatio4Start, thanSevenRatio4End, criterion, "thansevenratio4");
 		setCriterion(thanSevenRatio5Start, thanSevenRatio5End, criterion, "thansevenratio5");
 		setCriterion(thanSevenRatio6Start, thanSevenRatio6End, criterion, "thansevenratio6");
+		String issueid = UUID.generateUUID();
 		List<Lottery> lists=lotteryDao.loadAll(criterion);
-		/*List<Forecast> lists2=new ArrayList<Forecast>();
+		List<Forecast> lists2=new ArrayList<Forecast>();
 		for(Lottery lottery:lists){
 			Forecast forecast=new Forecast();
 			BeanUtils.copyProperties(lottery, forecast);
 			forecast.setId(UUID.generateUUID());
-			System.out.println(forecast.getA()+":"+lottery.getB());
+			forecast.setIssue(issue);
+			forecast.setIssueid(issueid);
 			lists2.add(forecast);
 		}
 		History phistory = historyDao.getNewHistory(); 
 		List<History> phistoryList = historyDao.getNewHistoryList(); 
-		System.out.println(phistory.getIssue()+" "+phistory.getStrnum());
 		List<Model> lists3= new ArrayList<Model>();
 		lists3.addAll(phistoryList);
 		for(int i=0;i<lists2.size();i++){
@@ -295,8 +301,15 @@ public class ForecastController extends CrudController<Forecast> {
 		    lotteryUtil.getIntervaland(forecast, phistory);
 		    lotteryUtil.getHeat(forecast, phistory);
 		    lotteryUtil.getRatioNoNumbers(forecast,lists3, 0);
-			forecastDao.addForecast(forecast);
-		}*/
+			//forecastDao.addForecast(forecast);
+		}
+		forecastDao.addForecast(lists2);
+		ForecastIssue forecastIssue=new ForecastIssue();
+		forecastIssue.setId(issueid);
+		forecastIssue.setIssue(issue);
+		forecastIssue.setForecastcount(lists2.size());
+		forecastIssue.setDrawtime(new Date());
+		forecastIssueDao.addForecastIssue(forecastIssue);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }

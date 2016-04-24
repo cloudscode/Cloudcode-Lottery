@@ -22,6 +22,12 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 	public void addForecast(Forecast entity) {
 		forecastDao.createObject(entity);
 	}
+	public void addForecast(List<Forecast> list) {
+		for(Forecast entity:list){
+			forecastDao.createObject(entity);
+		}
+		
+	}
 	public PaginationSupport<Forecast> queryPagingData(Forecast hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
 		List<Object> list=null;
