@@ -969,6 +969,9 @@ select{
  </p>
  
 </form>
+<div class="container" id="layoutinfo">
+
+</div>
  <div class="container" id="layout" style="text-align: center;">
    <div class="col-lg-12 col-sm-12">
 
@@ -983,7 +986,8 @@ select{
 <#include "classpath:com/cloudcode/framework/common/ftl/vendor.ftl"/>
 <script type="text/javascript">
  $( "#search").click(function(){
- 		
+ 		var p= $('<p class="bg-success">处理中...</p>');
+ 		$("#layoutinfo").append(p);
 	 $( "#search").attr("disabled","disabled");
        $.ajax({
 			        url: '${request.getContextPath()}/forecast/search',

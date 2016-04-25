@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.dao.BaseModelObjectDao;
@@ -25,6 +26,8 @@ public class ForecastIssueDao extends BaseModelObjectDao<ForecastIssue> {
 	public PaginationSupport<ForecastIssue> queryPagingData(ForecastIssue hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
 		List<Object> list=null;
+		hqlParamList.addCondition(Order.desc("issue"));
+		hqlParamList.addCondition(Order.desc("drawtime"));
 		return this.queryPaginationSupport(ForecastIssue.class, hqlParamList, pageRange);
 	}
 }
