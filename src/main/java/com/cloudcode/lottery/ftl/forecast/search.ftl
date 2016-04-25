@@ -969,7 +969,7 @@ select{
  </p>
  
 </form>
-<div class="container" id="layoutinfo">
+<div class="container" id="layoutinfo" style="text-align: center;">
 
 </div>
  <div class="container" id="layout" style="text-align: center;">
