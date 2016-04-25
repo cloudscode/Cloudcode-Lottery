@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,12 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cloudcode.framework.controller.CrudController;
 import com.cloudcode.framework.rest.ReturnResult;
 import com.cloudcode.framework.service.ServiceResult;
+import com.cloudcode.framework.utils.BeanUpdater;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.HistoryDao;
-import com.cloudcode.lottery.model.Forecast;
-import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.base.Model;
 import com.cloudcode.lottery.util.LotteryUtil;
@@ -39,11 +37,24 @@ public class HistoryLotteryController extends CrudController<History> {
 	private  HistoryDao historyDao;
 	@Autowired
 	private LotteryUtil lotteryUtil;
-	@RequestMapping(value = "/addHistory", method = RequestMethod.POST)
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public @ResponseBody
-	void addHistory(@RequestBody  History history) {
+	Object create(@RequestBody  History history) {
 		history.setId(UUID.generateUUID());
 		historyDao.create(history);
+		return new ServiceResult(ReturnResult.SUCCESS,"",history);
+	}
+	@RequestMapping(value = "/{id}/update", method = { RequestMethod.POST,
+			RequestMethod.GET })
+	public @ResponseBody Object update(@PathVariable("id") String id,
+			@ModelAttribute History updateObject, HttpServletRequest request) {
+		History history = historyDao.loadObject(id);
+		if (history != null) {
+			BeanUpdater.copyProperties(updateObject, history);
+			historyDao.updateObject(history);
+			return new ServiceResult(ReturnResult.SUCCESS);
+		}
+		return null;
 	}
 	@RequestMapping(value = "/calcHistory",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
@@ -126,12 +137,22 @@ public class HistoryLotteryController extends CrudController<History> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/list1.ftl");
 		return modelAndView;
 	}
-	/*@RequestMapping(value = "toView")
-	public ModelAndView toView() {
+	@RequestMapping(value = "toCreate")
+	public ModelAndView toCreate() {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/view.ftl");
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/detail.ftl");
+		modelAndView.addObject("entityAction", "create");
 		return modelAndView;
-	}*/
+	}
+	@RequestMapping(value = "/{id}/toUpdate")
+	public ModelAndView toUpdate(@PathVariable("id") String id) {
+		History history = historyDao.loadObject(id);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/detail.ftl");
+		modelAndView.addObject("entityAction", "update");
+		modelAndView.addObject("history", history);
+		return modelAndView;
+	}
 	@RequestMapping(value = "/{id}/toView")
 	public ModelAndView toView(@PathVariable("id") String id) {
 		History history =historyDao.loadObject(id);

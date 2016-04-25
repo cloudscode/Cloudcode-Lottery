@@ -228,7 +228,7 @@ $( "#openwindow" ).click(function(){
 	 	 modal: true,
 	 	 width:800,
 		open: function(event, ui) {
-  			 $('#divInDialog').load('${request.getContextPath()}/futurestypes/create', function() {
+  			 $('#divInDialog').load('${request.getContextPath()}/historyLottery/toCreate', function() {
    				
  		 	 });
 	 	 },	   
@@ -244,7 +244,7 @@ $( "#edit" ).click(function(){
 	 	 modal: true,
 	 	 width:800,
 		open: function(event, ui) {
-  			$('#divInDialog').load('${request.getContextPath()}/futurestypes/'+id+'/update', function() {
+  			$('#divInDialog').load('${request.getContextPath()}/historyLottery/'+id+'/toUpdate', function() {
  		 	 });
 	  },	   
     close: function (event, ui) {  
