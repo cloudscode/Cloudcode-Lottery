@@ -36,8 +36,8 @@ $(function(){
            url:"${request.getContextPath()}/forecastIssue/query",
             datatype: "json",
             height: 250,
-            rowNum: 10,
-            rowList: [10,20,30],
+            rowNum: 20,
+            rowList: [10,20,30,50,100,200,500,1000,5000],
             colNames:['Id', '期号','创建时间','记录数'],
             colModel:[
                 {name:'id',index:'id', width:30, hidden:true},
