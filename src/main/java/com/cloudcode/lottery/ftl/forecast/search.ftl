@@ -991,7 +991,7 @@ select{
 			        dataType: 'json',
 			        data: $('form#myFormId').serialize(),
 			        success: function(data) {
- 						 window.location.href='${request.getContextPath()}/forecast/toList';
+ 						 window.location.href='${request.getContextPath()}/forecastIssue/toList';
 			        }
 			    });
 });

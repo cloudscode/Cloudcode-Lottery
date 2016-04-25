@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +24,9 @@ import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
+import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.lottery.dao.ForecastIssueDao;
+import com.cloudcode.lottery.model.Forecast;
 import com.cloudcode.lottery.model.ForecastIssue;
 
 @Controller
@@ -32,7 +35,9 @@ public class ForecastIssueController extends CrudController<ForecastIssue> {
 
 	@Autowired
 	private  ForecastIssueDao forecastIssueDao;
-	 
+	@Autowired
+	private  ForecastDao forecastDao;
+	
 	@RequestMapping(value = "/addForecastIssue", method = RequestMethod.POST)
 	public @ResponseBody
 	void addForecastIssue(@RequestBody  ForecastIssue forecastIssue) {
@@ -86,5 +91,18 @@ public class ForecastIssueController extends CrudController<ForecastIssue> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/fissue/view.ftl");
 		modelAndView.addObject("forecastIssue",forecastIssue);
 		return modelAndView;
+	}
+	@RequestMapping(value = "/{id}/delete",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody Object delete(@PathVariable("id") String id) {
+		ForecastIssue forecastIssue =forecastIssueDao.loadObject(id);
+		Criteria criterion = forecastDao.getSession().createCriteria(Forecast.class);
+		criterion.add(Restrictions.eq("issueid", forecastIssue.getId()));
+		List<Forecast> lists=forecastDao.loadAll(criterion);
+		for(Forecast forecast:lists){
+			forecastDao.deleteObject(forecast);
+		}
+		forecastIssueDao.deleteObject(forecastIssue);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }

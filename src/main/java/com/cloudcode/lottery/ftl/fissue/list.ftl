@@ -9,9 +9,9 @@
 <div class="container" id="layout">
 <div class="col-lg-9 col-sm-9" id="article">
 <section id="button">
-        <button id="openwindow" class="ui-button-success">预测</button>
+        <#--<button id="openwindow" class="ui-button-success">预测</button>
         <button id="edit" class="ui-button-primary">查询</button>
-        <button id="view" class="ui-button-warning">查看</button>
+        <button id="view" class="ui-button-warning">查看</button>-->
         <button id="delete" class="ui-button-danger">删除</button>
         <button id="refresh" class="ui-button-info">刷新</button>
 </section></div></div>
@@ -74,7 +74,7 @@ var id;
 	     id = grid.jqGrid('getGridParam','selrow');
 	     if(id.toString() != null && id.toString() != ""){
 		    $.ajax({
-			        url: '${request.getContextPath()}/futurestypes/deleteAll',
+			        url: '${request.getContextPath()}/forecastIssue/'+id+'/delete',
 			        type: 'post',
 			        dataType: 'json',
 			        data: {'ids':id.toString()},

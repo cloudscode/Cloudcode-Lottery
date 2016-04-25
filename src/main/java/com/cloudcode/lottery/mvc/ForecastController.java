@@ -343,4 +343,10 @@ public class ForecastController extends CrudController<Forecast> {
 		forecastIssueDao.addForecastIssue(forecastIssue);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
+	@RequestMapping(value = "/{id}/delete",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody Object delete(@PathVariable("id") String id) {
+			forecastDao.deleteObject(id);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
 }
