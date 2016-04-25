@@ -33,6 +33,9 @@
                     <li>
                         <a href="${request.getContextPath()}/forecastIssue/toList" target="view_window">预测信息</a>
                     </li>
+                     <li>
+                        <a href="${request.getContextPath()}/lottery/toList" target="view_window">基础库信息</a>
+                    </li>
                     <!--<li>
                         <a href="./map.html">Map</a>
                     </li>
