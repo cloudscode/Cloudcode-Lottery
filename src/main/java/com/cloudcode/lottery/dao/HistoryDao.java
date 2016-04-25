@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.hibernate.Query;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.dao.BaseModelObjectDao;
@@ -23,6 +25,7 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 	public PaginationSupport<History> queryPagingData(History hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
 		List<Object> list=null;
+		hqlParamList.addCondition(Order.desc("issue"));
 		return this.queryPaginationSupport(History.class, hqlParamList, pageRange);
 	}
 	public History getNewHistory(){

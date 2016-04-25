@@ -257,7 +257,7 @@ var id;
 	     id = grid.jqGrid('getGridParam','selrow');
 	     if(id.toString() != null && id.toString() != ""){
 		    $.ajax({
-			        url: '${request.getContextPath()}/futurestypes/deleteAll',
+			        url: '${request.getContextPath()}/historyLottery/'+id+'/delete',
 			        type: 'post',
 			        dataType: 'json',
 			        data: {'ids':id.toString()},

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +25,8 @@ import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.HistoryDao;
+import com.cloudcode.lottery.model.Forecast;
+import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.base.Model;
 import com.cloudcode.lottery.util.LotteryUtil;
@@ -136,5 +139,11 @@ public class HistoryLotteryController extends CrudController<History> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/view.ftl");
 		modelAndView.addObject("history",history);
 		return modelAndView;
+	}
+	@RequestMapping(value = "/{id}/delete",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody Object delete(@PathVariable("id") String id) {
+		historyDao.loadObject(id);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }
