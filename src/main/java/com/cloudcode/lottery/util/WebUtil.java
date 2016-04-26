@@ -15,6 +15,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import com.cloudcode.framework.utils.IOUtils;
+import com.cloudcode.framework.utils.UUID;
 
 public class WebUtil {
 	public static List<String> getURLCollection(String address) {
@@ -57,7 +58,8 @@ public class WebUtil {
 		}
 		List<String> result = new ArrayList<String>();
 
-		Elements trs1 = doc.select("table");
+		Elements trs1 = doc.select("table"); 
+		int count=1;
 		for (int j = 0; j < trs1.size(); j++) {
 			if (trs1.get(j).attr("class").equals("cpzs_table mt10")) {
 				Elements trs = trs1.get(j).select("tr");
@@ -69,8 +71,10 @@ public class WebUtil {
 					if (!"投注说明".equals(issue) && !"冷热图".equals(issue)) {
 						System.out.println(issue);
 						StringBuffer sb = new StringBuffer();
-						sb.append("insert into lottery_lottery(id,issue,a,b,c,d,e,f,g,serialnum)values(");
-						sb.append("UUID(),'");
+						sb.append("insert into lottery_history(id,issue,a,b,c,d,e,f,g,specialnum,serialnum)values(");
+						sb.append("'");
+						sb.append(UUID.generateUUID());
+						sb.append("','");
 						sb.append(issue);
 						sb.append("',");
 						Elements tds = trs.get(i).select("span");
@@ -88,9 +92,12 @@ public class WebUtil {
 						}
 						sb.append("");
 						sb.append(spNum);
+						sb.append(",");
+						sb.append(count);
 						sb.append(");");
 						System.out.println(sb.toString());
 						result.add(sb.toString());
+						count++;
 					}
 				}
 			}
