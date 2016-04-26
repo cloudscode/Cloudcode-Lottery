@@ -20,7 +20,7 @@
 	</div>
 	<label for="inputEmail3" class="col-sm-2 control-label">特别号码</label>
     <div class="col-sm-2">
-	    <input type="text" class="form-control"  name="serialnum" placeholder="" value="${history.serialnum!''}">
+	    <input type="text" class="form-control"  name="specialnum" placeholder="" value="${history.specialnum!''}">
 	</div>
   </div>
   <div class="form-group">
