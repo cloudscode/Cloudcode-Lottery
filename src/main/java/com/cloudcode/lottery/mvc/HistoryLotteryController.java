@@ -142,6 +142,10 @@ public class HistoryLotteryController extends CrudController<History> {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/detail.ftl");
 		modelAndView.addObject("entityAction", "create");
+		History history = new History();
+		String oldIssue = historyDao.getNewIssue();
+		history = lotteryUtil.getHistor(oldIssue);
+		modelAndView.addObject("history", history);
 		return modelAndView;
 	}
 	@RequestMapping(value = "/{id}/toUpdate")

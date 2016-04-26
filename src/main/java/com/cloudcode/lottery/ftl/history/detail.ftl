@@ -19,7 +19,7 @@
 	    <input type="text" class="form-control"  name="issue" placeholder="" value="${history.issue!''}">
 	</div>
 	<label for="inputEmail3" class="col-sm-2 control-label">特别号码</label>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
 	    <input type="text" class="form-control"  name="specialnum" placeholder="" value="${history.specialnum!''}">
 	</div>
   </div>
@@ -49,7 +49,7 @@
   </div>
 </form>
   <div class="form-group">
- <div class="col-sm-offset-2   col-sm-10"> <input type="hidden" value="${history.id!''}" id="id" name="id" >
+ <div class="col-sm-9" style="text-align: center;"> <input type="hidden" value="${history.id!''}" id="id" name="id" >
      	<button type="button" id="updateButton" name="calc" class="btn btn-primary" >保存</button>
      	<button type="button" id="updateButton" name="random" class="btn btn-primary" >取消</button>
      	 </div>

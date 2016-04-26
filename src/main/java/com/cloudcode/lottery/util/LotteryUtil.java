@@ -5,11 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.utils.Check;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.LotteryDao;
+import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.model.base.Base;
 import com.cloudcode.lottery.model.base.Model;
@@ -901,5 +905,55 @@ public class LotteryUtil {
 			 
 			}
 		}
+	}
+	public static void ListToBase(List<Integer> num,Base base){
+		base.setA(num.get(0));
+		base.setB(num.get(1));
+		base.setC(num.get(2));
+		base.setD(num.get(3));
+		base.setE(num.get(4));
+		base.setF(num.get(5));
+		base.setG(num.get(6));
+		arrSort(base);
+	}
+	public static History getHistor(String oldIssue){
+		String address = "http://fjtc.com.cn/Line-3607?Type=OLD";
+		List<String> list = WebUtil.getURLCollection(address);
+		String buf = "";
+		for (String str : list) {
+			buf += str + "\n";
+		}
+		History lottery = new History();
+		Document doc = Jsoup.parse(buf.toString(), "UTF-8");
+		Elements trs1 = doc.select("table"); 
+		for (int j = 0; j < trs1.size(); j++) {
+			if (trs1.get(j).attr("class").equals("cpzs_table mt10")) {
+				Elements trs = trs1.get(j).select("tr");
+				for (int i = 0; i < trs.size(); i++) {
+					if (trs.get(i).select("th").size() > 0) {
+						continue;
+					}
+					String issue = trs.get(i).select("td").get(0).text();
+					if (!"投注说明".equals(issue) && !"冷热图".equals(issue) && issue.equals(oldIssue)) {
+						List<Integer> num=new ArrayList<Integer>();
+						lottery.setId(UUID.generateUUID());
+						lottery.setIssue(issue);
+						Elements tds = trs.get(i).select("span");
+						String spNum = "";
+						for (int k = 0; k < tds.size(); k++) {
+							if (!tds.get(k).attr("class").equals("spNum")) {
+								String text = tds.get(k).text();
+								num.add(Integer.parseInt(text));
+							} else {
+								spNum = tds.get(k).text();
+							}
+						}
+						ListToBase(num, lottery);
+						lottery.setSpecialnum(Integer.parseInt(spNum));
+					}
+				}
+			}
+		}
+		return lottery;
 	}
 }
