@@ -33,6 +33,17 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 	public void createHistory(History history){
 		List<History> phistoryList = this.getNewHistoryList(); 
 		History phistory=this.getNewHistory(); 
+		calcHistory(history,phistoryList,phistory);
+		this.createObject(history);
+	}
+	@Transient
+	public void updateHistory(History history){
+		List<History> phistoryList = this.getCurrentHistoryList(history.getIssue()); 
+		History phistory=this.getCurrentHistory(history.getIssue()); 
+		calcHistory(history,phistoryList,phistory);
+		this.updateObject(history);
+	}
+	public void calcHistory(History history,List<History> phistoryList,History phistory) {
 		lotteryUtil.arrSort(history);
 		lotteryUtil.calcLottery(history);
 		lotteryUtil.getNewSideRepeatNo(history, phistory);
@@ -43,7 +54,6 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 		lotteryUtil.getIntervaland(history, phistory);
 		lotteryUtil.getHeat(history, phistory, 0);
 		lotteryUtil.getRatioNoNumbers(history,lists3, 0);
-		this.createObject(history);
 	}
 	public PaginationSupport<History> queryPagingData(History hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
@@ -60,6 +70,20 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 	}
 	public List<History> getNewHistoryList(){
 		String sql="select c.*  from lottery_history  c order by c.issue desc limit 0,10";
+		Query query = historyDao.getSession().createSQLQuery(sql).addEntity(History.class);
+		query.setProperties(History.class);
+		List<History> phistory = query.list();
+		return phistory;
+	}
+	public History getCurrentHistory(String issue){
+		String sql="select c.*  from lottery_history  c  where c.issue <'"+issue+"' order by c.issue desc limit 0,1";
+		Query query = historyDao.getSession().createSQLQuery(sql).addEntity(History.class);
+		query.setProperties(History.class);
+		History phistory =  (History) query.uniqueResult();
+		return phistory;
+	}
+	public List<History> getCurrentHistoryList(String issue){
+		String sql="select c.*  from lottery_history  c where c.issue <'"+issue+"' order by c.issue desc limit 0,10";
 		Query query = historyDao.getSession().createSQLQuery(sql).addEntity(History.class);
 		query.setProperties(History.class);
 		List<History> phistory = query.list();

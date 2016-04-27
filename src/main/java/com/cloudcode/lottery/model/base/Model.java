@@ -2154,5 +2154,12 @@ public class Model extends Base {
 		lottery.setNinearea8(0);
 		lottery.setNinearea9(0);
 		lottery.setLastvalueappears("");
+		lottery.setRatioonthethreenumbers("");
+		lottery.setRatioonthefivenumbers("");
+		lottery.setRatioonthesevennumbers("");
+		lottery.setRatioonthetennumbers("");
+		lottery.setNewno(null);
+		lottery.setRepeatno(null);
+		lottery.setRepeatno(null);
 	}
 }

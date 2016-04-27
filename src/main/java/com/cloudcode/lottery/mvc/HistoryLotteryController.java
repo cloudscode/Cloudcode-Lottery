@@ -51,7 +51,7 @@ public class HistoryLotteryController extends CrudController<History> {
 		History history = historyDao.loadObject(id);
 		if (history != null) {
 			BeanUpdater.copyProperties(updateObject, history);
-			historyDao.updateObject(history);
+			historyDao.updateHistory(history);
 			return new ServiceResult(ReturnResult.SUCCESS);
 		}
 		return null;
