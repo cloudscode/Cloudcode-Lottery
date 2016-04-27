@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.Transient;
 
 import org.hibernate.Query;
 import org.hibernate.criterion.Order;
@@ -28,6 +29,7 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 	@Autowired
 	private LotteryUtil lotteryUtil;
 	
+	@Transient
 	public void createHistory(History history){
 		List<History> phistoryList = this.getNewHistoryList(); 
 		History phistory=this.getNewHistory(); 
@@ -41,7 +43,7 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 		lotteryUtil.getIntervaland(history, phistory);
 		lotteryUtil.getHeat(history, phistory, 0);
 		lotteryUtil.getRatioNoNumbers(history,lists3, 0);
-		this.create(history);
+		this.createObject(history);
 	}
 	public PaginationSupport<History> queryPagingData(History hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();

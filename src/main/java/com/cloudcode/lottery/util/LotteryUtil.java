@@ -573,9 +573,9 @@ public class LotteryUtil {
 		getRatioNoNumbers(lottery,lists, i,10);
 	}
 	public static void getRatioNoNumbers(Model lottery,List<Model> lists,int i,int t){
-		 if(lists.size()>(i+t)){
+		 if(lists.size()>=(i+t)){
 			 Map<Integer,Integer> maps =new HashMap<Integer, Integer>();
-			 for(int j=1;j<=t;j++){
+			 for(int j=0;j<t;j++){
 				 maps.putAll(getMaps(lists.get(i+j)));
 			 }
 			 int count=0;

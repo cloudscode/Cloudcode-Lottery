@@ -51,7 +51,7 @@
   <div class="form-group">
  <div class="col-sm-9" style="text-align: center;"> <input type="hidden" value="${history.id!''}" id="id" name="id" >
      	<button type="button" id="updateButton" name="calc" class="btn btn-primary" >保存</button>
-     	<button type="button" id="updateButton" name="random" class="btn btn-primary" >取消</button>
+     	<button type="button" id="updateButton" name="random" class="btn btn-warning" >取消</button>
      	 </div>
      </div>
      
@@ -74,9 +74,8 @@
 			    });
 		
    }else{
-	  
 			    $.ajax({
-			        url: '${request.getContextPath()}/historyLottery/create',
+			        url: '${request.getContextPath()}/historyLottery/create?',
 			        type: 'post',
 			        dataType: 'json',
 			        data: $('form#myFormId').serialize(),
@@ -89,7 +88,7 @@
     }
   });
   $('button[name="random"]').click( function() {
-       
+       $('.ui-dialog-titlebar-close').trigger('click');
   });
 </script>
 </div>

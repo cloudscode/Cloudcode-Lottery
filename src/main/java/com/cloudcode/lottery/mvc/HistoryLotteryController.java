@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,9 +36,10 @@ public class HistoryLotteryController extends CrudController<History> {
 	private  HistoryDao historyDao;
 	@Autowired
 	private LotteryUtil lotteryUtil;
+
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public @ResponseBody
-	Object create(@RequestBody  History history) {
+	public @ResponseBody Object create(@ModelAttribute History history,
+			HttpServletRequest request) {
 		history.setId(UUID.generateUUID());
 		historyDao.createHistory(history);
 		return new ServiceResult(ReturnResult.SUCCESS,"",history);
@@ -168,7 +168,7 @@ public class HistoryLotteryController extends CrudController<History> {
 	@RequestMapping(value = "/{id}/delete",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
 	public @ResponseBody Object delete(@PathVariable("id") String id) {
-		historyDao.loadObject(id);
+		historyDao.deleteObject(id);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }
