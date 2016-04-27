@@ -81,35 +81,21 @@ public class HistoryLotteryController extends CrudController<History> {
 		Criteria criterion = historyDao.getSession().createCriteria(History.class);
 		criterion.addOrder(Order.desc("issue"));
 		List<History> lists=historyDao.loadAll(criterion);
+		List<Model> lists3= new ArrayList<Model>();
+		lists3.addAll(lists);
 		for(int i=0;i<lists.size();i++){
 			History history=lists.get(i);
+			lotteryUtil.arrSort(history);
+			lotteryUtil.calcLottery(history);
 			if((i+1)<lists.size()){
 			  History phistory=lists.get(i+1);
 			  lotteryUtil.getNewSideRepeatNo(history, phistory);
 			}
-			lotteryUtil.arrSort(history);
-			lotteryUtil.calcLottery(history);
-			//historyDao.updateObject(history);
-		}
-		for(int i=0;i<lists.size();i++){
-			History history=lists.get(i);
-			history.initIntervaland0(history);
-			//historyDao.updateObject(history);
-		}
-		Criteria criterion2 = historyDao.getSession().createCriteria(History.class);
-		criterion2.addOrder(Order.asc("issue"));
-		List<History> lists2=historyDao.loadAll(criterion2);
-		List<Model> lists3= new ArrayList<Model>();
-		lists3.addAll(lists2);
-		for(int i=0;i<lists2.size();i++){
-			History history=lists2.get(i);
 			if((i-1)<lists.size()){
 				if(i-1 ==-1){
 					history.initIntervaland1(history);
 				}else if(i-1 >=0){
-				  History phistory=lists2.get(i-1);
-				  System.out.println(phistory.getIssue());
-				  System.out.println(history.getIssue());
+				  History phistory=lists.get(i-1);
 				  lotteryUtil.getIntervaland(history, phistory);
 				  lotteryUtil.getHeat(history, phistory, i);
 				}
