@@ -1,5 +1,6 @@
 package com.cloudcode.lottery.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.dao.BaseModelObjectDao;
@@ -16,12 +18,31 @@ import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.lottery.ProjectConfig;
 import com.cloudcode.lottery.model.History;
+import com.cloudcode.lottery.model.base.Model;
+import com.cloudcode.lottery.util.LotteryUtil;
 
 @Repository
 public class HistoryDao extends BaseModelObjectDao<History> {
 	@Resource(name = ProjectConfig.PREFIX + "historyDao")
 	private ModelObjectDao<History> historyDao;
+	@Autowired
+	private LotteryUtil lotteryUtil;
 	
+	public void createHistory(History history){
+		List<History> phistoryList = this.getNewHistoryList(); 
+		History phistory=this.getNewHistory(); 
+		lotteryUtil.arrSort(history);
+		lotteryUtil.calcLottery(history);
+		lotteryUtil.getNewSideRepeatNo(history, phistory);
+		history.initIntervaland0(history);	
+		List<History> lists2=phistoryList;
+		List<Model> lists3= new ArrayList<Model>();
+		lists3.addAll(lists2);
+		lotteryUtil.getIntervaland(history, phistory);
+		lotteryUtil.getHeat(history, phistory, 0);
+		lotteryUtil.getRatioNoNumbers(history,lists3, 0);
+		this.create(history);
+	}
 	public PaginationSupport<History> queryPagingData(History hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
 		List<Object> list=null;

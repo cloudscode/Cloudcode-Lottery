@@ -41,23 +41,8 @@ public class HistoryLotteryController extends CrudController<History> {
 	public @ResponseBody
 	Object create(@RequestBody  History history) {
 		history.setId(UUID.generateUUID());
-		historyDao.create(history);
+		historyDao.createHistory(history);
 		return new ServiceResult(ReturnResult.SUCCESS,"",history);
-	}
-	private void add(History history){
-		List<History> phistoryList = historyDao.getNewHistoryList(); 
-		History phistory=historyDao.getNewHistory(); 
-		lotteryUtil.getNewSideRepeatNo(history, phistory);
-		lotteryUtil.arrSort(history);
-		lotteryUtil.calcLottery(history);
-		history.initIntervaland0(history);	
-		List<History> lists2=phistoryList;
-		List<Model> lists3= new ArrayList<Model>();
-		lists3.addAll(lists2);
-		lotteryUtil.getIntervaland(history, phistory);
-		lotteryUtil.getHeat(history, phistory, 0);
-		lotteryUtil.getRatioNoNumbers(history,lists3, 0);
-		historyDao.updateObject(history);
 	}
 	@RequestMapping(value = "/{id}/update", method = { RequestMethod.POST,
 			RequestMethod.GET })
