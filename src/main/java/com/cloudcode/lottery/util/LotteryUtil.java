@@ -1005,4 +1005,80 @@ public class LotteryUtil {
 		}
 		base.setHorver(map.size()+":"+map2.size());
 	}
+	public void calc(LotteryDao lotteryDao,LotteryUtil lotteryUtil){
+		GenerateLottery generateNumber1=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t1 = new Thread(generateNumber1);
+	    t1.start();
+	    GenerateLottery generateNumber2=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t2 = new Thread(generateNumber2);
+	    t2.start();
+	    GenerateLottery generateNumber3=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t3 = new Thread(generateNumber3);
+	    t3.start();
+	    GenerateLottery generateNumber4=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t4 = new Thread(generateNumber4);
+	    t4.start();
+	    GenerateLottery generateNumber5=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t5 = new Thread(generateNumber5);
+	    t5.start();
+	    GenerateLottery generateNumber6=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t6 = new Thread(generateNumber6);
+	    t6.start();
+	    GenerateLottery generateNumber11=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t11 = new Thread(generateNumber11);
+	    t11.start();
+	    GenerateLottery generateNumber21=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t21 = new Thread(generateNumber21);
+	    t21.start();
+	    GenerateLottery generateNumber31=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t31 = new Thread(generateNumber31);
+	    t31.start();
+	    GenerateLottery generateNumber41=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t41 = new Thread(generateNumber41);
+	    t41.start();
+	    GenerateLottery generateNumber51=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t51 = new Thread(generateNumber51);
+	    t51.start();
+	    GenerateLottery generateNumber61=new GenerateLottery(lotteryDao,lotteryUtil);
+		Thread t61 = new Thread(generateNumber61);
+	    t61.start();
+	}
+	static class GenerateLottery extends Thread{
+		 public GenerateLottery(){
+			 
+		 }
+		 public GenerateLottery(LotteryDao lotteryDao,LotteryUtil lotteryUtil){
+			 this.lotteryDao = lotteryDao;
+			 this.lotteryUtil =lotteryUtil;
+		 }
+		 private LotteryDao lotteryDao;
+		 private LotteryUtil lotteryUtil;
+		 
+	     public LotteryDao getLotteryDao() {
+			return lotteryDao;
+		}
+
+		public void setLotteryDao(LotteryDao lotteryDao) {
+			this.lotteryDao = lotteryDao;
+		}
+		
+		public LotteryUtil getLotteryUtil() {
+			return lotteryUtil;
+		}
+		public void setLotteryUtil(LotteryUtil lotteryUtil) {
+			this.lotteryUtil = lotteryUtil;
+		}
+		public void run(){
+			int num=0;
+			do{
+				List<Lottery> list =getLotteryDao().getLotteryList();
+				for(Lottery lottery:list){
+					getLotteryUtil().getHorver(getLotteryUtil().tolist(lottery), lottery);
+					getLotteryDao().updateObject(lottery);  
+				}             
+				num = getLotteryDao().getLotteryList().size();
+			}while(num ==0);
+			System.out.println("******************end******************");
+	     }
+	 }
 }

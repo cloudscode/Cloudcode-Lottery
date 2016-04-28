@@ -118,4 +118,10 @@ public class LotteryController extends CrudController<Lottery> {
 		modelAndView.addObject("history",history);
 		return modelAndView;
 	}
+	@RequestMapping(value = "/toCalc",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody Object toCalc( HttpServletRequest request) {
+		lotteryUtil.calc(lotteryDao, lotteryUtil);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
 }
