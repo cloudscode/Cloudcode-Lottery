@@ -441,6 +441,7 @@ public class LotteryUtil {
 		getThanTheHorizontalSpacing(lottery);
 		getLastValueAppears(lottery);
 		//getNewSideRepeatNo(lottery, parent);
+		getHorver(tolist(lottery), lottery);
 	}
 	public static void lastValueAppears(Integer temp,List<Integer> list,Base lottery){
 		Integer count=0;
@@ -548,7 +549,17 @@ public class LotteryUtil {
 		lottery.setRepeatno(Check.toString(lottery.getRepeatno())+repeat);
 		lottery.setNoside(Check.toString(lottery.getNoside())+side);
 	}
-	
+	public static List<Integer> tolist(Base lottery) {
+		List<Integer> list =new ArrayList<Integer>();
+		list.add(lottery.getA());
+		list.add(lottery.getB());
+		list.add(lottery.getC());
+		list.add(lottery.getD());
+		list.add(lottery.getE());
+		list.add(lottery.getF());
+		list.add(lottery.getG());
+		return list;
+	}
 	public static List<Integer> tolist(Model lottery) {
 		List<Integer> list =new ArrayList<Integer>();
 		list.add(lottery.getA());
@@ -649,12 +660,14 @@ public class LotteryUtil {
 		//Lottery( );
 		Model lottery = new Model();
 		lottery.setA(1);
-		lottery.setB(3);
-		lottery.setC(6);
-		lottery.setD(8);
+		lottery.setB(2);
+		lottery.setC(3);
+		lottery.setD(6);
 		lottery.setE(10);
-		lottery.setF(16);
-		lottery.setG(35);
+		lottery.setF(12);
+		lottery.setG(20);
+		getHorver(tolist(lottery), lottery);
+		System.out.println(lottery.getHorver());
 		LotteryUtil.getConsecutivenumber(lottery);
 		System.out.println("连号个数：" + lottery.getConsecutivenumber());
 	}
@@ -719,7 +732,7 @@ public class LotteryUtil {
 		getT(lottery);
 		getThanTheHorizontalSpacing(lottery);
 		getLastValueAppears(lottery);
-		
+		getHorver(tolist(lottery), lottery);
 	}
 	public static void initBaseLottery(LotteryDao lotteryDao) {
 		GenerateNum(lotteryDao,1);
@@ -955,5 +968,41 @@ public class LotteryUtil {
 			}
 		}
 		return lottery;
+	}
+	/**
+	 * 横纵
+	 */
+	public static void getHorver(List<Integer> nums,Base base){
+		Map<String,Object> map=new HashMap<String, Object>();
+		Map<String,Object> map2=new HashMap<String, Object>();
+		for(Integer num:nums){
+			if(num<=6){
+				map.put("1", 1);
+			}else if(num >6 && num <=12){
+				map.put("2", 2);
+			}else if(num >12 && num <=18){
+				map.put("3", 3);
+			}else if(num >18 && num <=24){
+				map.put("4", 4);
+			}else if(num >24 && num <=30){
+				map.put("5", 5);
+			}else if(num >30 && num <=36){
+				map.put("6", 6);
+			}
+			if((num % 6)==1){
+				map2.put("1", 1);
+			}else if((num % 6)==2){
+				map2.put("2", 2);
+			}else if((num % 6)==3){
+				map2.put("3", 3);
+			}else if((num % 6)==4){
+				map2.put("4", 4);
+			}else if((num % 6)==5){
+				map2.put("5", 5);
+			}else if((num % 6)==0){
+				map2.put("6", 6);
+			}
+		}
+		base.setHorver(map.size()+":"+map2.size());
 	}
 }
