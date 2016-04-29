@@ -9,6 +9,14 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.script.ScriptContext;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import javax.script.SimpleScriptContext;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -39,7 +47,7 @@ public class WebUtil {
 		return list;
 	}
 
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 
 		String address = "http://fjtc.com.cn/Line-3607?Type=OLD";
 		List<String> list = getURLCollection(address);
@@ -58,8 +66,8 @@ public class WebUtil {
 		}
 		List<String> result = new ArrayList<String>();
 
-		Elements trs1 = doc.select("table"); 
-		int count=1;
+		Elements trs1 = doc.select("table");
+		int count = 1;
 		for (int j = 0; j < trs1.size(); j++) {
 			if (trs1.get(j).attr("class").equals("cpzs_table mt10")) {
 				Elements trs = trs1.get(j).select("tr");
@@ -114,5 +122,20 @@ public class WebUtil {
 
 	}
 
-	
+	public static void main(String[] args) throws ScriptException {
+		     String val1="123@<中国>123@123@<中国心>123";
+			 Pattern pattern=Pattern.compile("(@<(.*?)>)+");
+			 Matcher matcher=pattern.matcher(val1);
+			 while(matcher.find()){
+				 System.out.println(matcher.group());
+			 }
+			 String param="11";
+			 String condition="param==1?'123':'345'";
+			 ScriptEngineManager engineManager = new ScriptEngineManager();  
+	        ScriptEngine engine = engineManager.getEngineByName("JavaScript"); 
+	        ScriptContext scriptContext=new SimpleScriptContext();
+	        scriptContext.setAttribute("param", param, 100);
+	        String val = engine.eval(condition, scriptContext).toString();
+	        System.out.println(val);
+	}
 }

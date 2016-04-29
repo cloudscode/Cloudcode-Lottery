@@ -23,6 +23,7 @@ import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.LotteryDao;
 import com.cloudcode.lottery.model.Lottery;
+import com.cloudcode.lottery.util.LotteryRunnable;
 import com.cloudcode.lottery.util.LotteryUtil;
 
 @Controller
@@ -33,6 +34,8 @@ public class LotteryController extends CrudController<Lottery> {
 	private  LotteryDao lotteryDao;
 	@Autowired
 	private LotteryUtil lotteryUtil;
+	@Autowired
+	private LotteryRunnable lotteryRunnable;
 	@RequestMapping(value = "/addLottery", method = RequestMethod.POST)
 	public @ResponseBody
 	void addLottery(@RequestBody  Lottery lottery) {
@@ -122,6 +125,14 @@ public class LotteryController extends CrudController<Lottery> {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
 	public @ResponseBody Object toCalc( HttpServletRequest request) {
 		lotteryUtil.calc(lotteryDao, lotteryUtil);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
+	@RequestMapping(value = "/toCalc2",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody Object toCalc2( HttpServletRequest request) {
+		lotteryRunnable.setList(lotteryDao.getLotteryList());
+		lotteryRunnable.setLotteryDao(lotteryDao);
+		lotteryRunnable.run();
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }
