@@ -14,7 +14,6 @@ import com.cloudcode.framework.utils.HQLParamList;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.lottery.ProjectConfig;
-import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.util.LotteryUtil;
 
@@ -50,7 +49,7 @@ public class LotteryDao extends BaseModelObjectDao<Lottery> {
 	public List<Lottery> getLotteryList(LotteryDao lotteryDao){
 		String sql="select c.*  from lottery_lottery  c where c.horver is null limit 0,5";
 		Query query = lotteryDao.getSessionFactory().getCurrentSession().createSQLQuery(sql).addEntity(Lottery.class);
-		query.setProperties(History.class);
+		query.setProperties(Lottery.class);
 		List<Lottery> phistory = query.list();
 		return phistory;
 	}

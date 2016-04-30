@@ -12,7 +12,9 @@ import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.utils.Check;
 import com.cloudcode.framework.utils.UUID;
+import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.lottery.dao.LotteryDao;
+import com.cloudcode.lottery.model.Forecast;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.model.base.Base;
@@ -1005,80 +1007,64 @@ public class LotteryUtil {
 		}
 		base.setHorver(map.size()+":"+map2.size());
 	}
-	public void calc(LotteryDao lotteryDao,LotteryUtil lotteryUtil){
-		GenerateLottery generateNumber1=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t1 = new Thread(generateNumber1);
-	    t1.start();
-	    GenerateLottery generateNumber2=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t2 = new Thread(generateNumber2);
-	    t2.start();
-	    GenerateLottery generateNumber3=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t3 = new Thread(generateNumber3);
-	    t3.start();
-	    GenerateLottery generateNumber4=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t4 = new Thread(generateNumber4);
-	    t4.start();
-	    GenerateLottery generateNumber5=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t5 = new Thread(generateNumber5);
-	    t5.start();
-	    GenerateLottery generateNumber6=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t6 = new Thread(generateNumber6);
-	    t6.start();
-	    GenerateLottery generateNumber11=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t11 = new Thread(generateNumber11);
-	    t11.start();
-	    GenerateLottery generateNumber21=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t21 = new Thread(generateNumber21);
-	    t21.start();
-	    GenerateLottery generateNumber31=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t31 = new Thread(generateNumber31);
-	    t31.start();
-	    GenerateLottery generateNumber41=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t41 = new Thread(generateNumber41);
-	    t41.start();
-	    GenerateLottery generateNumber51=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t51 = new Thread(generateNumber51);
-	    t51.start();
-	    GenerateLottery generateNumber61=new GenerateLottery(lotteryDao,lotteryUtil);
-		Thread t61 = new Thread(generateNumber61);
-	    t61.start();
+	public static void calcForecast(List<Forecast> lists2, History phistory,
+			List<Model> lists3,ForecastDao forecastDao) {
+		FRunnable r = new FRunnable();
+		r.setForecastDao(forecastDao);
+		r.setLists(lists2);
+		r.setLists3(lists3);
+		r.setPhistory(phistory);
+		Thread s=new Thread(r);
+		s.start();
 	}
-	static class GenerateLottery extends Thread{
-		 public GenerateLottery(){
-			 
-		 }
-		 public GenerateLottery(LotteryDao lotteryDao,LotteryUtil lotteryUtil){
-			 this.lotteryDao = lotteryDao;
-			 this.lotteryUtil =lotteryUtil;
-		 }
-		 private LotteryDao lotteryDao;
-		 private LotteryUtil lotteryUtil;
-		 
-	     public LotteryDao getLotteryDao() {
-			return lotteryDao;
+	public static class FRunnable extends Thread{
+		private List<Forecast> lists;
+		private ForecastDao forecastDao;
+		private History phistory;
+		private List<Model> lists3;
+
+		public void run() {
+
+			for (Forecast forecast : getLists()) {
+				LotteryUtil.getIntervaland(forecast, getPhistory());
+				LotteryUtil.getHeat(forecast, getPhistory());
+				LotteryUtil.getRatioNoNumbers(forecast, getLists3(), 0);
+				LotteryUtil.getNewSideRepeatNo(forecast, getPhistory());
+			}
+			getForecastDao().addForecast(getLists());
 		}
 
-		public void setLotteryDao(LotteryDao lotteryDao) {
-			this.lotteryDao = lotteryDao;
+		public List<Forecast> getLists() {
+			return lists;
 		}
-		
-		public LotteryUtil getLotteryUtil() {
-			return lotteryUtil;
+
+		public void setLists(List<Forecast> lists) {
+			this.lists = lists;
 		}
-		public void setLotteryUtil(LotteryUtil lotteryUtil) {
-			this.lotteryUtil = lotteryUtil;
+
+		public ForecastDao getForecastDao() {
+			return forecastDao;
 		}
-		public void run(){
-			int num=0;
-			do{
-				List<Lottery> list =getLotteryDao().getLotteryList();
-				for(Lottery lottery:list){
-					getLotteryUtil().getHorver(getLotteryUtil().tolist(lottery), lottery);
-					getLotteryDao().updateObject(lottery);  
-				}             
-				num = getLotteryDao().getLotteryList().size();
-			}while(num ==0);
-			System.out.println("******************end******************");
-	     }
-	 }
+
+		public void setForecastDao(ForecastDao forecastDao) {
+			this.forecastDao = forecastDao;
+		}
+
+		public History getPhistory() {
+			return phistory;
+		}
+
+		public void setPhistory(History phistory) {
+			this.phistory = phistory;
+		}
+
+		public List<Model> getLists3() {
+			return lists3;
+		}
+
+		public void setLists3(List<Model> lists3) {
+			this.lists3 = lists3;
+		}
+
+	}
 }

@@ -42,6 +42,7 @@ import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.model.base.Model;
+import com.cloudcode.lottery.util.ForecastRunnable;
 import com.cloudcode.lottery.util.LotteryUtil;
 
 @Controller
@@ -60,6 +61,9 @@ public class ForecastController extends CrudController<Forecast> {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private  ForecastIssueDao forecastIssueDao;
+	@Autowired
+	private ForecastRunnable forecastRunnable;
+	
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody
 	void addForecast(@RequestBody  Forecast forecast) {
@@ -326,27 +330,48 @@ public class ForecastController extends CrudController<Forecast> {
 		List<History> phistoryList = historyDao.getNewHistoryList(); 
 		List<Model> lists3= new ArrayList<Model>();
 		lists3.addAll(phistoryList);
-		for(int i=0;i<lists2.size();i++){
+		/*for(int i=0;i<lists2.size();i++){
 			Forecast forecast=lists2.get(i);
 		    lotteryUtil.getIntervaland(forecast, phistory);
 		    lotteryUtil.getHeat(forecast, phistory);
 		    lotteryUtil.getRatioNoNumbers(forecast,lists3, 0);
 		    lotteryUtil.getNewSideRepeatNo(forecast, phistory);
 			//forecastDao.addForecast(forecast);
-		}
-		forecastDao.addForecast(lists2);
+		}*/
+		//forecastDao.addForecast(lists2);
+		calcForecast(lists2, phistory, lists3);
+		//forecastRunnable.run();
 		ForecastIssue forecastIssue=new ForecastIssue();
 		forecastIssue.setId(issueid);
 		forecastIssue.setIssue(issue);
 		forecastIssue.setForecastcount(lists2.size());
 		forecastIssue.setDrawtime(new Date());
 		forecastIssueDao.addForecastIssue(forecastIssue);
+		
 		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
+	private void calcForecast(List<Forecast> lists2, History phistory,
+			List<Model> lists3) {
+		forecastRunnable.setForecastDao(forecastDao);
+		forecastRunnable.setLists(lists2);
+		forecastRunnable.setLists3(lists3);
+		forecastRunnable.setPhistory(phistory);
+		Thread s=new Thread(forecastRunnable);
+		s.start();
 	}
 	@RequestMapping(value = "/{id}/delete",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
 	public @ResponseBody Object delete(@PathVariable("id") String id) {
 			forecastDao.deleteObject(id);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
+	@RequestMapping(value = "/{id}/deleteAll")
+	public @ResponseBody Object deleteAll(HttpServletRequest request) {
+		String ids = request.getParameter("ids");
+		String[] arrayId = ids.split(",");
+		for(String id:arrayId){
+			forecastDao.deleteObject(id);
+		}
+		return new ServiceResult(ReturnResult.SUCCESS);
 	}
 }

@@ -253,9 +253,8 @@ $( "#edit" ).click(function(){
 	});
 }); 
 $( "#delete" ).click(function(){
-var id;
-	     id = grid.jqGrid('getGridParam','selrow');
-	     if(id.toString() != null && id.toString() != ""){
+var id; id = grid.jqGrid('getGridParam','selrow');
+if(id.toString() != null && id.toString() != ""){
 		    $.ajax({
 			        url: '${request.getContextPath()}/historyLottery/'+id+'/delete',
 			        type: 'post',
@@ -265,10 +264,10 @@ var id;
  						grid.trigger("reloadGrid");
 			                 }
 			    });
-			    }else{
-			    	ajaxframework.createDialog("操作提示！","请选择要删除的数据！",{});
-			    }
-	});
+    }else{
+    	ajaxframework.createDialog("操作提示！","请选择要删除的数据！",{});
+    }
+});
 	$( "#view" ).click(function(){
 		
 		var id; 

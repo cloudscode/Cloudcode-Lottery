@@ -74,13 +74,13 @@ var id;
 	     id = grid.jqGrid('getGridParam','selrow');
 	     if(id.toString() != null && id.toString() != ""){
 		    $.ajax({
-			        url: '${request.getContextPath()}/forecastIssue/'+id+'/delete',
+			        url: '${request.getContextPath()}/forecastIssue/0/deleteAll',
 			        type: 'post',
 			        dataType: 'json',
 			        data: {'ids':id.toString()},
 			        success: function(data) {
  						grid.trigger("reloadGrid");
-			                 }
+			        }
 			    });
 			    }else{
 			    	ajaxframework.createDialog("操作提示！","请选择要删除的数据！",{});

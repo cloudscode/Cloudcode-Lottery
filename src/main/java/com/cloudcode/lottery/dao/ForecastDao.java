@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -86,5 +88,11 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 		CriterionUtil.setCriterion(newNoStart, newNoEnd, hqlParamList, "newno");
 		
 		return this.queryPaginationSupport(Forecast.class, hqlParamList, pageRange);
+	}
+	public List<Forecast> findByIssue(String issueId) {
+		Criteria criterion = this.getSession().createCriteria(
+				Forecast.class);
+		criterion.add(Restrictions.eq("issueid", issueId));
+		return criterion.list();
 	}
 }

@@ -157,4 +157,13 @@ public class HistoryLotteryController extends CrudController<History> {
 		historyDao.deleteObject(id);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
+	@RequestMapping(value = "/deleteAll")
+	public @ResponseBody Object deleteAll(HttpServletRequest request) {
+		String ids = request.getParameter("ids");
+		String[] arrayId = ids.split(",");
+		for(String id:arrayId){
+			historyDao.deleteObject(id);
+		}
+		return new ServiceResult(ReturnResult.SUCCESS);
+	}
 }

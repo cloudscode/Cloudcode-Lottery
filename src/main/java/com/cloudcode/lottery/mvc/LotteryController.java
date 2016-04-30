@@ -36,6 +36,8 @@ public class LotteryController extends CrudController<Lottery> {
 	private LotteryUtil lotteryUtil;
 	@Autowired
 	private LotteryRunnable lotteryRunnable;
+	@Autowired
+	LRunnable lRunnable;
 	@RequestMapping(value = "/addLottery", method = RequestMethod.POST)
 	public @ResponseBody
 	void addLottery(@RequestBody  Lottery lottery) {
@@ -124,15 +126,12 @@ public class LotteryController extends CrudController<Lottery> {
 	@RequestMapping(value = "/toCalc",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
 	public @ResponseBody Object toCalc( HttpServletRequest request) {
-		lotteryUtil.calc(lotteryDao, lotteryUtil);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 	@RequestMapping(value = "/toCalc2",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
 	public @ResponseBody Object toCalc2( HttpServletRequest request) {
-		lotteryRunnable.setList(lotteryDao.getLotteryList());
-		lotteryRunnable.setLotteryDao(lotteryDao);
-		lotteryRunnable.run();
+		lRunnable.toCalc2(lotteryDao);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 }

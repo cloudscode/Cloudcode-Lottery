@@ -95,7 +95,10 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 	}
 	public String getNewIssue(){
 		History phistory = getNewHistory();
-		Integer issue =Integer.parseInt(phistory.getIssue())+1;
-		return issue.toString();
+		if(null != phistory){
+			Integer issue =Integer.parseInt(phistory.getIssue())+1;
+			return issue.toString();
+		}
+		return "";
 	}
 }

@@ -69,7 +69,7 @@ $(function(){
             rowList: [10,20,30,50,100,200,500,1000,5000],
             colNames:['Id', '期号', '1','2','3','4','5','6','7','8','9','10','11','12','13','14'
             , '15', '16', '17', '18', '19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36'
-           ,'总和','距离','奇偶','重号','横纵'
+           ,'总和','距离','奇偶','横纵'
             ,'a','b','c','d','e','f','g','odd','even'],
             colModel:[
                 {name:'id',index:'id', width:30, hidden:true},
@@ -188,7 +188,7 @@ $(function(){
                  {name:'oddeven',  width:20,formatter:function(cellvalue, options, rowObject){
                 	return rowObject.odd+":"+rowObject.even;
                 } },
-                {name:'repeatno',  width:20 },
+               // {name:'repeatno',  width:20 },
                 {name:'horver',  width:20 },
                 {name:'a',index:'exchange', width:0, hidden:true,formatter:function(cellvalue, options, rowObject){
                 	return cellvalue;
