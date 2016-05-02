@@ -27,6 +27,9 @@ public class LotteryDao extends BaseModelObjectDao<Lottery> {
 	public void addLottery(Lottery entity) {
 		lotteryDao.createObject(entity);
 	}
+	public void updateObject(Lottery entity) {
+		lotteryDao.updateObject(entity);
+	}
 	public PaginationSupport<Lottery> queryPagingData(Lottery hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
 		List<Object> list=null;
