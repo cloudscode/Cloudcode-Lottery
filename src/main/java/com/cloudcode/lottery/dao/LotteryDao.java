@@ -14,6 +14,7 @@ import com.cloudcode.framework.utils.HQLParamList;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.lottery.ProjectConfig;
+import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.util.LotteryUtil;
 
@@ -37,11 +38,13 @@ public class LotteryDao extends BaseModelObjectDao<Lottery> {
 	}
 	public List<Lottery> getLotteryList(){
 		//String sql="select c.*  from lottery_lottery  c where c.horver is null or c.horver ='' limit 0,35000";
-		String sql="select top 35000 c.*  from lottery_lottery  c where c.horver is null or c.horver ='' ";
+		/*String sql="select top 35000 c.*  from lottery_lottery  c where c.horver is null or c.horver ='' ";
 		Query query = lotteryDao.getSession().createSQLQuery(sql).addEntity(Lottery.class);
 		query.setProperties(Lottery.class);
-		List<Lottery> phistory = query.list();
-		return phistory;
+		List<Lottery> phistory = query.list();*/
+		String sql="from Lottery  c  where c.horver is null or c.horver ='' ";
+		List<Lottery> list=lotteryDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(35000).list();
+		return list;
 	}
 	public void calcLottery(){
 		List<Lottery> list =getLotteryList();
@@ -51,11 +54,13 @@ public class LotteryDao extends BaseModelObjectDao<Lottery> {
 		}
 	}
 	public List<Lottery> getLotteryList(LotteryDao lotteryDao){
-		String sql="select c.*  from lottery_lottery  c where c.horver is null limit 0,5";
+		/*String sql="select c.*  from lottery_lottery  c where c.horver is null limit 0,5";
 		Query query = lotteryDao.getSessionFactory().getCurrentSession().createSQLQuery(sql).addEntity(Lottery.class);
 		query.setProperties(Lottery.class);
-		List<Lottery> phistory = query.list();
-		return phistory;
+		List<Lottery> phistory = query.list();*/
+		String sql="from Lottery  c  where c.horver is null or c.horver ='' ";
+		List<Lottery> list=lotteryDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(5).list();
+		return list;
 	}
 	
 }

@@ -62,32 +62,48 @@ public class HistoryDao extends BaseModelObjectDao<History> {
 		return this.queryPaginationSupport(History.class, hqlParamList, pageRange);
 	}
 	public History getNewHistory(){
-		String sql="select c.*  from lottery_history  c order by c.issue desc limit 0,1";
-		Query query = historyDao.getSession().createSQLQuery(sql).addEntity(History.class);
-		query.setProperties(History.class);
-		History phistory =  (History) query.uniqueResult();
+		//String sql="select c.*  from lottery_history  c order by c.issue desc limit 0,1";
+		String sql="from History  c order by c.issue desc ";
+		List<History> list=historyDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(1).list();
+		/*Query query = historyDao.getSession().createSQLQuery(sql);//.addEntity(History.class);
+		query.setProperties(History.class);*/
+		History phistory = new History();
+		if(list.size()>0){
+			phistory =  list.get(0);
+		}
 		return phistory;
 	}
 	public List<History> getNewHistoryList(){
-		String sql="select c.*  from lottery_history  c order by c.issue desc limit 0,10";
+	/*	String sql="select c.*  from lottery_history  c order by c.issue desc limit 0,10";
 		Query query = historyDao.getSession().createSQLQuery(sql).addEntity(History.class);
 		query.setProperties(History.class);
-		List<History> phistory = query.list();
-		return phistory;
+		List<History> phistory = query.list();*/
+		String sql="from History  c order by c.issue desc ";
+		List<History> list=historyDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(10).list();
+		return list;
 	}
 	public History getCurrentHistory(String issue){
-		String sql="select c.*  from lottery_history  c  where c.issue <'"+issue+"' order by c.issue desc limit 0,1";
+		/*String sql="select c.*  from lottery_history  c  where c.issue <'"+issue+"' order by c.issue desc limit 0,1";
 		Query query = historyDao.getSession().createSQLQuery(sql).addEntity(History.class);
 		query.setProperties(History.class);
-		History phistory =  (History) query.uniqueResult();
+		History phistory =  (History) query.uniqueResult();*/
+		String sql="from History  c  where c.issue <:issue order by c.issue desc ";
+		List<History> list=historyDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(1).setParameter("issue",issue).list();
+		History phistory = new History();
+		if(list.size()>0){
+			phistory =  list.get(0);
+		}
 		return phistory;
 	}
 	public List<History> getCurrentHistoryList(String issue){
-		String sql="select c.*  from lottery_history  c where c.issue <'"+issue+"' order by c.issue desc limit 0,10";
+		/*String sql="select c.*  from lottery_history  c where c.issue <'"+issue+"' order by c.issue desc limit 0,10";
 		Query query = historyDao.getSession().createSQLQuery(sql).addEntity(History.class);
 		query.setProperties(History.class);
-		List<History> phistory = query.list();
-		return phistory;
+		List<History> phistory = query.list();*/
+		String sql="from History  c  where c.issue <:issue order by c.issue desc ";
+		List<History> list=historyDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(10).setParameter("issue",issue).list();
+		
+		return list;
 	}
 	public String getCurrentIssue(){
 		History phistory = getNewHistory();

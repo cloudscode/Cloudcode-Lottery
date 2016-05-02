@@ -185,4 +185,9 @@ public class HistoryLotteryController extends CrudController<History> {
 		}
 		return new ServiceResult(ReturnResult.SUCCESS);
 	}
+	@RequestMapping(value = "/test")
+	public @ResponseBody Object test(HttpServletRequest request) {
+			historyDao.getCurrentHistoryList("16038");
+		return new ServiceResult(ReturnResult.SUCCESS);
+	}
 }
