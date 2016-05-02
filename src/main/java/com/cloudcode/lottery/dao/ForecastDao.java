@@ -20,6 +20,7 @@ import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.StringUtils;
 import com.cloudcode.lottery.ProjectConfig;
 import com.cloudcode.lottery.model.Forecast;
+import com.cloudcode.lottery.model.Lottery;
 
 @Repository
 public class ForecastDao extends BaseModelObjectDao<Forecast> {
@@ -34,6 +35,9 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 			forecastDao.createObject(entity);
 		}
 		
+	}
+	public void deleteObject(Forecast entity) {
+		forecastDao.deleteObject(entity);
 	}
 	public PaginationSupport<Forecast> queryPagingData(Forecast hhXtCd, PageRange pageRange) {
 		HQLParamList hqlParamList = new HQLParamList();
