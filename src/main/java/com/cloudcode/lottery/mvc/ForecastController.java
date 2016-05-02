@@ -352,7 +352,7 @@ public class ForecastController extends CrudController<Forecast> {
 	private void calcForecast(List<Forecast> lists2, History phistory,
 			List<Model> lists3) {
 		int pageSize=100;
-		List<List<Forecast>> result =ListUtils.splitList(lists2, pageSize); 
+		List<List<Forecast>> result =ListUtils.splitList(lists2, LotteryUtil.PageSize3); 
 		for(List<Forecast> list:result){
 			ForecastRunnable fRunnable=new ForecastRunnable();
 			fRunnable.setForecastDao(forecastDao);

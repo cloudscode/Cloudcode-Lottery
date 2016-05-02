@@ -28,7 +28,7 @@ public class LotteryRunnable implements Runnable {
 	    int pageSize=2;
 		do {
 			List<Lottery> resultList = getLotteryDao().getLotteryList();
-			List<List<Lottery>> lists=ListUtils.splitList(resultList, pageSize);
+			List<List<Lottery>> lists=ListUtils.splitList(resultList, LotteryUtil.PageSize5);
 			for(List<Lottery> list:lists){
 				calc(getLotteryDao(), list);
 			}			
