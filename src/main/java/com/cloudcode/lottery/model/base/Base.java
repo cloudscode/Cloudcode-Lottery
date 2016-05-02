@@ -1,5 +1,6 @@
 package com.cloudcode.lottery.model.base;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import com.cloudcode.framework.model.BaseModelObject;
@@ -479,7 +480,7 @@ public class Base extends BaseModelObject {
 	public void setNinearea9(Integer ninearea9) {
 		this.ninearea9 = ninearea9;
 	}
-
+	@Column(length = 256)
 	public String getConsecutivenumber() {
 		return consecutivenumber;
 	}

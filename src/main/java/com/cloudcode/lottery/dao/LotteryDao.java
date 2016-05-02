@@ -36,7 +36,8 @@ public class LotteryDao extends BaseModelObjectDao<Lottery> {
 		return this.queryPaginationSupport(Lottery.class, hqlParamList, pageRange);
 	}
 	public List<Lottery> getLotteryList(){
-		String sql="select c.*  from lottery_lottery  c where c.horver is null or c.horver ='' limit 0,5";
+		//String sql="select c.*  from lottery_lottery  c where c.horver is null or c.horver ='' limit 0,35000";
+		String sql="select top 35000 c.*  from lottery_lottery  c where c.horver is null or c.horver ='' ";
 		Query query = lotteryDao.getSession().createSQLQuery(sql).addEntity(Lottery.class);
 		query.setProperties(Lottery.class);
 		List<Lottery> phistory = query.list();
