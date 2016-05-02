@@ -207,7 +207,7 @@ $(function(){
             height: "auto",            
             pager: "#jqGridPager01",
             viewrecords: true,
-            caption: "Sample jqGrid Table",
+            caption: "开奖信息",
             hidegrid:false,
             multiselect: true,
             altRows: true

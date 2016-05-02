@@ -67,13 +67,12 @@ $(function(){
             height: 250,
             rowNum: 20,
             rowList: [10,20,30,50,100,200,500,1000,5000],
-            colNames:['Id', '期号', '1','2','3','4','5','6','7','8','9','10','11','12','13','14'
+            colNames:['Id', '1','2','3','4','5','6','7','8','9','10','11','12','13','14'
             , '15', '16', '17', '18', '19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36'
            ,'总和','距离','奇偶','横纵'
             ,'a','b','c','d','e','f','g','odd','even'],
             colModel:[
                 {name:'id',index:'id', width:30, hidden:true},
-                {name:'issue',  width:30},
                 {name:'1',index:'exchange', width:10,
                     cellattr: addCellAttr1,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(1,rowObject);
@@ -207,7 +206,7 @@ $(function(){
             height: "auto",            
             pager: "#jqGridPager01",
             viewrecords: true,
-            caption: "Sample jqGrid Table",
+            caption: "基础库信息",
             hidegrid:false,
             multiselect: true,
             altRows: true

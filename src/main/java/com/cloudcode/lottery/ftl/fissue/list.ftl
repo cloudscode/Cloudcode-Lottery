@@ -54,7 +54,7 @@ $(function(){
             height: "auto",            
             pager: "#jqGridPager01",
             viewrecords: true,
-            caption: "Sample jqGrid Table",
+            caption: "预测信息",
             hidegrid:false,
             multiselect: true,
             altRows: true
