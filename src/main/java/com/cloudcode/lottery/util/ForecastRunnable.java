@@ -73,44 +73,43 @@ public class ForecastRunnable extends Thread {
 		this.lists3 = lists3;
 	}
 
-	public void delForecast(ForecastIssue forecastIssue, ForecastDao forecastDao) {
-		DelIssue delissue = new DelIssue(forecastIssue.getId(), forecastDao);
+	public void delForecast(List<Forecast> lists, ForecastDao forecastDao) {
+		DelIssue delissue = new DelIssue(lists, forecastDao);
 		Thread s = new Thread(delissue);
 		s.start();
 	}
 
 	static class DelIssue extends Thread {
-		private String issueid;
 		private ForecastDao forecastDao;
-private List<Forecast> lists;
+		private List<Forecast> lists;
+
 		public DelIssue() {
 		}
 
-		public DelIssue(String issueid, ForecastDao forecastDao) {
-			this.issueid = issueid;
+		public DelIssue(List<Forecast> lists, ForecastDao forecastDao) {
+			this.lists = lists;
 			this.forecastDao = forecastDao;
 		}
 
 		public void run() {
-			for (Forecast forecast : getForecastDao().findByIssue(getIssueid())) {
-				getForecastDao().deleteObject(forecast);
+			for (Forecast forecast : getLists()) {
+					getForecastDao().deleteObject(forecast);
 			}
 		}
-
-		public String getIssueid() {
-			return issueid;
-		}
-
-		public void setIssueid(String issueid) {
-			this.issueid = issueid;
-		}
-
 		public ForecastDao getForecastDao() {
 			return forecastDao;
 		}
 
 		public void setForecastDao(ForecastDao forecastDao) {
 			this.forecastDao = forecastDao;
+		}
+
+		public List<Forecast> getLists() {
+			return lists;
+		}
+
+		public void setLists(List<Forecast> lists) {
+			this.lists = lists;
 		}
 
 	}

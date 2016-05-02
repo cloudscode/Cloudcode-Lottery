@@ -112,9 +112,10 @@ public class ForecastIssueController extends CrudController<ForecastIssue> {
 	public @ResponseBody
 	Object delete(@PathVariable("id") String id) {
 		ForecastIssue forecastIssue = forecastIssueDao.loadObject(id);
-		forecastRunnable.delForecast(forecastIssue, forecastDao);
-		forecastIssueDao.deleteObject(forecastIssue);
-		
+		if(null != forecastIssue){
+			forecastRunnable.delForecast(forecastDao.findByIssue(forecastIssue.getId()), forecastDao);
+			forecastIssueDao.deleteObject(forecastIssue);
+		}
 		return new ServiceResult(ReturnResult.SUCCESS, "");
 	}
 
