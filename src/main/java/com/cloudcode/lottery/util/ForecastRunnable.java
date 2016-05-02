@@ -17,6 +17,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 
+import com.cloudcode.framework.utils.ListUtils;
 import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.lottery.model.Forecast;
 import com.cloudcode.lottery.model.ForecastIssue;
@@ -37,6 +38,7 @@ public class ForecastRunnable extends Thread {
 			LotteryUtil.getHeat(forecast, getPhistory());
 			LotteryUtil.getRatioNoNumbers(forecast, getLists3(), 0);
 			LotteryUtil.getNewSideRepeatNo(forecast, getPhistory());
+			LotteryUtil.getHorver(LotteryUtil.tolist(forecast), forecast);
 		}
 		getForecastDao().addForecast(getLists());
 	}
@@ -74,9 +76,12 @@ public class ForecastRunnable extends Thread {
 	}
 
 	public void delForecast(List<Forecast> lists, ForecastDao forecastDao) {
-		DelIssue delissue = new DelIssue(lists, forecastDao);
-		Thread s = new Thread(delissue);
-		s.start();
+		List<List<Forecast>> result =ListUtils.splitList(lists, LotteryUtil.PageSize3); 
+		for(List<Forecast> list:result){
+			DelIssue delissue = new DelIssue(list, forecastDao);
+			Thread s = new Thread(delissue);
+			s.start();
+		}
 	}
 
 	static class DelIssue extends Thread {

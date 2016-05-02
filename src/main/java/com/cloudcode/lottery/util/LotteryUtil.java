@@ -21,6 +21,9 @@ import com.cloudcode.lottery.model.base.Base;
 import com.cloudcode.lottery.model.base.Model;
 @Repository
 public class LotteryUtil {
+	public final static int PageSize1=1000;
+	public final static int PageSize3=3000;
+	public final static int PageSize5=5000;
 	/**
 	 * 奇偶数判断
 	 * 

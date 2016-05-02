@@ -30,6 +30,7 @@ import com.cloudcode.framework.rest.ReturnResult;
 import com.cloudcode.framework.service.ServiceResult;
 import com.cloudcode.framework.utils.Check;
 import com.cloudcode.framework.utils.CriterionUtil;
+import com.cloudcode.framework.utils.ListUtils;
 import com.cloudcode.framework.utils.PageRange;
 import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
@@ -61,8 +62,6 @@ public class ForecastController extends CrudController<Forecast> {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private  ForecastIssueDao forecastIssueDao;
-	@Autowired
-	private ForecastRunnable forecastRunnable;
 	
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody
@@ -340,7 +339,7 @@ public class ForecastController extends CrudController<Forecast> {
 		}*/
 		//forecastDao.addForecast(lists2);
 		calcForecast(lists2, phistory, lists3);
-		//forecastRunnable.run();
+		
 		ForecastIssue forecastIssue=new ForecastIssue();
 		forecastIssue.setId(issueid);
 		forecastIssue.setIssue(issue);
@@ -352,12 +351,17 @@ public class ForecastController extends CrudController<Forecast> {
 	}
 	private void calcForecast(List<Forecast> lists2, History phistory,
 			List<Model> lists3) {
-		forecastRunnable.setForecastDao(forecastDao);
-		forecastRunnable.setLists(lists2);
-		forecastRunnable.setLists3(lists3);
-		forecastRunnable.setPhistory(phistory);
-		Thread s=new Thread(forecastRunnable);
-		s.start();
+		int pageSize=100;
+		List<List<Forecast>> result =ListUtils.splitList(lists2, pageSize); 
+		for(List<Forecast> list:result){
+			ForecastRunnable fRunnable=new ForecastRunnable();
+			fRunnable.setForecastDao(forecastDao);
+			fRunnable.setLists(list);
+			fRunnable.setLists3(lists3);
+			fRunnable.setPhistory(phistory);
+			Thread s=new Thread(fRunnable);
+			s.start();
+		}
 	}
 	@RequestMapping(value = "/{id}/delete",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
