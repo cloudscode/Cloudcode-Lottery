@@ -61,6 +61,7 @@
     </header>
 <iframe  id="myFrameId"  src="${request.getContextPath()}/historyLottery/toList" name="view_window"  scrolling="no" frameborder="0" style="width:100%;" onload="javascript:dyniframesize('myFrameId');" ></iframe>
 <#include "classpath:com/cloudcode/framework/common/ftl/vendor.ftl"/>
+<#include "classpath:com/cloudcode/push/ftl/socketjs.ftl"/>
 <script type="text/javascript">
  function dyniframesize(down) { 
 	var pTar = null; 
