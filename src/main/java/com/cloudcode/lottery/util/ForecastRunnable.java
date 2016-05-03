@@ -46,7 +46,7 @@ public class ForecastRunnable extends Thread {
 		getForecastDao().addForecast(getLists());
 		TextMessage returnMessage = new TextMessage("系统提示：预测成功！");
 		systemWebSocketHandler.sendMessageToUsers(returnMessage);
-		
+		System.out.println("****************系统提示：预测成功！******************");
 	}
 
 	public List<Forecast> getLists() {
