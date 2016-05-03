@@ -45,6 +45,7 @@ import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.model.base.Model;
 import com.cloudcode.lottery.util.ForecastRunnable;
 import com.cloudcode.lottery.util.LotteryUtil;
+import com.cloudcode.push.hndler.SystemWebSocketHandler;
 
 @Controller
 @RequestMapping({ "/forecast" })
@@ -62,6 +63,8 @@ public class ForecastController extends CrudController<Forecast> {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private  ForecastIssueDao forecastIssueDao;
+	@Autowired
+	private SystemWebSocketHandler systemWebSocketHandler;
 	
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody

@@ -15,7 +15,9 @@ import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.socket.TextMessage;
 
 import com.cloudcode.framework.utils.ListUtils;
 import com.cloudcode.lottery.dao.ForecastDao;
@@ -23,6 +25,7 @@ import com.cloudcode.lottery.model.Forecast;
 import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.base.Model;
+import com.cloudcode.push.hndler.SystemWebSocketHandler;
 
 @Repository
 public class ForecastRunnable extends Thread {
@@ -30,7 +33,8 @@ public class ForecastRunnable extends Thread {
 	private ForecastDao forecastDao;
 	private History phistory;
 	private List<Model> lists3;
-
+	@Autowired
+	private SystemWebSocketHandler systemWebSocketHandler;
 	public void run() {
 
 		for (Forecast forecast : getLists()) {
@@ -41,6 +45,8 @@ public class ForecastRunnable extends Thread {
 			LotteryUtil.getHorver(LotteryUtil.tolist(forecast), forecast);
 		}
 		getForecastDao().addForecast(getLists());
+		TextMessage returnMessage = new TextMessage("系统提示：预测成功！");
+		systemWebSocketHandler.sendMessageToUsers(returnMessage);
 	}
 
 	public List<Forecast> getLists() {
