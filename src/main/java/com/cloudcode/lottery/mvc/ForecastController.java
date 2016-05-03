@@ -362,6 +362,7 @@ public class ForecastController extends CrudController<Forecast> {
 			fRunnable.setLists(list);
 			fRunnable.setLists3(lists3);
 			fRunnable.setPhistory(phistory);
+			fRunnable.setSystemWebSocketHandler(systemWebSocketHandler);
 			Thread s=new Thread(fRunnable);
 			s.start();
 		}

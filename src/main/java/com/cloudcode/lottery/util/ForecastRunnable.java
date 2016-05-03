@@ -33,7 +33,6 @@ public class ForecastRunnable extends Thread {
 	private ForecastDao forecastDao;
 	private History phistory;
 	private List<Model> lists3;
-	@Autowired
 	private SystemWebSocketHandler systemWebSocketHandler;
 	public void run() {
 
@@ -47,6 +46,7 @@ public class ForecastRunnable extends Thread {
 		getForecastDao().addForecast(getLists());
 		TextMessage returnMessage = new TextMessage("系统提示：预测成功！");
 		systemWebSocketHandler.sendMessageToUsers(returnMessage);
+		
 	}
 
 	public List<Forecast> getLists() {
@@ -79,6 +79,15 @@ public class ForecastRunnable extends Thread {
 
 	public void setLists3(List<Model> lists3) {
 		this.lists3 = lists3;
+	}
+
+	public SystemWebSocketHandler getSystemWebSocketHandler() {
+		return systemWebSocketHandler;
+	}
+
+	public void setSystemWebSocketHandler(
+			SystemWebSocketHandler systemWebSocketHandler) {
+		this.systemWebSocketHandler = systemWebSocketHandler;
 	}
 
 	public void delForecast(List<Forecast> lists, ForecastDao forecastDao) {
