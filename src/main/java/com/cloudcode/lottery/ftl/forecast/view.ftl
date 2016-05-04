@@ -129,12 +129,75 @@ padding-top: 9px;
     </div>
    </div>
    
+   <div class="form-group">
+      <div class="col-sm-2 content">
+      </div>
+         <div class="col-sm-10 content">
+     <div class="row">
+     		<button name="num"  class="btn ui-button-primary" value="1">1&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="2">2&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="3">3&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="4">4&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="5">5&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="6">6&nbsp;&nbsp;</button>
+      </div>
+      <div class="row">
+     		<button name="num"  class="btn ui-button-primary" value="7">7&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="8">8&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="9">9&nbsp;&nbsp;</button>
+     		<button name="num"  class="btn ui-button-primary" value="10">10</button>
+     		<button name="num"  class="btn ui-button-primary" value="11">11</button>
+     		<button name="num"  class="btn ui-button-primary" value="12">12</button>
+      </div>
+      <div class="row">
+	      <button name="num"  class="btn ui-button-primary" value="13">13</button>
+	      <button name="num"  class="btn ui-button-primary" value="14">14</button>
+	      <button name="num"  class="btn ui-button-primary" value="15">15</button>
+	      <button name="num"  class="btn ui-button-primary" value="16">16</button>
+	      <button name="num"  class="btn ui-button-primary" value="17">17</button>
+	      <button name="num"  class="btn ui-button-primary" value="18">18</button>
+      </div>
+       <div class="row">
+       <button name="num"  class="btn ui-button-primary" value="19">19</button>
+      <button name="num"  class="btn ui-button-primary" value="20">20</button>
+      <button name="num"  class="btn ui-button-primary" value="21">21</button>
+      <button name="num"  class="btn ui-button-primary" value="22">22</button>
+      <button name="num"  class="btn ui-button-primary" value="23">23</button>
+      <button name="num"  class="btn ui-button-primary" value="24">24</button>
+       
+       </div>
+       <div class="row">
+       <button name="num"  class="btn ui-button-primary" value="25">25</button>
+       <button name="num"  class="btn ui-button-primary" value="26">26</button>
+       <button name="num"  class="btn ui-button-primary" value="27">27</button>
+       <button name="num"  class="btn ui-button-primary" value="28">28</button>
+       <button name="num"  class="btn ui-button-primary" value="29">29</button>
+       <button name="num"  class="btn ui-button-primary" value="30">30</button>
+       </div>
+       <div class="row">
+       <button name="num"  class="btn ui-button-primary" value="31">31</button>
+       <button name="num"  class="btn ui-button-primary" value="32">32</button>
+       <button name="num"  class="btn ui-button-primary" value="33">33</button>
+       <button name="num"  class="btn ui-button-primary" value="34">34</button>
+       <button name="num"  class="btn ui-button-primary" value="35">35</button>
+       <button name="num"  class="btn ui-button-primary" value="36">36</button>
+       </div>
+    </div>
+     </div> 
 </form>
 
 </div>
 <#include "classpath:com/cloudcode/framework/common/ftl/vendor.ftl"/>
 <script type="text/javascript">
- 
+   $(function(){
+  		$("button[value='${forecast.a}']").removeClass("btn ui-button-primary").addClass("btn ui-button-danger");
+  		$("button[value='${forecast.b}']").removeClass("btn ui-button-primary").addClass("btn ui-button-danger");
+  		$("button[value='${forecast.c}']").removeClass("btn ui-button-primary").addClass("btn ui-button-danger");
+  		$("button[value='${forecast.d}']").removeClass("btn ui-button-primary").addClass("btn ui-button-danger");
+  		$("button[value='${forecast.e}']").removeClass("btn ui-button-primary").addClass("btn ui-button-danger");
+  		$("button[value='${forecast.f}']").removeClass("btn ui-button-primary").addClass("btn ui-button-danger");
+  		$("button[value='${forecast.g}']").removeClass("btn ui-button-primary").addClass("btn ui-button-danger");
+  });
 </script>
 </div>
 </body>
