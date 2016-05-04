@@ -87,6 +87,10 @@ padding-top: 9px;
     <div class="col-sm-2 content">
       ${history.consecutivenumber}
     </div>
+     <label for="inputEmail3" class="col-sm-2 control-label">横纵比</label>
+	    <div class="col-sm-2 content">
+	      ${history.horver!''}
+	    </div>
    </div>
    
    
