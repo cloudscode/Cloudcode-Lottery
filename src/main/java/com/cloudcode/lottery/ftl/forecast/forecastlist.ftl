@@ -9,6 +9,7 @@
 <div class="container" id="layout">
 <div class="col-lg-9 col-sm-9" id="article">
 <section id="button">
+		<button id="view" class="ui-button-warning">查看</button>
         <button id="openwindow" class="ui-button-success">保存</button>
         <button id="refresh" class="ui-button-info">刷新</button>
 </section></div></div>
