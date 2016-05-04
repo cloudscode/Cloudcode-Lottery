@@ -28,10 +28,14 @@ public class LotteryRunnable implements Runnable {
 	    int pageSize=2;
 		do {
 			List<Lottery> resultList = getLotteryDao().getLotteryList();
-			List<List<Lottery>> lists=ListUtils.splitList(resultList, LotteryUtil.PageSize5);
+			List<List<Lottery>> lists=ListUtils.splitList(resultList, LotteryUtil.PageSize1);
 			for(List<Lottery> list:lists){
 				calc(getLotteryDao(), list);
-			}			
+			}
+			try {
+				Thread.sleep(30000);
+			} catch (InterruptedException e) {
+			}
 			num = getLotteryDao().getLotteryList().size();
 			System.out.println("***************************" + num);
 		} while (num != 0);

@@ -43,7 +43,7 @@ public class LotteryDao extends BaseModelObjectDao<Lottery> {
 		query.setProperties(Lottery.class);
 		List<Lottery> phistory = query.list();*/
 		String sql="from Lottery  c  where c.horver is null or c.horver ='' ";
-		List<Lottery> list=lotteryDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(35000).list();
+		List<Lottery> list=lotteryDao.getSession().createQuery(sql).setFirstResult(0).setMaxResults(5000).list();
 		return list;
 	}
 	public void calcLottery(){
