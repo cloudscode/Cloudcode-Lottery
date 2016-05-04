@@ -87,14 +87,12 @@ padding-top: 9px;
     <div class="col-sm-2 content">
       ${forecast.consecutivenumber}
     </div>
-   </div>
-   
-    <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">横纵比</label>
 	    <div class="col-sm-2 content">
 	      ${forecast.horver!''}
 	    </div>
    </div>
+   
     <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">横向间隔比</label>
     <div class="col-sm-2 content">
