@@ -47,7 +47,7 @@ public class WebUtil {
 		return list;
 	}
 
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 
 		String address = "http://fjtc.com.cn/Line-3607?Type=OLD";
 		List<String> list = getURLCollection(address);
@@ -122,7 +122,7 @@ public class WebUtil {
 
 	}
 
-	public static void main(String[] args) throws ScriptException {
+	public static void main1(String[] args) throws ScriptException {
 		     String val1="123@<中国>123@123@<中国心>123";
 			 Pattern pattern=Pattern.compile("(@<(.*?)>)+");
 			 Matcher matcher=pattern.matcher(val1);
