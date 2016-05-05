@@ -223,7 +223,7 @@ public class HistoryLotteryController extends CrudController<History> {
 				+ fileName);
 		ByteArrayOutputStream baos = null;
 		try {
-			String sql=" select a from lottery_history ";
+			String sql=" select * from lottery_history ";
 			List<Map<String, Object>> dataList=new ArrayList<Map<String,Object>>();
 			dataList = historyDao.queryForMapListBySQL(sql, null);
 			baos =  lotteryExportUtil.getExportData(dataList);

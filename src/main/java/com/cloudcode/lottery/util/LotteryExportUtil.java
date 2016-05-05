@@ -35,8 +35,8 @@ public class LotteryExportUtil {
 		ExcelExportSetInfo setInfo = new ExcelExportSetInfo();
 		List<String[]> nameList = new ArrayList<String[]>();
 		List<String[]> fieldNameList = new ArrayList<String[]>();
-		nameList.add(new String[] { "a" });
-		fieldNameList.add(new String[] { "a"});
+		nameList.add(new String[] { "strnum,odd,even" });
+		fieldNameList.add(new String[] { "号码,奇数,偶数"});
 		Map<String, List<Map<String, Object>>> map = new LinkedHashMap<String, List<Map<String, Object>>>();
 		map.put("预测", dataList);
 		

@@ -14,6 +14,7 @@
         <button id="view" class="ui-button-warning">查看</button>
         <button id="delete" class="ui-button-danger">删除</button>
         <button id="refresh" class="ui-button-info">刷新</button>
+        <button id="export" class="ui-button-info">导出</button>
 </section></div></div>
 <div class="row">
     <div class="col-lg-12 col-sm-12">
@@ -288,6 +289,10 @@ if(id.toString() != null && id.toString() != ""){
 		grid.trigger('reloadGrid');
 	});
 	 $("#layout button,.button,#sampleButton").button();
+	 $( "#export" ).click(function(){
+			ajaxframework.postForm('${request.getContextPath()}/historyLottery/export',null,null)
+	});
+	 
 }); 
 </script>
 <div id="divInDialog" style="display:none"></div>
