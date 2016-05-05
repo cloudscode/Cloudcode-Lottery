@@ -1,5 +1,10 @@
 package com.cloudcode.lottery.mvc;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -9,7 +14,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -44,6 +51,7 @@ import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
 import com.cloudcode.lottery.model.base.Model;
 import com.cloudcode.lottery.util.ForecastRunnable;
+import com.cloudcode.lottery.util.LotteryExportUtil;
 import com.cloudcode.lottery.util.LotteryUtil;
 import com.cloudcode.push.hndler.SystemWebSocketHandler;
 
@@ -65,7 +73,8 @@ public class ForecastController extends CrudController<Forecast> {
 	private  ForecastIssueDao forecastIssueDao;
 	@Autowired
 	private SystemWebSocketHandler systemWebSocketHandler;
-	
+	@Autowired
+	private LotteryExportUtil lotteryExportUtil;
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody
 	void addForecast(@RequestBody  Forecast forecast) {
@@ -381,5 +390,34 @@ public class ForecastController extends CrudController<Forecast> {
 			forecastDao.deleteObject(id);
 		}
 		return new ServiceResult(ReturnResult.SUCCESS);
+	}
+	@RequestMapping(value = "/export",  method = {
+			RequestMethod.POST,RequestMethod.GET})
+	public void export(HttpServletRequest req, HttpServletResponse response) throws IOException {
+		String issueid = req.getParameter("issueid");
+		response.setContentType("application/octet-stream");
+		String fileName = "预测信息";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
+		String date = sdf.format(new Date());
+		fileName +="-"+date;
+		fileName+=".xls";
+		if (req.getHeader("User-Agent").toUpperCase().indexOf("MSIE") > -1) {
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+		} else if (req.getHeader("User-Agent").indexOf("Trident") > -1 && req.getHeader("User-Agent").indexOf("rv:11.0") >-1) {//ie11
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+		}else{
+			fileName = new String(fileName.getBytes("UTF-8"), "ISO8859-1");
+		}
+		response.addHeader("Content-Disposition", "attachment;filename="
+				+ fileName);
+		ByteArrayOutputStream baos = null;
+		try {
+			baos =  lotteryExportUtil.getExportData("");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		IOUtils.copy(new ByteArrayInputStream(baos.toByteArray()),
+				response.getOutputStream());
 	}
 }
