@@ -29,7 +29,7 @@ public class LotteryExportUtil {
 	private  ForecastDao forecastDao;
 	
 	
-	public ByteArrayOutputStream getExportData(String id)throws Exception{
+	public ByteArrayOutputStream getExportData(List<Map<String, Object>> dataList)throws Exception{
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
 		ExcelExportSetInfo setInfo = new ExcelExportSetInfo();
@@ -38,9 +38,6 @@ public class LotteryExportUtil {
 		nameList.add(new String[] { "a" });
 		fieldNameList.add(new String[] { "a"});
 		Map<String, List<Map<String, Object>>> map = new LinkedHashMap<String, List<Map<String, Object>>>();
-		String sql=" select a from lottery_forecast ";
-		List<Map<String, Object>> dataList=new ArrayList<Map<String,Object>>();
-		dataList = forecastDao.queryForMapListBySQL(sql, null);
 		map.put("预测", dataList);
 		
 		setInfo.setObjsMap(map);

@@ -1,10 +1,19 @@
 package com.cloudcode.lottery.mvc;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +32,7 @@ import com.cloudcode.framework.utils.PaginationSupport;
 import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.LotteryDao;
 import com.cloudcode.lottery.model.Lottery;
+import com.cloudcode.lottery.util.LotteryExportUtil;
 import com.cloudcode.lottery.util.LotteryRunnable;
 import com.cloudcode.lottery.util.LotteryUtil;
 
@@ -37,7 +47,9 @@ public class LotteryController extends CrudController<Lottery> {
 	@Autowired
 	private LotteryRunnable lotteryRunnable;
 	@Autowired
-	LRunnable lRunnable;
+	private LRunnable lRunnable;
+	
+	
 	@RequestMapping(value = "/addLottery", method = RequestMethod.POST)
 	public @ResponseBody
 	void addLottery(@RequestBody  Lottery lottery) {
@@ -134,4 +146,5 @@ public class LotteryController extends CrudController<Lottery> {
 		lRunnable.toCalc2(lotteryDao);
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
+	
 }

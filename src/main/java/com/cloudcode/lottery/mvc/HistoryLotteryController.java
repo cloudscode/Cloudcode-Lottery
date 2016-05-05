@@ -1,10 +1,19 @@
 package com.cloudcode.lottery.mvc;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +35,7 @@ import com.cloudcode.framework.utils.UUID;
 import com.cloudcode.lottery.dao.HistoryDao;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.base.Model;
+import com.cloudcode.lottery.util.LotteryExportUtil;
 import com.cloudcode.lottery.util.LotteryUtil;
 
 @Controller
@@ -36,7 +46,9 @@ public class HistoryLotteryController extends CrudController<History> {
 	private  HistoryDao historyDao;
 	@Autowired
 	private LotteryUtil lotteryUtil;
-
+	@Autowired
+	private LotteryExportUtil lotteryExportUtil;
+	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public @ResponseBody Object create(@ModelAttribute History history,
 			HttpServletRequest request) {
@@ -189,5 +201,37 @@ public class HistoryLotteryController extends CrudController<History> {
 	public @ResponseBody Object test(HttpServletRequest request) {
 			historyDao.getCurrentHistoryList("16038");
 		return new ServiceResult(ReturnResult.SUCCESS);
+	}
+	@RequestMapping(value = "/export",  method = {
+			RequestMethod.POST,RequestMethod.GET})
+	public void export(HttpServletRequest req, HttpServletResponse response) throws IOException {
+		String issueid = req.getParameter("issueid");
+		response.setContentType("application/octet-stream");
+		String fileName = "开奖信息";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
+		String date = sdf.format(new Date());
+		fileName +="-"+date;
+		fileName+=".xls";
+		if (req.getHeader("User-Agent").toUpperCase().indexOf("MSIE") > -1) {
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+		} else if (req.getHeader("User-Agent").indexOf("Trident") > -1 && req.getHeader("User-Agent").indexOf("rv:11.0") >-1) {//ie11
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+		}else{
+			fileName = new String(fileName.getBytes("UTF-8"), "ISO8859-1");
+		}
+		response.addHeader("Content-Disposition", "attachment;filename="
+				+ fileName);
+		ByteArrayOutputStream baos = null;
+		try {
+			String sql=" select a from lottery_history ";
+			List<Map<String, Object>> dataList=new ArrayList<Map<String,Object>>();
+			dataList = historyDao.queryForMapListBySQL(sql, null);
+			baos =  lotteryExportUtil.getExportData(dataList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		IOUtils.copy(new ByteArrayInputStream(baos.toByteArray()),
+				response.getOutputStream());
 	}
 }

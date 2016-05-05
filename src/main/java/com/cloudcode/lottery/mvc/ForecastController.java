@@ -412,7 +412,10 @@ public class ForecastController extends CrudController<Forecast> {
 				+ fileName);
 		ByteArrayOutputStream baos = null;
 		try {
-			baos =  lotteryExportUtil.getExportData("");
+			String sql=" select a from lottery_forecast ";
+			List<Map<String, Object>> dataList=new ArrayList<Map<String,Object>>();
+			dataList = forecastDao.queryForMapListBySQL(sql, null);
+			baos =  lotteryExportUtil.getExportData(dataList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
