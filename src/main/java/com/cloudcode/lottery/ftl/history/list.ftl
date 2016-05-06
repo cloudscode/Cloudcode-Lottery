@@ -288,7 +288,7 @@ if(id.toString() != null && id.toString() != ""){
 	$( "#refresh" ).click(function(){
 		grid.trigger('reloadGrid');
 	});
-	 $("#layout button,.button,#sampleButton").button();
+	$("#layout button,.button,#sampleButton").button();
 	 $( "#export" ).click(function(){
 			ajaxframework.postForm('${request.getContextPath()}/historyLottery/export',null,null)
 	});
