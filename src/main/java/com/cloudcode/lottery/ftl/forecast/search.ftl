@@ -990,7 +990,7 @@ select{
  		$("#layoutinfo").append(p);
 	 $( "#search").attr("disabled","disabled");
        $.ajax({
-			        url: '${request.getContextPath()}/forecast/search',
+			        url: '${request.getContextPath()}/forecast/searchByOddEven',
 			        type: 'post',
 			        dataType: 'json',
 			        data: $('form#myFormId').serialize(),
