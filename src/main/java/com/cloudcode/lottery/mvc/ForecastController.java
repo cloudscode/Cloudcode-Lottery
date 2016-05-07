@@ -45,10 +45,19 @@ import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.lottery.dao.ForecastIssueDao;
 import com.cloudcode.lottery.dao.HistoryDao;
 import com.cloudcode.lottery.dao.LotteryDao;
+import com.cloudcode.lottery.dao.LotteryDao1;
+import com.cloudcode.lottery.dao.LotteryDao2;
+import com.cloudcode.lottery.dao.LotteryDao3;
+import com.cloudcode.lottery.dao.LotteryDao4;
 import com.cloudcode.lottery.model.Forecast;
 import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
+import com.cloudcode.lottery.model.Lottery1;
+import com.cloudcode.lottery.model.Lottery2;
+import com.cloudcode.lottery.model.Lottery3;
+import com.cloudcode.lottery.model.Lottery4;
+import com.cloudcode.lottery.model.base.Base;
 import com.cloudcode.lottery.model.base.Model;
 import com.cloudcode.lottery.util.ForecastRunnable;
 import com.cloudcode.lottery.util.LotteryExportUtil;
@@ -75,6 +84,14 @@ public class ForecastController extends CrudController<Forecast> {
 	private SystemWebSocketHandler systemWebSocketHandler;
 	@Autowired
 	private LotteryExportUtil lotteryExportUtil;
+	@Autowired
+	private LotteryDao1 lotteryDao1;
+	@Autowired
+	private LotteryDao2 lotteryDao2;
+	@Autowired
+	private LotteryDao3 lotteryDao3;
+	@Autowired
+	private LotteryDao4 lotteryDao4;
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody
 	void addForecast(@RequestBody  Forecast forecast) {
@@ -182,7 +199,153 @@ public class ForecastController extends CrudController<Forecast> {
 	public @ResponseBody
 	Object search(HttpServletRequest request) {
 		String issue=request.getParameter("issue");
+		Criteria criterion = lotteryDao.getSession().createCriteria(Lottery.class);
+		getParams(request, criterion);
+		String issueid = UUID.generateUUID();
+		List<Lottery> lists=lotteryDao.loadAll(criterion);
+		List<Base> list = new ArrayList<Base>();
+		list.addAll(lists);
+		calcForecasts(issueid, list);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
+	private void calcForecast(List<Forecast> lists2, History phistory,
+			List<Model> lists3) {
+		int pageSize=100;
+		List<List<Forecast>> result =ListUtils.splitList(lists2, LotteryUtil.PageSize3); 
+		for(List<Forecast> list:result){
+			ForecastRunnable fRunnable=new ForecastRunnable();
+			fRunnable.setForecastDao(forecastDao);
+			fRunnable.setLists(list);
+			fRunnable.setLists3(lists3);
+			fRunnable.setPhistory(phistory);
+			fRunnable.setSystemWebSocketHandler(systemWebSocketHandler);
+			Thread s=new Thread(fRunnable);
+			s.start();
+		}
+	}
+	@RequestMapping(value = "/{id}/delete",  method = {
+			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
+	public @ResponseBody Object delete(@PathVariable("id") String id) {
+			forecastDao.deleteObject(id);
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
+	@RequestMapping(value = "/{id}/deleteAll")
+	public @ResponseBody Object deleteAll(HttpServletRequest request) {
+		String ids = request.getParameter("ids");
+		String[] arrayId = ids.split(",");
+		for(String id:arrayId){
+			forecastDao.deleteObject(id);
+		}
+		return new ServiceResult(ReturnResult.SUCCESS);
+	}
+	@RequestMapping(value = "/export",  method = {
+			RequestMethod.POST,RequestMethod.GET})
+	public void export(HttpServletRequest req, HttpServletResponse response) throws IOException {
+		String issueid = req.getParameter("issueid");
+		response.setContentType("application/octet-stream");
+		String fileName = "预测信息";
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
+		String date = sdf.format(new Date());
+		fileName +="-"+date;
+		fileName+=".xls";
+		if (req.getHeader("User-Agent").toUpperCase().indexOf("MSIE") > -1) {
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+		} else if (req.getHeader("User-Agent").indexOf("Trident") > -1 && req.getHeader("User-Agent").indexOf("rv:11.0") >-1) {//ie11
+			fileName = URLEncoder.encode(fileName, "UTF-8");
+		}else{
+			fileName = new String(fileName.getBytes("UTF-8"), "ISO8859-1");
+		}
+		response.addHeader("Content-Disposition", "attachment;filename="
+				+ fileName);
+		ByteArrayOutputStream baos = null;
+		try {
+			String sql=" select * from lottery_forecast ";
+			List<Map<String, Object>> dataList=new ArrayList<Map<String,Object>>();
+			dataList = forecastDao.queryForMapListBySQL(sql, null);
+			baos =  lotteryExportUtil.getExportData(dataList,fileName);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		IOUtils.copy(new ByteArrayInputStream(baos.toByteArray()),
+				response.getOutputStream());
+	}
+	@RequestMapping(value = "/searchByOddEven",  method = {
+			RequestMethod.POST,RequestMethod.GET})
+	public @ResponseBody
+	Object searchByOddEven(HttpServletRequest request) {
+		String issue=request.getParameter("issue");
 		String OddEven=request.getParameter("oddeven");
+		Criteria criterion1 = lotteryDao1.getSession().createCriteria(Lottery1.class);
+		Criteria criterion2 = lotteryDao2.getSession().createCriteria(Lottery2.class);
+		Criteria criterion3 = lotteryDao3.getSession().createCriteria(Lottery3.class);
+		Criteria criterion4 = lotteryDao4.getSession().createCriteria(Lottery4.class);
+		List<Base> list =new ArrayList<Base>();
+		if(!Check.isEmpty(OddEven)){
+			String odd=OddEven.split(":")[0];
+			String even=OddEven.split(":")[1];
+			if(0==Integer.parseInt(odd)||7==Integer.parseInt(odd)||1==Integer.parseInt(odd)||6==Integer.parseInt(odd)){
+				getParams(request, criterion1);
+				List<Lottery1> lists=lotteryDao1.loadAll(criterion1);
+				list.addAll(lists);
+			}else if(2==Integer.parseInt(odd)||5==Integer.parseInt(odd)){
+				getParams(request, criterion2);
+				List<Lottery2> lists=lotteryDao2.loadAll(criterion2);
+				list.addAll(lists);
+			}else if(3==Integer.parseInt(odd)){
+				getParams(request, criterion3);
+				List<Lottery3> lists=lotteryDao3.loadAll(criterion3);
+				list.addAll(lists);
+			}else if(4==Integer.parseInt(odd)){
+				getParams(request, criterion4);
+				List<Lottery4> lists=lotteryDao4.loadAll(criterion4);
+				list.addAll(lists);
+			}
+			calcForecasts(issue, list);
+		}else{
+			getParams(request, criterion1);
+			List<Lottery1> lists1=lotteryDao1.loadAll(criterion1);
+			list.addAll(lists1);
+			getParams(request, criterion2);
+			List<Lottery2> lists2=lotteryDao2.loadAll(criterion2);
+			list.addAll(lists2);
+			getParams(request, criterion3);
+			List<Lottery3> lists3=lotteryDao3.loadAll(criterion3);
+			list.addAll(lists3);
+			getParams(request, criterion4);
+			List<Lottery4> lists4=lotteryDao4.loadAll(criterion4);
+			list.addAll(lists4);
+			calcForecasts(issue, list);
+		}	
+		return new ServiceResult(ReturnResult.SUCCESS,"");
+	}
+	public void calcForecasts(String issue,List<Base> lists){
+		String issueid = UUID.generateUUID();
+		List<Forecast> lists2=new ArrayList<Forecast>();
+		for(Base lottery:lists){
+			Forecast forecast=new Forecast();
+			BeanUtils.copyProperties(lottery, forecast);
+			forecast.setId(UUID.generateUUID());
+			forecast.setIssue(issue);
+			forecast.setIssueid(issueid);
+			lists2.add(forecast);
+		}
+		History phistory = historyDao.getNewHistory(); 
+		List<History> phistoryList = historyDao.getNewHistoryList(); 
+		List<Model> lists3= new ArrayList<Model>();
+		lists3.addAll(phistoryList);
+		calcForecast(lists2, phistory, lists3);
+		
+		ForecastIssue forecastIssue=new ForecastIssue();
+		forecastIssue.setId(issueid);
+		forecastIssue.setIssue(issue);
+		forecastIssue.setForecastcount(lists2.size());
+		forecastIssue.setDrawtime(new Date());
+		forecastIssueDao.addForecastIssue(forecastIssue);
+	}
+	public void getParams(HttpServletRequest request, Criteria criterion) {
+		String OddEven=request.getParameter("oddeven");
+		String issue=request.getParameter("issue");
 		String consecutiveNumber = request.getParameter("consecutiveNumber");
 		String totalStrart=request.getParameter("totalStrart");
 		String totalEnd=request.getParameter("totalEnd");
@@ -264,14 +427,13 @@ public class ForecastController extends CrudController<Forecast> {
 		String thanSevenRatio5End=request.getParameter("thanSevenRatio5End");
 		String thanSevenRatio6Start=request.getParameter("thanSevenRatio6Start");
 		String thanSevenRatio6End=request.getParameter("thanSevenRatio6End");
-		
-		Criteria criterion = lotteryDao.getSession().createCriteria(Lottery.class);
 		if(!Check.isEmpty(OddEven)){
 			String odd=OddEven.split(":")[0];
 			String even=OddEven.split(":")[1];
 			criterion.add(Restrictions.eq("odd", Integer.parseInt(odd)) );
 			criterion.add(Restrictions.eq("even", Integer.parseInt(even)) );
 		}
+		
 		if(!Check.isEmpty(consecutiveNumber)){
 			criterion.add(Restrictions.eq("consecutivenumber", consecutiveNumber));
 		}
@@ -326,101 +488,5 @@ public class ForecastController extends CrudController<Forecast> {
 		CriterionUtil.setCriterion(thanSevenRatio4Start, thanSevenRatio4End, criterion, "thansevenratio4");
 		CriterionUtil.setCriterion(thanSevenRatio5Start, thanSevenRatio5End, criterion, "thansevenratio5");
 		CriterionUtil.setCriterion(thanSevenRatio6Start, thanSevenRatio6End, criterion, "thansevenratio6");
-		String issueid = UUID.generateUUID();
-		List<Lottery> lists=lotteryDao.loadAll(criterion);
-		List<Forecast> lists2=new ArrayList<Forecast>();
-		for(Lottery lottery:lists){
-			Forecast forecast=new Forecast();
-			BeanUtils.copyProperties(lottery, forecast);
-			forecast.setId(UUID.generateUUID());
-			forecast.setIssue(issue);
-			forecast.setIssueid(issueid);
-			lists2.add(forecast);
-		}
-		History phistory = historyDao.getNewHistory(); 
-		List<History> phistoryList = historyDao.getNewHistoryList(); 
-		List<Model> lists3= new ArrayList<Model>();
-		lists3.addAll(phistoryList);
-		/*for(int i=0;i<lists2.size();i++){
-			Forecast forecast=lists2.get(i);
-		    lotteryUtil.getIntervaland(forecast, phistory);
-		    lotteryUtil.getHeat(forecast, phistory);
-		    lotteryUtil.getRatioNoNumbers(forecast,lists3, 0);
-		    lotteryUtil.getNewSideRepeatNo(forecast, phistory);
-			//forecastDao.addForecast(forecast);
-		}*/
-		//forecastDao.addForecast(lists2);
-		calcForecast(lists2, phistory, lists3);
-		
-		ForecastIssue forecastIssue=new ForecastIssue();
-		forecastIssue.setId(issueid);
-		forecastIssue.setIssue(issue);
-		forecastIssue.setForecastcount(lists2.size());
-		forecastIssue.setDrawtime(new Date());
-		forecastIssueDao.addForecastIssue(forecastIssue);
-		
-		return new ServiceResult(ReturnResult.SUCCESS,"");
-	}
-	private void calcForecast(List<Forecast> lists2, History phistory,
-			List<Model> lists3) {
-		int pageSize=100;
-		List<List<Forecast>> result =ListUtils.splitList(lists2, LotteryUtil.PageSize3); 
-		for(List<Forecast> list:result){
-			ForecastRunnable fRunnable=new ForecastRunnable();
-			fRunnable.setForecastDao(forecastDao);
-			fRunnable.setLists(list);
-			fRunnable.setLists3(lists3);
-			fRunnable.setPhistory(phistory);
-			fRunnable.setSystemWebSocketHandler(systemWebSocketHandler);
-			Thread s=new Thread(fRunnable);
-			s.start();
-		}
-	}
-	@RequestMapping(value = "/{id}/delete",  method = {
-			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
-	public @ResponseBody Object delete(@PathVariable("id") String id) {
-			forecastDao.deleteObject(id);
-		return new ServiceResult(ReturnResult.SUCCESS,"");
-	}
-	@RequestMapping(value = "/{id}/deleteAll")
-	public @ResponseBody Object deleteAll(HttpServletRequest request) {
-		String ids = request.getParameter("ids");
-		String[] arrayId = ids.split(",");
-		for(String id:arrayId){
-			forecastDao.deleteObject(id);
-		}
-		return new ServiceResult(ReturnResult.SUCCESS);
-	}
-	@RequestMapping(value = "/export",  method = {
-			RequestMethod.POST,RequestMethod.GET})
-	public void export(HttpServletRequest req, HttpServletResponse response) throws IOException {
-		String issueid = req.getParameter("issueid");
-		response.setContentType("application/octet-stream");
-		String fileName = "预测信息";
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
-		String date = sdf.format(new Date());
-		fileName +="-"+date;
-		fileName+=".xls";
-		if (req.getHeader("User-Agent").toUpperCase().indexOf("MSIE") > -1) {
-			fileName = URLEncoder.encode(fileName, "UTF-8");
-		} else if (req.getHeader("User-Agent").indexOf("Trident") > -1 && req.getHeader("User-Agent").indexOf("rv:11.0") >-1) {//ie11
-			fileName = URLEncoder.encode(fileName, "UTF-8");
-		}else{
-			fileName = new String(fileName.getBytes("UTF-8"), "ISO8859-1");
-		}
-		response.addHeader("Content-Disposition", "attachment;filename="
-				+ fileName);
-		ByteArrayOutputStream baos = null;
-		try {
-			String sql=" select * from lottery_forecast ";
-			List<Map<String, Object>> dataList=new ArrayList<Map<String,Object>>();
-			dataList = forecastDao.queryForMapListBySQL(sql, null);
-			baos =  lotteryExportUtil.getExportData(dataList,fileName);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		IOUtils.copy(new ByteArrayInputStream(baos.toByteArray()),
-				response.getOutputStream());
 	}
 }

@@ -12,6 +12,10 @@ import com.cloudcode.lottery.model.Forecast;
 import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.Lottery;
+import com.cloudcode.lottery.model.Lottery1;
+import com.cloudcode.lottery.model.Lottery2;
+import com.cloudcode.lottery.model.Lottery3;
+import com.cloudcode.lottery.model.Lottery4;
 
 
 @ModuleConfig(name=ProjectConfig.NAME,domainPackages={"com.cloudcode.lottery.model"})
@@ -36,5 +40,21 @@ public class ProjectConfig {
 	@Bean(name=PREFIX+"forecastIssueDao")
 	public ModelObjectDao<ForecastIssue> generateForecastIssueDao(){
 		return new BaseDaoImpl<ForecastIssue>();
+	}
+	@Bean(name=PREFIX+"lotteryDao1")
+	public ModelObjectDao<Lottery1> generateLotteryDao1(){
+		return new BaseDaoImpl<Lottery1>();
+	}
+	@Bean(name=PREFIX+"lotteryDao2")
+	public ModelObjectDao<Lottery2> generateLotteryDao2(){
+		return new BaseDaoImpl<Lottery2>();
+	}
+	@Bean(name=PREFIX+"lotteryDao3")
+	public ModelObjectDao<Lottery3> generateLotteryDao3(){
+		return new BaseDaoImpl<Lottery3>();
+	}
+	@Bean(name=PREFIX+"lotteryDao4")
+	public ModelObjectDao<Lottery4> generateLotteryDao4(){
+		return new BaseDaoImpl<Lottery4>();
 	}
 }
