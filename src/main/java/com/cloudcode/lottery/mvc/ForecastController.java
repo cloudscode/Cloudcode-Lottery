@@ -200,6 +200,13 @@ public class ForecastController extends CrudController<Forecast> {
 	Object search(HttpServletRequest request) {
 		String issue=request.getParameter("issue");
 		Criteria criterion = lotteryDao.getSession().createCriteria(Lottery.class);
+		String OddEven=request.getParameter("oddeven");
+		if(!Check.isEmpty(OddEven)){
+			String odd=OddEven.split(":")[0];
+			String even=OddEven.split(":")[1];
+			criterion.add(Restrictions.eq("odd", Integer.parseInt(odd)) );
+			criterion.add(Restrictions.eq("even", Integer.parseInt(even)) );
+		}
 		getParams(request, criterion);
 		String issueid = UUID.generateUUID();
 		List<Lottery> lists=lotteryDao.loadAll(criterion);
@@ -344,7 +351,6 @@ public class ForecastController extends CrudController<Forecast> {
 		forecastIssueDao.addForecastIssue(forecastIssue);
 	}
 	public void getParams(HttpServletRequest request, Criteria criterion) {
-		String OddEven=request.getParameter("oddeven");
 		String issue=request.getParameter("issue");
 		String consecutiveNumber = request.getParameter("consecutiveNumber");
 		String totalStrart=request.getParameter("totalStrart");
@@ -427,13 +433,6 @@ public class ForecastController extends CrudController<Forecast> {
 		String thanSevenRatio5End=request.getParameter("thanSevenRatio5End");
 		String thanSevenRatio6Start=request.getParameter("thanSevenRatio6Start");
 		String thanSevenRatio6End=request.getParameter("thanSevenRatio6End");
-		if(!Check.isEmpty(OddEven)){
-			String odd=OddEven.split(":")[0];
-			String even=OddEven.split(":")[1];
-			criterion.add(Restrictions.eq("odd", Integer.parseInt(odd)) );
-			criterion.add(Restrictions.eq("even", Integer.parseInt(even)) );
-		}
-		
 		if(!Check.isEmpty(consecutiveNumber)){
 			criterion.add(Restrictions.eq("consecutivenumber", consecutiveNumber));
 		}
