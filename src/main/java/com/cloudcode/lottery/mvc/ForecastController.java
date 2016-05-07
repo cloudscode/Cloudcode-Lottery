@@ -293,10 +293,12 @@ public class ForecastController extends CrudController<Forecast> {
 			String even=OddEven.split(":")[1];
 			if(0==Integer.parseInt(odd)||7==Integer.parseInt(odd)||1==Integer.parseInt(odd)||6==Integer.parseInt(odd)){
 				getParams(request, criterion1);
+				criterion1.add(Restrictions.eq("odd", Integer.parseInt(odd)) );
 				List<Lottery1> lists=lotteryDao1.loadAll(criterion1);
 				list.addAll(lists);
 			}else if(2==Integer.parseInt(odd)||5==Integer.parseInt(odd)){
 				getParams(request, criterion2);
+				criterion2.add(Restrictions.eq("odd", Integer.parseInt(odd)) );
 				List<Lottery2> lists=lotteryDao2.loadAll(criterion2);
 				list.addAll(lists);
 			}else if(3==Integer.parseInt(odd)){
