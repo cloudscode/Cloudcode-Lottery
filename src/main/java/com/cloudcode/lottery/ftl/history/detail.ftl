@@ -50,6 +50,9 @@
 </form>
   <div class="form-group">
  <div class="col-sm-9" style="text-align: center;"> <input type="hidden" value="${history.id!''}" id="id" name="id" >
+		 <#if entityAction=="create">
+		  <input type="hidden" value="${serialnum!''}" id="serialnum" name="serialnum" >
+		 </#if>
      	<button type="button" id="updateButton" name="calc" class="btn btn-primary" >保存</button>
      	<button type="button" id="updateButton" name="random" class="btn btn-warning" >取消</button>
      	 </div>

@@ -77,7 +77,7 @@ public class WebUtil {
 					}
 					String issue = trs.get(i).select("td").get(0).text();
 					if (!"投注说明".equals(issue) && !"冷热图".equals(issue)) {
-						System.out.println(issue);
+						//System.out.println(issue);
 						StringBuffer sb = new StringBuffer();
 						sb.append("insert into lottery_history(id,issue,a,b,c,d,e,f,g,specialnum,serialnum)values(");
 						sb.append("'");
@@ -90,7 +90,7 @@ public class WebUtil {
 						for (int k = 0; k < tds.size(); k++) {
 							if (!tds.get(k).attr("class").equals("spNum")) {
 								String text = tds.get(k).text();
-								System.out.println(text);
+								//System.out.println(text);
 								sb.append("");
 								sb.append(text);
 								sb.append(",");
@@ -103,7 +103,7 @@ public class WebUtil {
 						sb.append(",");
 						sb.append(count);
 						sb.append(");");
-						System.out.println(sb.toString());
+						//System.out.println(sb.toString());
 						result.add(sb.toString());
 						count++;
 					}
@@ -114,7 +114,7 @@ public class WebUtil {
 		for (String str : result) {
 			bufs += str + "\n";
 		}
-		try {
+		try {System.out.println(bufs.toString());
 			IOUtils.writeTxtFile(bufs.toString(), file);
 		} catch (Exception e) {
 			e.printStackTrace();

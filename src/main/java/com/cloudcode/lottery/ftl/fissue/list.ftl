@@ -15,6 +15,9 @@
         <button id="delete" class="ui-button-danger">删除</button>
         <button id="refresh" class="ui-button-info">刷新</button>
 </section></div></div>
+<div class="container" id="layoutinfo" style="text-align: center;">
+
+</div>
 <div class="row">
     <div class="col-lg-12 col-sm-12">
         <table id="jqGrid01" style="width:100%;"></table>
@@ -106,6 +109,11 @@ var id;
 		grid.trigger('reloadGrid');
 	});
 	 $("#layout button,.button,#sampleButton").button();
+	 
+var p= $('<p class="bg-success">正在计算预测信息...</p>');
+$("#layoutinfo").append(p);
+ 		
+ 		
 });
 function showCount(id){
 	window.location.href='${request.getContextPath()}/forecast/toList?issueid='+id;
@@ -131,5 +139,42 @@ return fmt;
 </script>
 <div id="divInDialog" style="display:none"></div>
 </div>
+ <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+
+    <script type="text/javascript">
+        var ws = null;
+       $(function(){
+       	connect();
+       });
+      
+        function connect() {
+         	var url = '/cloudcode/sockjs/websocket';
+            if (!url) {
+                alert('Select whether to use W3C WebSocket or SockJS');
+                return;
+            }
+            //ws = (url.indexOf('sockjs') != -1) ?new SockJS(url, undefined, {protocols_whitelist: transports}) : new WebSocket(url);
+            if ('WebSocket' in window) {
+                ws= new WebSocket("ws://${ip}:${port}/${request.getContextPath()}/websck?type=fissue");
+            }else {
+                ws = new SockJS("http://${ip}:${port}/${request.getContextPath()}/sockjs/websck?type=fissue");
+            }
+            //websocket = new SockJS("http://localhost:8080/cloudcode/sockjs/websck");
+            ws.onopen = function () {
+                //alert('open');
+                //setConnected(true);
+                //log('Info: connection opened.');
+            };
+            ws.onmessage = function (event) {
+                alert( event.data);
+                //log('Received: ' + event.data);
+            };
+            ws.onclose = function (event) {
+                //setConnected(false);
+                //log('Info: connection closed.');
+               // log(event);
+            };
+        }
+          </script>
 </body>
 </html>

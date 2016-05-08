@@ -90,10 +90,11 @@ public class ForecastIssueController extends CrudController<ForecastIssue> {
 	}
 
 	@RequestMapping(value = "toList")
-	public ModelAndView toList() {
+	public ModelAndView toList(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView
-				.setViewName("classpath:com/cloudcode/lottery/ftl/fissue/list.ftl");
+		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/fissue/list.ftl");
+		modelAndView.addObject("port", request.getLocalPort());
+		modelAndView.addObject("ip", request.getLocalAddr());
 		return modelAndView;
 	}
 

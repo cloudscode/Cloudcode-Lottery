@@ -160,7 +160,15 @@ public class HistoryLotteryController extends CrudController<History> {
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/history/detail.ftl");
 		modelAndView.addObject("entityAction", "create");
 		History history = new History();
-		String oldIssue = historyDao.getNewIssue();
+		History phistory = historyDao.getNewHistory();
+		String oldIssue = "";
+		if(null != phistory){
+			Integer issue =Integer.parseInt(phistory.getIssue())+1;
+		    oldIssue = issue.toString();
+		    Integer serialnum =Integer.parseInt(phistory.getSerialnum())+1;
+		    modelAndView.addObject("serialnum", serialnum.toString());
+		}
+		
 		history = lotteryUtil.getHistor(oldIssue);
 		modelAndView.addObject("history", history);
 		return modelAndView;
