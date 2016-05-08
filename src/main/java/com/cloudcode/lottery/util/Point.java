@@ -88,6 +88,6 @@ public class Point {
 		lottery.setG(20);
 		Point p=new Point();
 		p.setPoint(lottery);
-		System.out.println(p.getSlope());
+		System.out.println(lottery.getSlope());
 	}
 }
