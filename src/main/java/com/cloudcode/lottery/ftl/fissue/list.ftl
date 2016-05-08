@@ -155,9 +155,9 @@ return fmt;
             }
             //ws = (url.indexOf('sockjs') != -1) ?new SockJS(url, undefined, {protocols_whitelist: transports}) : new WebSocket(url);
             if ('WebSocket' in window) {
-                ws= new WebSocket("ws://${ip}:${port}/${request.getContextPath()}/websck?type=fissue");
+                ws= new WebSocket("ws://${ip}:${port}/${request.getContextPath()}/websck?fissue=fissue");
             }else {
-                ws = new SockJS("http://${ip}:${port}/${request.getContextPath()}/sockjs/websck?type=fissue");
+                ws = new SockJS("http://${ip}:${port}/${request.getContextPath()}/sockjs/websck?fissue=fissue");
             }
             //websocket = new SockJS("http://localhost:8080/cloudcode/sockjs/websck");
             ws.onopen = function () {

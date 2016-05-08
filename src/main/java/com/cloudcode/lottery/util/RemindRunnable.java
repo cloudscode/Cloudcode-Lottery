@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
 
 import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.push.hndler.SystemWebSocketHandler;
@@ -24,16 +25,15 @@ public class RemindRunnable extends Thread {
 	}
 
 	public void run() {
-		
 		boolean r=false;
 		do{
-			if(num==0 || (getForecastDao().countForRemind(getIssueId()))==0){
-				TextMessage returnMessage = new TextMessage("success");
-				getSystemWebSocketHandler().sendMessageToUsers(returnMessage);
-				System.out.println("****************系统提示：预测成功！******************");
-				r=true;
-			}
-			try {
+		  try {
+			  	Thread.sleep(900);
+				if(num==0 || (getForecastDao().countForRemind(getIssueId()))==0){
+					if(sendMessage()){
+						r=true;
+					}
+				}
 				if(num !=0){
 					Thread.sleep(num*1000);
 				}
@@ -42,6 +42,17 @@ public class RemindRunnable extends Thread {
 				e.printStackTrace();
 			}
 		}while(r!=true);
+	}
+	public boolean sendMessage(){
+		   for (WebSocketSession user : getSystemWebSocketHandler().socketSessionUtils.getClients().values()) {
+			   if(user.getAttributes().containsKey("fissue")){
+				    TextMessage returnMessage = new TextMessage("success");
+				    getSystemWebSocketHandler().socketSessionUtils.sendMessageToUser(user,returnMessage);
+					System.out.println("****************系统提示：预测成功！******************");
+					return true;
+			   }
+		   }
+		return false;
 	}
 	public ForecastDao getForecastDao() {
 		return forecastDao;
