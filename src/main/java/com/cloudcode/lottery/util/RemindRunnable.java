@@ -28,14 +28,14 @@ public class RemindRunnable extends Thread {
 		boolean r=false;
 		do{
 			if(num==0 || (getForecastDao().countForRemind(getIssueId()))==0){
-				TextMessage returnMessage = new TextMessage("系统提示：预测成功！");
+				TextMessage returnMessage = new TextMessage("success");
 				getSystemWebSocketHandler().sendMessageToUsers(returnMessage);
 				System.out.println("****************系统提示：预测成功！******************");
 				r=true;
 			}
 			try {
 				if(num !=0){
-					Thread.sleep(num*100);
+					Thread.sleep(num*1000);
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

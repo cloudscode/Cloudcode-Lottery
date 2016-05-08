@@ -161,18 +161,15 @@ return fmt;
             }
             //websocket = new SockJS("http://localhost:8080/cloudcode/sockjs/websck");
             ws.onopen = function () {
-                //alert('open');
-                //setConnected(true);
-                //log('Info: connection opened.');
+               
             };
             ws.onmessage = function (event) {
-                alert( event.data);
-                //log('Received: ' + event.data);
+            	if(event.data=="success"){
+               		$("#layoutinfo").css({"display":"none"});
+                }
             };
             ws.onclose = function (event) {
-                //setConnected(false);
-                //log('Info: connection closed.');
-               // log(event);
+               
             };
         }
           </script>
