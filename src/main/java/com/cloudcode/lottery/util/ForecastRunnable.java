@@ -44,9 +44,6 @@ public class ForecastRunnable extends Thread {
 			LotteryUtil.getHorver(LotteryUtil.tolist(forecast), forecast);
 		}
 		getForecastDao().addForecast(getLists());
-		TextMessage returnMessage = new TextMessage("系统提示：预测成功！");
-		systemWebSocketHandler.sendMessageToUsers(returnMessage);
-		System.out.println("****************系统提示：预测成功！******************");
 	}
 
 	public List<Forecast> getLists() {
@@ -98,7 +95,12 @@ public class ForecastRunnable extends Thread {
 			s.start();
 		}
 	}
-
+	public void remindForecast(String issueId, ForecastDao forecastDao,SystemWebSocketHandler systemWebSocketHandler,Integer num) throws InterruptedException {
+		remindIssue delissue = new remindIssue(issueId, forecastDao,systemWebSocketHandler,num);
+		Thread s = new Thread(delissue);
+		s.sleep(num*1000);
+		s.start();
+	}
 	static class DelIssue extends Thread {
 		private ForecastDao forecastDao;
 		private List<Forecast> lists;
@@ -132,5 +134,59 @@ public class ForecastRunnable extends Thread {
 			this.lists = lists;
 		}
 
+	}
+	static class remindIssue extends Thread {
+		private ForecastDao forecastDao;
+		private String issueId;
+		private SystemWebSocketHandler systemWebSocketHandler;
+		private Integer num;
+		public remindIssue(){}
+		public remindIssue(String issueId, ForecastDao forecastDao,SystemWebSocketHandler systemWebSocketHandler,Integer num) {
+			this.issueId = issueId;
+			this.forecastDao = forecastDao;
+			this.systemWebSocketHandler=systemWebSocketHandler;
+			this.num = num;
+		}
+
+		public void run() {
+			boolean r=false;
+			do{
+				if(num==0 || getForecastDao().findForRemind(getIssueId()).size()==0){
+					TextMessage returnMessage = new TextMessage("系统提示：预测成功！");
+					getSystemWebSocketHandler().sendMessageToUsers(returnMessage);
+					System.out.println("****************系统提示：预测成功！******************");
+					r=true;
+				}
+				try {
+					if(num !=0){
+						Thread.sleep(num*100);
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}while(r);
+		}
+		public ForecastDao getForecastDao() {
+			return forecastDao;
+		}
+
+		public void setForecastDao(ForecastDao forecastDao) {
+			this.forecastDao = forecastDao;
+		}
+		public String getIssueId() {
+			return issueId;
+		}
+		public void setIssueId(String issueId) {
+			this.issueId = issueId;
+		}
+		public SystemWebSocketHandler getSystemWebSocketHandler() {
+			return systemWebSocketHandler;
+		}
+		public void setSystemWebSocketHandler(
+				SystemWebSocketHandler systemWebSocketHandler) {
+			this.systemWebSocketHandler = systemWebSocketHandler;
+		}
+		
 	}
 }

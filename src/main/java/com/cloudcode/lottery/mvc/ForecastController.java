@@ -62,6 +62,7 @@ import com.cloudcode.lottery.model.base.Model;
 import com.cloudcode.lottery.util.ForecastRunnable;
 import com.cloudcode.lottery.util.LotteryExportUtil;
 import com.cloudcode.lottery.util.LotteryUtil;
+import com.cloudcode.lottery.util.RemindRunnable;
 import com.cloudcode.push.hndler.SystemWebSocketHandler;
 
 @Controller
@@ -92,6 +93,9 @@ public class ForecastController extends CrudController<Forecast> {
 	private LotteryDao3 lotteryDao3;
 	@Autowired
 	private LotteryDao4 lotteryDao4;
+	@Autowired
+	private RemindRunnable RemindRunnable;
+
 	@RequestMapping(value = "/addForecast", method = RequestMethod.POST)
 	public @ResponseBody
 	void addForecast(@RequestBody  Forecast forecast) {
@@ -216,8 +220,7 @@ public class ForecastController extends CrudController<Forecast> {
 		return new ServiceResult(ReturnResult.SUCCESS,"");
 	}
 	private void calcForecast(List<Forecast> lists2, History phistory,
-			List<Model> lists3) {
-		int pageSize=100;
+			List<Model> lists3,String issueId) {
 		List<List<Forecast>> result =ListUtils.splitList(lists2, LotteryUtil.PageSize3); 
 		for(List<Forecast> list:result){
 			ForecastRunnable fRunnable=new ForecastRunnable();
@@ -229,6 +232,9 @@ public class ForecastController extends CrudController<Forecast> {
 			Thread s=new Thread(fRunnable);
 			s.start();
 		}
+			RemindRunnable fRunnable=new RemindRunnable(issueId, forecastDao, systemWebSocketHandler,result.size());
+			fRunnable.setJdbcTemplate(jdbcTemplate);
+			fRunnable.start();
 	}
 	@RequestMapping(value = "/{id}/delete",  method = {
 			RequestMethod.POST,RequestMethod.GET}, produces = "application/json")
@@ -343,7 +349,7 @@ public class ForecastController extends CrudController<Forecast> {
 		List<History> phistoryList = historyDao.getNewHistoryList(); 
 		List<Model> lists3= new ArrayList<Model>();
 		lists3.addAll(phistoryList);
-		calcForecast(lists2, phistory, lists3);
+		calcForecast(lists2, phistory, lists3,issueid);
 		
 		ForecastIssue forecastIssue=new ForecastIssue();
 		forecastIssue.setId(issueid);

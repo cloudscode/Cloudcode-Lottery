@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.cloudcode.framework.dao.BaseModelObjectDao;
@@ -26,7 +28,9 @@ import com.cloudcode.lottery.model.Lottery;
 public class ForecastDao extends BaseModelObjectDao<Forecast> {
 	@Resource(name = ProjectConfig.PREFIX + "forecastDao")
 	private ModelObjectDao<Forecast> forecastDao;
-
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
 	public void addForecast(Forecast entity) {
 		forecastDao.createObject(entity);
 	}
@@ -98,5 +102,16 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 				Forecast.class);
 		criterion.add(Restrictions.eq("issueid", issueId));
 		return criterion.list();
+	}
+	public List<Forecast> findForRemind(String issueId) {
+		Criteria criterion = forecastDao.getSession().createCriteria(
+				Forecast.class);
+		criterion.add(Restrictions.eq("issueid", issueId));
+		criterion.add(Restrictions.isNull("newno"));
+		return criterion.list();
+	}
+	public int countForRemind(String issueId) {
+		String sql="select count(0) from lottery_forecast where issueid='"+issueId+"' and (newno is null or newno ='') ";
+		return jdbcTemplate.queryForInt(sql);
 	}
 }
