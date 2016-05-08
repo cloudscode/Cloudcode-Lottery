@@ -2,8 +2,10 @@ package com.cloudcode.lottery.model.base;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 import com.cloudcode.framework.model.BaseModelObject;
+import com.cloudcode.lottery.util.Point;
 
 @MappedSuperclass
 public class Base extends BaseModelObject {
@@ -602,4 +604,68 @@ public class Base extends BaseModelObject {
 		lottery.setNinearea9(0);
 		lottery.setLastvalueappears("");
 	}
+	private Point point1;
+	private Point point2;
+	private Point point3;
+	private Point point4;
+	private Point point5;
+	private Point point6;
+	private String slope;
+	@Transient
+	public Point getPoint1() {
+		return point1;
+	}
+
+	public void setPoint1(Point point1) {
+		this.point1 = point1;
+	}
+	@Transient
+	public Point getPoint2() {
+		return point2;
+	}
+
+	public void setPoint2(Point point2) {
+		this.point2 = point2;
+	}
+	@Transient
+	public Point getPoint3() {
+		return point3;
+	}
+
+	public void setPoint3(Point point3) {
+		this.point3 = point3;
+	}
+	@Transient
+	public Point getPoint4() {
+		return point4;
+	}
+
+	public void setPoint4(Point point4) {
+		this.point4 = point4;
+	}
+	@Transient
+	public Point getPoint5() {
+		return point5;
+	}
+
+	public void setPoint5(Point point5) {
+		this.point5 = point5;
+	}
+	@Transient
+	public Point getPoint6() {
+		return point6;
+	}
+
+	public void setPoint6(Point point6) {
+		this.point6 = point6;
+	}
+	@Transient
+	public String getSlope() {
+		return slope;
+	}
+
+	public void setSlope(String slope) {
+		this.slope = slope;
+	}
+	
 }
