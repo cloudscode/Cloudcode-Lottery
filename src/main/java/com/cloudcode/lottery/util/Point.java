@@ -70,13 +70,13 @@ public class Point {
 		LineSlope l4 = new LineSlope(p4, p5);
 		LineSlope l5 = new LineSlope(p5, p6);
 		String slope=format(l1.slope)+"+"+format(l2.slope)+"+"+format(l3.slope)+"+"+format(l4.slope)+"+"+format(l5.slope);
-		base.setSlope(slope);
+		/*base.setSlope(slope);
 		base.setPoint1(p1);
 		base.setPoint2(p2);
 		base.setPoint3(p3);
 		base.setPoint4(p4);
 		base.setPoint5(p5);
-		base.setPoint6(p6);
+		base.setPoint6(p6);*/
 	}
 	public static String format(double d){
 		return new java.text.DecimalFormat("#0.00").format(d);
@@ -92,6 +92,6 @@ public class Point {
 		lottery.setG(30);
 		Point p=new Point();
 		p.setPoint(lottery);
-		System.out.println(lottery.getSlope());
+		//System.out.println(lottery.getSlope());
 	}
 }

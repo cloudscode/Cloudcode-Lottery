@@ -604,7 +604,7 @@ public class Base extends BaseModelObject {
 		lottery.setNinearea9(0);
 		lottery.setLastvalueappears("");
 	}
-	private Point point1;
+	/*private Point point1;
 	private Point point2;
 	private Point point3;
 	private Point point4;
@@ -666,6 +666,6 @@ public class Base extends BaseModelObject {
 
 	public void setSlope(String slope) {
 		this.slope = slope;
-	}
+	}*/
 	
 }
