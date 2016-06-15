@@ -45,6 +45,9 @@ function formatterV(num,rowObject){
 		value= rowObject.f;
 	}else if(num==rowObject.g){
 		value= rowObject.g;
+	}else if(num==rowObject.specialnum){
+		value= rowObject.specialnum;
+		return '<font style="color:#0383fd;">'+value+'</font>';
 	}
 	if(value){
 		return '<font style="color:red;">'+value+'</font>';
@@ -69,7 +72,7 @@ $(function(){
             rowNum: 20,
              rowList: [10,20,30,50,100,200,500,1000,5000],
             colNames:['Id', '期号', '1','2','3','4','5','6','7','8','9','10','11','12','13','14'
-            , '15', '16', '17', '18', '19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36'
+            , '15', '16', '17', '18', '19','20','21','22','23','24','25','26','27','28','29','30','31'
            ,'总和','距离','奇偶','重号','横纵'
             ,'a','b','c','d','e','f','g','odd','even'],
             colModel:[
@@ -106,10 +109,10 @@ $(function(){
                 {name:'10',index:'exchange', width:10, cellattr: addCellAttr1,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(10,rowObject);
                 }},
-                {name:'11',index:'exchange', width:10, cellattr: addCellAttr1,formatter:function(cellvalue, options, rowObject){
+                {name:'11',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(11,rowObject);
                 }},
-                {name:'12',index:'exchange', width:10, cellattr: addCellAttr1,formatter:function(cellvalue, options, rowObject){
+                {name:'12',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(12,rowObject);
                 }},
                 {name:'13',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
@@ -136,16 +139,16 @@ $(function(){
                  {name:'20',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(20,rowObject);
                 }},
-                 {name:'21',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
+                 {name:'21',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(21,rowObject);
                 }},
-                 {name:'22',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
+                 {name:'22',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(22,rowObject);
                 }},
-                 {name:'23',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
+                 {name:'23',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(23,rowObject);
                 }},
-                 {name:'24',index:'exchange', width:10, cellattr: addCellAttr2,formatter:function(cellvalue, options, rowObject){
+                 {name:'24',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(24,rowObject);
                 }},
                  {name:'25',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
@@ -168,21 +171,6 @@ $(function(){
                 }},
                  {name:'31',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
                 	return formatterV(31,rowObject);
-                }},
-                 {name:'32',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
-                	return formatterV(32,rowObject);
-                }},
-                 {name:'33',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
-                	return formatterV(33,rowObject);
-                }},
-                 {name:'34',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
-                	return formatterV(34,rowObject);
-                }},
-                 {name:'35',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
-                	return formatterV(35,rowObject);
-                }},
-                 {name:'36',index:'exchange', width:10, cellattr: addCellAttr3,formatter:function(cellvalue, options, rowObject){
-                	return formatterV(36,rowObject);
                 }},
                  {name:'total',  width:20 },
                  {name:'length',  width:20 },
@@ -217,9 +205,9 @@ $(function(){
         jQuery("#jqGrid01").jqGrid('setGroupHeaders', {
   useColSpanStyle: false, 
   groupHeaders:[
-	{startColumnName: '1', numberOfColumns: 12, titleText: '<em>红球一区</em>'},
-	{startColumnName: '13', numberOfColumns: 12, titleText: '<em>红球二区</em>'},
-	{startColumnName: '25', numberOfColumns: 12, titleText: '<em>红球三区</em>'}
+	{startColumnName: '1', numberOfColumns: 10, titleText: '<em>红球一区</em>'},
+	{startColumnName: '10', numberOfColumns: 10, titleText: '<em>红球二区</em>'},
+	{startColumnName: '20', numberOfColumns: 11, titleText: '<em>红球三区</em>'}
   ]	
 });
     }

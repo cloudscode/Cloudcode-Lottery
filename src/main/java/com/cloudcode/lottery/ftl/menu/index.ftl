@@ -36,6 +36,9 @@
                      <li>
                         <a href="${request.getContextPath()}/lottery/toList" target="view_window">基础库信息</a>
                     </li>
+                     <li>
+                        <a href="${request.getContextPath()}/thirtyOneHistory/toList" target="view_window">31开奖信息</a>
+                    </li>
                     <!--<li>
                         <a href="./map.html">Map</a>
                     </li>

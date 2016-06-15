@@ -45,6 +45,9 @@ function formatterV(num,rowObject){
 		value= rowObject.f;
 	}else if(num==rowObject.g){
 		value= rowObject.g;
+	}else if(num==rowObject.specialnum){
+		value= rowObject.specialnum;
+		return '<font style="color:#0383fd;">'+value+'</font>';
 	}
 	if(value){
 		return '<font style="color:red;">'+value+'</font>';
