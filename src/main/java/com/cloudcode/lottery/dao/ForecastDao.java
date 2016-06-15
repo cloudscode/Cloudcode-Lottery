@@ -112,6 +112,6 @@ public class ForecastDao extends BaseModelObjectDao<Forecast> {
 	}
 	public int countForRemind(String issueId) {
 		String sql="select count(0) from lottery_forecast where issueid='"+issueId+"' and (newno is null or newno ='') ";
-		return jdbcTemplate.queryForInt(sql);
+		return jdbcTemplate.queryForList(sql).size();
 	}
 }

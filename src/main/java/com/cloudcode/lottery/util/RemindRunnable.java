@@ -1,26 +1,25 @@
 package com.cloudcode.lottery.util;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.cloudcode.lottery.dao.ForecastDao;
-import com.cloudcode.push.hndler.SystemWebSocketHandler;
+import com.cloudcode.push.utils.SocketSessionUtils;
 
 @Repository
 public class RemindRunnable extends Thread {
 	private ForecastDao forecastDao;
 	private String issueId;
-	private SystemWebSocketHandler systemWebSocketHandler;
+	private SocketSessionUtils socketSessionUtils;
 	private Integer num;
 	private JdbcTemplate jdbcTemplate;
 	public RemindRunnable(){}
-	public RemindRunnable(String issueId, ForecastDao forecastDao,SystemWebSocketHandler systemWebSocketHandler,Integer num) {
+	public RemindRunnable(String issueId, ForecastDao forecastDao,SocketSessionUtils socketSessionUtils,Integer num) {
 		this.issueId = issueId;
 		this.forecastDao = forecastDao;
-		this.systemWebSocketHandler=systemWebSocketHandler;
+		this.socketSessionUtils=socketSessionUtils;
 		this.num = num;
 	}
 
@@ -44,10 +43,10 @@ public class RemindRunnable extends Thread {
 		}while(r!=true);
 	}
 	public boolean sendMessage(){
-		   for (WebSocketSession user : getSystemWebSocketHandler().socketSessionUtils.getClients().values()) {
+		   for (WebSocketSession user : getSocketSessionUtils().getClients().values()) {
 			   if(user.getAttributes().containsKey("fissue")){
 				    TextMessage returnMessage = new TextMessage("success");
-				    getSystemWebSocketHandler().socketSessionUtils.sendMessageToUser(user,returnMessage);
+				    getSocketSessionUtils().sendMessageToUser(user,returnMessage);
 					System.out.println("****************系统提示：预测成功！******************");
 					return true;
 			   }
@@ -67,18 +66,17 @@ public class RemindRunnable extends Thread {
 	public void setIssueId(String issueId) {
 		this.issueId = issueId;
 	}
-	public SystemWebSocketHandler getSystemWebSocketHandler() {
-		return systemWebSocketHandler;
-	}
-	public void setSystemWebSocketHandler(
-			SystemWebSocketHandler systemWebSocketHandler) {
-		this.systemWebSocketHandler = systemWebSocketHandler;
-	}
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
+	}
+	public SocketSessionUtils getSocketSessionUtils() {
+		return socketSessionUtils;
+	}
+	public void setSocketSessionUtils(SocketSessionUtils socketSessionUtils) {
+		this.socketSessionUtils = socketSessionUtils;
 	}
 	
 }

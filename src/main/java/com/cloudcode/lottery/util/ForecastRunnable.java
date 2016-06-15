@@ -11,21 +11,15 @@ package com.cloudcode.lottery.util;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.socket.TextMessage;
 
 import com.cloudcode.framework.utils.ListUtils;
 import com.cloudcode.lottery.dao.ForecastDao;
 import com.cloudcode.lottery.model.Forecast;
-import com.cloudcode.lottery.model.ForecastIssue;
 import com.cloudcode.lottery.model.History;
 import com.cloudcode.lottery.model.base.Model;
-import com.cloudcode.push.hndler.SystemWebSocketHandler;
+import com.cloudcode.push.utils.SocketSessionUtils;
 
 @Repository
 public class ForecastRunnable extends Thread {
@@ -33,7 +27,7 @@ public class ForecastRunnable extends Thread {
 	private ForecastDao forecastDao;
 	private History phistory;
 	private List<Model> lists3;
-	private SystemWebSocketHandler systemWebSocketHandler;
+	private SocketSessionUtils socketSessionUtils;
 	public void run() {
 
 		for (Forecast forecast : getLists()) {
@@ -77,16 +71,6 @@ public class ForecastRunnable extends Thread {
 	public void setLists3(List<Model> lists3) {
 		this.lists3 = lists3;
 	}
-
-	public SystemWebSocketHandler getSystemWebSocketHandler() {
-		return systemWebSocketHandler;
-	}
-
-	public void setSystemWebSocketHandler(
-			SystemWebSocketHandler systemWebSocketHandler) {
-		this.systemWebSocketHandler = systemWebSocketHandler;
-	}
-
 	public void delForecast(List<Forecast> lists, ForecastDao forecastDao) {
 		List<List<Forecast>> result =ListUtils.splitList(lists, LotteryUtil.PageSize3); 
 		for(List<Forecast> list:result){
@@ -95,8 +79,8 @@ public class ForecastRunnable extends Thread {
 			s.start();
 		}
 	}
-	public void remindForecast(String issueId, ForecastDao forecastDao,SystemWebSocketHandler systemWebSocketHandler,Integer num) throws InterruptedException {
-		remindIssue delissue = new remindIssue(issueId, forecastDao,systemWebSocketHandler,num);
+	public void remindForecast(String issueId, ForecastDao forecastDao,SocketSessionUtils socketSessionUtils,Integer num) throws InterruptedException {
+		remindIssue delissue = new remindIssue(issueId, forecastDao,socketSessionUtils,num);
 		Thread s = new Thread(delissue);
 		s.sleep(num*1000);
 		s.start();
@@ -138,13 +122,13 @@ public class ForecastRunnable extends Thread {
 	static class remindIssue extends Thread {
 		private ForecastDao forecastDao;
 		private String issueId;
-		private SystemWebSocketHandler systemWebSocketHandler;
+		private SocketSessionUtils socketSessionUtils;
 		private Integer num;
 		public remindIssue(){}
-		public remindIssue(String issueId, ForecastDao forecastDao,SystemWebSocketHandler systemWebSocketHandler,Integer num) {
+		public remindIssue(String issueId, ForecastDao forecastDao,SocketSessionUtils socketSessionUtils,Integer num) {
 			this.issueId = issueId;
 			this.forecastDao = forecastDao;
-			this.systemWebSocketHandler=systemWebSocketHandler;
+			this.socketSessionUtils=socketSessionUtils;
 			this.num = num;
 		}
 
@@ -153,7 +137,7 @@ public class ForecastRunnable extends Thread {
 			do{
 				if(num==0 || getForecastDao().findForRemind(getIssueId()).size()==0){
 					TextMessage returnMessage = new TextMessage("系统提示：预测成功！");
-					getSystemWebSocketHandler().sendMessageToUsers(returnMessage);
+					getSocketSessionUtils().sendMessageToUsers(returnMessage);
 					System.out.println("****************系统提示：预测成功！******************");
 					r=true;
 				}
@@ -180,13 +164,21 @@ public class ForecastRunnable extends Thread {
 		public void setIssueId(String issueId) {
 			this.issueId = issueId;
 		}
-		public SystemWebSocketHandler getSystemWebSocketHandler() {
-			return systemWebSocketHandler;
+		public SocketSessionUtils getSocketSessionUtils() {
+			return socketSessionUtils;
 		}
-		public void setSystemWebSocketHandler(
-				SystemWebSocketHandler systemWebSocketHandler) {
-			this.systemWebSocketHandler = systemWebSocketHandler;
+
+		public void setSocketSessionUtils(SocketSessionUtils socketSessionUtils) {
+			this.socketSessionUtils = socketSessionUtils;
 		}
 		
 	}
+	public SocketSessionUtils getSocketSessionUtils() {
+		return socketSessionUtils;
+	}
+
+	public void setSocketSessionUtils(SocketSessionUtils socketSessionUtils) {
+		this.socketSessionUtils = socketSessionUtils;
+	}
+	
 }

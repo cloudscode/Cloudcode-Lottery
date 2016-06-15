@@ -63,7 +63,7 @@ import com.cloudcode.lottery.util.ForecastRunnable;
 import com.cloudcode.lottery.util.LotteryExportUtil;
 import com.cloudcode.lottery.util.LotteryUtil;
 import com.cloudcode.lottery.util.RemindRunnable;
-import com.cloudcode.push.hndler.SystemWebSocketHandler;
+import com.cloudcode.push.utils.SocketSessionUtils;
 
 @Controller
 @RequestMapping({ "/forecast" })
@@ -81,8 +81,10 @@ public class ForecastController extends CrudController<Forecast> {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private  ForecastIssueDao forecastIssueDao;
-	@Autowired
-	private SystemWebSocketHandler systemWebSocketHandler;
+	//@Autowired
+	//private SystemWebSocketHandler systemWebSocketHandler;
+    @Autowired
+    public SocketSessionUtils socketSessionUtils;
 	@Autowired
 	private LotteryExportUtil lotteryExportUtil;
 	@Autowired
@@ -228,11 +230,11 @@ public class ForecastController extends CrudController<Forecast> {
 			fRunnable.setLists(list);
 			fRunnable.setLists3(lists3);
 			fRunnable.setPhistory(phistory);
-			fRunnable.setSystemWebSocketHandler(systemWebSocketHandler);
+			fRunnable.setSocketSessionUtils(socketSessionUtils);
 			Thread s=new Thread(fRunnable);
 			s.start();
 		}
-			RemindRunnable fRunnable=new RemindRunnable(issueId, forecastDao, systemWebSocketHandler,result.size());
+			RemindRunnable fRunnable=new RemindRunnable(issueId, forecastDao, socketSessionUtils,result.size());
 			fRunnable.setJdbcTemplate(jdbcTemplate);
 			fRunnable.start();
 	}
