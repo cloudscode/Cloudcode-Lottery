@@ -49,7 +49,7 @@ public class WebUtil {
 
 	public static void main(String[] args) {
 
-		String address = "http://fjtc.com.cn/Line-3607?Type=OLD";
+		String address = "http://fjtc.com.cn/Line-3107?Type=OLD";
 		List<String> list = getURLCollection(address);
 		String buf = "";
 		for (String str : list) {
@@ -79,7 +79,8 @@ public class WebUtil {
 					if (!"投注说明".equals(issue) && !"冷热图".equals(issue)) {
 						//System.out.println(issue);
 						StringBuffer sb = new StringBuffer();
-						sb.append("insert into lottery_history(id,issue,a,b,c,d,e,f,g,specialnum,serialnum)values(");
+						//sb.append("insert into lottery_history(id,issue,a,b,c,d,e,f,g,specialnum,serialnum)values(");
+						sb.append("insert into lottery_tonehistory(id,issue,a,b,c,d,e,f,g,specialnum,serialnum)values(");
 						sb.append("'");
 						sb.append(UUID.generateUUID());
 						sb.append("','");
