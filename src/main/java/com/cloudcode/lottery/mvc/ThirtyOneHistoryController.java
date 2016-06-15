@@ -257,4 +257,10 @@ public class ThirtyOneHistoryController extends CrudController<ThirtyOneHistory>
 		IOUtils.copy(new ByteArrayInputStream(baos.toByteArray()),
 				response.getOutputStream());
 	}
+	@RequestMapping(value = "queryList", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody
+	PaginationSupport<ThirtyOneHistory> queryList(ThirtyOneHistory history, PageRange pageRange) {
+		PaginationSupport<ThirtyOneHistory> result = thirtyOneHistoryDao.queryPagingData(history, pageRange);
+		return result;
+	}
 }
