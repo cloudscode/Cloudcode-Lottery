@@ -160,7 +160,7 @@ public class ThirtyOneHistoryController extends CrudController<ThirtyOneHistory>
 		modelAndView.setViewName("classpath:com/cloudcode/lottery/ftl/thirtyone/detail.ftl");
 		modelAndView.addObject("entityAction", "create");
 		ThirtyOneHistory history = new ThirtyOneHistory();
-		ThirtyOneHistory phistory = thirtyOneHistoryDao.getNewThirtyOneHistory();
+		/*ThirtyOneHistory phistory = thirtyOneHistoryDao.getNewThirtyOneHistory();
 		String oldIssue = "";
 		if(null != phistory){
 			Integer issue =Integer.parseInt(phistory.getIssue())+1;
@@ -169,9 +169,24 @@ public class ThirtyOneHistoryController extends CrudController<ThirtyOneHistory>
 		    modelAndView.addObject("serialnum", serialnum.toString());
 		}
 		
-		history = lotteryUtil.getThirtyOneHistor(oldIssue);
+		history = lotteryUtil.getThirtyOneHistor(oldIssue);*/
 		modelAndView.addObject("history", history);
 		return modelAndView;
+	}
+	@RequestMapping(value = "/generate")
+	public @ResponseBody Object generate(HttpServletRequest request) {
+		ThirtyOneHistory history = new ThirtyOneHistory();
+		ThirtyOneHistory phistory = thirtyOneHistoryDao.getNewThirtyOneHistory();
+		String oldIssue = "";
+		if(null != phistory){
+			Integer issue =Integer.parseInt(phistory.getIssue())+1;
+		    oldIssue = issue.toString();
+		    Integer serialnum =Integer.parseInt(phistory.getSerialnum())+1;
+		    history.setSerialnum((Integer.parseInt(phistory.getSerialnum())+1)+"");
+		}
+		
+		history = lotteryUtil.getThirtyOneHistor(oldIssue);
+		return new ServiceResult(ReturnResult.SUCCESS,"",history);
 	}
 	@RequestMapping(value = "/{id}/toUpdate")
 	public ModelAndView toUpdate(@PathVariable("id") String id) {

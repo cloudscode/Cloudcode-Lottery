@@ -52,15 +52,44 @@
  <div class="col-sm-9" style="text-align: center;"> <input type="hidden" value="${history.id!''}" id="id" name="id" >
 		 <#if entityAction=="create">
 		  <input type="hidden" value="${serialnum!''}" id="serialnum" name="serialnum" >
+		  <button type="button" id="generate" name="generate" class="btn btn-primary" >自动获取</button>
 		 </#if>
-     	<button type="button" id="updateButton" name="calc" class="btn btn-primary" >保存</button>
-     	<button type="button" id="updateButton" name="random" class="btn btn-warning" >取消</button>
+     	<button type="button" id="calc" name="calc" class="btn btn-primary" >保存</button>
+     	<button type="button" id="random" name="random" class="btn btn-warning" >取消</button>
      	 </div>
      </div>
      
 </div>
 <#include "classpath:com/cloudcode/framework/common/ftl/vendor.ftl"/>
 <script type="text/javascript">
+$(function(){
+ 
+
+});
+  $('button[name="generate"]').click( function() {
+  
+  $.ajax({
+        url: '${request.getContextPath()}/thirtyOneHistory/generate',
+        type: 'post',
+        dataType: 'json',
+        data:{},
+        success: function(data) {
+       		 if(data.result){
+       		 	var obj = data.result;
+       		 	$("input[name='a']").val(obj.a);
+       		 	$("input[name='b']").val(obj.b);
+       		 	$("input[name='c']").val(obj.c);
+       		 	$("input[name='d']").val(obj.d);
+       		 	$("input[name='e']").val(obj.e);
+       		 	$("input[name='f']").val(obj.f);
+       		 	$("input[name='g']").val(obj.g);
+       		 	$("input[name='issue']").val(obj.issue);
+       		 	$("input[name='specialnum']").val(obj.specialnum);
+       		 	$("input[name='serialnum']").val(obj.serialnum);
+       		 }
+      }
+});
+ });
   $('button[name="calc"]').click( function() {
   	 if('${entityAction!''}' =='update'){
 	  		
