@@ -4,7 +4,7 @@
 
 	<groupId>com.cloudcode.lottery</groupId>
 	<artifactId>Cloudcode-Lottery</artifactId>
-	<version>1-SNAPSHOT</version>
+	<version>1</version>
 	<packaging>jar</packaging>
 
 	<name>Cloudcode-Lottery</name>
@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>com.cloudcode</groupId>
 			<artifactId>Cloudcode-Framework</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>
@@ -34,7 +34,19 @@
 		<dependency>
 			<groupId>com.cloudcode.push</groupId>
 			<artifactId>Cloudcode-WebSocketPush</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<!-- <snapshotRepository>
+			<id>lawyee-maven</id>
+			<name>Lawyee Maven Repository</name>
+			<url>http://127.0.0.1:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository> -->
+		<repository>
+			<id>lawyee-maven</id>
+			<name>Lawyee Maven Repository</name>
+			<url>http://127.0.0.1:8081/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
 </project>
